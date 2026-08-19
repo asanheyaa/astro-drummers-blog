@@ -1,0 +1,18 @@
+{
+	 "newsletter": {
+    "title": "NEWSLETTER",
+    "text": "In case you haven’t even started playing drums yet, don’t worry. You’re not alone and it’s never too late. Take some time to read my blog. Because this website is for you. I’d like to hear your story and know how I can help you. If you’re interested in more sheet music examples and exclusive workshops, then subscribe now to my newsletter. I’m looking forward to hearing from you.",
+    "form": {
+      "honeypotLabel": "Please leave this field empty",
+      "emailPlaceholder": "Your email address *",
+      "emailAriaLabel": "Your email address *",
+      "emailTitle": "Your email address",
+      "submitLabel": "Sign Up",
+      "validation": {
+        "typeMessage": "This value should be a valid email.",
+        "requiredMessage": "This field is required."
+      },
+      "successMessage": "Check your inbox or spam folder to confirm your subscription."
+    }
+  }
+}

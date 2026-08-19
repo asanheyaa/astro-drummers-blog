@@ -1,0 +1,87 @@
+{
+  
+ 
+  "hero": {
+     "logoImageAlt": "Drummersblog: # 1, um dich zum Trommeln zu inspirieren",
+      "staticMenu": {
+      "items": [
+    {
+      "label": "BLOG",
+      "href": "/blog/"
+    },
+    {
+      "label": "PRODUCTS",
+      "href": "/products/"
+    },
+    {
+      "label": "ABOUT ME",
+      "href": "/about/"
+    },
+    {
+      "label": "CONTACT",
+      "href": "/contact/",
+      "spacer": true
+    }
+      ]
+  },
+    "slides": [
+      {
+        "subtitle": "WELCOME",
+        "text": "Hi, my name is Ole, and I’m going to show you the basics for being successful as a drummer. When I founded Drummersblog in 2014, my goal was simple: to share with you the strategies that helped me to improve as a musician and to reach my goals. I wish the same thing for you too."
+      },
+      {
+        "subtitle": "ABOUT",
+        "text": "Besides drumming, my biggest passions are my family and good food. Even when I was still a musicology student, I had the goal to work as a drummer later. Even though my career as a musician was already going great at the time, sometimes I would have liked some good advice. That’s why I started recording my experiences here in 2015."
+      },
+      {
+        "subtitle": "START NOW",
+        "text": "Take some time to read my blog. Because this website is for you. I’d like to hear your story and know how I can help you. This way we can grow together. If you’re interested in more sheet music examples and exclusive workshops, then subscribe to my newsletter."
+      }
+    ],
+    "ctaButton": "Here we go"
+  },
+   "myGoals": {
+    "photoAlt": "Photo: Oliver Beck",
+    "title": "My Goals",
+    "paragraphs":[
+      "As a drummer, I want to keep developing – from both an artistic and a musical point of view. And precisely that is what I want for you. That’s why I’m sharing my experiences with you here, and I want to motivate you to make the most of yourself.",
+      "I know that steadfast striving for self-improvement can seem overwhelming. That’s why I’m showing you here various approaches to practicing that I have tried out myself and that help me to achieve more in a very short time. You’ll learn here what I’m offering you."
+    ]
+  },
+  "blogSection":{
+    "title":"Latest Posts",
+    "buttonText":"Read More",
+    "buttonLink":"/en/blog/"
+  },
+   "quote": {
+    "text": "My work (and this site) is devoted to sharing ideas, tools and resources, that will help you become a better drummer. You don´t have to get it perfect. You just have to get it going."
+  },
+  "rudiments": {
+    "eyebrow": "Books",
+    "title": "Rudiments:",
+    "titleEmphasis": "The Complete Collection",
+    "paragraphs":[
+      "My new e-paper gives you a comprehensive insight into the <i>40 international drum rudiments</i>. These figures are the basis for expanding your vocabulary as a drummer.",
+      "Over 51 pages, you will find: Basic principles for the correct technical execution of the figures, the rudiments’ relationship to American military music, the connection of rudimental drumming to the orchestral style of playing the snare drum, the correct choice of tempo, roll rudiments, diddle rudiments, flam rudiments, and drag rudiments, as well as a short bibliography and a glossary.",
+      "If you want to know more about rudiments, then this e-paper is just the thing for you!"
+    ], 
+ 
+    "buttonHaveLook": "Have a look",
+    "buttonBuyNow": "Buy now!",
+    "images": {
+      "content": {
+        "alt": "Rudiments Content, Home, Startseite, Drummersblog"
+      },
+      "introduction": {
+        "alt": "Rudiments Introduction, Home, Startseite, Drummersblog"
+      },
+      "title": {
+        "alt": "Rudiments Title, Home, Startseite, Drummersblog"
+      }
+    }
+  }
+   
+ 
+
+
+}

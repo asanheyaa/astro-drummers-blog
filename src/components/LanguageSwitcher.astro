@@ -1,0 +1,47 @@
+---
+import { languages } from "../scripts/i18n.js";
+
+const { type  } = Astro.props;
+
+const currentLang = Astro.currentLocale ?? "de";
+
+const rawPath = Astro.url.pathname;
+
+const pathWithoutLocale = rawPath.replace(/^\/en\/?/, "/");
+
+const targetLang = currentLang === "de" ? "en" : "de";
+const targetPath =
+  targetLang === "de" ? pathWithoutLocale : `/en${pathWithoutLocale}`;
+
+function getLocalizedPath(lang :string) {
+  if (lang === "de") {
+    return pathWithoutLocale;
+  }
+  return `/en${pathWithoutLocale}`;
+}
+---
+
+{
+  !type ? (
+    <li class="header-menu__item">
+      <a href={targetPath} class="header-menu__link">
+        {targetLang.toUpperCase()}
+      </a>
+    </li>
+  ) : (
+     Object.entries(languages).map(([code, label]) => (
+		
+      <li class="home-hero__item">
+        <a
+          href={getLocalizedPath(code)}
+          class:list={["home-hero__link", { _active: code === currentLang }]}
+          aria-current={code === currentLang ? "page" : undefined}
+        >
+          {code.toUpperCase()}
+        </a>
+      </li>
+    ))
+  )
+}
+
+

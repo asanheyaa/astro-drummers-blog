@@ -1,0 +1,18 @@
+{
+	 "newsletter": {
+    "title": "NEWSLETTER",
+    "text": "Falls du noch gar nicht angefangen hast Schlagzeug zu spielen, keine Angst. Du bist nicht allein und es ist nie zu spät. Nimm dir etwas Zeit, um in meinem Blog zu lesen. Denn diese Website ist für dich. Ich möchte deine Geschichte hören und wissen, wie ich dir helfen kann. Wenn du dich für mehr Notenbeispiele und exklusive Workshops interessierst, dann abonniere jetzt meinen Newsletter. Ich freue mich von dir zu hören.",
+    "form": {
+      "honeypotLabel": "Bitte dieses Feld leer lassen",
+      "emailPlaceholder": "Bitte gib eine gültige E-Mail-Adresse ein. *",
+      "emailAriaLabel": "Bitte gib eine gültige E-Mail-Adresse ein. *",
+      "emailTitle": "Bitte gib eine gültige E-Mail-Adresse ein.",
+      "submitLabel": "Anmelden",
+      "validation": {
+        "typeMessage": "Dieser Wert sollte eine gültige E-Mail-Adresse sein.",
+        "requiredMessage": "Dieses Feld wird benötigt."
+      },
+      "successMessage": "Überprüfen Sie Ihren Posteingang oder Spam-Ordner, um Ihr Abonnement zu bestätigen."
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "lang": "de",
+  "homePage": {
+    "title": "Drummersblog: # 1, um dich zum Trommeln zu inspirieren",
+    "metaDescription": "Drummersblog ist der beste Ort, um neue Informationen über Trommeln und Trommeln zu erhalten. Hier können Sie interessante Informationen lesen!",
+    "og": {
+      "title": "Drummersblog: # 1, um dich zum Trommeln zu inspirieren",
+      "description": "Drummersblog ist der beste Ort, um neue Informationen über Trommeln und Trommeln zu erhalten. Hier können Sie interessante Informationen lesen!",
+      "imageAlt": "Drummersblog, Startseite, Home",
+      "siteName": "Drummersblog",
+      "locale": "de_DE",
+      "url": "https://drummersblog.de"
+    },
+    "twitter": {
+      "title": "Drummersblog: # 1, um dich zum Trommeln zu inspirieren",
+      "description": "Drummersblog ist der beste Ort, um neue Informationen über Trommeln und Trommeln zu erhalten. Hier können Sie interessante Informationen lesen!",
+      "label1": "Verfasst von",
+      "data1": "Ole Fahnick",
+      "label2": "Lesedauer",
+      "data2": "17 Minuten"
+    },
+    "schema": {
+      "organizationName": "Drummersblog",
+      "logoCaption": "Drummersblog",
+      "authorName": "Ole Fahnick",
+      "pageHeadline": "Startseite",
+      "pageKeywords": "drummersblog,Ole,schlagzeuger,Startseite",
+      "imageCaption": "Drummersblog, Startseite, Home"
+    }
+  }
+}

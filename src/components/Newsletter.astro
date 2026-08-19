@@ -1,0 +1,34 @@
+---
+import { useTranslations } from "../scripts/i18n.js";
+import Button from "./Button.astro";
+
+const lang = Astro.currentLocale ?? "de";
+const t = useTranslations(lang);
+---
+
+<section class="newsletter" aria-labelledby="newsletter">
+  <div class="newsletter__container">
+    <h2 class="newsletter__title">{t("newsletter", "newsletter.title")}</h2>
+    <div class="newsletter__subtitle">
+      {t("newsletter", "newsletter.text")}
+    </div>
+    <form action="#" class="newsletter__form">
+      <div class="newsletter__item">
+        <input
+          type="email"
+          name="email"
+          id="email"
+          required
+          placeholder={t("newsletter", "newsletter.form.emailPlaceholder")}
+          aria-label={t("newsletter", "newsletter.form.emailAriaLabel")}
+          class="newsletter__input"
+        />
+      </div>
+      <Button type="submit" class="newsletter__button" isAlt>
+        {t("newsletter", "newsletter.form.submitLabel")}
+      </Button>
+
+    
+    </form>
+  </div>
+</section>

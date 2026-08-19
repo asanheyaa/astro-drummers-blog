@@ -1,0 +1,30 @@
+{
+	"lang": "en",
+  "homePage": {
+    "title": "Drummersblog: #1 for inspiring you to better learn Drumming",
+    "metaDescription": "Drummersblog is the best place where you can learn new information about drums and drumming. Here you can read interesting information for all who love to drum!",
+    "og": {
+      "title": "Drummersblog: #1 for inspiring you to better learn Drumming",
+      "description": "Drummersblog is the best place where you can learn new information about drums and drumming. Here you can read interesting information for all who love to drum!",
+      "imageAlt": "Drummersblog, Startseite, Home",
+      "siteName": "Drummersblog",
+      "locale": "en_US"
+    },
+    "twitter": {
+      "title": "Drummersblog: #1 for inspiring you to better learn Drumming",
+      "description": "Drummersblog is the best place where you can learn new information about drums and drumming. Here you can read interesting information for all who love to drum!",
+      "label1": "Written by",
+      "data1": "Ole Fahnick",
+      "label2": "Time to read",
+      "data2": "17 minutes"
+    },
+    "schema": {
+      "organizationName": "Drummersblog",
+      "logoCaption": "Drummersblog",
+      "authorName": "Ole Fahnick",
+      "pageHeadline": "Home",
+      "pageKeywords": "Drummers,blog,drums,drumming,home",
+      "imageCaption": "Drummersblog, Startseite, Home"
+    }
+  }
+}

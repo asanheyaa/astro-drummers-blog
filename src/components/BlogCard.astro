@@ -1,0 +1,38 @@
+---
+import { Image } from "astro:assets";
+
+const {
+  cover,
+  date,
+  category,
+  title,
+  description,
+  alt,
+  slug,
+  categoryUrl,
+  postUrl,
+} = Astro.props;
+---
+
+<article class="home-articles__article">
+  <a href={postUrl} class="home-articles__photo ibg">
+    <Image width={500} height={500} src={cover} alt={alt} />
+  </a>
+  <a href={categoryUrl} class="home-articles__category"> {category} </a>
+  <footer class="home-articles__footer">
+    <div class="home-articles__date">
+      <div class="home-articles__icon">
+        <i class="dfd-socicon-clock"> </i>
+      </div>
+      <div class="home-articles__time">
+        {date} in <a href={categoryUrl} class="home-articles__link">{category}</a>
+      </div>
+    </div>
+    <h3 class="home-articles__label">
+      <a href={postUrl} class="home-articles__label-link">{title}</a>
+    </h3>
+    <div class="home-articles__text">
+      {description}
+    </div>
+  </footer>
+</article>

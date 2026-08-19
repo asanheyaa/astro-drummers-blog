@@ -1,0 +1,115 @@
+---
+const { isHeaderAnimated = false } = Astro.props;
+
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+import Prealoder from "../components/Prealoder.astro";
+import TopScrollButton from "../components/TopScrollButton.astro";
+import SearchPopup from "../components/SearchPopup.astro";
+import AlternativeMenu from "../components/AlternativeMenu.astro";
+
+import "../styles/main-styles.scss";
+
+import { useTranslations } from "../scripts/i18n.js";
+import Newsletter from "../components/Newsletter.astro";
+const lang = Astro.currentLocale ?? "de";
+const t = useTranslations(lang);
+---
+
+<!doctype html>
+<html lang={t("meta", "lang")}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={t("meta", "homePage.metaDescription")} />
+
+    <meta
+      name="robots"
+      content="follow, index, max-snippet:-1, max-video-preview:-1, max-image-preview:large"
+    />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:locale" content={t("meta", "homePage.og.locale")} />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={t("meta", "homePage.og.title")} />
+    <meta
+      property="og:description"
+      content={t("meta", "homePage.og.description")}
+    />
+    <meta property="og:url" content={t("meta", "homePage.og.url")} />
+    <meta property="og:site_name" content="Drummersblog" />
+    <meta
+      property="og:image"
+      content="../../public/drummersblog-representive.jpg"
+    />
+    <meta
+      property="og:image:secure_url"
+      content="../../public/drummersblog-representive.jpg"
+    />
+    <meta property="og:image:height" content="315" />
+    <meta property="og:image:width" content="828" />
+    <meta property="og:image:alt" content={t("meta", "homePage.og.imageAlt")} />
+    <meta property="og:image:type" content="image/jpeg" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={t("meta", "homePage.twitter.title")} />
+    <meta
+      name="twitter:description"
+      content={t("meta", "homePage.twitter.description")}
+    />
+    <meta
+      name="twitter:image"
+      content="../../public/drummersblog-representive.jpg"
+    />
+    <meta
+      name="twitter:label1"
+      content={t("meta", "homePage.twitter.label1")}
+    />
+    <meta name="twitter:data1" content={t("meta", "homePage.twitter.data1")} />
+    <meta
+      name="twitter:label2"
+      content={t("meta", "homePage.twitter.label2")}
+    />
+    <meta name="twitter:data2" content={t("meta", "homePage.twitter.data2")} />
+
+    <title>{t("meta", "homePage.title")}</title>
+    <link rel="icon" type="image/webp" href="../../public/favicon.webp" />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Merriweather:300,regular,500,600,700,800,900,300italic,italic,500italic,600italic,700italic,800italic,900italic"
+      rel="stylesheet"
+    />
+    <!-- italic, 600-italic-->
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic&display=swap"
+      rel="stylesheet"
+    />
+    <!-- 700,400,600 -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300,regular,500,600,700,800,300italic,italic,500italic,600italic,700italic,800italic&display=swap"
+      rel="stylesheet"
+    />
+    <!-- 700 -->
+  </head>
+
+  <body>
+    <Prealoder />
+    <SearchPopup />
+
+    <AlternativeMenu />
+    <TopScrollButton />
+    <div class="wrapper">
+      <Header isHeaderAnimated={isHeaderAnimated} />
+      <main class="page">
+        <slot />
+        <Newsletter />
+      </main>
+      <Footer />
+    </div>
+
+    <script src="../scripts/app.js"></script>
+  </body>
+</html>

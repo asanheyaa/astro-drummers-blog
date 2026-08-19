@@ -1,0 +1,146 @@
+---
+const { isHeaderAnimated } = Astro.props;
+import { Image } from "astro:assets";
+import logo from "../assets/img/main/logo.svg";
+
+const currentPath = Astro.url.pathname;
+import LanguageSwitcher from "./LanguageSwitcher.astro";
+import { useTranslations } from "../scripts/i18n.js";
+const lang = Astro.currentLocale ?? "de";
+const t = useTranslations(lang);
+---
+
+<header
+  class:list={["header", { "header-alt": isHeaderAnimated }]}
+ 
+>
+  <a
+    href={t("header", "header.logo.href")}
+    class="header__logo"
+    aria-label="Home-page link"
+  >
+    <Image src={logo} alt={t("header", "header.logo.mainAlt")} />
+  </a>
+  <div class="header__wrapper">
+    <div class="header__body">
+      <button
+        type="button"
+        class="header__close-button"
+        aria-label="close menu"
+      >
+        <i class="dfd-socicon-icon-close-round"> </i>
+      </button>
+      <nav class="header-menu">
+        <ul class="header-menu__list">
+          {
+            t("header", "header.nav").map((item) => {
+              return (
+                <li class="header-menu__item">
+                  <a
+                    href={item.href}
+                    class:list={[
+                      "header-menu__link",
+                      { _active: currentPath === item.href },
+                    ]}
+                  >
+                    {item.label}
+                  </a>
+                </li>
+              );
+            })
+          }
+
+          <LanguageSwitcher />
+        </ul>
+      </nav>
+      <div class="header__socials">
+        <ul class="header__list">
+          <li class="header__item">
+            <a
+              href="https://www.facebook.com/Drummersblog/"
+              class="header__link"
+            >
+              <i class="dfd-socicon-facebook"> </i>
+            </a>
+          </li>
+          <li class="header__item">
+            <a href="#" class="header__link">
+              <i class="dfd-socicon-instagram"> </i>
+            </a>
+          </li>
+          <li class="header__item">
+            <a href="https://twitter.com/OleDrummersBlog" class="header__link">
+              <i class="dfd-added-icon-twitter-x-logo"> </i>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="header-actions">
+        <ul class="header-actions__list">
+          <li class="header-actions__item">
+            <a href="" class="header-actions__link">
+              <span class="header-actions__icon">
+                <i class="dfd-socicon-icon-ios7-cart"> </i>
+              </span>
+              <span class="header-actions__counter"> 0 </span>
+            </a>
+          </li>
+          <li class="header-actions__item">
+            <button
+              type="button"
+              aria-label="search"
+              class="header-actions__link"
+              data-pop-up-trigger="search"
+            >
+              <span class="header-actions__icon">
+                <i class="dfd-socicon-Search"> </i>
+              </span>
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="header-actions">
+    <ul class="header-actions__list">
+      <li class="header-actions__item">
+        <a href="" class="header-actions__link">
+          <span class="header-actions__icon">
+            <i class="dfd-socicon-icon-ios7-cart"> </i>
+          </span>
+          <span class="header-actions__counter"> 0 </span>
+        </a>
+      </li>
+      <li class="header-actions__item">
+        <button
+          type="button"
+          aria-label="search"
+          class="header-actions__link"
+          data-pop-up-trigger="search"
+        >
+          <span class="header-actions__icon">
+            <i class="dfd-socicon-Search"> </i>
+          </span>
+        </button>
+      </li>
+    </ul>
+  </div>
+  <div class="header__more">
+    <button
+      type="button"
+      aria-label="open menu"
+      class="header__button"
+      data-pop-up-trigger="secondary-menu"
+    >
+      <span class="header__point header__point-1"></span>
+      <span class="header__point header__point-2"></span>
+      <span class="header__point header__point-3"></span>
+    </button>
+  </div>
+  <button class="burger-menu">
+    <span class="burger-menu__line burger-menu__line_1"></span>
+    <span class="burger-menu__line burger-menu__line_2"></span>
+    <span class="burger-menu__line burger-menu__line_3"></span>
+  </button>
+</header>

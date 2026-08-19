@@ -1,0 +1,229 @@
+---
+import { useTranslations } from "../scripts/i18n.js";
+const lang = Astro.currentLocale ?? "de";
+const t = useTranslations(lang);
+
+const currentPath = Astro.url.pathname;
+---
+
+<div
+  class="secondary-menu pop-up"
+  data-pop-up="secondary-menu"
+  data-speed="400"
+  data-opening="M 0,0 c 0,0 63.5,-16.5 80,0 16.5,16.5 0,60 0,60 L 0,60 Z"
+>
+  <button
+    type="button"
+    data-pop-up-close="secondary-menu"
+    class="secondary-menu__close-button pop-up__close-button"
+    aria-label="close menu"
+  >
+    <i class="dfd-socicon-icon-close-round"></i>
+  </button>
+  <div class="secondary-menu__back pop-up__back">
+    <svg
+      data-pop-up-back="secondary-menu"
+      xmlns="http://w3.org"
+      width="100%"
+      height="100%"
+      viewBox="0 0 80 60"
+      preserveAspectRatio="none"
+    >
+      <path d="M 0,0 c 0,0 -16.5,43.5 0,60 16.5,16.5 80,0 80,0 L 0,60 Z"></path>
+      <defs></defs>
+    </svg>
+  </div>
+  <div class="secondary-menu__wrapper pop-up__wrapper">
+    <nav class="secondary-menu__nav">
+      {
+        t("header", "secondaryMenu.columns").map((item, i) => {
+          const socials = t("header", `secondaryMenu.columns.${i}.socialItems`);
+
+          return (
+            <ul class="secondary-menu__list">
+              <li class="secondary-menu__item">
+                <h2 class="secondary-menu__title">
+                  <a href={item.href} class="secondary-menu__link">
+                    {item.title}
+                  </a>
+                </h2>
+              </li>
+              {item.links.map((link) => {
+                let href = link.href;
+                const [hrefWithoutHash, anchor] = href.split("#");
+                if (currentPath === hrefWithoutHash && anchor) {
+                  href = `#${anchor}`;
+                }
+
+                return (
+                  <li class="secondary-menu__item">
+                    <a href={href} class="secondary-menu__link">
+                      {link.label}
+                    </a>
+                  </li>
+                );
+              })}
+
+              {Array.isArray(socials) &&
+                socials.map((social) => (
+                  <>
+                    <li class="secondary-menu__item">
+                      <div class="secondary-menu__label">{social.title}</div>
+                    </li>
+                    {social.socialLinks.map((socialLink) => (
+                      <li class="secondary-menu__item">
+                        <a
+                          href={socialLink.socialLink}
+                          class="secondary-menu__link"
+                        >
+                          {socialLink.socialLabel}
+                        </a>
+                      </li>
+                    ))}
+                  </>
+                ))}
+            </ul>
+          );
+        })
+      }
+      <!-- <ul class="secondary-menu__list">
+        <li class="secondary-menu__item">
+          <h2 class="secondary-menu__title">
+            <a href="/" class="secondary-menu__link"> STARTSEITE </a>
+          </h2>
+        </li>
+        <li class="secondary-menu__item">
+          <a href="/#welcome" class="secondary-menu__link"> WILLKOMMEN </a>
+        </li>
+        <li class="secondary-menu__item">
+          <a href="/#startread" class="secondary-menu__link"> MEINE ZIELE </a>
+        </li>
+        <li class="secondary-menu__item">
+          <a href="/#posts" class="secondary-menu__link"> NEUESTE BLOGPOST </a>
+        </li>
+        <li class="secondary-menu__item">
+          <a href="/#product" class="secondary-menu__link">
+            NEUESTE PRODUKTE
+          </a>
+        </li>
+      </ul>
+      <ul class="secondary-menu__list">
+        <li class="secondary-menu__item">
+          <h2 class="secondary-menu__title">
+            <a href="blog.html" class="secondary-menu__link"> BLOG </a>
+          </h2>
+        </li>
+        <li class="secondary-menu__item">
+          <a href="blog/category/music-business" class="secondary-menu__link">
+            MUSIKBUSINESS
+          </a>
+        </li>
+        <li class="secondary-menu__item">
+          <a
+            href="blog/category/the-business-side-posts/"
+            class="secondary-menu__link"
+          >
+            BERUF: SCHLAGZEUGER
+          </a>
+        </li>
+        <li class="secondary-menu__item">
+          <a href="blog/category/workshop-posts/" class="secondary-menu__link">
+            WORKSHOP
+          </a>
+        </li>
+      </ul>
+      <ul class="secondary-menu__list">
+        <li class="secondary-menu__item">
+          <h2 class="secondary-menu__title">
+            <a href="products.html" class="secondary-menu__link"> PRODUKTE </a>
+          </h2>
+        </li>
+        <li class="secondary-menu__item">
+          <a href="products/biographies.html" class="secondary-menu__link">
+            BIOGRAPHIEN
+          </a>
+        </li>
+        <li class="secondary-menu__item">
+          <a
+            href="products/teaching-material.html"
+            class="secondary-menu__link"
+          >
+            UNTERRICHTSMATERIAL
+          </a>
+        </li>
+      </ul>
+      <ul class="secondary-menu__list">
+        <li class="secondary-menu__item">
+          <h2 class="secondary-menu__title">
+            <a href="my-story.html" class="secondary-menu__link"> ÜBER MICH </a>
+          </h2>
+        </li>
+        <li class="secondary-menu__item">
+          <a href="my-story.html##who-is-ole" class="secondary-menu__link">
+            WER IST OLE?
+          </a>
+        </li>
+        <li class="secondary-menu__item">
+          <a href="my-story.html#my-goals" class="secondary-menu__link">
+            MEINE ZIELE
+          </a>
+        </li>
+        <li class="secondary-menu__item">
+          <a href="my-story.html#my-partners" class="secondary-menu__link">
+            MEINE PARTNER
+          </a>
+        </li>
+        <li class="secondary-menu__item">
+          <a href="my-story.html#newsletter" class="secondary-menu__link">
+            NEWSLETTER
+          </a>
+        </li>
+      </ul>
+      <ul class="secondary-menu__list">
+        <li class="secondary-menu__item">
+          <h2 class="secondary-menu__title">
+            <a href="contact.html" class="secondary-menu__link"> KONTAKT </a>
+          </h2>
+        </li>
+        <li class="secondary-menu__item">
+          <a href="contact.html#contact-form" class="secondary-menu__link">
+            SCHREIB MIR
+          </a>
+        </li>
+        <li class="secondary-menu__item">
+          <div class="secondary-menu__label">TWEETE MIR</div>
+        </li>
+        <li class="secondary-menu__item">
+          <a
+            href="https://twitter.com/OleDrummersBlog"
+            class="secondary-menu__link"
+          >
+            @DRUMMERSBLOG
+          </a>
+        </li>
+        <li class="secondary-menu__item">
+          <div class="secondary-menu__label">FOLGE MIR</div>
+        </li>
+        <li class="secondary-menu__item">
+          <a
+            href="https://www.facebook.com/Drummersblog/"
+            class="secondary-menu__link"
+          >
+            FACEBOOK
+          </a>
+        </li>
+        <li class="secondary-menu__item">
+          <a href="#" class="secondary-menu__link"> INSTAGRAM </a>
+        </li>
+        <li class="secondary-menu__item">
+          <a
+            href="https://drummersblog.de/contact/#find-me"
+            class="secondary-menu__link"
+          >
+            FINDE MICH
+          </a>
+        </li>
+      </ul> -->
+    </nav>
+  </div>
+</div>

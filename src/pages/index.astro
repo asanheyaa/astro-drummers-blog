@@ -1,0 +1,251 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { Image } from "astro:assets";
+
+// logo
+import logoBig from "../assets/img/main/logo-big.svg";
+// About
+import aboutPhoto from "../assets/img/home-page/about/about-photo.jpg";
+// Articles
+import articlesImage01 from "../assets/img/home-page/articles/articles_image_01.jpg";
+import articlesImage02 from "../assets/img/home-page/articles/articles_image_02.jpg";
+import articlesImage03 from "../assets/img/home-page/articles/articles_image_03.jpg";
+import articlesImage04 from "../assets/img/home-page/articles/articles_image_04.jpg";
+import articlesImage05 from "../assets/img/home-page/articles/articles_image_05.jpg";
+// Products
+import productsBack from "../assets/img/home-page/products/producrs-back.webp";
+import productImage01 from "../assets/img/home-page/products/product-image_01.webp";
+import productImage02 from "../assets/img/home-page/products/product-image_02.webp";
+import productImage03 from "../assets/img/home-page/products/product-image_03.webp";
+
+import Button from "../components/Button.astro";
+import BlogCard from "../components/BlogCard.astro";
+import SwiperInit from "../components/SwiperInit.astro";
+
+import { useTranslations } from "../scripts/i18n.js";
+import LanguageSwitcher from "../components/LanguageSwitcher.astro";
+const lang = Astro.currentLocale ?? "de";
+const t = useTranslations(lang);
+
+import { getBlogArticles } from "../services/blogService.js";
+const articles = await getBlogArticles(5);
+---
+
+<Layout isHeaderAnimated>
+  <SwiperInit>
+    <section class="home-hero" id="welcome">
+      <div class="home-hero__container">
+        <div class="home-hero__header">
+          <div class="home-hero__logo">
+            <Image src={logoBig} alt={t("homePage", "hero.logoImageAlt")} />
+          </div>
+          <nav class="home-hero__menu">
+            <ul class="home-hero__list">
+              {
+                t("homePage", "hero.staticMenu.items").map((item) => (
+                  <li class="home-hero__item">
+                    <a href={item.href} class="home-hero__link">
+                      {item.label}
+                    </a>
+                  </li>
+                ))
+              }
+
+              <LanguageSwitcher type="double" />
+            </ul>
+          </nav>
+        </div>
+        <div class="content-home-hero">
+          <div class="content-home-hero__swiper swiper" data-anim-after-loading>
+            <div class="content-home-hero__wrapper swiper-wrapper">
+              {
+                t("homePage", "hero.slides").map((item) => (
+                  <div class="content-home-hero__slide swiper-slide">
+                    <div class="content-home-hero__body">
+                      <h2 class="content-home-hero__title">{item.subtitle}</h2>
+                      <div class="content-home-hero__text">{item.text}</div>
+                    </div>
+                  </div>
+                ))
+              }
+            </div>
+            <div class="content-home-hero__pagination swiper-pagination"></div>
+          </div>
+          <Button
+            href="#startread"
+            class="content-home-hero__button"
+            data-anim-after-loading
+          >
+            {t("homePage", "hero.ctaButton")}
+          </Button>
+        </div>
+      </div>
+    </section>
+    <section
+      class="home-about"
+      id="startread"
+      aria-labelledby="home-about-title"
+    >
+      <div class="home-about__container">
+        <div class="home-about__body">
+          <div class="home-about__photo ibg">
+            <Image
+              src={aboutPhoto}
+              alt={t("homePage", "myGoals.photoAlt")}
+              loading="lazy"
+            />
+          </div>
+          <div class="home-about__info">
+            <h2
+              class="home-about__title"
+              id="home-about-title"
+              data-animation-on-scroll
+            >
+              {t("homePage", "myGoals.title")}
+            </h2>
+            <div class="home-about__text">
+              {
+                t("homePage", "myGoals.paragraphs").map((paragraph) => (
+                  <p set:html={paragraph} />
+                ))
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {
+      articles.length > 0 && (
+        <section
+          class="home-articles"
+          id="posts"
+          aria-labelledby="home-articles-title"
+        >
+          <div class="home-articles__container">
+            <h2
+              class="home-articles__title title"
+              id="home-articles-title"
+              data-animation-on-scroll
+            >
+              {t("homePage", "blogSection.title")}
+            </h2>
+            <div class="home-articles__body">
+              <div class="home-articles__swiper swiper">
+                <div class="home-articles__wrapper swiper-wrapper">
+                  {articles.map((article) => (
+                    <div class="home-articles__slide swiper-slide">
+                      <BlogCard
+                        cover={article.cover}
+                        category={article.category}
+                        title={article.title}
+                        date={article.date}
+                        description={article.description}
+                        alt={article.alt}
+                        slug={article.slug}
+                        categoryUrl={article.categoryUrl}
+                        postUrl={article.postUrl}
+                      />
+                    </div>
+                  ))}
+                </div>
+                <div class="home-articles__pagination swiper-pagination" />
+              </div>
+              <Button
+                href={t("homePage", "blogSection.buttonLink")}
+                class="home-articles__button"
+                data-animation-on-scroll
+              >
+                {t("homePage", "blogSection.buttonText")}
+              </Button>
+            </div>
+          </div>
+        </section>
+      )
+    }
+
+    <section class="quote" aria-labelledby="quote-title">
+      <div class="quote__container">
+        <div class="quote__icon">
+          <i class="dfd-socicon-quote-left"></i>
+        </div>
+        <h2 class="quote__title" id="quote-title">
+          {t("homePage", "quote.text")}
+        </h2>
+      </div>
+    </section>
+    <section
+      id="product"
+      class="home-products"
+      aria-labelledby="home-products-title"
+    >
+      <div class="home-products__back">
+        <div class="home-products__item ibg">
+          <Image
+            src={productsBack}
+            aria-hidden="true"
+            alt="home products background"
+            loading="lazy"
+          />
+        </div>
+        <div class="home-products__item ibg">
+          <Image
+            src={productsBack}
+            aria-hidden="true"
+            alt="home products background"
+            loading="lazy"
+          />
+        </div>
+      </div>
+      <div class="home-products__container">
+        <div class="home-products__body" data-animation-on-scroll>
+          <div class="home-products__label label">
+            {t("homePage", "rudiments.eyebrow")}
+          </div>
+          <h2 class="home-products__title" id="home-products-title">
+            {t("homePage", "rudiments.title")}
+            <span> {t("homePage", "rudiments.titleEmphasis")}</span>
+          </h2>
+          <div class="home-products__text">
+            {
+              t("homePage", "rudiments.paragraphs").map((paragraph) => (
+                <p set:html={paragraph} />
+              ))
+            }
+          </div>
+          <footer class="home-products__buttons">
+            <Button class="home-products__button" href="products/">
+              {t("homePage", "rudiments.buttonHaveLook")}
+            </Button>
+            <Button class="home-products__button" isAlt href="products/">
+              {t("homePage", "rudiments.buttonBuyNow")}
+            </Button>
+          </footer>
+        </div>
+        <div class="home-products__decor" data-animation-on-scroll>
+          <div class="home-products__image home-products__image-01 ibg">
+            <Image
+              src={productImage01}
+              loading="lazy"
+              alt={t("homePage", "rudiments.images.content.alt")}
+            />
+          </div>
+          <div class="home-products__image home-products__image-02 ibg">
+            <Image
+              src={productImage02}
+              loading="lazy"
+              alt={t("homePage", "rudiments.images.introduction.alt")}
+            />
+          </div>
+          <div class="home-products__image home-products__image-03 ibg">
+            <Image
+              src={productImage03}
+              loading="lazy"
+              alt={t("homePage", "rudiments.images.title.alt")}
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+  </SwiperInit>
+</Layout>

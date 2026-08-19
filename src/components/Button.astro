@@ -1,0 +1,17 @@
+---
+const { href, isAlt, class: className, type = "button", ...rest } = Astro.props;
+
+const classes = `${className} button ${isAlt ? "button-alt" : ""}`.trim();
+---
+
+{
+  href ? (
+    <a href={href} class={classes} {...rest}>
+      <slot />
+    </a>
+  ) : (
+    <button type={type} class={classes} {...rest}>
+      <slot />
+    </button>
+  )
+}

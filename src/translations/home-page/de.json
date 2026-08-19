@@ -1,0 +1,83 @@
+{
+ 
+   "hero": {
+    "logoImageAlt": "Drummersblog: # 1, um dich zum Trommeln zu inspirieren",
+    "staticMenu": {
+      "items": [
+    {
+      "label": "BLOG",
+      "href": "/blog/"
+    },
+    {
+      "label": "PRODUKTE",
+      "href": "/products/"
+    },
+    {
+      "label": "ÜBER MICH",
+      "href": "/about/"
+    },
+    {
+      "label": "KONTAKT",
+      "href": "/contact/",
+      "spacer": true
+    }
+  ]
+    },
+    "slides": [
+      {
+        "subtitle": "WILLKOMMEN",
+        "text": "Hi, ich heiße Ole und ich zeige dir hier die Grundlagen, um als Schlagzeuger erfolgreich zu sein. Als ich den Drummersblog 2014 gründete, war mein Ziel simpel: die Strategien mit dir zu teilen, die mir dabei geholfen haben, mich als Musiker zu verbessern und meine Ziele zu erreichen. Dasselbe wünsche ich mir auch für dich."
+      },
+      {
+        "subtitle": "ÜBER MICH",
+        "text": "Meine Familie und gutes Essen sind neben dem Trommeln meine größte Leidenschaft. Schon während dem Studium der Musikwissenschaft hatte ich das Ziel, später als Schlagzeuger zu arbeiten. Obwohl meine Karriere als Musiker zu dieser Zeit bereits hervorragend lief, hätte ich mir manchmal ein paar gute Ratschläge gewünscht. Deshalb habe ich 2015 angefangen, meine Erfahrungen hier aufzuschreiben."
+      },
+      {
+        "subtitle": "LOS GEHT`S",
+        "text": "Nimm dir etwas Zeit, um in meinem Blog zu lesen. Denn diese Website ist für dich. Ich möchte deine Geschichte hören und wissen, wie ich dir helfen kann. So können wir gemeinsam wachsen. Wenn du dich für mehr Notenbeispiele und exklusive Workshops interessierst, dann abonniere meinen Newsletter."
+      }
+    ],
+    "ctaButton": "Weiter geht´s"
+  },
+  "myGoals": {
+    "title": "Meine Ziele",
+    "photoAlt": "Photo: Oliver Beck",
+    "paragraphs":[
+      "Als Schlagzeuger möchte ich mich weiterentwickeln — sowohl in künstlerischer als auch in musikalischer Hinsicht. Und genau das ist es, was ich mir für dich wünsche. Deshalb teile ich hier meine Erfahrungen mit dir und möchte dich dazu motivieren, das Beste aus dir zu machen.",
+        "Ich weiß, dass das unentwegte Streben nach Selbstverbesserung überwältigend erscheinen kann. Deshalb zeige ich dir hier verschiedene Übungskonzepte, die ich selbst ausprobiert habe und die mir dabei helfen, in kürzester Zeit mehr zu erreichen. Was ich dir biete, erfährst du hier."
+    ] 
+   
+  },
+  "blogSection":{
+    "title":"Neueste Blogposts",
+    "buttonText":"Mehr Lesen",
+    "buttonLink":"/blog/"
+  },
+   "quote": {
+    "text": "Dieser Blog ist dem Teilen von Ideen, Konzepten und Übungen gewidmet, die dir dabei helfen, ein besserer Schlagzeuger zu werden. Du musst nicht perfekt sein. Du musst es nur angehen."
+  },
+  "rudiments": {
+    "eyebrow": "Bücher",
+    "title": "Rudiments:",
+    "titleEmphasis": "Das Nachschlagewerk",
+    "paragraphs": [
+      "Mein neues E-Paper gibt dir einen umfassenden Einblick in die <i>40 International Drum Rudiments</i>. Diese Figuren sind die Grundlage, um dein Vokabular als Schlagzeuger zu erweitern.",
+      "Auf 51 Seiten findest du: Grundlagen für eine korrekte technische Ausführung der Figuren, Bezug der Rudiments zur US-amerikanischen Militärmusik, Verbindung des Rudimental-Drummings zur orchestralen Spielweise der kleinen Trommel, korrekte Wahl des Tempos, Roll Rudiments, Diddle Rudiments, Flam Rudiments, Drag Rudiments, sowie ein kurzes Literaturverzeichnis und ein Glossar.",
+      "Wenn du mehr über Rudiments wissen willst, dann ist dieses E-Paper genau das Richtige für dich!"
+
+    ] ,
+    "buttonHaveLook": "Anschauen",
+    "buttonBuyNow": "Jetzt kaufen!",
+    "images": {
+      "content": {
+        "alt": "Rudiments Content, Home, Startseite, Drummersblog"
+      },
+      "introduction": {
+        "alt": "Rudiments Introduction, Home, Startseite, Drummersblog"
+      },
+      "title": {
+        "alt": "Rudiments Title, Home, Startseite, Drummersblog"
+      }
+    }
+  }
+}

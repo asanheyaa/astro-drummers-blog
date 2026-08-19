@@ -1,0 +1,71 @@
+import Lenis from 'lenis'
+
+
+export const lenis = new Lenis({
+	duration: 1.2,
+	easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+	direction: 'vertical',
+	gestureDirection: 'vertical',
+	smoothHandheld: true,
+});
+
+export function unlockScroll() {
+		lenis.start();
+		document.body.classList.remove('_lock');
+	}
+	export function lockScroll() {
+			lenis.stop();
+			document.body.classList.add('_lock');
+		}
+export function initSmoothScroll() {
+
+	function raf(time) {
+		lenis.raf(time);
+		requestAnimationFrame(raf);
+	}
+	requestAnimationFrame(raf);
+
+	const anchorLinks = document.querySelectorAll('a[href^="#"]');
+	anchorLinks.forEach(link => {
+		link.addEventListener('click', (e) => {
+			e.preventDefault();
+
+			const href = link.getAttribute('href');
+
+			if (href === '#') return;
+			const id = href.split('#')[1]; 
+			const targetElement = document.querySelector(`#${id}`);
+			
+			if (targetElement) {
+				setTimeout(() => {
+				scrollTo(targetElement)
+				}, 200);
+			}
+		});
+	});
+
+	function scrollTo(targetElement = 0) {
+				unlockScroll()
+
+		const header = document.querySelector('.header');
+			lenis.scrollTo(targetElement, {
+			offset: -header.offsetHeight,
+			duration: 1.5,
+			immediate: false,
+			easing: (t) => 1 - Math.pow(1 - t, 4)
+		});
+		
+	}
+	
+
+	
+
+		// top scroll button
+
+		const topscrollButton = document.querySelector('.top-scroll-button')
+	topscrollButton.addEventListener('click', (e) => {
+		scrollTo()
+	})
+	
+}
+

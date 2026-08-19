@@ -1,0 +1,52 @@
+---
+import { useTranslations } from "../scripts/i18n.js";
+const lang = Astro.currentLocale ?? "de";
+const t = useTranslations(lang);
+---
+
+<div
+  class="search pop-up"
+  data-pop-up="search"
+  data-speed="400"
+  data-opening="M 0,0 c 0,0 63.5,-16.5 80,0 16.5,16.5 0,60 0,60 L 0,60 Z"
+>
+  <button
+    type="button"
+    data-pop-up-close="search"
+    class="search__close-button pop-up__close-button"
+    aria-label="close menu"
+  >
+    <i class="dfd-socicon-icon-close-round"></i>
+  </button>
+  <div class="search__back pop-up__back">
+    <svg
+      data-pop-up-back="search"
+      xmlns="http://w3.org"
+      width="100%"
+      height="100%"
+      viewBox="0 0 80 60"
+      preserveAspectRatio="none"
+    >
+      <path d="M 0,0 c 0,0 -16.5,43.5 0,60 16.5,16.5 80,0 80,0 L 0,60 Z"></path>
+      <defs></defs>
+    </svg>
+  </div>
+  <div class="search__wrapper pop-up__wrapper">
+    <form action="#" class="search__form">
+      <div class="search__item">
+        <input
+          placeholder={t("header", "searchForm.placeholder")}
+          type="text"
+          name="search"
+          class="search__input"
+        />
+        <button
+          class="search__button"
+          aria-label={t("header", "searchForm.submitLabel")}
+        >
+          <i class="dfd-socicon-Search"></i>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

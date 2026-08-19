@@ -1,0 +1,122 @@
+{
+
+    "secondaryMenu": {
+    "columns": [
+      {
+        "title": "HOMEPAGE",
+        "href": "/en/",
+        "links": [
+          { "label": "WELCOME", "href": "/en/#welcome" },
+          { "label": "MY GOALS", "href": "/en/#startread" },
+          { "label": "LATEST POSTS", "href": "/en/#posts" },
+          { "label": "LATEST PRODUCTS", "href": "/en/#product" }
+        ]
+      },
+      {
+        "title": "BLOG",
+        "href": "/en/blog/",
+        "links": [
+          { "label": "MUSIC BUSINESS", "href": "/en/blog/" },
+          { "label": "THE BUSINESS SIDE", "href": "/en/blog/" },
+          { "label": "WORKSHOP", "href": "/en/blog/" }
+        ]
+      },
+      {
+        "title": "PRODUCTS",
+        "href": "/en/products/",
+        "links": [
+          { "label": "BIOGRAPHIES", "href": "/en/products/" },
+          { "label": "TEACHING MATERIAL", "href": "/en/products/" }
+        ]
+      },
+      {
+        "title": "MY STORY",
+        "href": "/en/about/",
+        "links": [
+          { "label": "WHO IS OLE?", "href": "/en/about/#who-is-ole" },
+          { "label": "MY GOALS", "href": "/en/about/#my-goals" },
+          { "label": "MY PARTNERS", "href": "/en/about/#my-partners" },
+          { "label": "NEWSLETTER", "href": "/en/about/#newsletter" }
+        ]
+      },
+      {
+        "title": "CONTACT",
+        "href": "/contact/",
+        "links": [
+          { "label": "MAIL ME", "href": "/en/contact/" }
+        ],
+          "socialItems": [
+            {
+              "title": "TWEET ME",
+              "socialLinks":[
+                {"socialLabel": "@DRUMMERSBLOG",
+                  "socialLink": "https://twitter.com/OleDrummersBlog"
+                }
+              ]
+            },
+            {
+              "title": "FOLLOW ME",
+              "socialLinks":[
+                {
+                  "socialLabel": "FACEBOOK",
+                  "socialLink": "https://www.facebook.com/Drummersblog/"
+                },
+                {
+                  "socialLabel": "INSTAGRAM",
+                  "socialLink": "#"
+                },
+                {
+                  "socialLabel": "FIND ME",
+                  "socialLink": "/en/contact/#find-me"
+                }
+              ]
+            }
+          ]
+          
+      }
+    ]
+  },
+    "searchForm": {
+    "placeholder": "Search on site...",
+    "submitLabel": "Search"
+  },
+	"header": {
+    "logo": {
+      "href": "/en/",
+      "mainAlt": "Site logo"
+    
+    },
+    "cart": {
+      "href": "/en/cart/",
+      "itemCount": "0",
+      "emptyMessage": "No products in the cart."
+    },
+    "search": {
+      "ariaLabel": "Search"
+    },
+    "nav": [
+      {
+        "label": "Home",
+        "href": "/en/",
+        "current": true
+      },
+      {
+        "label": "Blog",
+        "href": "/en/blog/"
+      },
+      {
+        "label": "Products",
+        "href": "/en/products/"
+      },
+      {
+        "label": "My Story",
+        "href": "/en/about/"
+      },
+      {
+        "label": "Contact",
+        "href": "/en/contact/"
+      }
+     
+    ]
+  }
+}

@@ -1,0 +1,19 @@
+{
+	 "footer": {
+    "copyright": "© 2026 Drummersblog. All rights reserved.",
+    "links": [
+      {
+        "label": "Terms of Use",
+        "URL": "/terms-of-use/"
+      },
+      {
+        "label": "Privacy Policy",
+        "URL": "/privacy-policy/"
+      },
+      {
+        "label": "Imprint",
+        "URL": "/imprint/"
+      }
+    ]
+  }
+}
