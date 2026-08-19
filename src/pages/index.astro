@@ -22,6 +22,8 @@ import Button from "../components/Button.astro";
 import BlogCard from "../components/BlogCard.astro";
 import SwiperInit from "../components/SwiperInit.astro";
 
+import { getLink } from "../scripts/utils";
+
 import { useTranslations } from "../scripts/i18n.js";
 import LanguageSwitcher from "../components/LanguageSwitcher.astro";
 const lang = Astro.currentLocale ?? "de";
@@ -44,7 +46,7 @@ const articles = await getBlogArticles(5);
               {
                 t("homePage", "hero.staticMenu.items").map((item) => (
                   <li class="home-hero__item">
-                    <a href={item.href} class="home-hero__link">
+                    <a href={getLink(item.href)} class="home-hero__link">
                       {item.label}
                     </a>
                   </li>
@@ -152,7 +154,7 @@ const articles = await getBlogArticles(5);
                 <div class="home-articles__pagination swiper-pagination" />
               </div>
               <Button
-                href={t("homePage", "blogSection.buttonLink")}
+                href={getLink(t("homePage", "blogSection.buttonLink"))}
                 class="home-articles__button"
                 data-animation-on-scroll
               >
@@ -214,10 +216,14 @@ const articles = await getBlogArticles(5);
             }
           </div>
           <footer class="home-products__buttons">
-            <Button class="home-products__button" href="products/">
+            <Button class="home-products__button" href={getLink("products/")}>
               {t("homePage", "rudiments.buttonHaveLook")}
             </Button>
-            <Button class="home-products__button" isAlt href="products/">
+            <Button
+              class="home-products__button"
+              isAlt
+              href={getLink("products/")}
+            >
               {t("homePage", "rudiments.buttonBuyNow")}
             </Button>
           </footer>

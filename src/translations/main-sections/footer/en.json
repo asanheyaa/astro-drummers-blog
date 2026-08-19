@@ -4,15 +4,15 @@
     "links": [
       {
         "label": "Terms of Use",
-        "URL": "/terms-of-use/"
+        "URL": "/en/terms-of-use/"
       },
       {
         "label": "Privacy Policy",
-        "URL": "/privacy-policy/"
+        "URL": "/en/privacy-policy/"
       },
       {
         "label": "Imprint",
-        "URL": "/imprint/"
+        "URL": "/en/imprint/"
       }
     ]
   }

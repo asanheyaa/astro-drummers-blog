@@ -7,19 +7,19 @@
       "items": [
     {
       "label": "BLOG",
-      "href": "/blog/"
+      "href": "/en/blog/"
     },
     {
       "label": "PRODUCTS",
-      "href": "/products/"
+      "href": "/en/products"
     },
     {
       "label": "ABOUT ME",
-      "href": "/about/"
+      "href": "/en/about"
     },
     {
       "label": "CONTACT",
-      "href": "/contact/",
+      "href": "/en/contact",
       "spacer": true
     }
       ]
@@ -51,7 +51,7 @@
   "blogSection":{
     "title":"Latest Posts",
     "buttonText":"Read More",
-    "buttonLink":"/en/blog/"
+    "buttonLink":"/en/blog"
   },
    "quote": {
     "text": "My work (and this site) is devoted to sharing ideas, tools and resources, that will help you become a better drummer. You don´t have to get it perfect. You just have to get it going."

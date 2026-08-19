@@ -18,18 +18,19 @@ import productImage01 from "../../assets/img/home-page/products/product-image_01
 import productImage02 from "../../assets/img/home-page/products/product-image_02.webp";
 import productImage03 from "../../assets/img/home-page/products/product-image_03.webp";
 
-import LanguageSwitcher from "../../components/LanguageSwitcher.astro";
 import Button from "../../components/Button.astro";
 import BlogCard from "../../components/BlogCard.astro";
+import SwiperInit from "../../components/SwiperInit.astro";
+
+import { getLink } from "../../scripts/utils";
 
 import { useTranslations } from "../../scripts/i18n.js";
+import LanguageSwitcher from "../../components/LanguageSwitcher.astro";
 const lang = Astro.currentLocale ?? "de";
 const t = useTranslations(lang);
 
 import { getBlogArticles } from "../../services/blogService.js";
-import SwiperInit from "../../components/SwiperInit.astro";
 const articles = await getBlogArticles(5);
-
 ---
 
 <Layout isHeaderAnimated>
@@ -45,7 +46,7 @@ const articles = await getBlogArticles(5);
               {
                 t("homePage", "hero.staticMenu.items").map((item) => (
                   <li class="home-hero__item">
-                    <a href={item.href} class="home-hero__link">
+                    <a href={getLink(item.href)} class="home-hero__link">
                       {item.label}
                     </a>
                   </li>
@@ -107,7 +108,7 @@ const articles = await getBlogArticles(5);
             <div class="home-about__text">
               {
                 t("homePage", "myGoals.paragraphs").map((paragraph) => (
-                  <p>{paragraph}</p>
+                  <p set:html={paragraph} />
                 ))
               }
             </div>
@@ -115,6 +116,7 @@ const articles = await getBlogArticles(5);
         </div>
       </div>
     </section>
+
     {
       articles.length > 0 && (
         <section
@@ -152,7 +154,7 @@ const articles = await getBlogArticles(5);
                 <div class="home-articles__pagination swiper-pagination" />
               </div>
               <Button
-                href={t("homePage", "blogSection.buttonLink")}
+                href={getLink(t("homePage", "blogSection.buttonLink"))}
                 class="home-articles__button"
                 data-animation-on-scroll
               >
@@ -177,7 +179,7 @@ const articles = await getBlogArticles(5);
     <section
       id="product"
       class="home-products"
-      aria-labelledby="home-products=title"
+      aria-labelledby="home-products-title"
     >
       <div class="home-products__back">
         <div class="home-products__item ibg">
@@ -214,10 +216,14 @@ const articles = await getBlogArticles(5);
             }
           </div>
           <footer class="home-products__buttons">
-            <Button class="home-products__button" href="products/">
+            <Button class="home-products__button" href={getLink("products/")}>
               {t("homePage", "rudiments.buttonHaveLook")}
             </Button>
-            <Button class="home-products__button" isAlt href="products/">
+            <Button
+              class="home-products__button"
+              isAlt
+              href={getLink("products/")}
+            >
               {t("homePage", "rudiments.buttonBuyNow")}
             </Button>
           </footer>
@@ -227,21 +233,21 @@ const articles = await getBlogArticles(5);
             <Image
               src={productImage01}
               loading="lazy"
-              alt="Rudiments Content, Home, Startseite, Drummersblog"
+              alt={t("homePage", "rudiments.images.content.alt")}
             />
           </div>
           <div class="home-products__image home-products__image-02 ibg">
             <Image
               src={productImage02}
               loading="lazy"
-              alt="Rudiments Introduction, Home, Startseite, Drummersblog"
+              alt={t("homePage", "rudiments.images.introduction.alt")}
             />
           </div>
           <div class="home-products__image home-products__image-03 ibg">
             <Image
               src={productImage03}
               loading="lazy"
-              alt="Rudiments Title, Home, Startseite, Drummersblog"
+              alt={t("homePage", "rudiments.images.title.alt")}
             />
           </div>
         </div>
