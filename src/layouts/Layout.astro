@@ -12,6 +12,7 @@ import "../styles/main-styles.scss";
 
 import { useTranslations } from "../scripts/i18n.js";
 import Newsletter from "../components/Newsletter.astro";
+import { withBase } from "../scripts/utils";
 const lang = Astro.currentLocale ?? "de";
 const t = useTranslations(lang);
 ---
@@ -41,11 +42,11 @@ const t = useTranslations(lang);
     <meta property="og:site_name" content="Drummersblog" />
     <meta
       property="og:image"
-      content="../../public/drummersblog-representive.jpg"
+      content={withBase("/public/drummersblog-representive.jpg")}
     />
     <meta
       property="og:image:secure_url"
-      content="../../public/drummersblog-representive.jpg"
+      content={withBase("/public/drummersblog-representive.jpg")}
     />
     <meta property="og:image:height" content="315" />
     <meta property="og:image:width" content="828" />
@@ -61,7 +62,7 @@ const t = useTranslations(lang);
     />
     <meta
       name="twitter:image"
-      content="../../public/drummersblog-representive.jpg"
+      content={withBase("/public/drummersblog-representive.jpg")}
     />
     <meta
       name="twitter:label1"
@@ -75,7 +76,11 @@ const t = useTranslations(lang);
     <meta name="twitter:data2" content={t("meta", "homePage.twitter.data2")} />
 
     <title>{t("meta", "homePage.title")}</title>
-    <link rel="icon" type="image/webp" href="../../public/favicon.webp" />
+    <link
+      rel="icon"
+      type="image/webp"
+      href={withBase("/public/favicon.webp")}
+    />
 
     <link
       href="https://fonts.googleapis.com/css?family=Merriweather:300,regular,500,600,700,800,900,300italic,italic,500italic,600italic,700italic,800italic,900italic"
