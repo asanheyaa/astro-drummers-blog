@@ -41,9 +41,14 @@ anchorLinks.forEach(link => {
 
     const targetElement = document.querySelector(url.hash);
     if (targetElement) {
-      setTimeout(() => {
+		if (link.closest('.secondary-menu')){
+			  setTimeout(() => {
         scrollTo(targetElement);
       }, 200);
+		} else {
+			 scrollTo(targetElement);
+		}
+    
     }
   });
 });
@@ -52,7 +57,7 @@ anchorLinks.forEach(link => {
 
 		const header = document.querySelector('.header');
 			lenis.scrollTo(targetElement, {
-			offset: -header.offsetHeight,
+			// offset: -header.offsetHeight,
 			duration: 1.5,
 			immediate: false,
 			easing: (t) => 1 - Math.pow(1 - t, 4)

@@ -8,6 +8,8 @@ import newsletterEn from '../translations/main-sections/newsletter/en.json';
 import newsletterDe from '../translations/main-sections/newsletter/de.json';
 import metaDe from '../translations/main-sections/meta/de.json';
 import metaEn from '../translations/main-sections/meta/en.json';
+import blogDe from '../translations/blog/de.json';
+import blogEn from '../translations/blog/en.json';
 
 export const languages = {
   de: 'Deutsch',
@@ -23,13 +25,15 @@ const translations = {
     footer: footerDe,
     newsletter: newsletterDe,
     meta: metaDe,
+    blog: blogDe,
   },
   en: {
     homePage: homeEn,
     header: headerEn,
     footer: footerEn,
     newsletter: newsletterEn,
-    meta: metaEn
+    meta: metaEn,
+    blog: blogEn,
   },
 };
 

@@ -14,12 +14,12 @@ import productImage03 from "../assets/img/home-page/products/product-image_03.we
 
 import Button from "../components/Button.astro";
 import BlogCard from "../components/BlogCard.astro";
-import SwiperInit from "../components/SwiperInit.astro";
+import SwiperIniter from "../components/SwiperIniter.astro";
 
 import { withBase } from "../scripts/utils";
-
 import { useTranslations } from "../scripts/i18n.js";
 import LanguageSwitcher from "../components/LanguageSwitcher.astro";
+
 const lang = Astro.currentLocale ?? "de";
 const t = useTranslations(lang);
 
@@ -28,7 +28,7 @@ const articles = await getBlogArticles(5, lang);
 ---
 
 <Layout isHeaderAnimated>
-  <SwiperInit>
+  <SwiperIniter>
     <section class="home-hero" id="welcome">
       <div class="home-hero__container">
         <div class="home-hero__header">
@@ -247,5 +247,5 @@ const articles = await getBlogArticles(5, lang);
         </div>
       </div>
     </section>
-  </SwiperInit>
+  </SwiperIniter>
 </Layout>

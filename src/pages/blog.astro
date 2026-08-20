@@ -1,5 +1,45 @@
 ---
+import BlogCard from "../components/BlogCard.astro";
 import Layout from "../layouts/Layout.astro";
+import { useTranslations } from "../scripts/i18n";
+import { getBlogArticles } from "../services/blogService";
+
+const lang = Astro.currentLocale ?? "de";
+const t = useTranslations(lang);
+
+const articles = await getBlogArticles(5, lang);
 ---
 
-<Layout />
+<Layout>
+  <section class="hero-blog">
+    <div class="hero-blog__container">
+      <h1
+        class="hero-blog__title"
+        data-animation-parallax="0.5"
+        data-animation-parallax-opacity
+      >
+        {t("blog", "blog.hero.title")}
+      </h1>
+    </div>
+  </section>
+  <section class="blog-articles">
+    <div class="blog-articles__container">
+      {
+        articles.map((article) => (
+            <BlogCard
+              cover={article.cover}
+              category={article.category}
+              title={article.title}
+              date={article.date}
+              description={article.description}
+              alt={article.alt}
+              slug={article.slug}
+              categoryUrl={article.categoryUrl}
+              postUrl={article.postUrl}
+              isGrid
+            />
+        ))
+      }
+    </div>
+  </section>
+</Layout>

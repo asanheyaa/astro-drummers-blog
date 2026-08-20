@@ -1,5 +1,5 @@
 
-import { initAnimation } from './animations.js';
+import { initAnimation, initParallax } from './animations.js';
 import { initSmoothScroll } from './lenis-init.js';
 import { initHeaderFunctions } from './header.js';
 import { initPopUpFunctions } from './popUps.js';
@@ -11,4 +11,5 @@ document.addEventListener("DOMContentLoaded", () => {
 	initPopUpFunctions()
 	initHeaderFunctions()
 	initAnimation()
+	initParallax()
 })
