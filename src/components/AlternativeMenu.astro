@@ -1,5 +1,6 @@
 ---
 import { useTranslations } from "../scripts/i18n.js";
+import { withBase } from "../scripts/utils";
 const lang = Astro.currentLocale ?? "de";
 const t = useTranslations(lang);
 
@@ -43,7 +44,7 @@ const currentPath = Astro.url.pathname;
             <ul class="secondary-menu__list">
               <li class="secondary-menu__item">
                 <h2 class="secondary-menu__title">
-                  <a href={item.href} class="secondary-menu__link">
+                  <a href={withBase(item.href)} class="secondary-menu__link">
                     {item.title}
                   </a>
                 </h2>
@@ -57,7 +58,7 @@ const currentPath = Astro.url.pathname;
 
                 return (
                   <li class="secondary-menu__item">
-                    <a href={href} class="secondary-menu__link">
+                    <a href={withBase(href)} class="secondary-menu__link">
                       {link.label}
                     </a>
                   </li>

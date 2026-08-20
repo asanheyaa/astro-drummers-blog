@@ -5,19 +5,19 @@
         "title": "STARTSEITE",
         "href": "/",
         "links": [
-          { "label": "WILLKOMMEN", "href": "#welcome" },
-          { "label": "MEINE ZIELE", "href": "#startread" },
-          { "label": "NEUESTE BLOGPOST", "href": "#posts" },
-          { "label": "NEUESTE PRODUKTE", "href": "#product" }
+          { "label": "WILLKOMMEN", "href": "/#welcome" },
+          { "label": "MEINE ZIELE", "href": "/#startread" },
+          { "label": "NEUESTE BLOGPOST", "href": "/#posts" },
+          { "label": "NEUESTE PRODUKTE", "href": "/#product" }
         ]
       },
       {
         "title": "BLOG",
         "href": "/blog/",
         "links": [
-          { "label": "MUSIKBUSINESS", "href": "blog/" },
-          { "label": "BERUF: SCHLAGZEUGER", "href": "blog/" },
-          { "label": "WORKSHOP", "href": "blog/" }
+          { "label": "MUSIKBUSINESS", "href": "/blog/" },
+          { "label": "BERUF: SCHLAGZEUGER", "href": "/blog/" },
+          { "label": "WORKSHOP", "href": "/blog/" }
         ]
       },
       {
@@ -42,7 +42,7 @@
         "title": "KONTAKT",
         "href": "/contact/",
         "links": [
-          { "label": "SCHREIB MIR", "href": "contact/" }
+          { "label": "SCHREIB MIR", "href": "/contact/" }
         ],
 
           "socialItems": [

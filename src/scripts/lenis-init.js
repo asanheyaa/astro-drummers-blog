@@ -25,25 +25,28 @@ export function initSmoothScroll() {
 	}
 	requestAnimationFrame(raf);
 
-	const anchorLinks = document.querySelectorAll('a[href^="#"]');
-	anchorLinks.forEach(link => {
-		link.addEventListener('click', (e) => {
-			e.preventDefault();
 
-			const href = link.getAttribute('href');
+const anchorLinks = document.querySelectorAll('a[href*="#"]');
 
-			if (href === '#') return;
-			const id = href.split('#')[1]; 
-			const targetElement = document.querySelector(`#${id}`);
-			
-			if (targetElement) {
-				setTimeout(() => {
-				scrollTo(targetElement)
-				}, 200);
-			}
-		});
-	});
+anchorLinks.forEach(link => {
+  link.addEventListener('click', (e) => {
+    const url = new URL(link.href);
+    const isSamePage =
+      url.origin === window.location.origin &&
+      url.pathname === window.location.pathname;
 
+    if (!isSamePage || !url.hash || url.hash === '#') return;
+
+    e.preventDefault();
+
+    const targetElement = document.querySelector(url.hash);
+    if (targetElement) {
+      setTimeout(() => {
+        scrollTo(targetElement);
+      }, 200);
+    }
+  });
+});
 	function scrollTo(targetElement = 0) {
 				unlockScroll()
 

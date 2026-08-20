@@ -6,14 +6,14 @@ import logo from "../assets/img/main/logo.svg";
 const currentPath = Astro.url.pathname;
 import LanguageSwitcher from "./LanguageSwitcher.astro";
 import { useTranslations } from "../scripts/i18n.js";
-import { getLink } from "../scripts/utils";
+import { withBase } from "../scripts/utils";
 const lang = Astro.currentLocale ?? "de";
 const t = useTranslations(lang);
 ---
 
 <header class:list={["header", { "header-alt": isHeaderAnimated }]}>
   <a
-    href={getLink(t("header", "header.logo.href"))}
+    href={withBase(t("header", "header.logo.href"))}
     class="header__logo"
     aria-label="Home-page link"
   >
@@ -35,7 +35,7 @@ const t = useTranslations(lang);
               return (
                 <li class="header-menu__item">
                   <a
-                    href={getLink(item.href)}
+                    href={withBase(item.href)}
                     class:list={[
                       "header-menu__link",
                       { _active: currentPath === item.href },
