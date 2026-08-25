@@ -6,7 +6,6 @@ import { Image } from "astro:assets";
 import logoBig from "../../assets/img/main/logo-big.svg";
 // About
 import aboutPhoto from "../../assets/img/home-page/about/about-photo.jpg";
-
 // Products
 import productsBack from "../../assets/img/home-page/products/producrs-back.webp";
 import productImage01 from "../../assets/img/home-page/products/product-image_01.webp";
@@ -21,10 +20,11 @@ import { withBase } from "../../scripts/utils";
 import { useTranslations } from "../../scripts/i18n.js";
 import LanguageSwitcher from "../../components/LanguageSwitcher.astro";
 
+import { getBlogArticles } from "../../services/blogService.js";
+
 const lang = Astro.currentLocale ?? "de";
 const t = useTranslations(lang);
 
-import { getBlogArticles } from "../../services/blogService.js";
 const articles = await getBlogArticles(5, lang);
 ---
 
@@ -40,7 +40,12 @@ const articles = await getBlogArticles(5, lang);
             <ul class="home-hero__list">
               {
                 t("homePage", "hero.staticMenu.items").map((item) => (
-                  <li class="home-hero__item">
+                  <li
+                    class:list={[
+                      "home-hero__item",
+                      { "home-hero__item-spacer": item.spacer },
+                    ]}
+                  >
                     <a href={withBase(item.href)} class="home-hero__link">
                       {item.label}
                     </a>
@@ -85,19 +90,15 @@ const articles = await getBlogArticles(5, lang);
     >
       <div class="home-about__container">
         <div class="home-about__body">
-          <div class="home-about__photo ibg">
+          <div class="home-about__photo ibg" data-animation-on-scroll>
             <Image
               src={aboutPhoto}
               alt={t("homePage", "myGoals.photoAlt")}
               loading="lazy"
             />
           </div>
-          <div class="home-about__info">
-            <h2
-              class="home-about__title"
-              id="home-about-title"
-              data-animation-on-scroll
-            >
+          <div class="home-about__info" data-animation-on-scroll>
+            <h2 class="home-about__title" id="home-about-title">
               {t("homePage", "myGoals.title")}
             </h2>
             <div class="home-about__text">
@@ -127,13 +128,13 @@ const articles = await getBlogArticles(5, lang);
             >
               {t("homePage", "blogSection.title")}
             </h2>
-            <div class="home-articles__body">
+            <div class="home-articles__body" data-animation-on-scroll>
               <div class="home-articles__swiper swiper">
                 <div class="home-articles__wrapper swiper-wrapper">
                   {articles.map((article) => (
                     <div class="home-articles__slide swiper-slide">
                       <BlogCard
-                        cover={article.cover}
+                        src={article.cover}
                         category={article.category}
                         title={article.title}
                         date={article.date}

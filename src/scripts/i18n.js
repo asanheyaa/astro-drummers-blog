@@ -10,6 +10,8 @@ import metaDe from '../translations/main-sections/meta/de.json';
 import metaEn from '../translations/main-sections/meta/en.json';
 import blogDe from '../translations/blog/de.json';
 import blogEn from '../translations/blog/en.json';
+import singlePostDe from '../translations/single-post/de.json';
+import singlePostEn from '../translations/single-post/en.json';
 
 export const languages = {
   de: 'Deutsch',
@@ -26,6 +28,7 @@ const translations = {
     newsletter: newsletterDe,
     meta: metaDe,
     blog: blogDe,
+    singlePost: singlePostDe
   },
   en: {
     homePage: homeEn,
@@ -34,17 +37,24 @@ const translations = {
     newsletter: newsletterEn,
     meta: metaEn,
     blog: blogEn,
+    singlePost: singlePostEn
   },
 };
 
 export function useTranslations(lang) {
-  return function t(namespace, key) {
+  return function t(namespace, key, params = {}) {
     const dict = translations[lang]?.[namespace] ?? {};
     const fallbackDict = translations[defaultLang]?.[namespace] ?? {};
 
     const getByPath = (obj, path) =>
       path.split('.').reduce((acc, part) => acc?.[part], obj);
 
-    return getByPath(dict, key) ?? getByPath(fallbackDict, key) ?? key;
+    const raw = getByPath(dict, key) ?? getByPath(fallbackDict, key) ?? key;
+
+    if (typeof raw !== 'string') return raw;
+
+    return raw.replace(/{(\w+)}/g, (match, paramKey) =>
+      paramKey in params ? String(params[paramKey]) : match
+    );
   };
 }

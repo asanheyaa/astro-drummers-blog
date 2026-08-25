@@ -1,0 +1,7 @@
+---
+const { url, label, class: className } = Astro.props;
+---
+
+<a href={url} class={`category ${className || ""}`}>
+  <span>{label}</span>
+</a>

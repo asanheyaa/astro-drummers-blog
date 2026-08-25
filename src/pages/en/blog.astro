@@ -1,5 +1,50 @@
 ---
+import BlogCard from "../../components/BlogCard.astro";
+import BlogPagination from "../../components/BlogPagination.astro";
+import HeroSection from "../../components/HeroSection.astro";
 import Layout from "../../layouts/Layout.astro";
+
+import { useTranslations } from "../../scripts/i18n";
+import { getBlogArticles } from "../../services/blogService";
+
+const lang = Astro.currentLocale ?? "de";
+const t = useTranslations(lang);
+
+
+const articles = await getBlogArticles(5, lang);
+
+
 ---
 
-<Layout />
+<Layout isWidget>
+  <HeroSection title={t("blog", "blog.hero.title")} />
+  <section class="blog-articles">
+    <div class="blog-articles__container">
+      <div class="blog-articles__body">
+        {
+          articles.map((article) => (
+            <BlogCard
+              key={article.id}
+              postId={article.id}
+              src={article.cover}
+              alt={article.alt}
+              title={article.title}
+              description={article.description}
+              date={article.date}
+              category={article.category}
+              categoryUrl={article.categoryUrl}
+              postUrl={article.postUrl}
+              commentsLink={article.commentsLink}
+              likesCounter={article.likesCounter}
+              commentsCounter={article.commentsCounter}
+              isGrid
+            />
+          ))
+        }
+      </div>
+      <footer class="blog-articles__footer">
+        <BlogPagination  />
+      </footer>
+    </div>
+  </section>
+</Layout>

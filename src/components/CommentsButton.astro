@@ -1,0 +1,10 @@
+---
+const { commentsCounter, commentsLink, class: classList } = Astro.props;
+---
+
+<a href={commentsLink} class:list={["comments-button", classList]}>
+  <span class="comments-button__icon">
+    <i class="dfd-socicon-Untitled-2-37"></i>
+  </span>
+  <span class="comments-button__counter">{commentsCounter}</span>
+</a>

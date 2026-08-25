@@ -1,0 +1,72 @@
+---
+import Image from "astro/components/Image.astro";
+import { useTranslations } from "../scripts/i18n";
+import { getBlogArticles } from "../services/blogService";
+import Date from "./Date.astro";
+import LikeButton from "./LikeButton.astro";
+
+const lang = Astro.currentLocale ?? "de";
+const t = useTranslations(lang);
+
+const articles = await getBlogArticles(5, lang);
+---
+
+<aside class="aside-widget">
+  <div class="aside-widget__body">
+    <form action="#" class="form-aside-widget">
+      <input
+        type="text"
+        name="search"
+        id="asideWidgetSearch"
+        class="form-aside-widget__input"
+      />
+      <button
+        type="submit"
+        class="form-aside-widget__button"
+        aria-label="submit search"
+      >
+        <i class="dfd-socicon-Search"></i>
+      </button>
+    </form>
+    <div class="aside-widget__items">
+      {
+        articles.map((article) => (
+          <article class="aside-widget__item">
+            <div class="aside-widget__image">
+              <Image
+                src={article.cover}
+                alt={article.title}
+                width={80}
+                height={80}
+              />
+            </div>
+            <div class="aside-widget__details">
+              <h2 class="aside-widget__title">
+                <a href={article.postUrl} class="aside-widget__link">
+                  {article.title}
+                </a>
+              </h2>
+              <footer class="aside-widget__footer">
+                <Date date="21.03.2021" />
+                <LikeButton
+                  likesCounter={article.likesCounter}
+                  postId={article.id}
+                />
+              </footer>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+    <button
+      type="button"
+      class="aside-widget__button"
+      aria-label="load more posts"
+    >
+      <span>
+        {t("blog", "blog.asideWidget.buttonLabel")}
+      </span>
+      <i class="aside-widget__icon dfd-socicon-refresh"> </i>
+    </button>
+  </div>
+</aside>

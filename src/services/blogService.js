@@ -1,55 +1,180 @@
-const BASE_URL = 'https://drummersblog.de';
 
-function stripHtml(html) {
-  return html.replace(/<[^>]*>/g, '').trim();
-}
 
-function formatDate(dateString, lang = 'de') {
-  return new Date(dateString).toLocaleDateString(lang === 'de' ? 'de-DE' : 'en-GB', {
-    day: '2-digit',
-    month: 'long',
-    year: 'numeric',
-  });
-}
-
-function isEnglishPost(link) {
-  return new URL(link).pathname.startsWith('/en/');
-}
-
-function mapArticle(raw, lang) {
-  const featuredMedia = raw._embedded?.['wp:featuredmedia']?.[0];
-  const category = raw._embedded?.['wp:term']?.[0]?.[0];
-  return {
-    slug: raw.slug,
-    title: stripHtml(raw.title.rendered),
-    description: stripHtml(raw.excerpt.rendered),
-    cover: featuredMedia?.source_url ?? null,
-    date: formatDate(raw.date, lang),
-    category: category?.name ?? null,
-    alt: featuredMedia?.alt_text || stripHtml(raw.title.rendered),
+const posts = {
+  de: [
+  {
+    id: 1,
+    slug: 'spotify-playlists-und-die-algorithmische-neuordnung-des-musiksammelns',
+    title: 'Spotify, Playlists und die algorithmische Neuordnung des Musiksammelns',
+    description: 'Wer heute auf Spotify eine Playlist anlegt, sammelt nicht mehr nur Musik, sondern Entscheidungen, Stimmungen, Erinnerungen, Situationen und Spuren…',
+    cover: 'https://drummersblog.de/wp-content/uploads/2026/04/Spotify-Playlists-und-die-algorithmische-Neuordnung-des-Musiksammelns-scaled-768x432.jpg', 
+    date: '06.06.26',
+    category: 'Theorie',
+    alt: 'Spotify, Playlists und die algorithmische Neuordnung des Musiksammelns',
     categoryUrl: '#',
     postUrl: '#',
+    commentsLink: '#',
+    likesCounter: 5,
+    commentsCounter: 3,
+  },
+  {
+    id: 1,
+    slug: 'kreativitaet-und-wertschoepfung-warum-ideen-nicht-immer-nuetzlich-sein-muessen',
+    title: 'Kreativität und Wertschöpfung – Warum Ideen nicht immer nützlich sein müssen',
+    description: 'Wer oder was bestimmt den kreativen Wert einer Idee? Muss ein kreatives Werk zwingend neuartig und nützlich sein? Ausgehend von den gängigen Theo-…',
+    cover: 'https://drummersblog.de/wp-content/uploads/2025/06/Wertschoepfung-und-Kreativitaet-768x511.jpg', 
+    date: '30.06.25',
+    category: 'Kreativität',
+    alt: 'Kreativität und Wertschöpfung – Warum Ideen nicht immer nützlich sein müssen',
+    categoryUrl: '#',
+    postUrl: '#',
+    commentsLink: '#',
+    likesCounter: 0,
+    commentsCounter: 0,
+  },
+  {
+    id: 1,
+    slug: 'das-mashup-musiktrend-mit-negativen-folgen-fuer-urheber',
+    title: 'Das Mashup: Musiktrend mit negativen Folgen für Urheber?',
+    description: '50 Jahre nach seinem ersten Top-Ten-Hit in Großbritannien eroberte Elton John 2021 den Spitzenplatz der Charts – mit Cold Heart (Pnau…',
+    cover: 'https://drummersblog.de/wp-content/uploads/2025/05/Das-Mashup-scaled-e1751270983341-768x512.jpg', 
+    date: '09.05.25',
+    category: 'Theorie',
+    alt: 'Das Mashup: Musiktrend mit negativen Folgen für Urheber?',
+    categoryUrl: '#',
+    postUrl: '#',
+    commentsLink: '#',
+    likesCounter: 0,
+    commentsCounter: 0,
+  },
+  {
+    id: 1,
+    slug: 'british-invasion',
+    title: 'British Invasion: Mit den Beatles begann ein Siegeszug britischer Bands in den USA',
+    description: 'Zwischen 1955 und 1962 gab es in den US-Musikcharts insgesamt 121 Nummer-eins-Hits. Nur zwei davon kamen aus Großbritannien. Doch das…',
+    cover: 'https://drummersblog.de/wp-content/uploads/2025/02/British-Invasion-768x576.jpg', 
+    date: '11.02.25',
+    category: 'Musikgeschichte',
+    alt: 'British Invasion: Mit den Beatles begann ein Siegeszug britischer Bands in den USA',
+    categoryUrl: '#',
+    postUrl: '#',
+    commentsLink: '#',
+    likesCounter: 0,
+    commentsCounter: 0,
+  },
+  {
+    id: 1,
+    slug: 'kopierschutz-und-filesharing-in-der-musikindustrie',
+    title: 'Kopierschutz und Filesharing in der Musikindustrie',
+    description: 'Die großen Plattenfirmen waren die ersten, die von der Digitalisierung der Medienbranche profitierten: Nach der Einführung der CD Mitte…',
+    cover: 'https://drummersblog.de/wp-content/uploads/2024/11/Kopierschutz-und-Filesharing-in-der-Musikindustrie-768x576.jpg', 
+    date: '19.11.24',
+    category: 'Musikbusiness',
+    alt: 'Kopierschutz und Filesharing in der Musikindustrie',
+    categoryUrl: '#',
+    postUrl: '#',
+    commentsLink: '#',
+    likesCounter: 3,
+    commentsCounter: 1,
+  },
+],
+en:[
+  {
+    id: 1,
+    slug: 'creativity-and-added-value-why-ideas-dont-always-have-to-be-useful',
+    title: 'Creativity and added value – why ideas don’t always have to be useful',
+    description: 'Who or what determines the creative value of an idea? Does a creative work necessarily have to be novel and useful? Based on established theories of creativity research…',
+    cover: 'https://drummersblog.de/wp-content/uploads/2025/06/Wertschoepfung-und-Kreativitaet-768x511.jpg',
+    date: '30.06.25',
+    category: 'Creativity',
+    alt: 'Creativity and added value – why ideas don’t always have to be useful',
+    categoryUrl: '#',
+    postUrl: '#',
+    commentsLink: '#',
+    likesCounter: 1,
+    commentsCounter: 1,
+  },
+  {
+    id: 1,
+    slug: 'the-mashup-music-trend-with-negative-consequences-for-authors',
+    title: 'The mashup: music trend with negative consequences for authors?',
+    description: '50 years after his first top-ten hit in the UK, Elton John topped the charts again in 2021 – with Cold Heart (Pnau Remix)…',
+    cover: 'https://drummersblog.de/wp-content/uploads/2025/05/Das-Mashup-scaled-e1751270983341-768x512.jpg',
+    date: '09.05.25',
+    category: 'Regular post',
+    alt: 'The mashup: music trend with negative consequences for authors?',
+    categoryUrl: '#',
+    postUrl: '#',
+    commentsLink: '#',
+    likesCounter: 2,
+    commentsCounter: 5,
+  },
+  {
+    id: 1,
+    slug: 'british-invasion-the-beatles-marked-the-beginning-of-a-triumphal-march-of-british-bands-in-the-usa',
+    title: 'British Invasion: The Beatles marked the beginning of a triumphal march of British bands in the USA',
+    description: 'Between 1955 and 1962 there were a total of 121 number-one hits in the US music charts. Only two of them came from Great Britain. But that…',
+    cover: 'https://drummersblog.de/wp-content/uploads/2025/02/British-Invasion-768x576.jpg',
+    date: '11.02.25',
+    category: 'Music History',
+    alt: 'British Invasion: The Beatles marked the beginning of a triumphal march of British bands in the USA',
+    categoryUrl: '#',
+    postUrl: '#',
+    commentsLink: '#',
+    likesCounter: 0,
+    commentsCounter: 0,
+  },
+  {
+    id: 1,
+    slug: 'copy-protection-and-file-sharing-in-the-music-industry',
+    title: 'Copy protection and file sharing in the music industry',
+    description: 'The major record companies were the first to benefit from the digitization of the media industry: After the introduction of the CD in the mid…',
+    cover: 'https://drummersblog.de/wp-content/uploads/2024/11/Kopierschutz-und-Filesharing-in-der-Musikindustrie-768x576.jpg',
+    date: '19.11.24',
+    category: 'Music Business',
+    alt: 'Copy protection and file sharing in the music industry',
+    categoryUrl: '#',
+    postUrl: '#',
+    commentsLink: '#',
+    likesCounter: 0,
+    commentsCounter: 3,
+  },
+  {
+    id: 1,
+    slug: 'between-stage-and-nightliner-conflict-management-on-tour',
+    title: 'Between stage and nightliner – conflict management on tour',
+    description: 'Coming soon…',
+    cover: 'https://drummersblog.de/wp-content/uploads/2019/06/Sideman-und-Studio-Schlagzeuger-So-%C3%BCberlebst-du-als-Freelance-Musiker.jpg',
+    date: '11.07.24',
+    category: 'Regular post',
+    alt: 'Between stage and nightliner – conflict management on tour',
+    categoryUrl: '#',
+    postUrl: '#',
+    commentsLink: '#',
+    likesCounter: 0,
+    commentsCounter: 1,
+  },
+]
+};
+
+function mapArticle(raw) {
+  return {
+    id: raw.id,
+    slug: raw.slug,
+    title: raw.title,
+    description: raw.description,
+    cover: raw.cover,
+    date: raw.date,
+    category: raw.category,
+    alt: raw.alt || raw.title,
+    categoryUrl: raw.categoryUrl ?? '#',
+    postUrl: raw.postUrl ?? '#',
+    commentsLink: raw.commentsLink ?? '#',
+    likesCounter: raw.likesCounter ?? 0,
+    commentsCounter: raw.commentsCounter ?? 0,
   };
 }
 
-export async function getBlogArticles(limit = 5, lang = 'de') {
-  try {
-    const fetchLimit = Math.min(limit * 3, 100);
-
-    const response = await fetch(
-      `${BASE_URL}/wp-json/wp/v2/posts?per_page=${fetchLimit}&_embed`
-    );
-    if (!response.ok) throw new Error(`Failed to fetch data: ${response.status}`);
-
-    const data = await response.json();
-
-    const filtered = data.filter((post) =>
-      lang === 'en' ? isEnglishPost(post.link) : !isEnglishPost(post.link)
-    );
-
-    return filtered.slice(0, limit).map((post) => mapArticle(post, lang));
-  } catch (error) {
-    console.error('Failed to fetch articles:', error);
-    return [];
-  }
+export async function getBlogArticles(limit = 10, lang = 'de') {
+  return posts[lang].slice(0, limit).map(mapArticle);
 }

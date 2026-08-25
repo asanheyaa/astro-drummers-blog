@@ -1,3 +1,5 @@
+import { lockScroll,lenis, unlockScroll } from './lenis-init.js';
+
 export function initHeaderFunctions() {
 	
 // burger-menu
@@ -24,7 +26,10 @@ export function initHeaderFunctions() {
 	const header = document.querySelector('.header'),
 		topscrollButton = document.querySelector('.top-scroll-button')
 	if (header) {
-		window.addEventListener('scroll', (e) => {
+		window.addEventListener('scroll', onScrollFunction)
+
+		onScrollFunction()
+		function onScrollFunction(e) {
 			const scrollDistance = window.scrollY
 			if (scrollDistance >= 20) {
 				header.classList.add('--on-scroll')
@@ -38,6 +43,6 @@ export function initHeaderFunctions() {
 			} else {
 				topscrollButton.classList.remove('_active')
 			}
-		})
+		}
 	}
 }

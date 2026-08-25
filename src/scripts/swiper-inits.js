@@ -11,9 +11,9 @@ if (homeHeroSwiper) {
 		slidesPerView: 1,
 		spaceBetween: 15,
 		loop: true,
-		speed: 500,
+		speed: 1000,
 		autoplay: {
-			delay: 3000,
+			delay: 4000,
 			pauseOnMouseEnter: true,
 			disableOnInteraction: false,
 		},
@@ -33,9 +33,9 @@ if (postSwiper) {
 		slidesPerView: 1,
 		spaceBetween: 15,
 		loop: true,
-		speed: 500,
+		speed: 1000,
 		autoplay: {
-			delay: 3000,
+			delay: 4000,
 			pauseOnMouseEnter: true,
 			disableOnInteraction: false,
 		},
@@ -59,3 +59,25 @@ if (postSwiper) {
 	
 }
 
+
+const relatedPostsSwiper = document.querySelector('.single-post-related__swiper');
+if (relatedPostsSwiper){
+	console.log(relatedPostsSwiper);
+	const heroSwiper = new Swiper(relatedPostsSwiper, {
+		modules: [ Autoplay],
+		slidesPerView: 1,
+		spaceBetween: 20,
+		breakpoints: {
+			400: {
+				slidesPerView: 1.3,
+			},
+			530: {
+				slidesPerView: 2,
+			},
+			768: {
+				slidesPerView: 3,
+			},
+			
+		}
+	});
+}

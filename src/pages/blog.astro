@@ -1,6 +1,9 @@
 ---
 import BlogCard from "../components/BlogCard.astro";
+import BlogPagination from "../components/BlogPagination.astro";
+import HeroSection from "../components/HeroSection.astro";
 import Layout from "../layouts/Layout.astro";
+
 import { useTranslations } from "../scripts/i18n";
 import { getBlogArticles } from "../services/blogService";
 
@@ -10,36 +13,35 @@ const t = useTranslations(lang);
 const articles = await getBlogArticles(5, lang);
 ---
 
-<Layout>
-  <section class="hero-blog">
-    <div class="hero-blog__container">
-      <h1
-        class="hero-blog__title"
-        data-animation-parallax="0.5"
-        data-animation-parallax-opacity
-      >
-        {t("blog", "blog.hero.title")}
-      </h1>
-    </div>
-  </section>
+<Layout isWidget>
+  <HeroSection title={t("blog", "blog.hero.title")} />
   <section class="blog-articles">
     <div class="blog-articles__container">
-      {
-        articles.map((article) => (
+      <div class="blog-articles__body">
+        {
+          articles.map((article) => (
             <BlogCard
-              cover={article.cover}
-              category={article.category}
-              title={article.title}
-              date={article.date}
-              description={article.description}
+              key={article.id}
+              postId={article.id}
+              src={article.cover}
               alt={article.alt}
-              slug={article.slug}
+              title={article.title}
+              description={article.description}
+              date={article.date}
+              category={article.category}
               categoryUrl={article.categoryUrl}
               postUrl={article.postUrl}
+              commentsLink={article.commentsLink}
+              likesCounter={article.likesCounter}
+              commentsCounter={article.commentsCounter}
               isGrid
             />
-        ))
-      }
+          ))
+        }
+      </div>
+      <footer class="blog-articles__footer">
+        <BlogPagination  />
+      </footer>
     </div>
   </section>
 </Layout>

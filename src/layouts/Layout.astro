@@ -1,5 +1,5 @@
 ---
-const { isHeaderAnimated = false } = Astro.props;
+const { isHeaderAnimated = false, isWidget } = Astro.props;
 
 import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
@@ -13,6 +13,7 @@ import "../styles/main-styles.scss";
 import { useTranslations } from "../scripts/i18n.js";
 import Newsletter from "../components/Newsletter.astro";
 import { withBase } from "../scripts/utils";
+import BlogArticlesWidget from "../components/BlogArticlesWidget.astro";
 const lang = Astro.currentLocale ?? "de";
 const t = useTranslations(lang);
 ---
@@ -76,11 +77,7 @@ const t = useTranslations(lang);
     <meta name="twitter:data2" content={t("meta", "homePage.twitter.data2")} />
 
     <title>{t("meta", "homePage.title")}</title>
-    <link
-      rel="icon"
-      type="image/webp"
-      href={withBase("/favicon.webp")}
-    />
+    <link rel="icon" type="image/webp" href={withBase("/favicon.webp")} />
 
     <link
       href="https://fonts.googleapis.com/css?family=Merriweather:300,regular,500,600,700,800,900,300italic,italic,500italic,600italic,700italic,800italic,900italic"
@@ -112,6 +109,7 @@ const t = useTranslations(lang);
         <slot />
         <Newsletter />
       </main>
+
       <Footer />
     </div>
 

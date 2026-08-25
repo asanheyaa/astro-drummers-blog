@@ -1,0 +1,18 @@
+---
+const { likesCounter, class: classList, postId, ...rest } = Astro.props;
+---
+
+<button
+  type="button"
+  aria-label="Like button"
+  class:list={["like-button", classList]}
+  data-post-id={postId}
+  {...rest}
+>
+  <span class="like-button__icon"
+    ><i class="dfd-socicon-icon-ios7-heart"> </i></span
+  >
+  <span class="like-button__counter" aria-label="Likes quantity"
+    >{likesCounter}</span
+  >
+</button>

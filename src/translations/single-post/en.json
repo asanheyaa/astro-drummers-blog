@@ -1,0 +1,40 @@
+{
+	
+		"autor": "by",
+		"likes": "likes",
+		"commentForm": {
+    "title": "Leave a Reply",
+	"subtitle": "Your email address will not be published. Required fields are marked *",
+    "cancelReply": "Click here to cancel reply.",
+    "fields": {
+      "comment": {
+        "label": "Comment *",
+        "required": true
+      },
+      "name": {
+        "label": "Name *",
+        "required": true
+      },
+      "email": {
+        "label": "Email *",
+        "required": true
+      },
+      "website": {
+        "label": "Website",
+        "required": false
+      },
+      "captcha": {
+        "label": "19+3"
+      }
+    },
+    "submitButton": "Leave reply"
+  },
+   "comments" : {
+	"replyButton":"Leave reply",
+	 "commentsCountOne": "There is {count} comment",
+    "commentsCountOther": "There are {count} comments"
+  },
+   "relatedPosts":{
+    "title":"Related posts"
+  }
+}

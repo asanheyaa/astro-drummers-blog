@@ -3,8 +3,6 @@ const { isHeaderAnimated } = Astro.props;
 import { Image } from "astro:assets";
 import logo from "../assets/img/main/logo.svg";
 
-const currentPath = Astro.url.pathname;
-
 import LanguageSwitcher from "./LanguageSwitcher.astro";
 import { useTranslations } from "../scripts/i18n.js";
 import { withBase } from "../scripts/utils";
@@ -26,7 +24,7 @@ const t = useTranslations(lang);
     <Image src={logo} alt={t("header", "header.logo.mainAlt")} />
   </a>
   <div class="header__wrapper">
-    <div class="header__body">
+    <div class="header__body" data-lenis-prevent>
       <button
         type="button"
         class="header__close-button"
@@ -38,7 +36,6 @@ const t = useTranslations(lang);
         <ul class="header-menu__list">
           {
             t("header", "header.nav").map((item) => {
-
               return (
                 <li class="header-menu__item">
                   <a

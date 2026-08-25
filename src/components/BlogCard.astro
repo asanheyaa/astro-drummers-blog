@@ -1,8 +1,12 @@
 ---
 import { Image } from "astro:assets";
+import Date from "./Date.astro";
+import Category from "./Category.astro";
+import CommentsButton from "./CommentsButton.astro";
+import LikeButton from "./LikeButton.astro";
 
 const {
-  cover,
+  src,
   date,
   category,
   title,
@@ -12,88 +16,55 @@ const {
   categoryUrl,
   postUrl,
   isGrid,
+  isAlt,
+  width = 382,
+  height = 382,
+  likesCounter = 0,
+  commentsCounter = 0,
+  commentsLink,
+  postId,
   ...rest
 } = Astro.props;
 ---
 
-{
-  isGrid ? (
-    <article class="article --isGrid" {...rest}>
-      <a href={postUrl} class="article__photo ibg">
-        <Image width={382} height={382} src={cover} alt={alt} />
+<article
+  class:list={["article", { "--isGrid": isGrid, "--isAlt": isAlt }]}
+  data-post-id={postId}
+  {...rest}
+>
+  <a href={postUrl} class="article__photo ibg">
+    <Image width={width} height={height} src={src} alt={alt} />
+  </a>
+
+  {
+    category && (
+      <Category url={categoryUrl} label={category} class="article__category" />
+    )
+  }
+  <footer class="article__footer">
+    <div class="article__row">
+      <Date date={date} class="article__date" />
+      {" in "}
+      <a href={categoryUrl} class="article__link">
+        {category}
       </a>
-      <a href={categoryUrl} class="article__category">
-        {" "}
-        {category}{" "}
-      </a>
-      <footer class="article__footer">
-        <div class="article__row">
-          <div class="article__date">
-            <div class="article__icon">
-              <i class="dfd-socicon-clock"> </i>
-            </div>
-            <div class="article__time">
-              {date} in{" "}
-              <a href={categoryUrl} class="article__link">
-                {category}
-              </a>
-            </div>
-          </div>
+      {
+        isGrid && (
           <div class="article__actions">
-            <a href="#" class="article__action-button">
-              <span class="article__action-icon">
-                <i class="dfd-socicon-Untitled-2-37" />
-              </span>
-              <span class="article__action-counter">
-                0
-              </span>
-            </a>
-            <button type="button" class="article__action-button">
-              <span class="article__action-icon">
-                <i class="dfd-socicon-icon-ios7-heart" />
-              </span>
-              <span class="article__action-counter">
-                0
-              </span>
-            </button>
+            <CommentsButton
+              commentsLink={commentsLink}
+              commentsCounter={commentsCounter}
+            />
+            <LikeButton postId={postId} likesCounter={likesCounter} />
           </div>
-        </div>
-        <h3 class="article__label">
-          <a href={postUrl} class="article__label-link">
-            {title}
-          </a>
-        </h3>
-        <div class="article__text">{description}</div>
-      </footer>
-    </article>
-  ) : (
-    <article class="article" {...rest}>
-      <a href={postUrl} class="article__photo ibg">
-        <Image width={382} height={382} src={cover} alt={alt} />
+        )
+      }
+    </div>
+    <h3 class="article__label">
+      <a href={postUrl} class="article__label-link">
+        {title}
       </a>
-      <a href={categoryUrl} class="article__category">
-        {" "}
-        {category}{" "}
-      </a>
-      <footer class="article__footer">
-        <div class="article__date">
-          <div class="article__icon">
-            <i class="dfd-socicon-clock"> </i>
-          </div>
-          <div class="article__time">
-            {date} in{" "}
-            <a href={categoryUrl} class="article__link">
-              {category}
-            </a>
-          </div>
-        </div>
-        <h3 class="article__label">
-          <a href={postUrl} class="article__label-link">
-            {title}
-          </a>
-        </h3>
-        <div class="article__text">{description}</div>
-      </footer>
-    </article>
-  )
-}
+    </h3>
+    {description && <div class="article__text">{description}</div>}
+  </footer>
+</article>

@@ -1,0 +1,12 @@
+---
+const { date, class: className, ...rest } = Astro.props;
+---
+
+<div class={`date ${className || ""}`}>
+  <div class="date__body">
+    <i class="date__icon dfd-socicon-clock"> </i><time
+      datetime={date}
+      class="date__time">{date}</time
+    >
+  </div>
+</div>

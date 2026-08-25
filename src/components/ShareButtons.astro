@@ -1,0 +1,46 @@
+---
+const {
+  shareLink,
+  isVertical,
+  label,
+  class: className,
+  facebookCounter,
+} = Astro.props;
+
+console.log( facebookCounter ?? 'kiss');
+---
+
+<div
+  class:list={[
+    "share-buttons",
+    { "share-buttons--vertical": isVertical, [className]: className },
+  ]}
+>
+  <ul class="share-buttons__list">
+    <li class="share-buttons__item">
+      <a
+        href={shareLink}
+        class="share-buttons__link share-buttons__link-facebook"
+        data-text={label}
+      >
+        <div class="share-buttons__icon">
+          <i class="dfd-socicon-facebook"> </i>
+        </div>
+        {
+            <span class="share-buttons__counter"> {facebookCounter || '0'}</span>
+        }
+      </a>
+    </li>
+    <li class="share-buttons__item">
+      <a
+        href={shareLink}
+        class="share-buttons__link share-buttons__link-instagram"
+        data-text={label}
+      >
+        <div class="share-buttons__icon">
+          <i class="dfd-socicon-instagram"> </i>
+        </div>
+      </a>
+    </li>
+  </ul>
+</div>
