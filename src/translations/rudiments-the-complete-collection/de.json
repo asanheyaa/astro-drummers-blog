@@ -1,0 +1,73 @@
+{
+	"id": "rudiments-the-complete-collection",
+	"meta": {
+		"lang": "de",
+		"title": "Rudiments - The Complete Collection - Drummersblog",
+		"metaDescription": "Übe deine Rudiments mit mehr Struktur. Jede Woche, jeden Tag. Mein E-Paper gibt dir einen umfassenden Einblick in die 40 International Drum Rudiments.",
+		"og": {
+			"image": "https://drummersblog.de/wp-content/uploads/2021/01/Rudiments-Cover-1-scaled.jpg",
+			"description": "Übe deine Rudiments mit mehr Struktur. Jede Woche, jeden Tag. Ich erlebe oft, dass mich Schüler fragen: „Was für Rudiments soll ich üben?“ Meine Antwort ist immer dieselbe: „Alle.“ Und trotzdem tun es die wenigsten. Warum? Weil viele einfach nicht wissen wo und wie sie anfangen sollen. Deshalb gibt dir mein neues E-Paper einen umfassenden Einblick in die 40 International Drum Rudiments.",
+			"imageAlt": "",
+			"siteName": "Drummersblog",
+			"secureUrl": "https://drummersblog.de/wp-content/uploads/2021/01/Rudiments-Cover-1-scaled.jpg"
+		},
+		"twitter": {
+			"image": "https://drummersblog.de/wp-content/uploads/2021/01/Rudiments-Cover-1-660x1024.jpg",
+			"label1": "Preis",
+			"data1": "€ 14.99",
+			"label2": "Verfügbarkeit",
+			"data2": "Vorrätig"
+		},
+		"schema": {
+			"organizationName": "Drummersblog",
+			"logoCaption": "Drummersblog",
+			"authorName": "",
+			"pageHeadline": "Rudiments – The Complete Collection",
+			"pageKeywords": "",
+			"imageCaption": ""
+		}
+	},
+	"hero": {
+		"title": "Rudiments – The Complete Collection"
+	},
+	"imageLabel": "Rudiments – The Complete Collection",
+	"product": {
+		"breadcrumbs": [
+			{
+				"label": "Start",
+				"href": "/"
+			},
+			{
+				"label": "Produkt",
+				"href": "/products/"
+			},
+			{
+				"label": "Rudiments – The Complete Collection",
+				"href": null
+			}
+		],
+		"title": "Rudiments – The Complete Collection",
+		"price": "€ 14.99",
+		"href": "/products/e-paper-rudiments/",
+		"shortDescription": [
+			"Übe deine Rudiments mit mehr Struktur. Jede Woche, jeden Tag. Ich erlebe oft, dass mich Schüler fragen: „Was für Rudiments soll ich üben?“ Meine Antwort ist immer dieselbe: „Alle.“ Und trotzdem tun es die wenigsten. Warum? Weil viele einfach nicht wissen wo und wie sie anfangen sollen.",
+			"Deshalb gibt dir mein neues E-Paper einen umfassenden Einblick in die <i>40 International Drum Rudiments</i>. Diese Figuren sind die Basis, um dein Vokabular als Schlagzeuger zu erweitern. Du kannst sofort anfangen zu üben, denn ich zeige dir alles was du wissen musst.",
+			"<strong>Auf über 100 Seiten findest du:</strong>",
+			"<ol type='a'> <li>Grundlagen für eine korrekte technische Ausführung der Figuren</li> <li>Bezug der Rudiments zur US-amerikanischen Militärmusik</li> <li>Unterschiede des Rudimental-Drumming zur orchestralen Spielweise der kleinen Trommel</li> <li>Korrekte Wahl des Tempos</li> <li>Roll Rudiments, Diddle Rudiments, Flam Rudiments und Drag Rudiments, sowie</li> <li>ein kurzes Literaturverzeichnis und Glossar.</li> </ol>",
+			"Lade das E-Paper jetzt herunter und ich gebe dir die Midi-Files für die <i>40 International Drum Rudiments</i> kostenlos dazu. Wenn du also mehr über Rudiments wissen möchtest und du gleichzeitig deine Handtechnik verbessern willst, dann ist dieses E-Paper genau das Richtige für dich.",
+			"<strong>Achtung: Nur in englischer Sprache verfügbar.</strong>"
+		],
+		"quantityLabel": "Rudiments - The Complete Collection Menge",
+		"addToCartLabel": "In den Warenkorb",
+		"addedToCartLabel": "Hinzugefügt",
+		"category": {
+			"label": "Kategorie:",
+			"name": "Unterrichtsmaterial"
+		},
+		"share": "Share",
+		"related": {
+			"title": "Ähnliche Produkte"
+			
+		}
+	}
+}

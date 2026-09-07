@@ -1,38 +1,109 @@
+---
+interface Props {
+  currentPage: number;
+  lastPage: number;
+  baseUrl: string;
+  prevLabel?: string;
+  nextLabel?: string;
+}
+
+const {
+  currentPage,
+  lastPage,
+  baseUrl,
+  prevLabel = "Prev",
+  nextLabel = "Next",
+} = Astro.props as Props;
+
+const cleanBaseUrl = baseUrl.replace(/\/$/, "");
+
+function getPageUrl(page: number) {
+  return page === 1 ? cleanBaseUrl : `${cleanBaseUrl}/page/${page}`;
+}
+
+const hasPrev = currentPage > 1;
+const hasNext = currentPage < lastPage;
+const prevUrl = hasPrev ? getPageUrl(currentPage - 1) : null;
+const nextUrl = hasNext ? getPageUrl(currentPage + 1) : null;
+
+const pagesSet = new Set<number>();
+pagesSet.add(1);
+pagesSet.add(lastPage);
+if (currentPage - 1 >= 1) pagesSet.add(currentPage - 1);
+pagesSet.add(currentPage);
+if (currentPage + 1 <= lastPage) pagesSet.add(currentPage + 1);
+
+const sortedPages = [...pagesSet].sort((a, b) => a - b);
+
+const items: (number | "ellipsis")[] = [];
+for (let i = 0; i < sortedPages.length; i++) {
+  if (i > 0 && sortedPages[i] - sortedPages[i - 1] > 1) {
+    items.push("ellipsis");
+  }
+  items.push(sortedPages[i]);
+}
+---
+
 <nav class="blog-pagintaion">
   <ul class="blog-pagintaion__list">
     <li class="blog-pagintaion__item">
-      <span
-        class="blog-pagintaion__button blog-pagintaion__button-prev is-disabled"
-      >
-        <i class="dfd-socicon-arrow-left-01"> </i>
-        <span> Prev </span>
-    </span>
+      {
+        hasPrev ? (
+          <a
+            href={prevUrl}
+            class="blog-pagintaion__button blog-pagintaion__button-prev"
+          >
+            <i class="dfd-socicon-arrow-left-01" />
+            <span>{prevLabel}</span>
+          </a>
+        ) : (
+          <span class="blog-pagintaion__button blog-pagintaion__button-prev is-disabled">
+            <i class="dfd-socicon-arrow-left-01" />
+            <span>{prevLabel}</span>
+          </span>
+        )
+      }
     </li>
+
+    {
+      items.map((item) =>
+        item === "ellipsis" ? (
+          <li class="blog-pagintaion__item">
+            <span class="blog-pagintaion__dots">...</span>
+          </li>
+        ) : (
+          <li class="blog-pagintaion__item">
+            {item === currentPage ? (
+              <span class="blog-pagintaion__button is-active">
+                <span>{item}</span>
+              </span>
+            ) : (
+              <a href={getPageUrl(item)} class="blog-pagintaion__button">
+                <span>{item}</span>
+              </a>
+            )}
+          </li>
+        )
+      )
+    }
+
     <li class="blog-pagintaion__item">
-      <span  class="blog-pagintaion__button is-active">
-        <span> 1 </span>
-      </span>
-    </li>
-    <li class="blog-pagintaion__item">
-      <a href="" class="blog-pagintaion__button">
-        <span> 2 </span>
-      </a>
-    </li>
-    <li class="blog-pagintaion__item">
-      <a href="" class="blog-pagintaion__button">
-        <span> 3 </span>
-      </a>
-    </li>
-    <li class="blog-pagintaion__item">
-      <a href="" class="blog-pagintaion__button">
-        <span> 4 </span>
-      </a>
-    </li>
-    <li class="blog-pagintaion__item">
-      <a href="" class="blog-pagintaion__button blog-pagintaion__button-next">
-        <i class="dfd-socicon-arrow-right-01"> </i>
-        <span> Next </span>
-      </a>
+      {
+        hasNext ? (
+          <a
+            href={nextUrl}
+            class="blog-pagintaion__button blog-pagintaion__button-next"
+          >
+            <span>{nextLabel}</span>
+            <i class="dfd-socicon-arrow-right-01" />
+          </a>
+        ) : (
+          <span class="blog-pagintaion__button blog-pagintaion__button-next is-disabled">
+            <span>{nextLabel}</span>
+            <i class="dfd-socicon-arrow-right-01" />
+          </span>
+        )
+      }
     </li>
   </ul>
 </nav>

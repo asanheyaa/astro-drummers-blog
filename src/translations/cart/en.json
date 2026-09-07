@@ -1,0 +1,72 @@
+{
+  "meta": {
+    "lang": "en",
+    "title": "Cart - Drummersblog",
+    "metaDescription": "This is the cart with products, which you want to buy from us. Thank you that you choose our store!",
+    "og": {
+      "image": "https://drummersblog.de/wp-content/uploads/2019/07/drummersblog-representive.jpg",
+      "description": "This is the cart with products, which you want to buy from us. Thank you that you choose our store!",
+      "imageAlt": "Drummersblog, Startseite, Home",
+      "siteName": "Drummersblog",
+      "secureUrl": "https://drummersblog.de/wp-content/uploads/2019/07/drummersblog-representive.jpg"
+    },
+    "twitter": {
+      "image": "https://drummersblog.de/wp-content/uploads/2019/07/drummersblog-representive.jpg",
+      "label1": "Time to read",
+      "data1": "Less than a minute"
+    },
+    "schema": {
+      "organizationName": "Drummersblog",
+      "logoCaption": "Drummersblog",
+      "authorName": "",
+      "pageHeadline": "Cart",
+      "pageKeywords": "",
+      "imageCaption": "Drummersblog, Startseite, Home"
+    }
+  },
+  "cart": {
+    "emptyMessage": "No products in the cart.",
+    "title": "Cart",
+    "message": "",
+    "table": {
+      "product": "Product",
+      "price": "Price",
+      "quantity": "Quantity",
+      "subtotal": "Subtotal"
+    },
+    "product": {
+      "name": "Find Your Way Through the Music",
+      "removeAria": "Remove Find Your Way Through the Music from cart",
+      "quantityLabel": "Find Your Way Through the Music quantity",
+      "price": "€ 14.99",
+      "quantity": "2",
+      "subtotal": "€ 29.98"
+    },
+    "actions": {
+      "updateCart": "Update cart",
+      "removeProductButtonLabel": "Remove the item from the cart "
+    },
+    "totals": {
+      "title": "Cart totals",
+      "subtotal": "Subtotal",
+      "total": "Total",
+      "totalValue": "€ 29.98 EUR"
+    },
+    "checkout": {
+      "button": "Proceed to checkout"
+    },
+    "related": {
+      "title": "Similar Products",
+      "titleEmpty": "Top Rated Products"
+    }
+  },
+  "products": {
+    "titleWithProducts": "Similar Products",
+    "titleEmpty": "Top Rated Products"
+  },
+  "empty": {
+    "title": "Your cart is currently empty.",
+    "subtitle": "You may check out all the available products and buy some in the shop.",
+    "button": "Return To Shop"
+  }
+}

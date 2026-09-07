@@ -1,0 +1,72 @@
+{
+	"id": "rudiments-the-complete-collection",
+	"meta": {
+		"lang": "en",
+		"title": "Rudiments - The Complete Collection - Drummersblog",
+		"metaDescription": "Many of my students ask which rudiments to practise. My e-paper gives you a comprehensive insight into the 40 international drum rudiments.",
+		"og": {
+			"image": "https://drummersblog.de/wp-content/uploads/2021/01/Rudiments-Cover-1-scaled.jpg",
+			"description": "Many of my students ask me which rudiments to practise. My answer is always the same: “All of them!” But how and where best to begin? To prevent these questions putting you off your practice, my new e-paper gives you a comprehensive insight into the 40 international drum rudiments.",
+			"imageAlt": "Rudiments – The Complete Collection",
+			"siteName": "Drummersblog",
+			"secureUrl": "https://drummersblog.de/wp-content/uploads/2021/01/Rudiments-Cover-1-scaled.jpg"
+		},
+		"twitter": {
+			"image": "https://drummersblog.de/wp-content/uploads/2021/01/Rudiments-Cover-1-660x1024.jpg",
+			"label1": "Price",
+			"data1": "€ 14.99",
+			"label2": "Availability",
+			"data2": "In stock"
+		},
+		"schema": {
+			"organizationName": "Drummersblog",
+			"logoCaption": "Drummersblog",
+			"authorName": "",
+			"pageHeadline": "Rudiments – The Complete Collection",
+			"pageKeywords": "",
+			"imageCaption": ""
+		}
+	},
+	"hero": {
+		"title": "Rudiments – The Complete Collection"
+	},
+	"imageLabel": "Rudiments – The Complete Collection",
+	"product": {
+		"breadcrumbs": [
+			{
+				"label": "Home",
+				"href": "/en/"
+			},
+			{
+				"label": "Product",
+				"href": "/en/products/"
+			},
+			{
+				"label": "Rudiments – The Complete Collection",
+				"href": null
+			}
+		],
+		"title": "Rudiments – The Complete Collection",
+		"price": "€ 14.99",
+		"href": "/en/products/rudiments-the-complete-collection/",
+		"shortDescription": [
+			"Many of my students ask me which rudiments to practise. My answer is always the same: “All of them!” But how and where best to begin? To prevent these questions putting you off your practice, my new e-paper gives you a comprehensive insight into the 40 international drum rudiments.",
+			"These patterns provide the foundation you need to dramatically expand your playing ability as a drummer, improve your technical skills and increase your musical creativity. If you want to learn more about rudiments while also improving your hand technique, this e-paper is right for you. Discover all you need to know and start practicing today!",
+			"Over 100 pages, you’ll find:",
+			"<ol type=\"a\"><li>Basic knowledge for the correct technical execution of the patterns</li><li>Significance of the rudiments for US military music</li><li>The difference between rudimental drumming and the orchestral playing style of the snare</li><li>Information on choosing the correct tempo</li><li>Roll rudiments, diddle rudiments, flam rudiments and drag rudiments</li><li>A short list of references and glossary.</li></ol>",
+			"Download the e-paper and get midi files for the <i>40 international drum rudiments</i> free of charge!"
+		],
+		"quantityLabel": "Rudiments - The Complete Collection quantity",
+		"addToCartLabel": "Add to cart",
+		"addedToCartLabel": "Added",
+		"category": {
+			"label": "Category:",
+			"name": "Teaching material"
+		},
+		"share": "Share",
+		"related": {
+			"title": "Related products"
+			
+		}
+	}
+}

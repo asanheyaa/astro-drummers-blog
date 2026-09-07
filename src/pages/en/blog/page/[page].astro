@@ -1,0 +1,111 @@
+---
+import { getCollection } from "astro:content";
+import { getRelativeLocaleUrl } from "astro:i18n";
+import BlogCard from "../../../../components/BlogCard.astro";
+import BlogPagination from "../../../../components/BlogPagination.astro";
+import HeroSection from "../../../../components/HeroSection.astro";
+import Layout from "../../../../layouts/Layout.astro";
+
+import { useTranslations } from "../../../../scripts/i18n.js";
+import {
+  getCategoryLink,
+  getCommentsLink,
+  getPostLink,
+  paginateItems,
+} from "../../../../scripts/utils.js";
+import { PAGE_SIZE } from "../../../../scripts/consts.js";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("posts");
+  const dePosts = posts.filter((p) => p.data.lang === "de");
+  const lastPage = Math.max(1, Math.ceil(dePosts.length / PAGE_SIZE));
+
+  const paths = [];
+  for (let page = 2; page <= lastPage; page++) {
+    paths.push({ params: { page: String(page) } });
+  }
+  return paths;
+}
+
+const { lang } = Astro.locals;
+const t = useTranslations(lang);
+
+const { page } = Astro.params;
+const currentPageParam = Number(page);
+
+const allArticles = await getCollection("posts");
+const langArticles = allArticles.filter((a) => a.data.lang === lang);
+
+const {
+  items: articles,
+  currentPage,
+  lastPage,
+} = paginateItems(langArticles, currentPageParam, PAGE_SIZE);
+---
+
+<Layout
+  isHeaderAnimated
+  title={t("blog", "meta.title")}
+  metaDescription={t("blog", "meta.metaDescription")}
+  ogLocale={t("blog", "meta.og.locale")}
+  ogUrl={t("blog", "meta.og.url")}
+  ogImageUrl={t("blog", "meta.og.image")}
+  ogImageSecureUrl={t("blog", "meta.og.imageSecureUrl")}
+  ogImageAlt={t("blog", "meta.og.imageAlt")}
+  twitterImageUrl={t("blog", "meta.twitter.image")}
+  twitterLabel1={t("blog", "meta.twitter.label1")}
+  twitterData1={t("blog", "meta.twitter.data1")}
+  twitterLabel2={t("blog", "meta.twitter.label2")}
+  twitterData2={t("blog", "meta.twitter.data2")}
+>
+  <HeroSection title={t("blog", "blog.hero.title")} />
+  <section class="blog-articles">
+    <div class="blog-articles__container">
+      <div class="blog-articles__body">
+        {
+          articles.map((article) => {
+            const postUrl = getPostLink(article.data.slug, lang);
+            const commentsUrl = getCommentsLink(
+              article.data.slug,
+              lang,
+              article.data.comments.length
+            );
+            const categoryUrl = getCategoryLink(
+              article.data.mainCategory,
+              lang
+            );
+            return (
+              <BlogCard
+                key={article.data.id}
+                postId={article.data.id}
+                src={article.data.cover}
+                alt={article.data.alt}
+                title={article.data.title}
+                description={article.data.description}
+                date={article.data.date}
+                category={article.data.mainCategory}
+                categoryUrl={categoryUrl}
+                postUrl={postUrl}
+                commentsLink={commentsUrl}
+                likesCounter={article.data.counters?.likes || 0}
+                commentsCounter={article.data.comments?.length || 0}
+                isGrid
+              />
+            );
+          })
+        }
+      </div>
+      {
+        lastPage > 1 && (
+          <footer class="blog-articles__footer">
+            <BlogPagination
+              currentPage={currentPage}
+              lastPage={lastPage}
+              baseUrl={getRelativeLocaleUrl(lang, "/blog")}
+            />
+          </footer>
+        )
+      }
+    </div>
+  </section>
+</Layout>

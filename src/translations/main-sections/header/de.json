@@ -24,8 +24,8 @@
         "title": "PRODUKTE",
         "href": "/products/",
         "links": [
-          { "label": "BIOGRAPHIEN", "href": "/products/" },
-          { "label": "UNTERRICHTSMATERIAL", "href": "/products/" }
+          { "label": "Find Your Way Through the Music", "href": "/products/#find-your-way-through-the-music" },
+          { "label": "Rudiments – The Complete Collection", "href": "/products/#rudiments-the-complete-collection" }
         ]
       },
       {

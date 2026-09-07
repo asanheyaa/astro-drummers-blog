@@ -1,0 +1,72 @@
+{
+  "id": "find-your-way-through-the-music",
+  "meta": {
+    "lang": "en",
+    "title": "Find Your Way Through the Music - Drummersblog",
+    "metaDescription": "When practising new pieces, you need to understand structure and flow. This e-book explains all repeat signs and helps you learn pieces faster.",
+    "og": {
+      "image": "https://drummersblog.de/wp-content/uploads/2021/01/FYWTTM-Cover-scaled.jpg",
+      "description": "When you practise new pieces, you need to understand the structure and flow of the song. Which bars are to be repeated, and how often? To where should you play before returning to the beginning? These instructions can always be found on the sheet music. After all, repetitions are an essential part of any piece: they create structure and ensure that it sticks in the listener’s mind. ... A quiz at the end of the book shows you whether you’ve got to grips with things or whether you need repeat things – well, one more time.",
+      "imageAlt": "",
+      "siteName": "Drummersblog",
+      "secureUrl": "https://drummersblog.de/wp-content/uploads/2021/01/FYWTTM-Cover-scaled.jpg"
+    },
+    "twitter": {
+      "image": "https://drummersblog.de/wp-content/uploads/2021/01/FYWTTM-Cover-717x1024.jpg",
+      "label1": "Price",
+      "data1": "€ 14.99",
+      "label2": "Availability",
+      "data2": "In stock"
+    },
+    "schema": {
+      "organizationName": "Drummersblog",
+      "logoCaption": "Drummersblog",
+      "authorName": "",
+      "pageHeadline": "Find Your Way Through the Music",
+      "pageKeywords": "",
+      "imageCaption": ""
+    }
+  },
+  "hero": {
+    "title": "Find Your Way Through the Music"
+  },
+  "imageLabel": "Find Your Way Through the Music",
+  "product": {
+    "breadcrumbs": [
+      {
+        "label": "Home",
+        "href": "/"
+      },
+      {
+        "label": "Product",
+        "href": "/en/products/"
+      },
+      {
+        "label": "Find Your Way Through the Music",
+        "href": null
+      }
+    ],
+    "title": "Find Your Way Through the Music",
+    "price": "€ 14.99",
+    "href": "/products/find-your-way-through-the-music/",
+    "shortDescription": [
+      "When you practise new pieces, you need to understand the structure and flow of the song. Which bars are to be repeated, and how often? To where should you play before returning to the beginning? These instructions can always be found on the sheet music. After all, repetitions are an essential part of any piece: they create structure and ensure that it sticks in the listener’s mind.",
+      "If you’re attempting to read music for the first time, you might well be wondering about terms <i>like D.C. al coda</i> and other unfamiliar expressions. Even as an experienced drummer, you may have stumbled across playing instructions that you couldn’t explain off the top off your head.",
+      "As such, it’s essential to know the symbols and expressions that appear on sheet music – both for your everyday practice and the long-term development of your skills as a drummer. After all, there’s a big difference between playing a portion of a song three times and repeating it times three – isn’t there?!",
+      "This e-book is your personal guide to mastering repeat signs with confidence. It provides numerous detailed examples of the expressions and instructions you’ll encounter again and again in professional sheet music.",
+      "So – what are you waiting for? Download the e-book now! Once you’re familiar with the function of repeat signs, you’ll be equipped to understand and practise pieces faster – and will have taken an important step forward in your drumming career. A quiz at the end of the book shows you whether you’ve got to grips with things or whether you need repeat things – well, one more time."
+    ],
+    "quantityLabel": "Find Your Way Through the Music quantity",
+    "addToCartLabel": "Add to cart",
+    "addedToCartLabel": "Added",
+    "category": {
+      "label": "Category:",
+      "name": "Teaching material"
+    },
+    "share": "Share",
+    "related": {
+      "title": "Related products"
+      
+    }
+  }
+}

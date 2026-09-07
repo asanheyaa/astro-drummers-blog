@@ -1,0 +1,191 @@
+---
+import { Image } from "astro:assets";
+import Layout from "../../../layouts/Layout.astro";
+import HeroSection from "../../../components/HeroSection.astro";
+import "@fancyapps/ui/dist/fancybox/fancybox.css";
+
+import { useTranslations } from "../../../scripts/i18n.js";
+import SwiperIniter from "../../../components/SwiperIniter.astro";
+const { lang } = Astro.locals;
+const t = useTranslations(lang);
+
+import productCover from "../../../assets/img/products-page/covers/cover_02.jpg";
+import productFullize1 from "../../../assets/img/products-page/full-size/products/product_02/product-image_01.jpg";
+import productFullize2 from "../../../assets/img/products-page/full-size/products/product_02/product-image_02.jpg";
+import productFullize3 from "../../../assets/img/products-page/full-size/products/product_02/product-image_03.jpg";
+import productFullize4 from "../../../assets/img/products-page/full-size/products/product_02/product-image_04.jpg";
+import productFullize5 from "../../../assets/img/products-page/full-size/products/product_02/product-image_05.jpg";
+
+import productthumb1 from "../../../assets/img/products-page/thumbs/product_02/product_01.jpg";
+import productthumb2 from "../../../assets/img/products-page/thumbs/product_02/product_02.jpg";
+import productthumb3 from "../../../assets/img/products-page/thumbs/product_02/product_03.jpg";
+import productthumb4 from "../../../assets/img/products-page/thumbs/product_02/product_04.jpg";
+import productthumb5 from "../../../assets/img/products-page/thumbs/product_02/product_05.jpg";
+import { withBase } from "../../../scripts/utils";
+import ProductQuantity from "../../../components/ProductQuantity.astro";
+import PaymentsButtons from "../../../components/PaymentsButtons.astro";
+import ShareButton from "../../../components/ShareButton.astro";
+import ProductSection from "../../../components/ProductSection.astro";
+
+const productGalleries = {
+  fullSize: [
+    productFullize1,
+    productFullize2,
+    productFullize3,
+    productFullize4,
+    productFullize5,
+  ],
+  thumbs: [
+    productthumb1,
+    productthumb2,
+    productthumb3,
+    productthumb4,
+    productthumb5,
+  ],
+};
+
+const realtedProducts = [{ id: t("findYourWay", "id") }];
+---
+
+<Layout
+  isHeaderAnimated
+  title={t("rudiments", "meta.title")}
+  metaDescription={t("rudiments", "meta.metaDescription")}
+  ogLocale={t("rudiments", "meta.og.locale")}
+  ogUrl={t("rudiments", "meta.og.url")}
+  ogImageUrl={t("rudiments", "meta.og.image")}
+  ogImageSecureUrl={t("rudiments", "meta.og.imageSecureUrl")}
+  ogImageAlt={t("rudiments", "meta.og.imageAlt")}
+  twitterImageUrl={t("rudiments", "meta.twitter.image")}
+  twitterLabel1={t("rudiments", "meta.twitter.label1")}
+  twitterData1={t("rudiments", "meta.twitter.data1")}
+>
+  <SwiperIniter>
+    <HeroSection title={t("rudiments", "hero.title")} isAlt />
+    <section class="single-product" data-cart-product={t("rudiments", "id")}>
+      <div class="single-product__container">
+        <div class="gallery-single-product">
+          <div class="gallery-single-product__wrapper">
+            <div class="gallery-single-product__content">
+              <div class="gallery-product-secondary-swiper swiper">
+                <div
+                  class="gallery-product-secondary-swiper__wrapper swiper-wrapper"
+                >
+                  {
+                    productGalleries.fullSize &&
+                      productGalleries.fullSize.map((item) => (
+                        <div class="gallery-product-secondary-swiper__slide swiper-slide">
+                          <a
+                            href={item.src}
+                            class="gallery-product-secondary-swiper__link ibg"
+                            aria-label={t("rudiments", "imageLabel")}
+                            data-fancybox={"secondary-gallery"}
+                          >
+                            <Image
+                              src={item}
+                              width={580}
+                              height={820}
+                              alt={t("rudiments", "imageLabel")}
+                            />
+                          </a>
+                        </div>
+                      ))
+                  }
+                </div>
+              </div>
+              <div class="gallery-product-first-swiper swiper">
+                <div
+                  class="gallery-product-first-swiper__wrapper swiper-wrapper"
+                >
+                  {
+                    productGalleries.thumbs &&
+                      productGalleries.thumbs.map((item, index) => (
+                        <div class="gallery-product-first-swiper__slide swiper-slide">
+                          <div class="gallery-product-first-swiper__body ibg">
+                            <Image
+                              src={item}
+                              width={100}
+                              height={100}
+                              alt={t("rudiments", "imageLabel")}
+                            />
+                          </div>
+                        </div>
+                      ))
+                  }
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="content-single-product">
+          <div class="breadcrumbs">
+            <ul class="breadcrumbs__list">
+              {
+                t("rudiments", "product.breadcrumbs").map((item) => (
+                  <li class="breadcrumbs__item">
+                    {item.href ? (
+                      <a href={withBase(item.href)} class="breadcrumbs__link">
+                        {item.label}
+                      </a>
+                    ) : (
+                      item.label
+                    )}
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
+          <div class="content-single-product__body">
+            <h2 class="content-single-product__title">
+              {t("rudiments", "product.title")}
+            </h2>
+            <div class="content-single-product__price">
+              {t("rudiments", "product.price")}
+            </div>
+            <div class="content-single-product__description">
+              {
+                t("rudiments", "product.shortDescription") &&
+                  t("rudiments", "product.shortDescription").map((item) => (
+                    <p set:html={item} />
+                  ))
+              }
+            </div>
+            <footer class="content-single-product__footer">
+              <div class="content-single-product__cart-actions">
+                <ProductQuantity quantity={1} />
+                <button
+                  class="content-single-product__cart-button button button-alt"
+                  data-add-to-cart
+                  data-product-id={t("rudiments", "id")}
+                  data-product-title={t("rudiments", "product.title")}
+                  data-product-price={t("rudiments", "product.price")}
+                  data-product-href={withBase(t("rudiments", "product.href"))}
+                  data-product-cover={productCover.src}
+                  aria-label={t("rudiments", "product.title")}
+                >
+                  <i class="dfd-socicon-icon-ios7-cart"> </i>
+
+                  <span class="content-single-product__cart-button-label">
+                    {t("rudiments", "product.addToCartLabel")}
+                  </span>
+                  <span class="content-single-product__cart-button-message">
+                    {t("rudiments", "product.addedToCartLabel")}
+                  </span>
+                </button>
+              </div>
+              <PaymentsButtons />
+              <ShareButton slug={t("rudiments", "id")} isAlt />
+            </footer>
+          </div>
+        </div>
+      </div>
+    </section>
+    <ProductSection
+      class={"products-alt"}
+      title={t("rudiments", "product.related.title")}
+      relatedProducts={realtedProducts}
+    />
+  </SwiperIniter>
+</Layout>
+<script src="../../../scripts/fancybox-inits.js"></script>
+<script src="../../../scripts/cart.js"></script>

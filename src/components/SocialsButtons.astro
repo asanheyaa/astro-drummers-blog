@@ -1,13 +1,14 @@
 ---
+import { getPostShareLink } from "../scripts/utils.js";
+
+const { lang } = Astro.locals;
 const {
-  shareLink,
+  slug,
   isVertical,
   label,
   class: className,
   facebookCounter,
 } = Astro.props;
-
-console.log( facebookCounter ?? 'kiss');
 ---
 
 <div
@@ -19,7 +20,7 @@ console.log( facebookCounter ?? 'kiss');
   <ul class="share-buttons__list">
     <li class="share-buttons__item">
       <a
-        href={shareLink}
+        href={getPostShareLink(slug, lang, Astro.site)}
         class="share-buttons__link share-buttons__link-facebook"
         data-text={label}
       >
@@ -27,13 +28,18 @@ console.log( facebookCounter ?? 'kiss');
           <i class="dfd-socicon-facebook"> </i>
         </div>
         {
-            <span class="share-buttons__counter"> {facebookCounter || '0'}</span>
+          (
+            <span class="share-buttons__counter">
+              {" "}
+              {facebookCounter || "0"}
+            </span>
+          )
         }
       </a>
     </li>
     <li class="share-buttons__item">
       <a
-        href={shareLink}
+        href={slug}
         class="share-buttons__link share-buttons__link-instagram"
         data-text={label}
       >

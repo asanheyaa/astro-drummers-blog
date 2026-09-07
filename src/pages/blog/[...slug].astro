@@ -1,45 +1,85 @@
 ---
 import Image from "astro/components/Image.astro";
-import HeroSection from "../components/HeroSection.astro";
-import { withBase } from "../scripts/utils";
-import { useTranslations } from "../scripts/i18n";
-import ShareButtons from "../components/ShareButtons.astro";
-import BlogCommentForm from "../components/BlogCommentForm.astro";
-import Category from "../components/Category.astro";
-import Date from "../components/Date.astro";
-import SwiperIniter from "../components/SwiperIniter.astro";
-import BlogCard from "../components/BlogCard.astro";
-import { getPostData } from "../services/singlePostService.js";
-import Layout from "../layouts/Layout.astro";
-import BlogArticlesWidget from "../components/BlogArticlesWidget.astro";
+import HeroSection from "../../components/HeroSection.astro";
+import {
+  getCategoryLink,
+  getCommentsLink,
+  getPostLink,
+  withBase,
+} from "../../scripts/utils";
+import { useTranslations } from "../../scripts/i18n";
+import ShareButtons from "../../components/SocialsButtons.astro";
+import BlogCommentForm from "../../components/BlogCommentForm.astro";
+import Category from "../../components/Category.astro";
+import Date from "../../components/Date.astro";
+import SwiperIniter from "../../components/SwiperIniter.astro";
+import BlogCard from "../../components/BlogCard.astro";
+import Layout from "../../layouts/Layout.astro";
+import { getCollection } from "astro:content";
 
-const lang = Astro.currentLocale ?? "de";
+export async function getStaticPaths() {
+  const posts = await getCollection("posts");
+
+  return posts.map((post) => ({
+    params: { slug: post.data.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+
+const { lang } = Astro.locals;
+
 const t = useTranslations(lang);
-
-const postData = await getPostData(lang);
 ---
 
-<Layout>
+<Layout
+  articleId={post.data.translationId}
+  isHeaderAnimated
+  language={lang}
+  title={post.data.title}
+  metaDescription={post.data.description}
+  description={post.data.description}
+  ogLocale={t("blog", "meta.og.locale")}
+  ogUrl={t("blog", "meta.og.url")}
+  ogImageUrl={post.data.cover}
+  ogImageSecureUrl={t("blog", "meta.og.imageSecureUrl")}
+  ogImageAlt={post.data.title}
+  twitterImageUrl={post.data.cover}
+  twitterLabel1="Written by"
+  twitterData1={"Ole Fahnick"}
+  twitterLabel2="Time to read"
+  twitterData2="Less than a minute"
+  ogType="Article"
+  articleTags={[
+    post.data.mainCategory,
+    ...post.data.additionalsCategories.map((cat) => cat.title),
+  ]}
+>
   <HeroSection
     isAlt
-    title={postData.title}
-    autor={postData.autor}
-    date={postData.date}
-    commentsCounter={postData.comments.length}
-    viewsCounter={postData.counters.views}
-    likesCounter={postData.counters.likes}
-    shareLink={postData.shareLink}
+    title={post.data.title}
+    autor={post.data.autor}
+    date={post.data.date}
+    commentsCounter={post.data.comments?.length || 0}
+    viewsCounter={post.data.counters?.views || 0}
+    likesCounter={post.data.counters?.likes || 0}
+    slug={post.data.slug}
     autorPrefix={t("singlePost", "autor")}
-    commentsLink={postData.commentsLink}
-    facebookCounter={postData.counters.facebookCounter}
+    commentsLink={getCommentsLink(
+      post.data.slug,
+      lang,
+      post.data.comments.length
+    )}
+    facebookCounter={post.data.counters?.facebookCounter || 0}
   />
   <div class="single-post-navigation">
     <div class="single-post-navigation__container">
       <div class="single-post-navigation__wrapper">
         {
-          postData.previousPost && (
+          post.data.previousPost && (
             <a
-              href={postData.previousPost.link}
+              href={getPostLink(post.data.previousPost.slug, lang)}
               class="single-post-navigation__item single-post-navigation__item-prev"
             >
               <div class="single-post-navigation__body">
@@ -51,23 +91,19 @@ const postData = await getPostData(lang);
                   <Image
                     width={40}
                     height={40}
-                    src={postData.previousPost.cover}
-                    alt={postData.previousPost.title}
+                    src={post.data.previousPost.cover}
+                    alt={post.data.previousPost.title}
                   />
                 </div>
                 <div class="single-post-navigation__item__details">
                   <h2 class="single-post-navigation__title">
-                    {postData.previousPost.title}
+                    {post.data.previousPost.title}
                   </h2>
-                  <div class="single-post-navigation__date">
-                    <i class="single-post-navigation__date-icon dfd-socicon-clock" />
-                    <time
-                      datetime={postData.previousPost.date}
-                      class="single-post-navigation__item__time"
-                    >
-                      {postData.previousPost.date}
-                    </time>
-                  </div>
+                  <Date
+                    date={post.data.previousPost.date}
+                    class="single-post-navigation__date"
+                  />
+
                   <div class="single-post-navigation__item__data" />
                 </div>
               </div>
@@ -138,9 +174,9 @@ const postData = await getPostData(lang);
           >
         </a>
         {
-          postData.nextPost && (
+          post.data.nextPost && (
             <a
-              href={postData.nextPost.link}
+              href={getPostLink(post.data.nextPost.slug, lang)}
               class="single-post-navigation__item single-post-navigation__item-next"
             >
               <div class="single-post-navigation__body">
@@ -152,21 +188,21 @@ const postData = await getPostData(lang);
                   <Image
                     width={40}
                     height={40}
-                    src={postData.nextPost.cover}
-                    alt={postData.nextPost.title}
+                    src={post.data.nextPost.cover}
+                    alt={post.data.nextPost.title}
                   />
                 </div>
                 <div class="single-post-navigation__item__details">
                   <h2 class="single-post-navigation__title">
-                    {postData.nextPost.title}
+                    {post.data.nextPost.title}
                   </h2>
                   <div class="single-post-navigation__date">
                     <i class="single-post-navigation__date-icon dfd-socicon-clock" />
                     <time
-                      datetime={postData.nextPost.date}
+                      datetime={post.data.nextPost.date}
                       class="single-post-navigation__item__time"
                     >
-                      {postData.nextPost.date}
+                      {post.data.nextPost.date}
                     </time>
                   </div>
                 </div>
@@ -179,14 +215,13 @@ const postData = await getPostData(lang);
   </div>
   <div class="content-wrapper">
     <div class="content-wrapper__container">
-    
-
       <section class="single-post-body">
         <div class="single-post-body__buttons">
           <ShareButtons
             isVertical
-            facebookCounter={postData.counters.facebookCounter}
+            facebookCounter={post.data.counters?.facebookCounter || 0}
             class="single-post-body__share"
+            slug={post.data.slug}
           />
         </div>
         <article class="single-post-body__article">
@@ -194,16 +229,16 @@ const postData = await getPostData(lang);
             <Image
               width={985}
               height={660}
-              alt={postData.title}
-              src={postData.mainCover}
+              alt={post.data.title}
+              src={post.data.cover}
             />
           </div>
           <h3 class="single-post-body__title">
-            {postData.title}
+            {post.data.title}
           </h3>
           <div
             class="single-post-body__content"
-            set:html={postData.content.rendered}
+            set:html={post.data.content.rendered}
           />
         </article>
         <footer class="footer-single-post">
@@ -211,11 +246,11 @@ const postData = await getPostData(lang);
             <div class="footer-single-post__categories">
               <ul class="footer-single-post__list">
                 {
-                  postData.postCategories.map((item) => (
+                  post.data.additionalsCategories?.map((item) => (
                     <li class="footer-single-post__item">
                       <Category
                         label={item.title}
-                        url={item.url}
+                        url={getCategoryLink(item.title, lang)}
                         class="footer-single-post__category"
                       />
                     </li>
@@ -230,7 +265,7 @@ const postData = await getPostData(lang);
                 >
                 </i>
                 <span class="footer-single-post__like-counter">
-                  {postData.counters.likes}
+                  {post.data.counters?.likes || 0}
                 </span>
                 {" "}
                 <span>
@@ -239,8 +274,8 @@ const postData = await getPostData(lang);
               </button>
               <div class="footer-single-post__socials">
                 <ShareButtons
-                  shareLink={postData.shareLink}
-                  facebookCounter={postData.counters.facebookCounter}
+                  slug={post.data.slug}
+                  facebookCounter={post.data.counters?.facebookCounter || 0}
                 />
               </div>
             </div>
@@ -251,7 +286,7 @@ const postData = await getPostData(lang);
   </div>
 
   {
-    postData.comments?.length > 0 && (
+    post.data.comments?.length > 0 && (
       <section
         class="single-post-comments"
         aria-labelledby="single-post-comments-title"
@@ -264,12 +299,12 @@ const postData = await getPostData(lang);
           >
             {t(
               "singlePost",
-              `comments.${postData.comments.length === 1 ? "commentsCountOne" : "commentsCountOther"}`,
-              { count: postData.comments.length }
+              `comments.${post.data.comments.length === 1 ? "commentsCountOne" : "commentsCountOther"}`,
+              { count: post.data.comments.length }
             )}
           </h2>
           <div class="single-post-comments__body">
-            {postData.comments?.map((comment) => (
+            {post.data.comments?.map((comment) => (
               <div class="single-post-comments__comment">
                 <div class="single-post-comments__wrapper">
                   <header class="single-post-comments__header">
@@ -300,7 +335,7 @@ const postData = await getPostData(lang);
                     {comment.text}
                   </div>
                 </div>
-                {comment.replies && (
+                {comment.replies && comment.replies.length > 0 && (
                   <div class="single-post-comments__replies">
                     {comment.replies?.map((reply) => (
                       <div class="single-post-comments__comment">
@@ -372,7 +407,7 @@ const postData = await getPostData(lang);
   </section>
 
   {
-    postData.relatedPosts?.length > 0 && (
+    post.data.relatedPosts?.length > 0 && (
       <SwiperIniter>
         <section
           class="single-post-related"
@@ -388,25 +423,36 @@ const postData = await getPostData(lang);
             <div class="single-post-related__body">
               <div class="single-post-related__swiper swiper">
                 <div class="single-post-related__wrapper swiper-wrapper">
-                  {postData.relatedPosts.map((relatedPost) => (
-                    <div class="single-post-related__slide swiper-slide">
-                      <BlogCard
-                        src={relatedPost.src}
-                        alt={relatedPost.alt}
-                        date={relatedPost.date}
-                        category={relatedPost.category}
-                        categoryUrl={relatedPost.categoryUrl}
-                        title={relatedPost.title}
-                        slug={relatedPost.slug}
-                        postUrl={relatedPost.postUrl}
-                        isGrid
-                        isAlt
-                        likesCounter={relatedPost.likesCounter}
-                        commentsCounter={relatedPost.commentsCounter}
-                        commentsLink={relatedPost.commentsLink}
-                      />
-                    </div>
-                  ))}
+                  {post.data.relatedPosts.map((relatedPost) => {
+                    const postUrl = getPostLink(relatedPost.slug, lang);
+                    const commentsUrl = getCommentsLink(
+                      relatedPost.slug,
+                      lang,
+                      relatedPost.counters?.comments || 0
+                    );
+                    const categoryUrl = getCategoryLink(
+                      relatedPost.category,
+                      lang
+                    );
+                    return (
+                      <div class="single-post-related__slide swiper-slide">
+                        <BlogCard
+                          src={relatedPost.src}
+                          alt={relatedPost.alt}
+                          date={relatedPost.date}
+                          title={relatedPost.title}
+                          postUrl={postUrl}
+                          isGrid
+                          isAlt
+                          category={relatedPost.category}
+                          categoryUrl={categoryUrl}
+                          likesCounter={relatedPost.counters?.likes || 0}
+                          commentsCounter={relatedPost.counters?.comments || 0}
+                          commentsLink={commentsUrl}
+                        />
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
             </div>

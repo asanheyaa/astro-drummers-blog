@@ -1,0 +1,31 @@
+---
+const { quantity } = Astro.props;
+---
+
+<div class="quantity" data-quantity>
+  <button
+    type="button"
+    class="quantity__button quantity__button-less"
+    data-quantity-less
+  >
+    <i class="dfd-socicon-minus-symbol"></i>
+  </button>
+  <input
+    type="number"
+    class="quantity__input"
+    value={quantity}
+    min="1"
+    max="99"
+    autocomplete="off"
+    inputmode="numeric"
+    data-quantity-input
+    name="quantity"
+  />
+  <button
+    type="button"
+    class="quantity__button quantity__button-more"
+    data-quantity-more
+  >
+    <i class="dfd-socicon-plus-black-symbol"></i>
+  </button>
+</div>

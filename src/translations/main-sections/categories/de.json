@@ -1,0 +1,11 @@
+{
+	 "hero": {
+    "title":"Kategorie:"
+  },
+    "meta":{
+    "twitter":{
+      "label1":"Beiträge"
+    }
+  },
+  "pageTitlePrefix": "- DrummerBlog"
+}

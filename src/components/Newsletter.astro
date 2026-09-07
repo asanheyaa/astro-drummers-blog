@@ -2,7 +2,7 @@
 import { useTranslations } from "../scripts/i18n.js";
 import Button from "./Button.astro";
 
-const lang = Astro.currentLocale ?? "de";
+const { lang } = Astro.locals;
 const t = useTranslations(lang);
 ---
 
@@ -27,8 +27,6 @@ const t = useTranslations(lang);
       <Button type="submit" class="newsletter__button" isAlt>
         {t("newsletter", "newsletter.form.submitLabel")}
       </Button>
-
-    
     </form>
   </div>
 </section>

@@ -1,14 +1,16 @@
 ---
 import Image from "astro/components/Image.astro";
-import { useTranslations } from "../scripts/i18n";
-import { getBlogArticles } from "../services/blogService";
+import { useTranslations } from "../scripts/i18n.js";
+import { getFilteredArticles, getPostLink } from "../scripts/utils.js";
 import Date from "./Date.astro";
 import LikeButton from "./LikeButton.astro";
+import { getCollection } from "astro:content";
 
-const lang = Astro.currentLocale ?? "de";
+const { lang } = Astro.locals;
 const t = useTranslations(lang);
 
-const articles = await getBlogArticles(5, lang);
+const posts = await getCollection("posts");
+const articles = getFilteredArticles(posts, lang, 5);
 ---
 
 <aside class="aside-widget">
@@ -30,32 +32,36 @@ const articles = await getBlogArticles(5, lang);
     </form>
     <div class="aside-widget__items">
       {
-        articles.map((article) => (
-          <article class="aside-widget__item">
-            <div class="aside-widget__image">
-              <Image
-                src={article.cover}
-                alt={article.title}
-                width={80}
-                height={80}
-              />
-            </div>
-            <div class="aside-widget__details">
-              <h2 class="aside-widget__title">
-                <a href={article.postUrl} class="aside-widget__link">
-                  {article.title}
-                </a>
-              </h2>
-              <footer class="aside-widget__footer">
-                <Date date="21.03.2021" />
-                <LikeButton
-                  likesCounter={article.likesCounter}
-                  postId={article.id}
+        articles.map((article) => {
+          const postUrl = getPostLink(article.data.slug, lang);
+
+          return (
+            <article class="aside-widget__item">
+              <div class="aside-widget__image">
+                <Image
+                  src={article.data.cover}
+                  alt={article.data.title}
+                  width={80}
+                  height={80}
                 />
-              </footer>
-            </div>
-          </article>
-        ))
+              </div>
+              <div class="aside-widget__details">
+                <h2 class="aside-widget__title">
+                  <a href={postUrl} class="aside-widget__link">
+                    {article.data.title}
+                  </a>
+                </h2>
+                <footer class="aside-widget__footer">
+                  <Date date="21.03.2021" />
+                  <LikeButton
+                    likesCounter={article.data.counters.likes}
+                    postId={article.data.id}
+                  />
+                </footer>
+              </div>
+            </article>
+          );
+        })
       }
     </div>
     <button

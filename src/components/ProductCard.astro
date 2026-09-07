@@ -1,0 +1,82 @@
+---
+import { Image } from "astro:assets";
+import { useTranslations } from "../scripts/i18n.js";
+import "@fancyapps/ui/dist/fancybox/fancybox.css";
+
+const { lang } = Astro.locals;
+const t = useTranslations(lang);
+
+const {
+  cover,
+  coverSrc,
+  id,
+  title,
+  price,
+  href,
+  buttonLabel,
+  currentGallery,
+  firstImageSrc,
+} = Astro.props;
+---
+
+<article class="products__item" data-cart-product id={id}>
+  <div class="products__wrapper">
+    <a href={href} class="products__cover ibg">
+      <Image src={cover} alt={title} width={883} height={1325} />
+    </a>
+    <footer class="products__footer">
+      <div class="products__buttons">
+        <button
+          type="button"
+          class="products__button"
+          data-add-to-cart
+          data-product-id={id}
+          data-product-title={title}
+          data-product-price={price}
+          data-product-href={href}
+          data-product-cover={coverSrc}
+          aria-label={buttonLabel}
+        >
+          <i class="products__icon dfd-socicon-icon-ios7-cart"></i>
+          <span class="products__button-label">
+            {t("products", "addToCartButton")}
+          </span>
+          <span class="products__button-message">
+            {t("products", "addedToCartLabel")}
+          </span>
+        </button>
+
+        <a
+          href={firstImageSrc}
+          class="products__button"
+          aria-label={buttonLabel}
+          data-fancybox={`gallery-${id}`}
+        >
+          <i class="products__icon dfd-socicon-eye-open"></i>
+        </a>
+      </div>
+    </footer>
+  </div>
+
+  <h3 class="products__name">
+    <a href={href} class="products__link">
+      {title}
+    </a>
+  </h3>
+  <div class="products__price">{price}</div>
+
+  <div class="products__gallery">
+    {
+      currentGallery.map((it, i) => {
+        if (i === 0) return null;
+        return (
+          <a href={it.src} data-fancybox={`gallery-${id}`}>
+            <Image src={it} alt={title} width={883} height={1325} />
+          </a>
+        );
+      })
+    }
+  </div>
+</article>
+<script src="../scripts/fancybox-inits.js"></script>
+<script src="../scripts/cart.js"></script>

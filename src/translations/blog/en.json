@@ -1,4 +1,29 @@
 {
+	"meta": {
+  "lang": "en",
+  "title": "Blog Posts - Drummersblog: Your #1 possibility to know new",
+  "metaDescription": "Blog posts page of Drummersblog. The best way I can help you is by sharing my knowledge and experiences with you. For me, that’s what this blog is about.",
+  "og": {
+    "image": "https://drummersblog.de/wp-content/uploads/2019/07/drummersblog-representive.jpg",
+    "imageSecureUrl": "https://drummersblog.de/wp-content/uploads/2019/07/drummersblog-representive.jpg",
+    "imageAlt": "Drummersblog, Startseite, Blog"
+  },
+  "twitter": {
+    "image": "https://drummersblog.de/wp-content/uploads/2019/07/drummersblog-representive.jpg",
+    "label1": "Written by",
+      "data1": "Ole Fahnick",
+      "label2": "Time to read",
+      "data2": "17 minutes"
+  },
+  "schema": {
+    "organizationName": "Drummersblog",
+    "logoCaption": "Drummersblog",
+    "authorName": "",
+    "pageHeadline": "Blog Posts - Drummersblog: Your #1 possibility to know new",
+    "pageKeywords": "",
+    "imageCaption": "Drummersblog, Startseite, Blog"
+  }
+},
 	"blog":{
 		"hero":{
 			"title": "'The best way I can help you is by sharing my knowledge and experiences with you. For me, that’s what this blog is about.'"

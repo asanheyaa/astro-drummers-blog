@@ -6,6 +6,11 @@ import { defineConfig } from 'astro/config';
 export default defineConfig({
    site: 'https://asanheyaa.github.io',
   base: '/astro-drummers-blog',
+  // image: {
+  //   remotePatterns: [
+  //     { protocol: 'https', hostname: 'drummersblog.de' },
+  //   ],
+  // },
   i18n: {
     defaultLocale: 'de',
     locales: ['en', 'de'],

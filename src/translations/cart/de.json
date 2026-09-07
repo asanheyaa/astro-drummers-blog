@@ -1,0 +1,69 @@
+{
+  "meta": {
+    "lang": "de",
+    "title": "Warenkorb - Drummersblog",
+    "metaDescription": "Dies ist der Warenkorb mit Produkten, die Sie bei uns kaufen möchten. Vielen Dank, dass Sie sich für unseren Shop entschieden haben!",
+    "og": {
+      "image": "https://drummersblog.de/wp-content/uploads/2019/07/drummersblog-representive.jpg",
+      "description": "Dies ist der Warenkorb mit Produkten, die Sie bei uns kaufen möchten. Vielen Dank, dass Sie sich für unseren Shop entschieden haben!",
+      "imageAlt": "Drummersblog, Startseite, Home",
+      "siteName": "Drummersblog",
+      "secureUrl": "https://drummersblog.de/wp-content/uploads/2019/07/drummersblog-representive.jpg"
+    },
+    "twitter": {
+      "image": "https://drummersblog.de/wp-content/uploads/2019/07/drummersblog-representive.jpg",
+      "label1": "Lesedauer",
+      "data1": "Weniger als eine Minute"
+    },
+    "schema": {
+      "organizationName": "Drummersblog",
+      "logoCaption": "Drummersblog",
+      "authorName": "",
+      "pageHeadline": "Warenkorb",
+      "pageKeywords": "",
+      "imageCaption": "Drummersblog, Startseite, Home"
+    }
+  },
+  "cart": {
+    "emptyMessage":"Es befinden sich keine Produkte im Warenkorb.",
+    "title": "Warenkorb",
+    "message": "Warenkorb aktualisiert.",
+    "table": {
+      "product": "Produkt",
+      "price": "Preis",
+      "quantity": "Anzahl",
+      "subtotal": "Zwischensumme"
+    },
+    "product": {
+      "name": "Find Your Way Through the Music",
+      "removeAria": "Find Your Way Through the Music aus dem Warenkorb entfernen",
+      "quantityLabel": "Find Your Way Through the Music Menge",
+      "price": "€ 14.99",
+      "quantity": "2",
+      "subtotal": "€ 29.98"
+    },
+    "actions": {
+      "updateCart": "Warenkorb aktualisieren",
+	  "removeProductButtonLabel":"Artikel aus dem Warenkorb entfernen"
+    },
+    "totals": {
+      "title": "Warenkorb-Summe",
+      "subtotal": "Zwischensumme",
+      "total": "Gesamtsumme",
+      "totalValue": "€ 29.98 EUR"
+    },
+    "checkout": {
+      "button": "Weiter zur Kasse"
+    },
+    "related": {
+      "title": "Ähnliche Produkte",
+      "titleEmpty":"Am besten bewertete Produkte"
+    }
+  },
+
+   "empty":{
+    "title": "Dein Warenkorb ist derzeit leer.",
+    "subtitle": "You may check out all the available products and buy some in the shop.",
+    "button": "Return To Shop"
+  }
+}

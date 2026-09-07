@@ -1,0 +1,73 @@
+{
+  "id": "find-your-way-through-the-music",
+  "meta": {
+    "lang": "de",
+    "title": "Find Your Way Through the Music - Drummersblog",
+    "metaDescription": "Wenn du neue Stücke einübst, musst du Struktur und Ablauf verstehen. Dieses E-Book erklärt alle Wiederholungszeichen und hilft dir, Stücke schneller zu lernen.",
+    "og": {
+      "image": "https://drummersblog.de/wp-content/uploads/2021/01/FYWTTM-Cover-scaled.jpg",
+      "description": "Wenn du neue Stücke einübst, musst du die Struktur und den Ablauf des Songs verstehen. Welche Takte soll ich wiederholen und wie oft? Bis an welche Stelle muss ich spielen, bevor ich wieder zum Anfang zurückkehre? Diese Anweisungen findest du auf dem Notenblatt. Schließlich sind Wiederholungen ein wesentlicher Bestandteil von Musik. Sie strukturieren einen Song und sorgen dafür, dass er bei den Hörern in Erinnerung bleibt. ... Achtung: Nur in englischer Sprache verfügbar.",
+      "imageAlt": "",
+      "siteName": "Drummersblog",
+      "secureUrl": "https://drummersblog.de/wp-content/uploads/2021/01/FYWTTM-Cover-scaled.jpg"
+    },
+    "twitter": {
+      "image": "https://drummersblog.de/wp-content/uploads/2021/01/FYWTTM-Cover-717x1024.jpg",
+      "label1": "Preis",
+      "data1": "€ 14.99",
+      "label2": "Verfügbarkeit",
+      "data2": "Vorrätig"
+    },
+    "schema": {
+      "organizationName": "Drummersblog",
+      "logoCaption": "Drummersblog",
+      "authorName": "",
+      "pageHeadline": "Find Your Way Through the Music",
+      "pageKeywords": "",
+      "imageCaption": ""
+    }
+  },
+  "hero": {
+    "title": "Find Your Way Through the Music"
+  },
+  "imageLabel": "Find Your Way Through the Music",
+  "product": {
+    "breadcrumbs": [
+      {
+        "label": "Start",
+        "href":"/"
+      },
+      {
+        "label": "Produkt",
+        "href":"/products/"
+      },
+      {
+        "label": "Find Your Way Through the Music",
+        "href": null
+      }
+    ],
+    "title": "Find Your Way Through the Music",
+    "price": "€ 14.99",
+    "href":"/products/find-your-way-through-the-music/",
+    "shortDescription": [
+      "Wenn du neue Stücke einübst, musst du die Struktur und den Ablauf des Songs verstehen. Welche Takte soll ich wiederholen und wie oft? Bis an welche Stelle muss ich spielen, bevor ich wieder zum Anfang zurückkehre? Diese Anweisungen findest du auf dem Notenblatt. Schließlich sind Wiederholungen ein wesentlicher Bestandteil von Musik. Sie strukturieren einen Song und sorgen dafür, dass er bei den Hörern in Erinnerung bleibt.",
+      "Wenn du dich zum ersten Mal beim Notenlesen versuchst, wirst du dich über Begriffe, wie <i>D.C. al Coda</i> oder andere rätselhafte Zeichen wundern. Doch auch als erfahrener Schlagzeuger bist du vielleicht schon einmal über Spielanweisungen gestolpert, die du dir nicht gleich erklären konntest.",
+      "Deshalb ist es für die alltägliche Spielpraxis und den Ausbau deiner Fähigkeiten als Schlagzeuger unverzichtbar, die entsprechenden Zeichen und Begriffe zu kennen. Immerhin ist es ein großer Unterschied, ob eine bestimmte Stelle im Song dreimal gespielt oder dreimal wiederholt werden soll. Oder?",
+      "Mit diesem E-Book bekommst du deinen persönliches Handbuch, um dich bei den Wiederholungszeichen zurechtzufinden. Ich zeige dir viele detaillierte Beispiele für die Begriffe und Anweisungen, die dir bei Musiknoten im Profibereich immer wieder begegnen werden.",
+      "Lade dir daher jetzt das E-Book herunter. Denn wenn du mit den musikalischen Wiederholungen vertraut bist, wirst du Stücke schneller verstehen und einüben können – und als Schlagzeuger einen wichtigen Schritt vorwärts gehen. Teste dich am Ende des E-Books mit einem Quiz gleich selbst. So weißt du sofort, ob du fit bist bei den Wiederholungszeichen oder ob du das eine oder andere, nun ja, noch mal wiederholen solltest.",
+      "<strong>Achtung: Nur in englischer Sprache verfügbar.</strong>"
+    ],
+    "quantityLabel": "Find Your Way Through the Music Menge",
+    "addToCartLabel": "In den Warenkorb",
+    "addedToCartLabel": "Hinzugefügt",
+    "category": {
+      "label": "Kategorie:",
+      "name": "Unterrichtsmaterial"
+    },
+    "share": "Share",
+    "related": {
+      "title": "Ähnliche Produkte"
+     
+    }
+  }
+}

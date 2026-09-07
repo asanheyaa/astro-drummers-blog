@@ -1,6 +1,6 @@
 ---
 import { useTranslations } from "../scripts/i18n.js";
-const lang = Astro.currentLocale ?? "de";
+const { lang } = Astro.locals;
 const t = useTranslations(lang);
 ---
 

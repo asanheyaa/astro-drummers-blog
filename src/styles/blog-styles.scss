@@ -1,11 +1,34 @@
 @use "variables" as *;
 @use "mixins" as *;
 
-
 //=================================================================================================================================
 
 .blog-articles {
 	padding-block: 2.5rem;
+	&-with-widget {
+		.blog-articles__container {
+			display: grid;
+			@include adaptiveValue(gap, 60, 30);
+			@media (min-width: 61.9988rem) {
+				grid-template-columns: 1fr 17.5rem;
+			}
+		}
+		.blog-articles__footer {
+			@media (max-width: 61.9988rem) {
+				order: 2;
+			}
+		}
+		.blog-articles__body{
+			@media (max-width: 61.9988rem) {
+				order: 1;
+			}
+		}
+		.aside-widget{
+			@media (max-width: 61.9988rem) {
+				order: 3;
+			}
+		}
+	}
 	&__container {
 	}
 	.article {
@@ -14,17 +37,15 @@
 		display: grid;
 		column-gap: 1.25rem;
 		row-gap: 2.5rem;
-		grid-template-columns: repeat(1,1fr);
+		grid-template-columns: repeat(1, 1fr);
 		&:not(:last-child) {
 			margin-bottom: 1.875rem;
 		}
-		
-		@media (min-width: 700px) {
-			grid-template-columns: repeat(2,1fr);
+
+		@media (min-width: 43.75rem) {
+			grid-template-columns: repeat(2, 1fr);
 		}
 	}
 	&__footer {
 	}
 }
-
-

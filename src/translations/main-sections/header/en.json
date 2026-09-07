@@ -25,8 +25,14 @@
         "title": "PRODUCTS",
         "href": "/en/products/",
         "links": [
-          { "label": "BIOGRAPHIES", "href": "/en/products/" },
-          { "label": "TEACHING MATERIAL", "href": "/en/products/" }
+          {
+            "label": "Find Your Way Through the Music",
+            "href": "/en/products/#find-your-way-through-the-music"
+          },
+          {
+            "label": "Rudiments – The Complete Collection",
+            "href": "/en/products/#rudiments-the-complete-collection"
+          }
         ]
       },
       {

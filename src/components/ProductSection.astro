@@ -1,0 +1,107 @@
+---
+import productCover1 from "../assets/img/products-page/covers/cover_01.jpg";
+import productCover2 from "../assets/img/products-page/covers/cover_02.jpg";
+import producFirstFullize1 from "../assets/img/products-page/full-size/products/product_01/product-image_01.jpg";
+import producFirstFullize2 from "../assets/img/products-page/full-size/products/product_01/product-image_02.jpg";
+import producFirstFullize3 from "../assets/img/products-page/full-size/products/product_01/product-image_03.jpg";
+import producFirstFullize4 from "../assets/img/products-page/full-size/products/product_01/product-image_04.jpg";
+import producFirstFullize5 from "../assets/img/products-page/full-size/products/product_01/product-image_05.jpg";
+
+import producSecondFullize1 from "../assets/img/products-page/full-size/products/product_02/product-image_01.jpg";
+import producSecondFullize2 from "../assets/img/products-page/full-size/products/product_02/product-image_02.jpg";
+import producSecondFullize3 from "../assets/img/products-page/full-size/products/product_02/product-image_03.jpg";
+import producSecondFullize4 from "../assets/img/products-page/full-size/products/product_02/product-image_04.jpg";
+import producSecondFullize5 from "../assets/img/products-page/full-size/products/product_02/product-image_05.jpg";
+import { withBase } from "../scripts/utils.js";
+
+const productGalleries = [
+  [
+    producFirstFullize1,
+    producFirstFullize2,
+    producFirstFullize3,
+    producFirstFullize4,
+    producFirstFullize5,
+  ],
+  [
+    producSecondFullize1,
+    producSecondFullize2,
+    producSecondFullize3,
+    producSecondFullize4,
+    producSecondFullize5,
+  ],
+];
+
+import ProductCard from "./ProductCard.astro";
+
+const covers = [productCover1, productCover2];
+
+import { useTranslations } from "../scripts/i18n.js";
+const { lang } = Astro.locals;
+const t = useTranslations(lang);
+const {
+  class: classList,
+  title = null,
+  titleEmpty = null,
+  relatedProducts = null,
+} = Astro.props;
+---
+
+<section class:list={["products", classList]}>
+  <div class="products__container">
+    <h2 class="products__title">
+      {title || t("products", "product.productTitle")}
+    </h2>
+    <h2 class="products__title products__title-empty">
+      {titleEmpty || t("products", "product.productTitle")}
+    </h2>
+    <div class="products__body">
+      <div class="products__items">
+        {
+          t("products", "product.productsItems").map((item, index) => {
+            const currentGallery = productGalleries[index] || [];
+            const firstImageSrc = currentGallery[0]?.src || "#";
+            if (relatedProducts) {
+              const currentProduct = relatedProducts.find(
+                (p) => p.id === item.id
+              );
+              if (currentProduct) {
+                return (
+                  <ProductCard
+                    cover={covers[index]}
+                    coverSrc={covers[index].src}
+                    id={item.id || index}
+                    title={item.title}
+                    price={item.price}
+                    href={withBase(item.href)}
+                    buttonLabel={item.buttonCartLabel}
+                    productGalleries={productGalleries}
+                    currentGallery={currentGallery}
+                    firstImageSrc={firstImageSrc}
+                  />
+                );
+              }
+            } else {
+              return (
+                <ProductCard
+                  cover={covers[index]}
+                  coverSrc={covers[index].src}
+                  id={item.id || index}
+                  title={item.title}
+                  price={item.price}
+                  href={withBase(item.href)}
+                  buttonLabel={item.buttonCartLabel}
+                  productGalleries={productGalleries}
+                  currentGallery={currentGallery}
+                  firstImageSrc={firstImageSrc}
+                />
+              );
+            }
+          })
+        }
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="../scripts/fancybox-inits.js"></script>
+<script src="../scripts/cart.js"></script>

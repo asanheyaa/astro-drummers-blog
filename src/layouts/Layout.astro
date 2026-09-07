@@ -1,5 +1,5 @@
 ---
-const { isHeaderAnimated = false, isWidget } = Astro.props;
+const { isHeaderAnimated = false } = Astro.props;
 
 import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
@@ -7,24 +7,41 @@ import Prealoder from "../components/Prealoder.astro";
 import TopScrollButton from "../components/TopScrollButton.astro";
 import SearchPopup from "../components/SearchPopup.astro";
 import AlternativeMenu from "../components/AlternativeMenu.astro";
+import Newsletter from "../components/Newsletter.astro";
 
 import "../styles/main-styles.scss";
 
 import { useTranslations } from "../scripts/i18n.js";
-import Newsletter from "../components/Newsletter.astro";
 import { withBase } from "../scripts/utils";
-import BlogArticlesWidget from "../components/BlogArticlesWidget.astro";
-const lang = Astro.currentLocale ?? "de";
-const t = useTranslations(lang);
+
+const {
+  title,
+  metaDescription,
+  ogType = null,
+  ogImageUrl,
+  ogImageSecureUrl,
+  ogImageAlt,
+  twitterLabel1,
+  twitterData1,
+  twitterImageUrl,
+  twitterLabel2,
+  twitterData2,
+  articleId = null,
+  categoryId = null,
+  articleTags = null,
+} = Astro.props;
+
+const { lang } = Astro.locals;
+const locale = lang === "de" ? "de_DE" : "en_US";
 ---
 
 <!doctype html>
-<html lang={t("meta", "lang")}>
+<html lang={lang}>
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content={t("meta", "homePage.metaDescription")} />
+    <meta name="description" content={metaDescription} />
 
     <meta
       name="robots"
@@ -32,51 +49,37 @@ const t = useTranslations(lang);
     />
 
     <!-- Open Graph / Facebook -->
-    <meta property="og:locale" content={t("meta", "homePage.og.locale")} />
+    <meta property="og:locale" content={locale} />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content={t("meta", "homePage.og.title")} />
-    <meta
-      property="og:description"
-      content={t("meta", "homePage.og.description")}
-    />
-    <meta property="og:url" content={t("meta", "homePage.og.url")} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={metaDescription} />
+    <meta property="og:url" content={Astro.url} />
     <meta property="og:site_name" content="Drummersblog" />
-    <meta
-      property="og:image"
-      content={withBase("/drummersblog-representive.jpg")}
-    />
-    <meta
-      property="og:image:secure_url"
-      content={withBase("/drummersblog-representive.jpg")}
-    />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:image:secure_url" content={ogImageSecureUrl} />
     <meta property="og:image:height" content="315" />
     <meta property="og:image:width" content="828" />
-    <meta property="og:image:alt" content={t("meta", "homePage.og.imageAlt")} />
+    <meta property="og:image:alt" content={ogImageAlt} />
     <meta property="og:image:type" content="image/jpeg" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={t("meta", "homePage.twitter.title")} />
-    <meta
-      name="twitter:description"
-      content={t("meta", "homePage.twitter.description")}
-    />
-    <meta
-      name="twitter:image"
-      content={withBase("/drummersblog-representive.jpg")}
-    />
-    <meta
-      name="twitter:label1"
-      content={t("meta", "homePage.twitter.label1")}
-    />
-    <meta name="twitter:data1" content={t("meta", "homePage.twitter.data1")} />
-    <meta
-      name="twitter:label2"
-      content={t("meta", "homePage.twitter.label2")}
-    />
-    <meta name="twitter:data2" content={t("meta", "homePage.twitter.data2")} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={metaDescription} />
+    <meta name="twitter:image" content={twitterImageUrl} />
 
-    <title>{t("meta", "homePage.title")}</title>
+    {twitterLabel1 && <meta name="twitter:label1" content={twitterLabel1} />}
+    {twitterLabel2 && <meta name="twitter:label2" content={twitterLabel2} />}
+    {twitterData1 && <meta name="twitter:data1" content={twitterData1} />}
+    {twitterData2 && <meta name="twitter:data2" content={twitterData2} />}
+    {ogType && <meta property="og:type" content={ogType} />}
+    {
+      articleTags &&
+        articleTags.map((articleTag) => {
+          return <meta property="article:tag" content={articleTag} />;
+        })
+    }
+    <title>{title}</title>
     <link rel="icon" type="image/webp" href={withBase("/favicon.webp")} />
 
     <link
@@ -104,7 +107,11 @@ const t = useTranslations(lang);
     <AlternativeMenu />
     <TopScrollButton />
     <div class="wrapper">
-      <Header isHeaderAnimated={isHeaderAnimated} />
+      <Header
+        articleId={articleId}
+        isHeaderAnimated={isHeaderAnimated}
+        categoryId={categoryId}
+      />
       <main class="page">
         <slot />
         <Newsletter />

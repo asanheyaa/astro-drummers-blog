@@ -1,0 +1,31 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import HeroSection from "../../../components/HeroSection.astro";
+import ProductSection from "../../../components/ProductSection.astro";
+
+import { useTranslations } from "../../../scripts/i18n.js";
+const { lang } = Astro.locals;
+const t = useTranslations(lang);
+
+
+
+
+---
+
+<Layout
+  isHeaderAnimated
+  title={t("products", "meta.title")}
+  metaDescription={t("products", "meta.metaDescription")}
+  ogLocale={t("products", "meta.og.locale")}
+  ogUrl={t("products", "meta.og.url")}
+  ogImageUrl={t("products", "meta.og.image")}
+  ogImageSecureUrl={t("products", "meta.og.imageSecureUrl")}
+  ogImageAlt={t("products", "meta.og.imageAlt")}
+  twitterImageUrl={t("products", "meta.twitter.image")}
+  twitterLabel1={t("products", "meta.twitter.label1")}
+  twitterData1={t("products", "meta.twitter.data1")}
+>
+  <HeroSection title={t("products", "hero.title")} />
+  <ProductSection/>
+</Layout>
+

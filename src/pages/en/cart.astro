@@ -1,0 +1,98 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import HeroSection from "../../components/HeroSection.astro";
+import { useTranslations } from "../../scripts/i18n.js";
+
+import { withBase } from "../../scripts/utils";
+import ProductSection from "../../components/ProductSection.astro";
+import PaymentsButtons from "../../components/PaymentsButtons.astro";
+
+const { lang } = Astro.locals;
+const t = useTranslations(lang);
+
+//========================================================================================
+---
+
+<Layout
+  isHeaderAnimated
+  title={t("cart", "meta.title")}
+  metaDescription={t("cart", "meta.metaDescription")}
+  ogLocale={t("cart", "meta.og.locale")}
+  ogUrl={t("cart", "meta.og.url")}
+  ogImageUrl={t("cart", "meta.og.image")}
+  ogImageSecureUrl={t("cart", "meta.og.imageSecureUrl")}
+  ogImageAlt={t("cart", "meta.og.imageAlt")}
+  twitterImageUrl={t("cart", "meta.twitter.image")}
+  twitterLabel1={t("cart", "meta.twitter.label1")}
+  twitterData1={t("cart", "meta.twitter.data1")}
+>
+  <HeroSection title={t("cart", "cart.title")} isAlt />
+  {
+    (
+      <section class="cart --empty" data-cart="empty">
+        <div class="cart__container">
+          <div class="cart__body" data-cart>
+            <div class="content-cart">
+              <header class="content-cart__header">
+                <ul class="content-cart__list">
+                  {t("cart", "cart.table") &&
+                    Object.values(t("cart", "cart.table")).map((i) => (
+                      <li class="content-cart__header-item">{i}</li>
+                    ))}
+                </ul>
+              </header>
+              <div class="content-cart__items" data-cart-wrapper />
+            </div>
+            <div class="actions-cart">
+              <header class="actions-cart__header">
+                {t("cart", "cart.totals.title")}
+              </header>
+              <div class="actions-cart__total-count">
+                <div class="actions-cart__label">
+                  {t("cart", "cart.totals.total")}
+                </div>
+                <div class="actions-cart__amount">
+                  € <span class="actions-cart__value" data-cart-total-count />{" "}
+                  EUR
+                </div>
+              </div>
+              <footer class="actions-cart__footer">
+                <a href="" class="actions-cart__button button button-alt">
+                  {t("cart", "cart.checkout.button")}
+                </a>
+                <PaymentsButtons />
+              </footer>
+            </div>
+          </div>
+          <div class="empty-card">
+            <div class="empty-card__info">
+              <i class="empty-card__icon dfd-socicon-icon-ios7-cart" />
+              <div class="empty-card__details">
+                <h2 class="empty-card__title">{t("cart", "empty.title")}</h2>
+                <div class="empty-card__subtitle">
+                  {t("cart", "empty.subtitle")}
+                </div>
+              </div>
+            </div>
+            <a
+              href={withBase(t("header", "header.nav.2.href"))}
+              class="empty-card__button"
+            >
+              {t("cart", "empty.button")}
+            </a>
+            <span class="empty-card__bottom-line">or</span>
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  <ProductSection
+    class="products-alt --empty"
+    title={t("cart", "cart.related.title")}
+    titleEmpty={t("cart", "cart.related.titleEmpty")}
+  />
+</Layout>
+
+<script src="../../scripts/fancybox-inits.js"></script>
+<script src="../../scripts/cart.js"></script>

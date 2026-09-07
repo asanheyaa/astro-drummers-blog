@@ -1,0 +1,21 @@
+---
+const { slug, title, facebookCounter, isAlt } = Astro.props;
+import SocialsButtons from "./SocialsButtons.astro";
+---
+
+<div
+  class:list={["footer-hero__actions", { "footer-hero__actions-alt": isAlt }]}
+  data-dropdown
+>
+  <button class="footer-hero__share" data-dropdown-trigger>
+    <i class="dfd-socicon-icon-share"></i>
+    <span>Share</span>
+  </button>
+  <div class="footer-hero__socials" data-dropdown-body>
+    <SocialsButtons
+      slug={slug}
+      label={title}
+      facebookCounter={facebookCounter}
+    />
+  </div>
+</div>

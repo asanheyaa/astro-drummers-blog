@@ -1,4 +1,29 @@
-{
+{	
+	"meta": {
+  "lang": "de",
+  "title": "Blog: Drummersblog: Ihre Nummer 1 in Sachen Schlagzeug",
+  "metaDescription": "Blog-Seite. Ich kann dir am besten helfen, indem ich mein Wissen und meine Erfahrungen mit dir teile. Darum geht es mir in diesem Blog.",
+  "og": {
+    "image": "https://drummersblog.de/wp-content/uploads/2019/07/drummersblog-representive.jpg",
+    "imageSecureUrl": "https://drummersblog.de/wp-content/uploads/2019/07/drummersblog-representive.jpg",
+    "imageAlt": "Drummersblog, Startseite, Blog"
+  },
+  "twitter": {
+    "image": "https://drummersblog.de/wp-content/uploads/2019/07/drummersblog-representive.jpg",
+     "label1": "Verfasst von",
+      "data1": "Ole Fahnick",
+      "label2": "Lesedauer",
+      "data2": "17 Minuten"
+  },
+  "schema": {
+    "organizationName": "Drummersblog",
+    "logoCaption": "Drummersblog",
+    "authorName": "",
+    "pageHeadline": "Blog: Drummersblog: Ihre Nummer 1 in Sachen Schlagzeug",
+    "pageKeywords": "",
+    "imageCaption": "Drummersblog, Startseite, Blog"
+  }
+},
 	"blog":{
 		"hero":{
 			"title": "'Ich kann dir am besten helfen, indem ich mein Wissen und meine Erfahrungen mit dir teile. Darum geht es mir in diesem Blog. '"

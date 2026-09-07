@@ -4,7 +4,7 @@ import Button from "./Button.astro";
 
 const { formData, ...rest } = Astro.props;
 
-const lang = Astro.currentLocale ?? "de";
+const { lang } = Astro.locals;
 const t = useTranslations(lang);
 ---
 
@@ -20,8 +20,7 @@ const t = useTranslations(lang);
         class="comments-post-form__input comments-post-form__input-area"
         required={t("singlePost", "commentForm.fields.comment.required")
           ? true
-          : undefined}
-      ></textarea>
+          : undefined}></textarea>
     </div>
     <div class="comments-post-form__items">
       <div class="comments-post-form__item">

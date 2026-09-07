@@ -12,23 +12,43 @@ import productImage01 from "../../assets/img/home-page/products/product-image_01
 import productImage02 from "../../assets/img/home-page/products/product-image_02.webp";
 import productImage03 from "../../assets/img/home-page/products/product-image_03.webp";
 
+const { lang } = Astro.locals;
+const t = useTranslations(lang);
+
 import Button from "../../components/Button.astro";
 import BlogCard from "../../components/BlogCard.astro";
 import SwiperIniter from "../../components/SwiperIniter.astro";
 
-import { withBase } from "../../scripts/utils";
+import {
+  getCategoryLink,
+  getFilteredArticles,
+  getPostLink,
+  withBase,
+} from "../../scripts/utils";
 import { useTranslations } from "../../scripts/i18n.js";
 import LanguageSwitcher from "../../components/LanguageSwitcher.astro";
+import { getCollection } from "astro:content";
 
-import { getBlogArticles } from "../../services/blogService.js";
-
-const lang = Astro.currentLocale ?? "de";
-const t = useTranslations(lang);
-
-const articles = await getBlogArticles(5, lang);
+const allArticles = await getCollection("posts");
+const articles = getFilteredArticles(allArticles, lang, 4);
 ---
 
-<Layout isHeaderAnimated>
+<Layout
+  isHeaderAnimated
+  title={t("homePage", "meta.title")}
+  metaDescription={t("homePage", "meta.metaDescription")}
+  ogLocale={t("homePage", "meta.og.locale")}
+  ogUrl={t("homePage", "meta.og.url")}
+  siteName={t("homePage", "meta.og.siteName")}
+  ogImageUrl={t("homePage", "meta.og.image")}
+  ogImageSecureUrl={t("homePage", "meta.og.secureUrl")}
+  ogImageAlt={t("homePage", "meta.og.imageAlt")}
+  twitterImageUrl={t("homePage", "meta.twitter.image")}
+  twitterLabel1={t("homePage", "meta.twitter.label1")}
+  twitterData1={t("homePage", "meta.twitter.data1")}
+  twitterLabel2={t("homePage", "meta.twitter.label2")}
+  twitterData2={t("homePage", "meta.twitter.data2")}
+>
   <SwiperIniter>
     <section class="home-hero" id="welcome">
       <div class="home-hero__container">
@@ -131,21 +151,29 @@ const articles = await getBlogArticles(5, lang);
             <div class="home-articles__body" data-animation-on-scroll>
               <div class="home-articles__swiper swiper">
                 <div class="home-articles__wrapper swiper-wrapper">
-                  {articles.map((article) => (
-                    <div class="home-articles__slide swiper-slide">
-                      <BlogCard
-                        src={article.cover}
-                        category={article.category}
-                        title={article.title}
-                        date={article.date}
-                        description={article.description}
-                        alt={article.alt}
-                        slug={article.slug}
-                        categoryUrl={article.categoryUrl}
-                        postUrl={article.postUrl}
-                      />
-                    </div>
-                  ))}
+                  {articles.map((article) => {
+                    const postUrl = getPostLink(article.data.slug, lang);
+                    const categoryUrl = getCategoryLink(
+                      article.data.mainCategory,
+                      lang
+                    );
+                    return (
+                      <div class="home-articles__slide swiper-slide">
+                        <BlogCard
+                          key={article.data.id}
+                          postId={article.data.id}
+                          src={article.data.cover}
+                          alt={article.data.alt}
+                          title={article.data.title}
+                          description={article.data.description}
+                          date={article.data.date}
+                          category={article.data.mainCategory}
+                          categoryUrl={categoryUrl}
+                          postUrl={postUrl}
+                        />
+                      </div>
+                    );
+                  })}
                 </div>
                 <div class="home-articles__pagination swiper-pagination" />
               </div>

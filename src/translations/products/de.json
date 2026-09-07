@@ -1,0 +1,52 @@
+{
+  "hero": {
+    "title": "Meine Blogposts sind dir nicht genug und du willst mehr lernen? Wirf einen Blick in meinen Shop!"
+  },
+  "meta": {
+    "lang": "de",
+    "title": "Produkte - Drummersblog: Gute Gelegenheit, die 1 zu sein",
+    "metaDescription": "Produkte auf Drummersblog. Meine Blogposts sind dir nicht genug und du willst mehr lernen? Wirf einen Blick in meinen Shop!",
+    "og": {
+      "image": "https://drummersblog.de/wp-content/uploads/2019/07/drummersblog-representive.jpg",
+      "imageAlt": "Drummersblog, Startseite, Home",
+      "siteName": "Drummersblog",
+      "secureUrl": "https://drummersblog.de/wp-content/uploads/2019/07/drummersblog-representive.jpg"
+    },
+    "twitter": {
+      "image": "https://drummersblog.de/wp-content/uploads/2019/07/drummersblog-representive.jpg",
+      "label1": "Lesedauer",
+      "data1": "2 Minuten"
+    },
+    "schema": {
+      "organizationName": "Drummersblog",
+      "logoCaption": "Drummersblog",
+      "authorName": "",
+      "pageHeadline": "Produkte",
+      "pageKeywords": "",
+      "imageCaption": "Drummersblog, Startseite, Home"
+    }
+  },
+  "product":{
+    "productTitle":"PRODUKTE",
+    "productsItems":[
+   { 
+    "title":"Find Your Way Through the Music",
+    "price": "€ 14.99",
+    "href": "/products/find-your-way-through-the-music/",
+    "buttonCartLabel":"In den Warenkorb legen: „Find Your Way Through the Music“",
+    "buttonGalletyLabel":"Fotos ansehen: „Find Your Way Through the Music“",
+    "id":"find-your-way-through-the-music"
+  },
+  { 
+    "title":"Rudiments – The Complete Collection",
+    "price": "€ 14.99",
+     "href": "/products/rudiments-the-complete-collection/",
+     "buttonCartLabel":"In den Warenkorb legen: „Rudiments - The Complete Collection“",
+     "buttonGalletyLabel":"Fotos ansehen: „Rudiments – The Complete Collection“",
+     "id":"rudiments-the-complete-collection"
+  }
+  ]
+},
+"addToCartButton":"In den Warenkorb",
+"addedToCartLabel":"Hinzugefügt "
+}

@@ -2,7 +2,7 @@
 import CommentsButton from "./CommentsButton.astro";
 import Date from "./Date.astro";
 import LikeButton from "./LikeButton.astro";
-import ShareButtons from "./ShareButtons.astro";
+import ShareButton from "./ShareButton.astro";
 
 const {
   isAlt,
@@ -13,7 +13,7 @@ const {
   commentsLink,
   viewsCounter,
   likesCounter,
-  url,
+  slug,
   autorPrefix,
   facebookCounter,
 } = Astro.props;
@@ -51,21 +51,14 @@ const {
             <div class="footer-hero__item">
               <span>{viewsCounter} </span> <span>Views</span>
             </div>
-            <LikeButton likesCounter={likesCounter} class="footer-hero__item"/>
+            <LikeButton likesCounter={likesCounter} class="footer-hero__item" />
           </div>
-          <div class="footer-hero__actions" data-dropdown>
-            <button class="footer-hero__share" data-dropdown-trigger>
-              <i class="dfd-socicon-icon-share" />
-              <span>Share</span>
-            </button>
-            <div class="footer-hero__socials" data-dropdown-body>
-              <ShareButtons
-                shareLink={url}
-                label={title}
-                facebookCounter={facebookCounter}
-              />
-            </div>
-          </div>
+          <ShareButton
+            slug={slug}
+            label={title}
+            facebookCounter={facebookCounter}
+          />
+          
         </footer>
       )
     }
