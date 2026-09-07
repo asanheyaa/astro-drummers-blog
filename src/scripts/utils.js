@@ -6,11 +6,19 @@ export function withBase(path) {
   return base.endsWith('/') ? `${base}${cleanPath}` : `${base}/${cleanPath}`;
 }
 
-export function getFilteredArticles(articles, lang, limit = 5) {
-  return articles
-    .filter((article) => article.data.lang === lang)
-    .slice(0, limit);
+export function getFilteredArticles(articles, lang, limit = null) {
+  const filteredArticles = articles
+   .filter((a) => a.data.lang === lang)
+  .sort((a, b) => parseDate(b.data.date) - parseDate(a.data.date))
+  if (limit) {
+    return filteredArticles.slice(0, limit)
+  } 
+  else {
+    return filteredArticles
+  }
 }
+
+
 
 export function getPostLink(slug, lang) {
    if (!lang) {
@@ -94,8 +102,8 @@ export function getCategoriesWithPosts(posts, lang) {
         (cat) => slugify(cat.title) === slug
       );
       return hasMain || hasAdditional;
-    });
-
+    }).sort((a, b) => parseDate(b.data.date) - parseDate(a.data.date));
+    
     return { slug, title: catData.title, id: catData.id, posts };
   });
 }
@@ -111,4 +119,13 @@ export function paginateItems(items, currentPage, pageSize = 10) {
     lastPage,
     total: items.length,
   };
+}
+
+export function parseDate(dateStr) {
+  if (/^\d{4}-\d{2}-\d{2}/.test(dateStr)) {
+    return new Date(dateStr).getTime(); 
+  }
+  const [day, month, year] = dateStr.split(".").map(Number);
+  const fullYear = year < 100 ? 2000 + year : year;
+  return new Date(fullYear, month - 1, day).getTime();
 }

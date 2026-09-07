@@ -1,4 +1,4 @@
-
+import {parseDate} from '../scripts/utils.js'
 // export const posts = [
 //   // ============ ARTICLE A: Vinyl Revival ============
 //   {
@@ -1567,13 +1567,15 @@ export const posts = [
   }
 ];
 export async function getBlogArticles() {
+  const sorted = [...posts].sort(
+    (a, b) => parseDate(b.date) - parseDate(a.date)
+  );
 
-  return posts.map((raw, i) => {
-    const prev = findAdjacentByLang(posts, i, raw.lang, -1);
-    const next = findAdjacentByLang(posts, i, raw.lang, 1);
+  return sorted.map((raw, i) => {
+    const prev = findAdjacentByLang(sorted, i, raw.lang, -1);
+    const next = findAdjacentByLang(sorted, i, raw.lang, 1);
     return mapArticle(raw, prev, next);
   });
-    
 }
 
 function findAdjacentByLang(posts, currentIndex, lang, direction) {

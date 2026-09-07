@@ -10,6 +10,7 @@ import { useTranslations } from "../../../../scripts/i18n.js";
 import {
   getCategoryLink,
   getCommentsLink,
+  getFilteredArticles,
   getPostLink,
   paginateItems,
 } from "../../../../scripts/utils.js";
@@ -17,8 +18,8 @@ import { PAGE_SIZE } from "../../../../scripts/consts.js";
 
 export async function getStaticPaths() {
   const posts = await getCollection("posts");
-  const dePosts = posts.filter((p) => p.data.lang === "de");
-  const lastPage = Math.max(1, Math.ceil(dePosts.length / PAGE_SIZE));
+  const enPosts = posts.filter((p) => p.data.lang === "en");
+  const lastPage = Math.max(1, Math.ceil(enPosts.length / PAGE_SIZE));
 
   const paths = [];
   for (let page = 2; page <= lastPage; page++) {
@@ -34,7 +35,7 @@ const { page } = Astro.params;
 const currentPageParam = Number(page);
 
 const allArticles = await getCollection("posts");
-const langArticles = allArticles.filter((a) => a.data.lang === lang);
+const langArticles = getFilteredArticles(allArticles, lang);
 
 const {
   items: articles,

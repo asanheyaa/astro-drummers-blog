@@ -17,14 +17,16 @@ import {
   getCommentsLink,
   getPostLink,
   paginateItems,
+  parseDate,
 } from "../../scripts/utils.js";
 
 import { PAGE_SIZE } from "../../scripts/consts.js";
+import { getFilteredArticles } from "../../scripts/utils.js";
 
 const t = useTranslations(lang);
 
 const allArticles = await getCollection("posts");
-const langArticles = allArticles.filter((a) => a.data.lang === lang);
+const langArticles = getFilteredArticles(allArticles, lang);
 
 const {
   items: articles,

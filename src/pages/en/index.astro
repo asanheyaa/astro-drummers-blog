@@ -30,7 +30,7 @@ import LanguageSwitcher from "../../components/LanguageSwitcher.astro";
 import { getCollection } from "astro:content";
 
 const allArticles = await getCollection("posts");
-const articles = getFilteredArticles(allArticles, lang, 4);
+const articles = getFilteredArticles(allArticles, lang, 5);
 ---
 
 <Layout

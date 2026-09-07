@@ -15,6 +15,7 @@ const { lang } = Astro.locals;
 import {
   getCategoryLink,
   getCommentsLink,
+  getFilteredArticles,
   getPostLink,
   paginateItems,
 } from "../../../scripts/utils.js";
@@ -24,7 +25,7 @@ import { PAGE_SIZE } from "../../../scripts/consts.js";
 const t = useTranslations(lang);
 
 const allArticles = await getCollection("posts");
-const langArticles = allArticles.filter((a) => a.data.lang === lang);
+const langArticles = getFilteredArticles(allArticles, lang);
 
 const {
   items: articles,

@@ -82,7 +82,10 @@ const t = useTranslations(lang);
       <div class="header-actions">
         <ul class="header-actions__list">
           <li class="header-actions__item">
-            <a href="/cart/" class="header-actions__link">
+            <a
+              href={withBase(`${targetLang}/cart/`)}
+              class="header-actions__link"
+            >
               <span class="header-actions__icon">
                 <i class="dfd-socicon-icon-ios7-cart"> </i>
               </span>

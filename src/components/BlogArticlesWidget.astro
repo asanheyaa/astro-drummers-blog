@@ -10,7 +10,7 @@ const { lang } = Astro.locals;
 const t = useTranslations(lang);
 
 const posts = await getCollection("posts");
-const articles = getFilteredArticles(posts, lang, 5);
+const articles = getFilteredArticles(posts, lang, 4);
 ---
 
 <aside class="aside-widget">

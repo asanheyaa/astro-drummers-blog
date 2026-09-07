@@ -10,8 +10,10 @@ import { useTranslations } from "../../../scripts/i18n.js";
 import {
   getCategoryLink,
   getCommentsLink,
+  getFilteredArticles,
   getPostLink,
   paginateItems,
+  parseDate,
 } from "../../../scripts/utils.js";
 import { PAGE_SIZE } from "../../../scripts/consts.js";
 
@@ -34,7 +36,7 @@ const { page } = Astro.params;
 const currentPageParam = Number(page);
 
 const allArticles = await getCollection("posts");
-const langArticles = allArticles.filter((a) => a.data.lang === lang);
+const langArticles = getFilteredArticles(allArticles, lang);
 
 const {
   items: articles,
