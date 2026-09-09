@@ -52,6 +52,17 @@ body {
 	// display: none !important;
 }
 
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
 //==========================================================================================================================================================
 
 .button {
@@ -1048,6 +1059,7 @@ body {
 		color: #ffde00;
 		line-height: 147.619048%; /* 62/42 */
 		font-weight: 700;
+		letter-spacing: -0.125rem;
 	}
 
 	&__subtitle {

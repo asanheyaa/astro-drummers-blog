@@ -2,7 +2,7 @@
 @use "mixins" as *;
 
 .home-hero {
-	background: url(../assets/img/home-page/hero/hero_bg.webp) center / cover no-repeat;
+	background: url(../assets/img/home-page/hero/hero_bg.webp) center top / cover no-repeat;
 	min-height: 100vh;
 	display: flex;
 	align-items: center;
@@ -125,14 +125,13 @@
 	}
 }
 .content-home-hero {
-	max-width: 27.5rem;
 	margin: 0 auto;
-	padding: 0.3125rem;
+	max-width: 37.1875rem;
 	@media (max-width: 31.25rem) {
 		max-width: calc(100vw - 3.75rem);
 	}
 	&__swiper.swiper {
-		margin-bottom: 1.5625rem;
+		margin-bottom: 1.25rem;
 		width: 100%;
 		max-width: 100%;
 		transition: all 0.5s ease 0s;
@@ -213,6 +212,7 @@
 	&__button {
 		display: inline-block;
 		transition: all 0.5s ease 0s;
+		padding: 0.4375rem 2.75rem;
 		@media (prefers-reduced-motion: no-preference) {
 			&:not(.--start-anim) {
 				transform: scale(0.8);

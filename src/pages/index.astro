@@ -54,7 +54,12 @@ const articles = getFilteredArticles(allArticles, lang, 5);
       <div class="home-hero__container">
         <div class="home-hero__header">
           <div class="home-hero__logo">
-            <Image src={logoBig} alt={t("homePage", "hero.logoImageAlt")} />
+            <h1>
+              <Image src={logoBig} alt={t("homePage", "hero.logoImageAlt")} />
+            </h1>
+            <span class="visually-hidden">
+              {t("homePage", "hero.logoImageAlt")}
+            </span>
           </div>
           <nav class="home-hero__menu">
             <ul class="home-hero__list">

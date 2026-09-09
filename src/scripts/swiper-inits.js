@@ -7,7 +7,7 @@ import { Pagination,Autoplay, Thumbs } from 'swiper/modules';
 
 if (homeHeroSwiper) {
 	const heroSwiper = new Swiper(homeHeroSwiper, {
-		modules: [ Autoplay],
+		modules: [ Autoplay, Pagination],
 		slidesPerView: 1,
 		spaceBetween: 15,
 		loop: true,
