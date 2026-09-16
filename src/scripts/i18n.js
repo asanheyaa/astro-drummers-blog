@@ -6,8 +6,10 @@ import footerEn from '../translations/main-sections/footer/en.json';
 import footerDe from '../translations/main-sections/footer/de.json';
 import categoriesDe from '../translations/main-sections/categories/de.json';
 import categoriesEn from '../translations/main-sections/categories/en.json';
-import newsletterEn from '../translations/main-sections/newsletter/en.json';
 import newsletterDe from '../translations/main-sections/newsletter/de.json';
+import newsletterEn from '../translations/main-sections/newsletter/en.json';
+import cookiesDe from '../translations/main-sections/cookies/de.json';
+import cookiesEn from '../translations/main-sections/cookies/en.json';
 import blogDe from '../translations/blog/de.json';
 import blogEn from '../translations/blog/en.json';
 import singlePostDe from '../translations/single-post/de.json';
@@ -41,6 +43,7 @@ const translations = {
     cart:cartDe,
     findYourWay:findYourWayDe,
     rudiments: rudimentsDe,
+    cookies: cookiesDe,
   },
   en: {
     homePage: homeEn,
@@ -54,6 +57,7 @@ const translations = {
     cart:cartEn,
     findYourWay:findYourWayEn,
     rudiments: rudimentsEn,
+    cookies:cookiesEn,
   },
 };
 

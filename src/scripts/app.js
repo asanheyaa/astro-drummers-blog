@@ -4,6 +4,7 @@ import { initSmoothScroll } from './lenis-init.js';
 import { initHeaderFunctions } from './header.js';
 import { initPopUpFunctions } from './popUps.js';
 import { initPreloader } from './preloader.js';
+import { initCookiesPopup } from './cookies.js';
 
 initPreloader()
 document.addEventListener("DOMContentLoaded", () => {
@@ -12,6 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	initHeaderFunctions()
 	initAnimation()
 	initParallax()
+	initCookiesPopup()
 })
 
 const dropDowns = document.querySelectorAll('[data-dropdown]');

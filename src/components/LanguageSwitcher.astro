@@ -87,16 +87,22 @@ const path = await getPath(targetLang);
       </a>
     </li>
   ) : (
-    Object.entries(languages).map(([code, label]) => (
-      <li class="home-hero__item">
-        <a
-          href={path}
-          class:list={["home-hero__link", { _active: code === lang }]}
-          aria-current={code === lang ? "page" : undefined}
-        >
-          {code.toUpperCase()}
-        </a>
-      </li>
-    ))
+    Object.entries(languages)
+      .sort(([codeA], [codeB]) => {
+        if (codeA === lang) return 1; 
+        if (codeB === lang) return -1;
+        return 0;
+      })
+      .map(([code, label]) => (
+        <li class="home-hero__item">
+          <a
+            href={path}
+            class:list={["home-hero__link", { _active: code === lang }]}
+            aria-current={code === lang ? "page" : undefined}
+          >
+            {code.toUpperCase()}
+          </a>
+        </li>
+      ))
   )
 }

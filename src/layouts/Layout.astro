@@ -33,6 +33,7 @@ const {
 
 const { lang } = Astro.locals;
 const locale = lang === "de" ? "de_DE" : "en_US";
+const t = useTranslations(lang);
 ---
 
 <!doctype html>
@@ -81,18 +82,6 @@ const locale = lang === "de" ? "de_DE" : "en_US";
     }
     <title>{title}</title>
     <link rel="icon" type="image/webp" href={withBase("/favicon.webp")} />
-
-    <link
-      href="https://fonts.googleapis.com/css?family=Merriweather:300,regular,500,600,700,800,900,300italic,italic,500italic,600italic,700italic,800italic,900italic"
-      rel="stylesheet"
-    />
-    <!-- italic, 600-italic-->
-
-    <link
-      href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic&display=swap"
-      rel="stylesheet"
-    />
-    <!-- 700,400,600 -->
     <link
       href="https://fonts.googleapis.com/css?family=Open+Sans:300,regular,500,600,700,800,300italic,italic,500italic,600italic,700italic,800italic&display=swap"
       rel="stylesheet"
@@ -119,7 +108,21 @@ const locale = lang === "de" ? "de_DE" : "en_US";
 
       <Footer />
     </div>
-
+    <div class="cookies-popup" data-cookies-popup>
+      <div class="cookies-popup__wrapper">
+        <div
+          class="cookies-popup__text"
+          set:html={t("cookies", "cookiespopup.text")}
+        />
+        <button
+          type="button"
+          class="cookies-popup__button button button-alt"
+          data-cookies-popup-close
+        >
+          {t("cookies", "cookiespopup.buttonText")}
+        </button>
+      </div>
+    </div>
     <script src="../scripts/app.js"></script>
   </body>
 </html>
