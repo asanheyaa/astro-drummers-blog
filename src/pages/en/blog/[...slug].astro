@@ -1,5 +1,5 @@
 ---
-import Image from "astro/components/Image.astro";
+import { Image } from 'astro:assets';
 import HeroSection from "../../../components/HeroSection.astro";
 import {
   getCategoryLink,
@@ -437,7 +437,7 @@ const t = useTranslations(lang);
                     return (
                       <div class="single-post-related__slide swiper-slide">
                         <BlogCard
-                          src={relatedPost.src}
+                          src={relatedPost.cover}
                           alt={relatedPost.alt}
                           date={relatedPost.date}
                           title={relatedPost.title}
