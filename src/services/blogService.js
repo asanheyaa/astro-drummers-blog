@@ -9,7 +9,7 @@ export const posts = [
     slug: 'why-vinyl-refuses-to-die-analog-listening-in-a-streaming-age',
     title: 'Why Vinyl Refuses to Die: Analog Listening in a Streaming Age',
     description: 'Sales of vinyl records keep climbing even as streaming dominates every chart. What does it mean to choose friction over convenience?',
-    cover: 'article-image_01.jpg',
+    cover: 'https://picsum.photos/seed/drummersblog-01/600/800',
     date: '12.01.26',
     alt: 'Why Vinyl Refuses to Die: Analog Listening in a Streaming Age',
     autor: 'Mara Voss',
@@ -34,14 +34,14 @@ export const posts = [
     nextPost: {
       id: '12',
       title: 'Can a Machine Write a Melody That Moves You?',
-      cover: 'article-image_02.jpg',
+      cover: 'https://picsum.photos/seed/drummersblog-02/600/450',
       date: '26.01.26',
       slug: 'can-a-machine-write-a-melody-that-moves-you-ai-and-musical-authorship'
     },
     relatedPosts: [
       {
         id: '16',
-        cover: 'article-image_04.jpg',
+        cover: 'https://picsum.photos/seed/drummersblog-04/600/600',
         alt: 'The Streaming Royalty Problem',
         date: '23.02.26',
         category: 'Industry',
@@ -53,7 +53,7 @@ export const posts = [
       },
       {
         id: '14',
-        cover: 'article-image_03.jpg',
+        cover: 'https://picsum.photos/seed/drummersblog-03/600/900',
         alt: 'Building Your First Home Studio Without Breaking the Bank',
         date: '09.02.26',
         category: 'Production',
@@ -81,7 +81,7 @@ export const posts = [
     slug: 'warum-vinyl-nicht-sterben-will-analoges-hoeren-im-streaming-zeitalter',
     title: 'Warum Vinyl nicht sterben will: Analoges Hören im Streaming-Zeitalter',
     description: 'Die Verkaufszahlen von Schallplatten steigen weiter, obwohl Streaming jede Chart dominiert. Was bedeutet es, Reibung der Bequemlichkeit vorzuziehen?',
-    cover: 'article-image_01.jpg',
+    cover: 'https://picsum.photos/seed/drummersblog-01/600/800',
     date: '12.01.26',
     alt: 'Warum Vinyl nicht sterben will: Analoges Hören im Streaming-Zeitalter',
     autor: 'Mara Voss',
@@ -106,14 +106,14 @@ export const posts = [
     nextPost: {
       id: '13',
       title: 'Kann eine Maschine eine Melodie schreiben, die berührt?',
-      cover: 'article-image_02.jpg',
+      cover: 'https://picsum.photos/seed/drummersblog-02/600/450',
       date: '26.01.26',
       slug: 'kann-eine-maschine-eine-melodie-schreiben-die-beruehrt-ki-und-musikalische-urheberschaft'
     },
     relatedPosts: [
       {
         id: '17',
-        cover: 'article-image_04.jpg',
+        cover: 'https://picsum.photos/seed/drummersblog-04/600/600',
         alt: 'Das Problem der Streaming-Tantiemen',
         date: '23.02.26',
         category: 'Industrie',
@@ -125,7 +125,7 @@ export const posts = [
       },
       {
         id: '15',
-        cover: 'article-image_03.jpg',
+        cover: 'https://picsum.photos/seed/drummersblog-03/600/900',
         alt: 'Dein erstes Homestudio einrichten, ohne die Bank zu sprengen',
         date: '09.02.26',
         category: 'Produktion',
@@ -155,7 +155,7 @@ export const posts = [
     slug: 'can-a-machine-write-a-melody-that-moves-you-ai-and-musical-authorship',
     title: 'Can a Machine Write a Melody That Moves You? AI and the Question of Musical Authorship',
     description: 'AI tools can now generate a finished song from a text prompt in seconds. What happens to authorship, craft, and emotional meaning when composition becomes automated?',
-    cover: 'article-image_02.jpg',
+    cover: 'https://picsum.photos/seed/drummersblog-02/600/450',
     date: '26.01.26',
     alt: 'Can a Machine Write a Melody That Moves You? AI and the Question of Musical Authorship',
     autor: 'Jonas Reiter',
@@ -178,21 +178,21 @@ export const posts = [
     previousPost: {
       id: '10',
       title: 'Why Vinyl Refuses to Die: Analog Listening in a Streaming Age',
-      cover: 'article-image_01.jpg',
+      cover: 'https://picsum.photos/seed/drummersblog-01/600/800',
       date: '12.01.26',
       slug: 'why-vinyl-refuses-to-die-analog-listening-in-a-streaming-age'
     },
     nextPost: {
       id: '14',
       title: 'Building Your First Home Studio Without Breaking the Bank',
-      cover: 'article-image_03.jpg',
+      cover: 'https://picsum.photos/seed/drummersblog-03/600/900',
       date: '09.02.26',
       slug: 'building-your-first-home-studio-without-breaking-the-bank'
     },
     relatedPosts: [
       {
         id: '18',
-        cover: 'article-image_05.jpg',
+        cover: 'https://picsum.photos/seed/drummersblog-05/600/380',
         alt: 'Sound as Medicine: How Music Shapes Mental Health',
         date: '09.03.26',
         category: 'Wellbeing',
@@ -204,7 +204,7 @@ export const posts = [
       },
       {
         id: '16',
-        cover: 'article-image_04.jpg',
+        cover: 'https://picsum.photos/seed/drummersblog-04/600/600',
         alt: 'The Streaming Royalty Problem',
         date: '23.02.26',
         category: 'Industry',
@@ -224,7 +224,7 @@ export const posts = [
     slug: 'kann-eine-maschine-eine-melodie-schreiben-die-beruehrt-ki-und-musikalische-urheberschaft',
     title: 'Kann eine Maschine eine Melodie schreiben, die berührt? KI und die Frage der musikalischen Urheberschaft',
     description: 'KI-Tools können heute innerhalb von Sekunden aus einem Textprompt einen fertigen Song erzeugen. Was passiert mit Urheberschaft, Handwerk und emotionaler Bedeutung, wenn Komposition automatisiert wird?',
-    cover: 'article-image_02.jpg',
+    cover: 'https://picsum.photos/seed/drummersblog-02/600/450',
     date: '26.01.26',
     alt: 'Kann eine Maschine eine Melodie schreiben, die berührt? KI und die Frage der musikalischen Urheberschaft',
     autor: 'Jonas Reiter',
@@ -247,21 +247,21 @@ export const posts = [
     previousPost: {
       id: '11',
       title: 'Warum Vinyl nicht sterben will: Analoges Hören im Streaming-Zeitalter',
-      cover: 'article-image_01.jpg',
+      cover: 'https://picsum.photos/seed/drummersblog-01/600/800',
       date: '12.01.26',
       slug: 'warum-vinyl-nicht-sterben-will-analoges-hoeren-im-streaming-zeitalter'
     },
     nextPost: {
       id: '15',
       title: 'Dein erstes Homestudio einrichten, ohne die Bank zu sprengen',
-      cover: 'article-image_03.jpg',
+      cover: 'https://picsum.photos/seed/drummersblog-03/600/900',
       date: '09.02.26',
       slug: 'dein-erstes-homestudio-einrichten-ohne-die-bank-zu-sprengen'
     },
     relatedPosts: [
       {
         id: '19',
-        cover: 'article-image_05.jpg',
+        cover: 'https://picsum.photos/seed/drummersblog-05/600/380',
         alt: 'Klang als Medizin: Wie Musik die psychische Gesundheit beeinflusst',
         date: '09.03.26',
         category: 'Wohlbefinden',
@@ -273,7 +273,7 @@ export const posts = [
       },
       {
         id: '17',
-        cover: 'article-image_04.jpg',
+        cover: 'https://picsum.photos/seed/drummersblog-04/600/600',
         alt: 'Das Problem der Streaming-Tantiemen',
         date: '23.02.26',
         category: 'Industrie',
@@ -295,7 +295,7 @@ export const posts = [
     slug: 'building-your-first-home-studio-without-breaking-the-bank',
     title: 'Building Your First Home Studio Without Breaking the Bank',
     description: 'You do not need a treated room and five-figure gear to start recording seriously. Here is what actually matters when you are starting from zero.',
-    cover: 'article-image_03.jpg',
+    cover: 'https://picsum.photos/seed/drummersblog-03/600/900',
     date: '09.02.26',
     alt: 'Building Your First Home Studio Without Breaking the Bank',
     autor: 'Sven Ahlers',
@@ -318,21 +318,21 @@ export const posts = [
     previousPost: {
       id: '12',
       title: 'Can a Machine Write a Melody That Moves You?',
-      cover: 'article-image_02.jpg',
+      cover: 'https://picsum.photos/seed/drummersblog-02/600/450',
       date: '26.01.26',
       slug: 'can-a-machine-write-a-melody-that-moves-you-ai-and-musical-authorship'
     },
     nextPost: {
       id: '16',
       title: 'The Streaming Royalty Problem: Why Artists See Pennies Per Play',
-      cover: 'article-image_04.jpg',
+      cover: 'https://picsum.photos/seed/drummersblog-04/600/600',
       date: '23.02.26',
       slug: 'the-streaming-royalty-problem-why-artists-see-pennies-per-play'
     },
     relatedPosts: [
       {
         id: '10',
-        cover: 'article-image_01.jpg',
+        cover: 'https://picsum.photos/seed/drummersblog-01/600/800',
         alt: 'Why Vinyl Refuses to Die',
         date: '12.01.26',
         category: 'Culture',
@@ -344,7 +344,7 @@ export const posts = [
       },
       {
         id: '18',
-        cover: 'article-image_05.jpg',
+        cover: 'https://picsum.photos/seed/drummersblog-05/600/380',
         alt: 'Sound as Medicine: How Music Shapes Mental Health',
         date: '09.03.26',
         category: 'Wellbeing',
@@ -372,7 +372,7 @@ export const posts = [
     slug: 'dein-erstes-homestudio-einrichten-ohne-die-bank-zu-sprengen',
     title: 'Dein erstes Homestudio einrichten, ohne die Bank zu sprengen',
     description: 'Du brauchst weder einen akustisch behandelten Raum noch fünfstelliges Equipment, um ernsthaft mit dem Aufnehmen zu beginnen. Das zählt wirklich, wenn du bei null startest.',
-    cover: 'article-image_03.jpg',
+    cover: 'https://picsum.photos/seed/drummersblog-03/600/900',
     date: '09.02.26',
     alt: 'Dein erstes Homestudio einrichten, ohne die Bank zu sprengen',
     autor: 'Sven Ahlers',
@@ -395,21 +395,21 @@ export const posts = [
     previousPost: {
       id: '13',
       title: 'Kann eine Maschine eine Melodie schreiben, die berührt?',
-      cover: 'article-image_02.jpg',
+      cover: 'https://picsum.photos/seed/drummersblog-02/600/450',
       date: '26.01.26',
       slug: 'kann-eine-maschine-eine-melodie-schreiben-die-beruehrt-ki-und-musikalische-urheberschaft'
     },
     nextPost: {
       id: '17',
       title: 'Das Problem der Streaming-Tantiemen',
-      cover: 'article-image_04.jpg',
+      cover: 'https://picsum.photos/seed/drummersblog-04/600/600',
       date: '23.02.26',
       slug: 'das-problem-der-streaming-tantiemen-warum-kuenstler-nur-cent-betraege-pro-stream-sehen'
     },
     relatedPosts: [
       {
         id: '11',
-        cover: 'article-image_01.jpg',
+        cover: 'https://picsum.photos/seed/drummersblog-01/600/800',
         alt: 'Warum Vinyl nicht sterben will',
         date: '12.01.26',
         category: 'Kultur',
@@ -421,7 +421,7 @@ export const posts = [
       },
       {
         id: '19',
-        cover: 'article-image_05.jpg',
+        cover: 'https://picsum.photos/seed/drummersblog-05/600/380',
         alt: 'Klang als Medizin',
         date: '09.03.26',
         category: 'Wohlbefinden',
@@ -451,7 +451,7 @@ export const posts = [
     slug: 'the-streaming-royalty-problem-why-artists-see-pennies-per-play',
     title: 'The Streaming Royalty Problem: Why Artists See Pennies Per Play',
     description: 'A song can rack up millions of streams and still earn its creator less than a single ticket sale. Why does the math work out this way, and who actually benefits from it?',
-    cover: 'article-image_04.jpg',
+    cover: 'https://picsum.photos/seed/drummersblog-04/600/600',
     date: '23.02.26',
     alt: 'The Streaming Royalty Problem: Why Artists See Pennies Per Play',
     autor: 'Nora Klein',
@@ -474,21 +474,21 @@ export const posts = [
     previousPost: {
       id: '14',
       title: 'Building Your First Home Studio Without Breaking the Bank',
-      cover: 'article-image_03.jpg',
+      cover: 'https://picsum.photos/seed/drummersblog-03/600/900',
       date: '09.02.26',
       slug: 'building-your-first-home-studio-without-breaking-the-bank'
     },
     nextPost: {
       id: '18',
       title: 'Sound as Medicine: How Music Shapes Mental Health',
-      cover: 'article-image_05.jpg',
+      cover: 'https://picsum.photos/seed/drummersblog-05/600/380',
       date: '09.03.26',
       slug: 'sound-as-medicine-how-music-shapes-mental-health'
     },
     relatedPosts: [
       {
         id: '12',
-        cover: 'article-image_02.jpg',
+        cover: 'https://picsum.photos/seed/drummersblog-02/600/450',
         alt: 'Can a Machine Write a Melody That Moves You?',
         date: '26.01.26',
         category: 'Royalties',
@@ -500,7 +500,7 @@ export const posts = [
       },
       {
         id: '10',
-        cover: 'article-image_01.jpg',
+        cover: 'https://picsum.photos/seed/drummersblog-01/600/800',
         alt: 'Why Vinyl Refuses to Die',
         date: '12.01.26',
         category: 'Culture',
@@ -542,7 +542,7 @@ export const posts = [
     slug: 'das-problem-der-streaming-tantiemen-warum-kuenstler-nur-cent-betraege-pro-stream-sehen',
     title: 'Das Problem der Streaming-Tantiemen: Warum Künstler nur Cent-Beträge pro Stream sehen',
     description: 'Ein Song kann Millionen Streams erreichen und seiner Urheberin trotzdem weniger einbringen als ein einziges Konzertticket. Warum geht diese Rechnung so auf, und wer profitiert eigentlich davon?',
-    cover: 'article-image_04.jpg',
+    cover: 'https://picsum.photos/seed/drummersblog-04/600/600',
     date: '23.02.26',
     alt: 'Das Problem der Streaming-Tantiemen: Warum Künstler nur Cent-Beträge pro Stream sehen',
     autor: 'Nora Klein',
@@ -565,21 +565,21 @@ export const posts = [
     previousPost: {
       id: '15',
       title: 'Dein erstes Homestudio einrichten, ohne die Bank zu sprengen',
-      cover: 'article-image_03.jpg',
+      cover: 'https://picsum.photos/seed/drummersblog-03/600/900',
       date: '09.02.26',
       slug: 'dein-erstes-homestudio-einrichten-ohne-die-bank-zu-sprengen'
     },
     nextPost: {
       id: '19',
       title: 'Klang als Medizin: Wie Musik die psychische Gesundheit beeinflusst',
-      cover: 'article-image_05.jpg',
+      cover: 'https://picsum.photos/seed/drummersblog-05/600/380',
       date: '09.03.26',
       slug: 'klang-als-medizin-wie-musik-die-psychische-gesundheit-beeinflusst'
     },
     relatedPosts: [
       {
         id: '13',
-        cover: 'article-image_02.jpg',
+        cover: 'https://picsum.photos/seed/drummersblog-02/600/450',
         alt: 'Kann eine Maschine eine Melodie schreiben, die berührt?',
         date: '26.01.26',
         category: 'Technologie',
@@ -591,7 +591,7 @@ export const posts = [
       },
       {
         id: '11',
-        cover: 'article-image_01.jpg',
+        cover: 'https://picsum.photos/seed/drummersblog-01/600/800',
         alt: 'Warum Vinyl nicht sterben will',
         date: '12.01.26',
         category: 'Kultur',
@@ -628,7 +628,7 @@ export const posts = [
     slug: 'sound-as-medicine-how-music-shapes-mental-health',
     title: 'Sound as Medicine: How Music Shapes Mental Health',
     description: 'From hospital wards to daily commutes, music is increasingly used as a deliberate tool for regulating mood. What does the evidence actually support, and where does it fall short?',
-    cover: 'article-image_05.jpg',
+    cover: 'https://picsum.photos/seed/drummersblog-05/600/380',
     date: '09.03.26',
     alt: 'Sound as Medicine: How Music Shapes Mental Health',
     autor: 'Elif Deniz',
@@ -651,7 +651,7 @@ export const posts = [
     previousPost: {
       id: '16',
       title: 'The Streaming Royalty Problem: Why Artists See Pennies Per Play',
-      cover: 'article-image_04.jpg',
+      cover: 'https://picsum.photos/seed/drummersblog-04/600/600',
       date: '23.02.26',
       slug: 'the-streaming-royalty-problem-why-artists-see-pennies-per-play'
     },
@@ -659,7 +659,7 @@ export const posts = [
     relatedPosts: [
       {
         id: '14',
-        cover: 'article-image_03.jpg',
+        cover: 'https://picsum.photos/seed/drummersblog-03/600/900',
         alt: 'Building Your First Home Studio',
         date: '09.02.26',
         category: 'Production',
@@ -671,7 +671,7 @@ export const posts = [
       },
       {
         id: '12',
-        cover: 'article-image_02.jpg',
+        cover: 'https://picsum.photos/seed/drummersblog-02/600/450',
         alt: 'Can a Machine Write a Melody That Moves You?',
         date: '26.01.26',
         category: 'Royalties',
@@ -706,7 +706,7 @@ export const posts = [
     slug: 'klang-als-medizin-wie-musik-die-psychische-gesundheit-beeinflusst',
     title: 'Klang als Medizin: Wie Musik die psychische Gesundheit beeinflusst',
     description: 'Von Krankenhausstationen bis zum täglichen Arbeitsweg wird Musik zunehmend als gezieltes Werkzeug zur Stimmungsregulation eingesetzt. Was belegt die Forschung tatsächlich, und wo stößt sie an ihre Grenzen?',
-    cover: 'article-image_05.jpg',
+    cover: 'https://picsum.photos/seed/drummersblog-05/600/380',
     date: '09.03.26',
     alt: 'Klang als Medizin: Wie Musik die psychische Gesundheit beeinflusst',
     autor: 'Elif Deniz',
@@ -729,7 +729,7 @@ export const posts = [
     previousPost: {
       id: '17',
       title: 'Das Problem der Streaming-Tantiemen',
-      cover: 'article-image_04.jpg',
+      cover: 'https://picsum.photos/seed/drummersblog-04/600/600',
       date: '23.02.26',
       slug: 'das-problem-der-streaming-tantiemen-warum-kuenstler-nur-cent-betraege-pro-stream-sehen'
     },
@@ -737,7 +737,7 @@ export const posts = [
     relatedPosts: [
       {
         id: '15',
-        cover: 'article-image_03.jpg',
+        cover: 'https://picsum.photos/seed/drummersblog-03/600/900',
         alt: 'Dein erstes Homestudio einrichten',
         date: '09.02.26',
         category: 'Produktion',
@@ -749,7 +749,7 @@ export const posts = [
       },
       {
         id: '13',
-        cover: 'article-image_02.jpg',
+        cover: 'https://picsum.photos/seed/drummersblog-02/600/450',
         alt: 'Kann eine Maschine eine Melodie schreiben, die berührt?',
         date: '26.01.26',
         category: 'Technologie',
@@ -802,7 +802,7 @@ function mapArticle(raw, prev, next) {
     translationId: raw.translationId,
     title: raw.title,
     description: raw.description,
-    cover: resolveCover(raw.cover),
+    cover: raw.cover,
     date: raw.date,
     alt: raw.alt || raw.title,
     autor: raw.autor,
@@ -820,7 +820,7 @@ function mapArticle(raw, prev, next) {
       ? {
           id: String(prev.id),
           title: prev.title,
-          cover:resolveCover(prev.cover),
+          cover:prev.cover,
           date: prev.date,
           slug: prev.slug,
         }
@@ -829,23 +829,14 @@ function mapArticle(raw, prev, next) {
       ? {
           id: String(next.id),
           title: next.title,
-          cover: resolveCover(next.cover),
+          cover: next.cover,
           date: next.date,
           slug: next.slug,
         }
       : null,
-   relatedPosts: (raw.relatedPosts ?? []).map((related) => ({
-      ...related,
-      cover: resolveCover(related.cover), 
-    })),
+   relatedPosts:[...raw.relatedPosts],
     comments: raw.comments ?? [],
   };
 }
 
 
-const blogImages = import.meta.glob('/src/assets/img/blog/*.{jpg,jpeg,png,webp}', { eager: true });
-
-function resolveCover(filename) {
-  const key = `/src/assets/img/blog/${filename}`;
-  return blogImages[key]?.default ?? null;
-}
