@@ -4,7 +4,7 @@ import { getRelativeLocaleUrl } from "astro:i18n";
 
 import Layout from "../../../layouts/Layout.astro";
 
-import BlogCard from "../../../components/BlogCard.astro";
+import BlogCardAlt from "../../../components/BlogCardAlt.astro";
 import BlogPagination from "../../../components/BlogPagination.astro";
 import HeroSection from "../../../components/HeroSection.astro";
 
@@ -13,30 +13,25 @@ import { useTranslations } from "../../../scripts/i18n.js";
 const { lang } = Astro.locals;
 
 import {
+  getCategoriesWithPosts,
   getCategoryLink,
   getCommentsLink,
-  getFilteredArticles,
   getPostLink,
   paginateItems,
+  parseDate,
 } from "../../../scripts/utils.js";
 
 import { PAGE_SIZE } from "../../../scripts/consts.js";
+import { getFilteredArticles } from "../../../scripts/utils.js";
 
 const t = useTranslations(lang);
 
 const allArticles = await getCollection("posts");
 const langArticles = getFilteredArticles(allArticles, lang);
-
-const {
-  items: articles,
-  currentPage,
-  lastPage,
-  total,
-} = paginateItems(langArticles, 1, PAGE_SIZE);
+const categories = getCategoriesWithPosts(allArticles, "de");
 ---
 
 <Layout
-  isHeaderAnimated
   title={t("blog", "meta.title")}
   metaDescription={t("blog", "meta.metaDescription")}
   ogLocale={t("blog", "meta.og.locale")}
@@ -50,12 +45,16 @@ const {
   twitterLabel2={t("blog", "meta.twitter.label2")}
   twitterData2={t("blog", "meta.twitter.data2")}
 >
-  <HeroSection title={t("blog", "blog.hero.title")} />
+  <HeroSection
+    title={t("blog", "blog.hero.title")}
+    inputPlaceholder={t("blog", "blog.hero.inputPlaceholder")}
+    categories={categories}
+  />
   <section class="blog-articles">
     <div class="blog-articles__container">
       <div class="blog-articles__body">
         {
-          articles.map((article) => {
+          langArticles.map((article) => {
             const postUrl = getPostLink(article.data.slug, lang);
             const commentsUrl = getCommentsLink(
               article.data.slug,
@@ -67,8 +66,8 @@ const {
               lang
             );
             return (
-              <BlogCard
-                key={article.data.id}
+              <BlogCardAlt
+                id={article.data.id}
                 postId={article.data.id}
                 src={article.data.cover}
                 alt={article.data.alt}
@@ -81,23 +80,15 @@ const {
                 commentsLink={commentsUrl}
                 likesCounter={article.data.counters?.likes || 0}
                 commentsCounter={article.data.comments?.length || 0}
-                isGrid
+                autor={article.data.autor}
               />
             );
           })
         }
       </div>
-      {
-        lastPage > 1 && (
-          <footer class="blog-articles__footer">
-            <BlogPagination
-              currentPage={currentPage}
-              lastPage={lastPage}
-              baseUrl={getRelativeLocaleUrl(lang, "/blog")}
-            />
-          </footer>
-        )
-      }
+      <button type="button" class="blog-articles__button button"
+        >{t("blog", "blog.articles.buttonLabel")}</button
+      >
     </div>
   </section>
 </Layout>

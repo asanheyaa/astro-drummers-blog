@@ -28,6 +28,9 @@
 		"hero":{
 			"title": "'The best way I can help you is by sharing my knowledge and experiences with you. For me, that’s what this blog is about.'"
 		},
+    "articles": {
+      "buttonLabel":"Load more"
+    },
 		"asideWidget":{
 			"buttonLabel":"Load more"
 		}
