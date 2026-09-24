@@ -69,12 +69,6 @@ export function getCategoriesWithPosts(posts, lang) {
   const langPosts = posts.filter((post) => post.data.lang === lang);
 
   const rawCategoriesObjects = langPosts.flatMap((post) => {
-    const additionalCats =
-      post.data.additionalsCategories?.map((cat) => ({
-        id: cat.id,
-        title: cat.title,
-        slug: slugify(cat.title),
-      })) || [];
 
     const mainCat = post.data.mainCategory
       ? {
@@ -84,7 +78,7 @@ export function getCategoriesWithPosts(posts, lang) {
         }
       : null;
 
-    return mainCat ? [mainCat, ...additionalCats] : additionalCats;
+    return mainCat ;
   });
 
   const uniqueCategoriesMap = new Map();
@@ -107,6 +101,49 @@ export function getCategoriesWithPosts(posts, lang) {
     return { slug, title: catData.title, id: catData.id, posts };
   });
 }
+
+// export function getCategoriesWithPosts(posts, lang) {
+//   const langPosts = posts.filter((post) => post.data.lang === lang);
+
+//   const rawCategoriesObjects = langPosts.flatMap((post) => {
+//     const additionalCats =
+//       post.data.additionalsCategories?.map((cat) => ({
+//         id: cat.id,
+//         title: cat.title,
+//         slug: slugify(cat.title),
+//       })) || [];
+
+//     const mainCat = post.data.mainCategory
+//       ? {
+//           id: post.data.translationId,
+//           title: post.data.mainCategory,
+//           slug: slugify(post.data.mainCategory),
+//         }
+//       : null;
+
+//     return mainCat ? [mainCat, ...additionalCats] : additionalCats;
+//   });
+
+//   const uniqueCategoriesMap = new Map();
+//   rawCategoriesObjects.forEach((cat) => {
+//     if (cat && cat.slug) {
+//       uniqueCategoriesMap.set(cat.slug, { id: cat.id, title: cat.title });
+//     }
+//   });
+
+//   return Array.from(uniqueCategoriesMap.entries()).map(([slug, catData]) => {
+//     const posts = langPosts.filter((post) => {
+//       const hasMain =
+//         post.data.mainCategory && slugify(post.data.mainCategory) === slug;
+//       const hasAdditional = post.data.additionalsCategories?.some(
+//         (cat) => slugify(cat.title) === slug
+//       );
+//       return hasMain || hasAdditional;
+//     }).sort((a, b) => parseDate(b.data.date) - parseDate(a.data.date));
+    
+//     return { slug, title: catData.title, id: catData.id, posts };
+//   });
+// }
 
 export function paginateItems(items, currentPage, pageSize = 10) {
   const lastPage = Math.max(1, Math.ceil(items.length / pageSize));

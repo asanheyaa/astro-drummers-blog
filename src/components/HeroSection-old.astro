@@ -1,0 +1,66 @@
+---
+import CommentsButton from "./CommentsButton.astro";
+import Date from "./Date.astro";
+import LikeButton from "./LikeButton.astro";
+import ShareButton from "./ShareButton.astro";
+
+const {
+  isAlt,
+  title,
+  autor,
+  date,
+  commentsCounter,
+  commentsLink,
+  viewsCounter,
+  likesCounter,
+  slug,
+  autorPrefix,
+  facebookCounter,
+} = Astro.props;
+---
+
+<section
+  class="hero"
+  aria-labelledby="hero-title"
+  data-animation-parallax-wrapper
+>
+  <div class="hero__container">
+    <h1
+      class:list={["hero__title", { "hero__title-alt": isAlt }]}
+      data-animation-parallax-element
+      id="hero-title"
+    >
+      {title}
+    </h1>
+    {
+      autor && (
+        <footer class="footer-hero">
+          <div class="footer-hero__autor">
+            <span>{autorPrefix}</span> <span>{autor}</span>
+          </div>
+          <div class="footer-hero__details">
+            <div class="footer-hero__item">
+              <Date date={date} />
+            </div>
+
+            <CommentsButton
+              commentsLink={commentsLink}
+              commentsCounter={commentsCounter}
+              class="footer-hero__item"
+            />
+            <div class="footer-hero__item">
+              <span>{viewsCounter} </span> <span>Views</span>
+            </div>
+            <LikeButton likesCounter={likesCounter} class="footer-hero__item" />
+          </div>
+          <ShareButton
+            slug={slug}
+            label={title}
+            facebookCounter={facebookCounter}
+          />
+          
+        </footer>
+      )
+    }
+  </div>
+</section>

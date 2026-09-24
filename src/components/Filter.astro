@@ -1,0 +1,35 @@
+---
+const { items, categories } = Astro.props;
+import {
+  getCategoryLink,
+  getFilteredArticles,
+  getPostLink,
+  withBase,
+} from "../scripts/utils";
+
+const { lang } = Astro.locals;
+---
+
+<div class="filter" data-dropdown="vertical">
+  <button class="filter__button" data-dropdown-trigger>
+    <span class="filter__icon"> <i class="fa fa-tags"></i> </span>
+    <span class="filter__value">Filter Content</span>
+  </button>
+  <div class="filter__body" data-dropdown-body>
+    <ul class="filter__list">
+      {
+        categories &&
+          categories.map((item) => {
+            const categoryUrl = getCategoryLink(item.slug, lang);
+            return (
+              <li class="filter__item">
+                <a href={categoryUrl} class="filter__link">
+                  {item.title}
+                </a>
+              </li>
+            );
+          })
+      }
+    </ul>
+  </div>
+</div>

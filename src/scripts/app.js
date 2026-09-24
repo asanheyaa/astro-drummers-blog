@@ -18,14 +18,44 @@ document.addEventListener("DOMContentLoaded", () => {
 
 const dropDowns = document.querySelectorAll('[data-dropdown]');
 
-if (dropDowns) {
+if (dropDowns.length > 0) {
 	dropDowns.forEach(dropDown => {
-		const dropDownBody = dropDown.parentElement.querySelector('[data-dropdown-body]');
-		const trigger = dropDown.parentElement.querySelector('[data-dropdown-trigger]');
+		const trigger = dropDown.querySelector('[data-dropdown-trigger]');
+		const dropDownBody = dropDown.querySelector('[data-dropdown-body]');
+		let property
+		if (dropDown.dataset.dropDown === 'vertical'){
+			property = 'max-height'
+		} else if (dropDown.dataset.dropDown === 'horizontal'){
+		property = 'max-width'
+
+		}
+		if (!trigger || !dropDownBody) return; 
 
 		trigger.addEventListener('click', (e) => {
 			e.stopPropagation();
-			dropDownBody.classList.toggle('_active');
+			
+			const isActive = dropDownBody.classList.contains('_active');
+			
+			if (!isActive) {
+				dropDownBody.style.overflow = 'hidden'; 
+				dropDownBody.classList.add('_active');
+				
+				const fullHeight = dropDownBody.scrollHeight;
+				dropDownBody.style.maxHeight = `${Math.min(fullHeight, 440)}px`;
+				
+				const enableScroll = (e) => {
+					if (e.propertyName === property) {
+						dropDownBody.style.overflow = 'auto';
+						dropDownBody.removeEventListener('transitionend', enableScroll);
+					}
+				};
+				dropDownBody.addEventListener('transitionend', enableScroll);
+				
+			} else {
+				dropDownBody.style.overflow = 'hidden'; 
+				dropDownBody.style.maxHeight = '0px';
+				dropDownBody.classList.remove('_active');
+			}
 		});
 
 		dropDownBody.addEventListener('click', (e) => {
@@ -35,14 +65,20 @@ if (dropDowns) {
 
 	document.addEventListener('click', () => {
 		dropDowns.forEach(dropDown => {
-			const dropDownBody = dropDown.parentElement.querySelector('[data-dropdown-body]');
-			dropDownBody.classList.remove('_active');
+			const dropDownBody = dropDown.querySelector('[data-dropdown-body]');
+			if (dropDownBody && dropDownBody.classList.contains('_active')) {
+				dropDownBody.style.overflow = 'hidden';
+				dropDownBody.style.maxHeight = '0px';
+				dropDownBody.classList.remove('_active');
+			}
 		});
 	});
 }
+
+
 function getProductQuantity() {
   const value = `; ${document.cookie}`;
-  const parts = value.split(`; dremmersblog_shopping_cart=`);
+  const parts = value.split(`; drummersblog_shopping_cart=`);
   
   let items = "";
   if (parts.length === 2) {

@@ -1,8 +1,7 @@
 ---
-import CommentsButton from "./CommentsButton.astro";
-import Date from "./Date.astro";
-import LikeButton from "./LikeButton.astro";
-import ShareButton from "./ShareButton.astro";
+import Filter from "./Filter.astro";
+import SearchHero from "./SearchHero.astro";
+import "../styles/fontawesome.scss";
 
 const {
   isAlt,
@@ -16,6 +15,8 @@ const {
   slug,
   autorPrefix,
   facebookCounter,
+  inputPlaceholder,
+  categories,
 } = Astro.props;
 ---
 
@@ -32,35 +33,9 @@ const {
     >
       {title}
     </h1>
-    {
-      autor && (
-        <footer class="footer-hero">
-          <div class="footer-hero__autor">
-            <span>{autorPrefix}</span> <span>{autor}</span>
-          </div>
-          <div class="footer-hero__details">
-            <div class="footer-hero__item">
-              <Date date={date} />
-            </div>
-
-            <CommentsButton
-              commentsLink={commentsLink}
-              commentsCounter={commentsCounter}
-              class="footer-hero__item"
-            />
-            <div class="footer-hero__item">
-              <span>{viewsCounter} </span> <span>Views</span>
-            </div>
-            <LikeButton likesCounter={likesCounter} class="footer-hero__item" />
-          </div>
-          <ShareButton
-            slug={slug}
-            label={title}
-            facebookCounter={facebookCounter}
-          />
-          
-        </footer>
-      )
-    }
+    <div class="hero-actions">
+      <Filter categories={categories} />
+      <SearchHero inputPlaceholder={inputPlaceholder} />
+    </div>
   </div>
 </section>

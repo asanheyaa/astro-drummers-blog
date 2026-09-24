@@ -1,0 +1,20 @@
+---
+const { inputPlaceholder } = Astro.props;
+---
+
+<div class="hero-search">
+  <form action="#" class="hero-search__form">
+    <input
+      type="text"
+      name="search"
+      placeholder={inputPlaceholder}
+      class="hero-search__input"
+    />
+    <button type="submit" class="hero-search__button">
+      <span class="hero-search__icon">
+        <i class="fa fa-search"></i>
+      </span>
+      <span class="hero-search__text"> Search</span>
+    </button>
+  </form>
+</div>

@@ -1,6 +1,4 @@
 ---
-const { isHeaderAnimated = false } = Astro.props;
-
 import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
 import Prealoder from "../components/Prealoder.astro";
@@ -29,11 +27,13 @@ const {
   articleId = null,
   categoryId = null,
   articleTags = null,
+  isHeaderAnimated = false,
 } = Astro.props;
 
 const { lang } = Astro.locals;
 const locale = lang === "de" ? "de_DE" : "en_US";
 const t = useTranslations(lang);
+
 ---
 
 <!doctype html>
@@ -82,11 +82,6 @@ const t = useTranslations(lang);
     }
     <title>{title}</title>
     <link rel="icon" type="image/webp" href={withBase("/favicon.webp")} />
-    <link
-      href="https://fonts.googleapis.com/css?family=Open+Sans:300,regular,500,600,700,800,300italic,italic,500italic,600italic,700italic,800italic&display=swap"
-      rel="stylesheet"
-    />
-    <!-- 700 -->
   </head>
 
   <body>

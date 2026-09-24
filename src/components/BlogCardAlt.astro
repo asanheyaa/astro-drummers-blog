@@ -1,0 +1,48 @@
+---
+import { Image } from "astro:assets";
+import ShareButtons from "./ShareButtons.astro";
+
+const {
+  id,
+  src,
+  date,
+  category,
+  title,
+  description,
+  alt,
+  slug,
+  categoryUrl,
+  postUrl,
+  isGrid,
+  isAlt,
+  width = 800,
+  height = 800,
+  likesCounter = 0,
+  commentsCounter = 0,
+  commentsLink,
+  postId,
+  autor,
+  ...rest
+} = Astro.props;
+---
+
+<article class="blog-card" id={id}> 
+  <div class="blog-card__visual">
+    <a href={postUrl} class="blog-card__image ibg">
+      <Image width={width} height={height} src={src} alt={alt} />
+    </a>
+    <div class="blog-card__share">
+      <ShareButtons />
+    </div>
+  </div>
+  <div class="blog-card__body">
+    <a href={postUrl} class="blog-card__link">
+      <h2 class="blog-card__title">{title}</h2>
+    </a>
+    <div class="blog-card__description">{description}</div>
+    <footer class="blog-card__foter">
+      <span class="blog-card__date">{date} </span>
+      <a href="" class="blog-card__autor"> {autor}</a>
+    </footer>
+  </div>
+</article>

@@ -26,7 +26,8 @@
 },
 	"blog":{
 		"hero":{
-			"title": "'Ich kann dir am besten helfen, indem ich mein Wissen und meine Erfahrungen mit dir teile. Darum geht es mir in diesem Blog. '"
+			"title": "Ich kann dir am besten helfen, indem ich mein Wissen und meine Erfahrungen mit dir teile. Darum geht es mir in diesem Blog",
+      "inputPlaceholder":"Find anything you want to know by the keyword search"
 		},
 		"asideWidget":{
 			"buttonLabel":"Load more"

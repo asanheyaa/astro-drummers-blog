@@ -48,6 +48,17 @@ const articles = getFilteredArticles(allArticles, lang, 5);
   twitterLabel2={t("homePage", "meta.twitter.label2")}
   twitterData2={t("homePage", "meta.twitter.data2")}
 >
+  <style>
+    @font-face {
+      font-family: "Playfair Display";
+      src: url("../../assets/fonts/PlayfairDisplay/PlayfairDisplay-BoldItalic.woff2")
+        format("woff2");
+      font-weight: 700;
+      font-style: italic;
+      font-display: swap;
+      font-stretch: normal;
+    }
+  </style>
   <SwiperIniter>
     <section class="home-hero" id="welcome">
       <div class="home-hero__container">

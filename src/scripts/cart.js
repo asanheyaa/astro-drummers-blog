@@ -13,13 +13,13 @@ const cookies = {
 };
 
 function getProducts() {
-  const savedCart = cookies.get('dremmersblog_shopping_cart');
+  const savedCart = cookies.get('drummersblog_shopping_cart');
   let cart = savedCart ? JSON.parse(decodeURIComponent(savedCart)) : {};
   return cart;
 }
 
 function setProducts(cart) {
-  cookies.set('dremmersblog_shopping_cart', encodeURIComponent(JSON.stringify(cart)))
+  cookies.set('drummersblog_shopping_cart', encodeURIComponent(JSON.stringify(cart)))
 }
 
 function updateCartCounter() {

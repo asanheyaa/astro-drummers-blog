@@ -5,11 +5,6 @@
 
 .blog-articles {
 	padding-block: 2.5rem;
-	background: #f0f0f0;
-	padding-top: 9.1875rem;
-	@media (min-width: 47.9988rem) {
-		padding: 5.625rem 0;
-	}
 	&-with-widget {
 		.blog-articles__container {
 			display: grid;
@@ -23,45 +18,32 @@
 				order: 2;
 			}
 		}
-		.blog-articles__body {
+		.blog-articles__body{
 			@media (max-width: 61.9988rem) {
 				order: 1;
 			}
 		}
-		.aside-widget {
+		.aside-widget{
 			@media (max-width: 61.9988rem) {
 				order: 3;
 			}
 		}
 	}
 	&__container {
-		max-width: 62.5rem;
-		text-align: center;
 	}
 	.article {
 	}
 	&__body {
-		text-align: left;
 		display: grid;
-		gap: 1.25rem;
+		column-gap: 1.25rem;
+		row-gap: 2.5rem;
 		grid-template-columns: repeat(1, 1fr);
-		align-items: stretch;
 		&:not(:last-child) {
 			margin-bottom: 1.875rem;
 		}
 
 		@media (min-width: 43.75rem) {
-			grid-template-columns: repeat(auto-fit, minmax(18.75rem, 1fr));
-		}
-	}
-	&__button{
-		padding-inline: 118px;
-		padding-block: 14px;
-		display: block;
-		width: 100%;
-		@media (min-width:767.98px) {
-			display: inline-block;
-			width: auto;
+			grid-template-columns: repeat(2, 1fr);
 		}
 	}
 	&__footer {
