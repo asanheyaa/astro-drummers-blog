@@ -2248,7 +2248,7 @@ body {
 			}
 		}
 
-		@media (max-width:479px) {
+		@media (max-width: 479px) {
 			width: 100%;
 			padding-block: 0.8438rem;
 		}
@@ -2308,6 +2308,8 @@ body {
 				filter 1s ease;
 		}
 		&:hover {
+			transition: all 0.3s ease 1s;
+			background: transparent;
 			img {
 				opacity: 1;
 			}
