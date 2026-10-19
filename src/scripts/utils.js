@@ -49,6 +49,14 @@ export function getPostShareLink(slug, lang, siteUrl) {
   return 'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(fullUrl);
 }
 
+export function getFormattedDate(dateStr){
+  const parts = dateStr.split('.');
+  if (parts[2] && parts[2].length === 2) {
+    parts[2] = '20' + parts[2];
+  }
+  return parts.join('.');
+}
+
 
 
 export const slugify = (text) => {

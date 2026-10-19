@@ -3,6 +3,7 @@
   "lang": "de",
   "title": "Blog: Drummersblog: Ihre Nummer 1 in Sachen Schlagzeug",
   "metaDescription": "Blog-Seite. Ich kann dir am besten helfen, indem ich mein Wissen und meine Erfahrungen mit dir teile. Darum geht es mir in diesem Blog.",
+ 
   "og": {
     "image": "https://drummersblog.de/wp-content/uploads/2019/07/drummersblog-representive.jpg",
     "imageSecureUrl": "https://drummersblog.de/wp-content/uploads/2019/07/drummersblog-representive.jpg",
@@ -26,8 +27,10 @@
 },
 	"blog":{
 		"hero":{
-			"title": "Ich kann dir am besten helfen, indem ich mein Wissen und meine Erfahrungen mit dir teile. Darum geht es mir in diesem Blog",
-      "inputPlaceholder":"Find anything you want to know by the keyword search"
+			"title": "Ich kann dir am besten helfen, indem ich mein Wissen und meine Erfahrungen mit dir teile. Darum geht es mir in diesem Blog.",
+      "filterTitle":"SORTIEREN",
+      "searchTitle":"Suchen",
+      "searchPlaceholder":"Finde alles, was du wissen möchtest mit der Suche"
 		},
       "articles": {
         "buttonLabel": "Load more"

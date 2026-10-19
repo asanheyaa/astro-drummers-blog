@@ -1,7 +1,7 @@
 ---
 import Image from "astro/components/Image.astro";
 import { useTranslations } from "../scripts/i18n.js";
-import { getFilteredArticles, getPostLink } from "../scripts/utils.js";
+import { getFilteredArticles, getFormattedDate, getPostLink } from "../scripts/utils.js";
 import Date from "./Date.astro";
 import LikeButton from "./LikeButton.astro";
 import { getCollection } from "astro:content";
@@ -52,11 +52,17 @@ const articles = getFilteredArticles(posts, lang, 4);
                   </a>
                 </h2>
                 <footer class="aside-widget__footer">
-                  <Date date="21.03.2021" />
-                  <LikeButton
+                  <Date
+                    date={
+                      lang === "de"
+                        ? getFormattedDate(article.data.date)
+                        : article.data.date
+                    }
+                  />
+                  {/* <LikeButton
                     likesCounter={article.data.counters.likes}
                     postId={article.data.id}
-                  />
+                  /> */}
                 </footer>
               </div>
             </article>

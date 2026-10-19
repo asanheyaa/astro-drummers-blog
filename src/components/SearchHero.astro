@@ -1,20 +1,26 @@
 ---
-const { inputPlaceholder } = Astro.props;
+const { searchPlaceholder,searchTitle } = Astro.props;
 ---
 
 <div class="hero-search">
+  <button type="button" aria-label="search" class="hero-search__button hero-search__button-mobile" data-pop-up-trigger="search">
+    <span class="hero-search__icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="hero-search__text"> Search</span>
+  </button>
   <form action="#" class="hero-search__form">
     <input
       type="text"
       name="search"
-      placeholder={inputPlaceholder}
+      placeholder={searchPlaceholder}
       class="hero-search__input"
     />
     <button type="submit" class="hero-search__button">
       <span class="hero-search__icon">
         <i class="fa fa-search"></i>
       </span>
-      <span class="hero-search__text"> Search</span>
+      <span class="hero-search__text"> {searchTitle}</span>
     </button>
   </form>
 </div>

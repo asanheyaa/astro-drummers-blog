@@ -27,14 +27,15 @@
         "label": "19+3"
       }
     },
-    "submitButton": "Leave reply"
+    "submitButton": "Kommentar hinterlassen"
   },
   "comments" : {
-	"replyButton":"Leave reply",
+	"replyButton":"Kommentar hinterlassen",
+  "commentsTitle":"Comments",
 	 "commentsCountOne": "There is {count} comment",
     "commentsCountOther": "There are {count} comments"
   },
   "relatedPosts":{
-    "title":"Related posts"
+    "title":"Ähnliche Beiträge"
   }
 }

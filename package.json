@@ -18,6 +18,8 @@
     "swiper": "^14.1.0"
   },
   "devDependencies": {
-    "sass-embedded": "^1.102.0"
+    "@astrojs/ts-plugin": "^1.10.12",
+    "sass-embedded": "^1.102.0",
+    "typescript": "^7.0.2"
   }
 }

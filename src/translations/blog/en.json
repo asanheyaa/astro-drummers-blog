@@ -3,6 +3,7 @@
   "lang": "en",
   "title": "Blog Posts - Drummersblog: Your #1 possibility to know new",
   "metaDescription": "Blog posts page of Drummersblog. The best way I can help you is by sharing my knowledge and experiences with you. For me, that’s what this blog is about.",
+ 
   "og": {
     "image": "https://drummersblog.de/wp-content/uploads/2019/07/drummersblog-representive.jpg",
     "imageSecureUrl": "https://drummersblog.de/wp-content/uploads/2019/07/drummersblog-representive.jpg",
@@ -26,7 +27,10 @@
 },
 	"blog":{
 		"hero":{
-			"title": "'The best way I can help you is by sharing my knowledge and experiences with you. For me, that’s what this blog is about.'"
+			"title": "'The best way I can help you is by sharing my knowledge and experiences with you. For me, that’s what this blog is about.'",
+      "filterTitle":"Filter Content",
+      "searchTitle":"Search",
+      "searchPlaceholder":"Find anything you want to know by the keyword search"
 		},
     "articles": {
       "buttonLabel":"Load more"

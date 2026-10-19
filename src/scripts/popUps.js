@@ -1,4 +1,4 @@
-import { lockScroll,lenis, unlockScroll } from './lenis-init.js';
+import { lockScroll, lenis, unlockScroll } from './lenis-init.js';
 
 export function initPopUpFunctions() {
 	const popUps = document.querySelectorAll('[data-pop-up]');
@@ -110,6 +110,83 @@ export function initPopUpFunctions() {
 			}
 
 
+		});
+	}
+
+}
+
+export function initDropdowns() {
+	const dropDowns = document.querySelectorAll('[data-dropdown]');
+	if (dropDowns.length > 0) {
+		dropDowns.forEach(dropDown => {
+			const trigger = dropDown.querySelector('[data-dropdown-trigger]');
+			const dropDownBody = dropDown.querySelector('[data-dropdown-body]');
+			let property
+			if (dropDown.dataset.dropDown === 'vertical') {
+				property = 'max-height'
+			} else if (dropDown.dataset.dropDown === 'horizontal') {
+				property = 'max-width'
+
+			}
+			if (!trigger || !dropDownBody) return;
+
+			trigger.addEventListener('click', (e) => {
+				e.stopPropagation();
+
+				const isActive = dropDownBody.classList.contains('_active');
+				const isMobile = window.matchMedia('(max-width: 767.98px)').matches
+
+				if (!isActive) {
+					dropDownBody.style.overflow = 'hidden';
+					dropDownBody.classList.add('_active');
+
+					const fullHeight = dropDownBody.scrollHeight;
+					dropDownBody.style.maxHeight = `${Math.min(fullHeight, 440)}px`;
+					dropDownBody.addEventListener('transitionend', enableScroll);
+					if (isMobile) {
+						lockScroll()
+					}
+
+				} else {
+					dropDownBody.style.overflow = 'hidden';
+					dropDownBody.style.maxHeight = '0px';
+					dropDownBody.classList.remove('_active');
+					if (isMobile) {
+						unlockScroll()
+					}
+				}
+
+				function enableScroll(e) {
+					if (e.propertyName === property) {
+						dropDownBody.style.overflow = 'auto';
+						dropDownBody.removeEventListener('transitionend', enableScroll);
+					}
+				};
+			});
+
+
+		});
+
+		document.addEventListener('click', (e) => {
+			const target = e.target
+			const isMobile = window.matchMedia('(max-width: 767.98px)').matches
+
+			dropDowns.forEach(dropDown => {
+				const dropDownBody = dropDown.querySelector('[data-dropdown-body]');
+				const isCloseButtonClick = target.closest('[data-dropdown-close]') && dropDown.contains(target);
+				const isCloseFilterWrapper = target.closest('.filter__wrapper') !== dropDown.querySelector('.filter__wrapper');
+				if (isCloseButtonClick || isCloseFilterWrapper) {
+					if (dropDownBody.classList.contains('_active')) {
+						dropDownBody.style.overflow = 'hidden';
+						dropDownBody.style.maxHeight = '0px';
+						dropDownBody.classList.remove('_active');
+						if (isMobile) {
+							unlockScroll()
+						}
+					}
+
+				}
+			});
 		});
 	}
 

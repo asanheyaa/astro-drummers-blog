@@ -3,21 +3,9 @@ import Filter from "./Filter.astro";
 import SearchHero from "./SearchHero.astro";
 import "../styles/fontawesome.scss";
 
-const {
-  isAlt,
-  title,
-  autor,
-  date,
-  commentsCounter,
-  commentsLink,
-  viewsCounter,
-  likesCounter,
-  slug,
-  autorPrefix,
-  facebookCounter,
-  inputPlaceholder,
-  categories,
-} = Astro.props;
+const { isAlt, title, categories, categoryName, noFilter,searchTitle, searchPlaceholder,filterTitle } =
+  Astro.props;
+  
 ---
 
 <section
@@ -33,9 +21,13 @@ const {
     >
       {title}
     </h1>
-    <div class="hero-actions">
-      <Filter categories={categories} />
-      <SearchHero inputPlaceholder={inputPlaceholder} />
-    </div>
+    {
+      !noFilter && (
+        <div class="hero-actions">
+          <Filter categories={categories} categoryName={categoryName} filterTitle={filterTitle} />
+          <SearchHero i  searchTitle={searchTitle} searchPlaceholder={searchPlaceholder}/>
+        </div>
+      )
+    }
   </div>
 </section>

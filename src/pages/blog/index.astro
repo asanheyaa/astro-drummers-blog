@@ -1,11 +1,9 @@
 ---
 import { getCollection } from "astro:content";
-import { getRelativeLocaleUrl } from "astro:i18n";
 
 import Layout from "../../layouts/Layout.astro";
 
 import BlogCardAlt from "../../components/BlogCardAlt.astro";
-import BlogPagination from "../../components/BlogPagination.astro";
 import HeroSection from "../../components/HeroSection.astro";
 
 import { useTranslations } from "../../scripts/i18n.js";
@@ -16,19 +14,17 @@ import {
   getCategoriesWithPosts,
   getCategoryLink,
   getCommentsLink,
+  getFormattedDate,
   getPostLink,
-  paginateItems,
-  parseDate,
 } from "../../scripts/utils.js";
 
-import { PAGE_SIZE } from "../../scripts/consts.js";
 import { getFilteredArticles } from "../../scripts/utils.js";
 
 const t = useTranslations(lang);
 
 const allArticles = await getCollection("posts");
 const langArticles = getFilteredArticles(allArticles, lang);
-const categories = getCategoriesWithPosts(allArticles, "de");
+const categories = getCategoriesWithPosts(allArticles, lang);
 ---
 
 <Layout
@@ -47,8 +43,10 @@ const categories = getCategoriesWithPosts(allArticles, "de");
 >
   <HeroSection
     title={t("blog", "blog.hero.title")}
-    inputPlaceholder={t("blog", "blog.hero.inputPlaceholder")}
     categories={categories}
+    searchTitle={t("blog", "blog.hero.searchTitle")}
+    searchPlaceholder={t("blog", "blog.hero.searchPlaceholder")}
+    filterTitle={t("blog", "blog.hero.filterTitle")}
   />
   <section class="blog-articles">
     <div class="blog-articles__container">
@@ -73,13 +71,8 @@ const categories = getCategoriesWithPosts(allArticles, "de");
                 alt={article.data.alt}
                 title={article.data.title}
                 description={article.data.description}
-                date={article.data.date}
-                category={article.data.mainCategory}
-                categoryUrl={categoryUrl}
+                date={getFormattedDate(article.data.date)}
                 postUrl={postUrl}
-                commentsLink={commentsUrl}
-                likesCounter={article.data.counters?.likes || 0}
-                commentsCounter={article.data.comments?.length || 0}
                 autor={article.data.autor}
               />
             );

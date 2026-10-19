@@ -1,6 +1,6 @@
 // home page
 import Swiper from 'swiper';
-import { Pagination,Autoplay, Thumbs } from 'swiper/modules';
+import { Pagination,Autoplay, Thumbs, Navigation } from 'swiper/modules';
 
 
 	const homeHeroSwiper = document.querySelector('.content-home-hero__swiper');
@@ -63,9 +63,15 @@ if (postSwiper) {
 const relatedPostsSwiper = document.querySelector('.single-post-related__swiper');
 if (relatedPostsSwiper){
 	const heroSwiper = new Swiper(relatedPostsSwiper, {
-		modules: [ Autoplay],
+		modules: [ Autoplay, Navigation],
 		slidesPerView: 1,
-		spaceBetween: 20,
+		spaceBetween: 40,
+		speed:1000,
+		
+		navigation:{
+			nextEl:'.single-post-related__button-next',
+			prevEl:'.single-post-related__button-prev'
+		},
 		breakpoints: {
 			400: {
 				slidesPerView: 1.3,

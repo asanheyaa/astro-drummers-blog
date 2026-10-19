@@ -11,11 +11,12 @@ import {
   getCategoriesWithPosts,
   getCategoryLink,
   getCommentsLink,
+  getFormattedDate,
   getPostLink,
   paginateItems,
 } from "../../../../../scripts/utils.js";
-import { PAGE_SIZE } from "../../../../../scripts/consts.js";
 import BlogArticlesWidget from "../../../../../components/BlogArticlesWidget.astro";
+import BlogCardAlt from "../../../../../components/BlogCardAlt.astro";
 
 const { lang } = Astro.locals;
 const t = useTranslations(lang);
@@ -23,7 +24,6 @@ const t = useTranslations(lang);
 export async function getStaticPaths() {
   const posts = await getCollection("posts");
   const categories = getCategoriesWithPosts(posts, "en");
-
   return categories.map((cat) => ({
     params: { category: cat.slug },
     props: {
@@ -31,21 +31,16 @@ export async function getStaticPaths() {
       category: cat.title,
       categoryId: cat.id,
       categoryPosts: cat.posts,
+      allCategories: categories,
     },
   }));
 }
 
-const { categoryPosts, category, categoryId, categorySlug } = Astro.props;
-
-const {
-  items: articles,
-  currentPage,
-  lastPage,
-} = paginateItems(categoryPosts, 1, PAGE_SIZE);
+const { categoryPosts, category, categoryId, categorySlug, allCategories } =
+  Astro.props;
 ---
 
 <Layout
-  isHeaderAnimated
   title={`${category} ${t("categories", "pageTitlePrefix")}`}
   metaDescription={t("blog", "meta.metaDescription")}
   ogLocale={t("blog", "meta.og.locale")}
@@ -58,12 +53,19 @@ const {
   twitterData1={t("categories", `${categoryPosts.length || 0}`)}
   categoryId={categoryId}
 >
-  <HeroSection isAlt title={`${t("categories", "hero.title")} ${category}`} />
+  <HeroSection
+    title={`${t("categories", "hero.title")} ${category}`}
+    categories={allCategories}
+    categoryName={category}
+    searchTitle={t("blog", "blog.hero.searchTitle")}
+    searchPlaceholder={t("blog", "blog.hero.searchPlaceholder")}
+    filterTitle={t("blog", "blog.hero.filterTitle")}
+  />
   <section class="blog-articles blog-articles-with-widget">
     <div class="blog-articles__container">
       <div class="blog-articles__body">
         {
-          articles.map((article) => {
+          categoryPosts.map((article) => {
             const postUrl = getPostLink(article.data.slug, lang);
             const commentsUrl = getCommentsLink(
               article.data.slug,
@@ -75,8 +77,8 @@ const {
               lang
             );
             return (
-              <BlogCard
-                key={article.data.id}
+              <BlogCardAlt
+                id={article.data.id}
                 postId={article.data.id}
                 src={article.data.cover}
                 alt={article.data.alt}
@@ -86,9 +88,7 @@ const {
                 category={article.data.mainCategory}
                 categoryUrl={categoryUrl}
                 postUrl={postUrl}
-                commentsLink={commentsUrl}
-                likesCounter={article.data.counters.likes}
-                commentsCounter={article.data.comments.length}
+                autor={article.data.autor}
                 isGrid
               />
             );
@@ -96,21 +96,6 @@ const {
         }
       </div>
       <BlogArticlesWidget />
-
-      {
-        lastPage > 1 && (
-          <footer class="blog-articles__footer">
-            <BlogPagination
-              currentPage={currentPage}
-              lastPage={lastPage}
-              baseUrl={getRelativeLocaleUrl(
-                lang,
-                `/blog/category/${categorySlug}`
-              )}
-            />
-          </footer>
-        )
-      }
     </div>
   </section>
 </Layout>
