@@ -2,7 +2,7 @@ import {parseDate} from '../scripts/utils.js'
 
 import {parseDate} from '../scripts/utils.js'
 
-export const posts=[
+export const posts = [
   // ============ ARTICLE A: Vinyl Revival ============
   {
     lang: 'en',
@@ -28,7 +28,8 @@ export const posts=[
         category: 'Industry',
         title: 'The Streaming Royalty Problem: Why Artists See Pennies Per Play',
         slug: 'the-streaming-royalty-problem-why-artists-see-pennies-per-play',
-        description: 'A song can rack up millions of streams and still earn its creator less than a single ticket sale. Why does the math work out this way, and who actually benefits from it?'
+        description: 'A song can rack up millions of streams and still earn its creator less than a single ticket sale. Why does the math work out this way, and who actually benefits from it?',
+        autor: 'Nora Klein'
       },
       {
         id: '14',
@@ -38,7 +39,8 @@ export const posts=[
         category: 'Production',
         title: 'Building Your First Home Studio Without Breaking the Bank',
         slug: 'building-your-first-home-studio-without-breaking-the-bank',
-        description: 'You do not need a treated room and five-figure gear to start recording seriously. Here is what actually matters when you are starting from zero.'
+        description: 'You do not need a treated room and five-figure gear to start recording seriously. Here is what actually matters when you are starting from zero.',
+        autor: 'Sven Ahlers'
       }
     ],
     comments: [
@@ -75,7 +77,8 @@ export const posts=[
         category: 'Industrie',
         title: 'Das Problem der Streaming-Tantiemen: Warum Künstler nur Cent-Beträge pro Stream sehen',
         slug: 'das-problem-der-streaming-tantiemen-warum-kuenstler-nur-cent-betraege-pro-stream-sehen',
-        description: 'Ein Song kann Millionen Streams erreichen und seiner Urheberin trotzdem weniger einbringen als ein einziges Konzertticket. Warum geht diese Rechnung so auf, und wer profitiert eigentlich davon?'
+        description: 'Ein Song kann Millionen Streams erreichen und seiner Urheberin trotzdem weniger einbringen als ein einziges Konzertticket. Warum geht diese Rechnung so auf, und wer profitiert eigentlich davon?',
+        autor: 'Nora Klein'
       },
       {
         id: '15',
@@ -85,7 +88,8 @@ export const posts=[
         category: 'Produktion',
         title: 'Dein erstes Homestudio einrichten, ohne die Bank zu sprengen',
         slug: 'dein-erstes-homestudio-einrichten-ohne-die-bank-zu-sprengen',
-        description: 'Du brauchst weder einen akustisch behandelten Raum noch fünfstelliges Equipment, um ernsthaft mit dem Aufnehmen zu beginnen. Das zählt wirklich, wenn du bei null startest.'
+        description: 'Du brauchst weder einen akustisch behandelten Raum noch fünfstelliges Equipment, um ernsthaft mit dem Aufnehmen zu beginnen. Das zählt wirklich, wenn du bei null startest.',
+        autor: 'Sven Ahlers'
       }
     ],
     comments: [
@@ -124,7 +128,8 @@ export const posts=[
         category: 'Wellbeing',
         title: 'Sound as Medicine: How Music Shapes Mental Health',
         slug: 'sound-as-medicine-how-music-shapes-mental-health',
-        description: 'From hospital wards to daily commutes, music is increasingly used as a deliberate tool for regulating mood. What does the evidence actually support, and where does it fall short?'
+        description: 'From hospital wards to daily commutes, music is increasingly used as a deliberate tool for regulating mood. What does the evidence actually support, and where does it fall short?',
+        autor: 'Elif Deniz'
       },
       {
         id: '16',
@@ -134,7 +139,8 @@ export const posts=[
         category: 'Industry',
         title: 'The Streaming Royalty Problem: Why Artists See Pennies Per Play',
         slug: 'the-streaming-royalty-problem-why-artists-see-pennies-per-play',
-        description: 'A song can rack up millions of streams and still earn its creator less than a single ticket sale. Why does the math work out this way, and who actually benefits from it?'
+        description: 'A song can rack up millions of streams and still earn its creator less than a single ticket sale. Why does the math work out this way, and who actually benefits from it?',
+        autor: 'Nora Klein'
       }
     ],
     comments: []
@@ -163,7 +169,8 @@ export const posts=[
         category: 'Wohlbefinden',
         title: 'Klang als Medizin: Wie Musik die psychische Gesundheit beeinflusst',
         slug: 'klang-als-medizin-wie-musik-die-psychische-gesundheit-beeinflusst',
-        description: 'Von Krankenhausstationen bis zum täglichen Arbeitsweg wird Musik zunehmend als gezieltes Werkzeug zur Stimmungsregulation eingesetzt. Was belegt die Forschung tatsächlich, und wo stößt sie an ihre Grenzen?'
+        description: 'Von Krankenhausstationen bis zum täglichen Arbeitsweg wird Musik zunehmend als gezieltes Werkzeug zur Stimmungsregulation eingesetzt. Was belegt die Forschung tatsächlich, und wo stößt sie an ihre Grenzen?',
+        autor: 'Elif Deniz'
       },
       {
         id: '17',
@@ -173,7 +180,8 @@ export const posts=[
         category: 'Industrie',
         title: 'Das Problem der Streaming-Tantiemen: Warum Künstler nur Cent-Beträge pro Stream sehen',
         slug: 'das-problem-der-streaming-tantiemen-warum-kuenstler-nur-cent-betraege-pro-stream-sehen',
-        description: 'Ein Song kann Millionen Streams erreichen und seiner Urheberin trotzdem weniger einbringen als ein einziges Konzertticket. Warum geht diese Rechnung so auf, und wer profitiert eigentlich davon?'
+        description: 'Ein Song kann Millionen Streams erreichen und seiner Urheberin trotzdem weniger einbringen als ein einziges Konzertticket. Warum geht diese Rechnung so auf, und wer profitiert eigentlich davon?',
+        autor: 'Nora Klein'
       }
     ],
     comments: []
@@ -204,7 +212,8 @@ export const posts=[
         category: 'Culture',
         title: 'Why Vinyl Refuses to Die: Analog Listening in a Streaming Age',
         slug: 'why-vinyl-refuses-to-die-analog-listening-in-a-streaming-age',
-        description: 'Sales of vinyl records keep climbing even as streaming dominates every chart. What does it mean to choose friction over convenience?'
+        description: 'Sales of vinyl records keep climbing even as streaming dominates every chart. What does it mean to choose friction over convenience?',
+        autor: 'Mara Voss'
       },
       {
         id: '18',
@@ -214,7 +223,8 @@ export const posts=[
         category: 'Wellbeing',
         title: 'Sound as Medicine: How Music Shapes Mental Health',
         slug: 'sound-as-medicine-how-music-shapes-mental-health',
-        description: 'From hospital wards to daily commutes, music is increasingly used as a deliberate tool for regulating mood. What does the evidence actually support, and where does it fall short?'
+        description: 'From hospital wards to daily commutes, music is increasingly used as a deliberate tool for regulating mood. What does the evidence actually support, and where does it fall short?',
+        autor: 'Elif Deniz'
       }
     ],
     comments: [
@@ -251,7 +261,8 @@ export const posts=[
         category: 'Kultur',
         title: 'Warum Vinyl nicht sterben will: Analoges Hören im Streaming-Zeitalter',
         slug: 'warum-vinyl-nicht-sterben-will-analoges-hoeren-im-streaming-zeitalter',
-        description: 'Die Verkaufszahlen von Schallplatten steigen weiter, obwohl Streaming jede Chart dominiert. Was bedeutet es, Reibung der Bequemlichkeit vorzuziehen?'
+        description: 'Die Verkaufszahlen von Schallplatten steigen weiter, obwohl Streaming jede Chart dominiert. Was bedeutet es, Reibung der Bequemlichkeit vorzuziehen?',
+        autor: 'Mara Voss'
       },
       {
         id: '19',
@@ -261,7 +272,8 @@ export const posts=[
         category: 'Wohlbefinden',
         title: 'Klang als Medizin: Wie Musik die psychische Gesundheit beeinflusst',
         slug: 'klang-als-medizin-wie-musik-die-psychische-gesundheit-beeinflusst',
-        description: 'Von Krankenhausstationen bis zum täglichen Arbeitsweg wird Musik zunehmend als gezieltes Werkzeug zur Stimmungsregulation eingesetzt. Was belegt die Forschung tatsächlich, und wo stößt sie an ihre Grenzen?'
+        description: 'Von Krankenhausstationen bis zum täglichen Arbeitsweg wird Musik zunehmend als gezieltes Werkzeug zur Stimmungsregulation eingesetzt. Was belegt die Forschung tatsächlich, und wo stößt sie an ihre Grenzen?',
+        autor: 'Elif Deniz'
       }
     ],
     comments: [
@@ -300,7 +312,8 @@ export const posts=[
         category: 'Royalties',
         title: 'Can a Machine Write a Melody That Moves You? AI and the Question of Musical Authorship',
         slug: 'can-a-machine-write-a-melody-that-moves-you-ai-and-musical-authorship',
-        description: 'AI tools can now generate a finished song from a text prompt in seconds. What happens to authorship, craft, and emotional meaning when composition becomes automated?'
+        description: 'AI tools can now generate a finished song from a text prompt in seconds. What happens to authorship, craft, and emotional meaning when composition becomes automated?',
+        autor: 'Jonas Reiter'
       },
       {
         id: '10',
@@ -310,7 +323,8 @@ export const posts=[
         category: 'Culture',
         title: 'Why Vinyl Refuses to Die: Analog Listening in a Streaming Age',
         slug: 'why-vinyl-refuses-to-die-analog-listening-in-a-streaming-age',
-        description: 'Sales of vinyl records keep climbing even as streaming dominates every chart. What does it mean to choose friction over convenience?'
+        description: 'Sales of vinyl records keep climbing even as streaming dominates every chart. What does it mean to choose friction over convenience?',
+        autor: 'Mara Voss'
       }
     ],
     comments: [
@@ -361,7 +375,8 @@ export const posts=[
         category: 'Technologie',
         title: 'Kann eine Maschine eine Melodie schreiben, die berührt? KI und die Frage der musikalischen Urheberschaft',
         slug: 'kann-eine-maschine-eine-melodie-schreiben-die-beruehrt-ki-und-musikalische-urheberschaft',
-        description: 'KI-Tools können heute innerhalb von Sekunden aus einem Textprompt einen fertigen Song erzeugen. Was passiert mit Urheberschaft, Handwerk und emotionaler Bedeutung, wenn Komposition automatisiert wird?'
+        description: 'KI-Tools können heute innerhalb von Sekunden aus einem Textprompt einen fertigen Song erzeugen. Was passiert mit Urheberschaft, Handwerk und emotionaler Bedeutung, wenn Komposition automatisiert wird?',
+        autor: 'Jonas Reiter'
       },
       {
         id: '11',
@@ -371,7 +386,8 @@ export const posts=[
         category: 'Kultur',
         title: 'Warum Vinyl nicht sterben will: Analoges Hören im Streaming-Zeitalter',
         slug: 'warum-vinyl-nicht-sterben-will-analoges-hoeren-im-streaming-zeitalter',
-        description: 'Die Verkaufszahlen von Schallplatten steigen weiter, obwohl Streaming jede Chart dominiert. Was bedeutet es, Reibung der Bequemlichkeit vorzuziehen?'
+        description: 'Die Verkaufszahlen von Schallplatten steigen weiter, obwohl Streaming jede Chart dominiert. Was bedeutet es, Reibung der Bequemlichkeit vorzuziehen?',
+        autor: 'Mara Voss'
       }
     ],
     comments: [
@@ -417,7 +433,8 @@ export const posts=[
         category: 'Production',
         title: 'Building Your First Home Studio Without Breaking the Bank',
         slug: 'building-your-first-home-studio-without-breaking-the-bank',
-        description: 'You do not need a treated room and five-figure gear to start recording seriously. Here is what actually matters when you are starting from zero.'
+        description: 'You do not need a treated room and five-figure gear to start recording seriously. Here is what actually matters when you are starting from zero.',
+        autor: 'Sven Ahlers'
       },
       {
         id: '12',
@@ -427,7 +444,8 @@ export const posts=[
         category: 'Royalties',
         title: 'Can a Machine Write a Melody That Moves You? AI and the Question of Musical Authorship',
         slug: 'can-a-machine-write-a-melody-that-moves-you-ai-and-musical-authorship',
-        description: 'AI tools can now generate a finished song from a text prompt in seconds. What happens to authorship, craft, and emotional meaning when composition becomes automated?'
+        description: 'AI tools can now generate a finished song from a text prompt in seconds. What happens to authorship, craft, and emotional meaning when composition becomes automated?',
+        autor: 'Jonas Reiter'
       }
     ],
     comments: [
@@ -471,7 +489,8 @@ export const posts=[
         category: 'Produktion',
         title: 'Dein erstes Homestudio einrichten, ohne die Bank zu sprengen',
         slug: 'dein-erstes-homestudio-einrichten-ohne-die-bank-zu-sprengen',
-        description: 'Du brauchst weder einen akustisch behandelten Raum noch fünfstelliges Equipment, um ernsthaft mit dem Aufnehmen zu beginnen. Das zählt wirklich, wenn du bei null startest.'
+        description: 'Du brauchst weder einen akustisch behandelten Raum noch fünfstelliges Equipment, um ernsthaft mit dem Aufnehmen zu beginnen. Das zählt wirklich, wenn du bei null startest.',
+        autor: 'Sven Ahlers'
       },
       {
         id: '13',
@@ -481,7 +500,8 @@ export const posts=[
         category: 'Technologie',
         title: 'Kann eine Maschine eine Melodie schreiben, die berührt? KI und die Frage der musikalischen Urheberschaft',
         slug: 'kann-eine-maschine-eine-melodie-schreiben-die-beruehrt-ki-und-musikalische-urheberschaft',
-        description: 'KI-Tools können heute innerhalb von Sekunden aus einem Textprompt einen fertigen Song erzeugen. Was passiert mit Urheberschaft, Handwerk und emotionaler Bedeutung, wenn Komposition automatisiert wird?'
+        description: 'KI-Tools können heute innerhalb von Sekunden aus einem Textprompt einen fertigen Song erzeugen. Was passiert mit Urheberschaft, Handwerk und emotionaler Bedeutung, wenn Komposition automatisiert wird?',
+        autor: 'Jonas Reiter'
       }
     ],
     comments: [
