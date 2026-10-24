@@ -162,9 +162,7 @@ body:has(.single-post-body) {
 	position: relative;
 	z-index: 2;
 
-	@media (max-width: 61.9988rem) {
-		padding-top: 2.5rem;
-	}
+	padding-top: 2.5rem;
 	&__container {
 	}
 	&__buttons {
@@ -390,8 +388,7 @@ body:has(.single-post-body) {
 
 .comments-single-post {
 	@include adaptiveValue(padding-top, 60, 40);
-	
-	
+
 	&__container {
 		max-width: 63.125rem;
 	}
@@ -505,6 +502,9 @@ body:has(.single-post-body) {
 
 .single-post-comments {
 	@include adaptiveValue(padding-top, 60, 40);
+	@media (max-width:767.98px) {
+		padding-top: 20px;
+	}
 	&__container {
 		max-width: 63.125rem;
 	}
@@ -519,6 +519,20 @@ body:has(.single-post-body) {
 		letter-spacing: -0.0375rem;
 		color: #2d2d2d;
 		@include adaptiveValue(margin-bottom, 60, 40);
+		@media (max-width:767.98px) {
+			position: relative;
+			padding-bottom: 20px;
+			margin-bottom: 30px;
+			&::after{
+				content:'';
+				position:absolute;
+				width:200vw;
+				height:1px;
+				bottom:0;
+				left:-50vw;
+				background: #e7e7e7;
+				}
+		}
 	}
 
 	&__body {
@@ -548,7 +562,7 @@ body:has(.single-post-body) {
 		@include adaptiveValue(gap, 20, 10);
 		flex-direction: column;
 		row-gap: 5px;
-		@media (min-width:767.98px) {
+		@media (min-width: 767.98px) {
 			align-items: center;
 			flex-direction: row;
 		}
@@ -559,7 +573,6 @@ body:has(.single-post-body) {
 		color: #2b2b2b;
 		font-weight: 700;
 		letter-spacing: -0.0625rem;
-		
 	}
 	& .date {
 		color: #c3c3c3;
@@ -659,7 +672,6 @@ body:has(.single-post-body) {
 	&__container {
 		max-width: 1210px;
 
-		padding-top: 40px;
 		@media (min-width: 991.98px) {
 			display: flex;
 			align-items: flex-start;
@@ -687,8 +699,9 @@ body:has(.single-post-body) {
 				}
 			}
 		}
-		@media (max-width: 61.9988rem) {
-			padding-top: 2.5rem;
+
+		@media (max-width: 991.98px) {
+			margin-bottom: 70px;
 		}
 	}
 	&__widget {
