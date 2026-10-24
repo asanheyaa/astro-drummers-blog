@@ -26,6 +26,7 @@ const {
   twitterData2,
   articleId = null,
   categoryId = null,
+  tagId = null,
   articleTags = null,
   isHeaderAnimated = false,
 } = Astro.props;
@@ -95,6 +96,7 @@ const t = useTranslations(lang);
         articleId={articleId}
         isHeaderAnimated={isHeaderAnimated}
         categoryId={categoryId}
+        tagId={tagId}
       />
       <main class="page">
         <slot />

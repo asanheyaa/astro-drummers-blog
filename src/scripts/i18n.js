@@ -22,6 +22,8 @@ import findYourWayDe from '../translations/find-your-way-through-the-music/de.js
 import findYourWayEn from '../translations/find-your-way-through-the-music/en.json';
 import rudimentsDe from '../translations/rudiments-the-complete-collection/de.json';
 import rudimentsEn from '../translations/rudiments-the-complete-collection/en.json';
+import tagDe from '../translations/main-sections/tags/de.json';
+import tagEn from '../translations/main-sections/tags/en.json';
 
 export const languages = {
   de: 'Deutsch',
@@ -44,6 +46,7 @@ const translations = {
     findYourWay:findYourWayDe,
     rudiments: rudimentsDe,
     cookies: cookiesDe,
+    tag: tagDe,
   },
   en: {
     homePage: homeEn,
@@ -58,6 +61,7 @@ const translations = {
     findYourWay:findYourWayEn,
     rudiments: rudimentsEn,
     cookies:cookiesEn,
+    tag: tagEn,
   },
 };
 

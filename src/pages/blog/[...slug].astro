@@ -1,13 +1,23 @@
 ---
 import { Image } from "astro:assets";
 import HeroSection from "../../components/HeroSection.astro";
-import { getFormattedDate, getPostLink } from "../../scripts/utils";
-import { useTranslations } from "../../scripts/i18n.js";
+import {
+  getCategoryLink,
+  getCommentsLink,
+  getFormattedDate,
+  getPostLink,
+  getTagLink,
+} from "../../scripts/utils";
+import { useTranslations } from "../../scripts/i18n";
+import ShareButtons from "../../components/SocialsButtons.astro";
 import BlogCommentForm from "../../components/BlogCommentForm.astro";
+import Category from "../../components/Category.astro";
+import Date from "../../components/Date.astro";
 import SwiperIniter from "../../components/SwiperIniter.astro";
+import BlogCard from "../../components/BlogCard.astro";
 import Layout from "../../layouts/Layout.astro";
 import { getCollection } from "astro:content";
-import BlogCardAlt from "../../components/BlogCardAlt.astro";
+import BlogArticlesWidget from "../../components/BlogArticlesWidget.astro";
 
 export async function getStaticPaths() {
   const posts = await getCollection("posts");
@@ -46,27 +56,40 @@ const t = useTranslations(lang);
   <HeroSection
     isAlt
     title={post.data.title}
+    date={getFormattedDate(post.data.date) }
+    commentsCounter={post.data.comments?.length || 0}
+    viewsCounter={post.data.counters?.views || 0}
+    likesCounter={post.data.counters?.likes || 0}
+    slug={post.data.slug}
+    commentsLink={getCommentsLink(
+      post.data.slug,
+      lang,
+      post.data.comments.length
+    )}
     noFilter
-    searchTitle={t("blog", "blog.hero.searchTitle")}
-    searchPlaceholder={t("blog", "blog.hero.searchPlaceholder")}
-    filterTitle={t("blog", "blog.hero.filterTitle")}
+    isArticle
   />
 
   <div class="content-wrapper">
     <div class="content-wrapper__container">
-      <section class="single-post-body">
-        <article class="single-post-body__article">
-          <div class="single-post-body__cover ibg">
-            <Image
-              width={970}
-              height={303}
-              alt={post.data.title}
-              src={post.data.cover}
+      <div class="content-wrapper__main">
+        <section class="single-post-body">
+          <!-- <div class="single-post-body__buttons">
+            <ShareButtons
+              isVertical
+              facebookCounter={post.data.counters?.facebookCounter || 0}
+              class="single-post-body__share"
+              slug={post.data.slug}
             />
-          </div>
-          <div class="single-post-body__wrapper">
-            <div class="single-post-body__category">
-              {post.data.mainCategory}
+          </div> -->
+          <article class="single-post-body__article">
+            <div class="single-post-body__cover ibg">
+              <Image
+                width={985}
+                height={660}
+                alt={post.data.title}
+                src={post.data.cover}
+              />
             </div>
             <h3 class="single-post-body__title">
               {post.data.title}
@@ -75,174 +98,225 @@ const t = useTranslations(lang);
               class="single-post-body__content"
               set:html={post.data.content.rendered}
             />
-            <div class="single-post-body__post-data">
-              <span class="single-post-body__date">
-                {getFormattedDate(post.data.date)}
-              </span>
-              <span class="single-post-body__autor">
-                {post.data.autor}
-              </span>
-            </div>
-          </div>
-        </article>
-      </section>
-    </div>
-  </div>
-
-  <section
-    class="comments-single-post"
-    aria-labelledby="comments-single-post-title"
-    id="commentForm"
-  >
-    <div class="comments-single-post__container">
-      <div class="comments-single-post__wrapper">
-        {
-          post.data.comments?.length > 0 && (
-            <div class="single-post-comments">
-              <h2
-                class="single-post-comments__title"
-                id="single-post-comments-title"
-              >
-                {t("singlePost", `comments.commentsTitle`)}
-              </h2>
-              <div class="single-post-comments__body">
-                {post.data.comments?.map((comment) => (
-                  <div class="single-post-comments__comment">
-                    <div class="single-post-comments__wrapper">
-                      <header class="single-post-comments__header">
-                        <div class="single-post-comments__details">
-                          <div class="single-post-comments__date">
-                            {comment.date}
-                          </div>
-                          <div class="single-post-comments__autor">
-                            {comment.autor}
-                          </div>
-                        </div>
-                        <a
-                          href="#commentForm"
-                          class="single-post-comments__reply-button"
-                        >
-                          <span>{t("singlePost", "comments.replyButton")}</span>
-                        </a>
-                      </header>
-                      <div class="single-post-comments__content">
-                        {comment.text}
-                      </div>
-                    </div>
-                    {comment.replies && comment.replies.length > 0 && (
-                      <div class="single-post-comments__replies">
-                        {comment.replies?.map((reply) => (
-                          <div class="single-post-comments__comment">
-                            <div class="single-post-comments__wrapper">
-                              <header class="single-post-comments__header">
-                                <div class="single-post-comments__details">
-                                  <div class="single-post-comments__date">
-                                    {reply.date}
-                                  </div>
-                                  <div class="single-post-comments__autor">
-                                    {reply.autor}
-                                  </div>
-                                </div>
-                                <a
-                                  href="#commentForm"
-                                  class="single-post-comments__reply-button"
-                                >
-                                  <span>
-                                    {t("singlePost", "comments.replyButton")}
-                                  </span>
-                                </a>
-                              </header>
-                              <div class="single-post-comments__content">
-                                {reply.text}
-                              </div>
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                ))}
-              </div>
-            </div>
-          )
-        }
-        <div class="comments-single-post__body">
-          <header class="comments-single-post__header">
-            <h2
-              class="comments-single-post__title"
-              id="comments-single-post-title"
-            >
-              {t("singlePost", "commentForm.title")}
-            </h2>
-          </header>
-          <BlogCommentForm
-            commentFormData={t("singlePost", "commentForm.fields")}
-          />
-        </div>
-      </div>
-    </div>
-  </section>
-
-  {
-    post.data.relatedPosts?.length > 0 && (
-      <SwiperIniter>
-        <section
-          class="single-post-related"
-          aria-labelledby="single-post-related-title"
-        >
-          <div class="single-post-related__container">
-            <header class="single-post-related__header">
-              <button
-                type="button"
-                class="single-post-related__button single-post-related__button-prev"
-              >
-                <i class="fa fa-caret-left fa-lg" />
-              </button>
-              <h2
-                class="single-post-related__title"
-                id="single-post-related-title"
-              >
-                {t("singlePost", "relatedPosts.title")}
-              </h2>
-              <button
-                type="button"
-                class="single-post-related__button single-post-related__button-next"
-              >
-                <i class="fa fa-caret-right fa-lg" />
-              </button>
-            </header>
-            <div class="single-post-related__body">
-              <div class="single-post-related__swiper swiper">
-                <div class="single-post-related__wrapper swiper-wrapper">
-                  
-                  {post.data.relatedPosts.map((relatedPost) => {
-                    const postUrl = getPostLink(relatedPost.slug, lang);
-                    
-                    return (
-                      
-                    
-                      <div class="single-post-related__slide swiper-slide">
-                        <BlogCardAlt
-                          id={relatedPost.id}
-                          postId={relatedPost.id}
-                          src={relatedPost.cover}
-                          alt={relatedPost.alt}
-                          title={relatedPost.title}
-                          description={relatedPost.description}
-                          date={getFormattedDate(relatedPost.date)}
-                          postUrl={postUrl}
-                          autor={relatedPost.autor}
+          </article>
+          <footer class="footer-single-post">
+            <div class="footer-single-post__container">
+              <div class="footer-single-post__categories">
+                <ul class="footer-single-post__list">
+                  {
+                    post.data.tags?.map((item) => (
+                      <li class="footer-single-post__item">
+                        <Category
+                          label={item.title}
+                          url={getTagLink(item.title, lang)}
+                          class="footer-single-post__category"
                         />
-                      </div>
-                    );
-                    
-                  })}
+                      </li>
+                    ))
+                  }
+                </ul>
+              </div>
+              <div class="footer-single-post__actions">
+                <button type="button" class="footer-single-post__button">
+                  <i
+                    class="footer-single-post__like-icon dfd-socicon-icon-ios7-heart"
+                  >
+                  </i>
+                  <span class="footer-single-post__like-counter">
+                    {post.data.counters?.likes || 0}
+                  </span>
+                  {" "}
+                  <span>
+                    {t("singlePost", "likes")}
+                  </span>
+                </button>
+                <div class="footer-single-post__socials">
+                  <ShareButtons
+                    slug={post.data.slug}
+                    facebookCounter={post.data.counters?.facebookCounter || 0}
+                  />
                 </div>
               </div>
             </div>
-          </div>
+          </footer>
         </section>
-      </SwiperIniter>
-    )
-  }
+        {
+          post.data.relatedPosts?.length > 0 && (
+            <SwiperIniter>
+              <section
+                class="single-post-related"
+                aria-labelledby="single-post-related-title"
+              >
+                <h2
+                  class="single-post-related__title"
+                  id="single-post-related-title"
+                >
+                  {t("singlePost", "relatedPosts.title")}
+                </h2>
+                <div class="single-post-related__body">
+                  <div class="single-post-related__swiper swiper">
+                    <div class="single-post-related__wrapper swiper-wrapper">
+                      {post.data.relatedPosts.map((relatedPost) => {
+                        const postUrl = getPostLink(relatedPost.slug, lang);
+                        const commentsUrl = getCommentsLink(
+                          relatedPost.slug,
+                          lang,
+                          relatedPost.counters?.comments || 0
+                        );
+                        const categoryUrl = getCategoryLink(
+                          relatedPost.category,
+                          lang
+                        );
+                        return (
+                          <div class="single-post-related__slide swiper-slide">
+                            <BlogCard
+                              src={relatedPost.cover}
+                              alt={relatedPost.alt}
+                              date={getFormattedDate(relatedPost.date)}
+                              title={relatedPost.title}
+                              postUrl={postUrl}
+                              isGrid
+                              isAlt
+                              category={relatedPost.category}
+                              categoryUrl={categoryUrl}
+                              likesCounter={relatedPost.counters?.likes || 0}
+                              commentsCounter={
+                                relatedPost.counters?.comments || 0
+                              }
+                              commentsLink={commentsUrl}
+                            />
+                          </div>
+                        );
+                      })}
+                      
+                    </div>
+                  </div>
+                </div>
+              </section>
+            </SwiperIniter>
+          )
+        }
+        <div class="content-wrapper__comments">
+          {
+            post.data.comments?.length > 0 && (
+              <section
+                class="single-post-comments"
+                aria-labelledby="single-post-comments-title"
+                id="comments"
+              >
+                <h2
+                  class="single-post-comments__title"
+                  id="single-post-comments-title"
+                >
+                  {t(
+                    "singlePost",
+                    `comments.${post.data.comments.length === 1 ? "commentsCountOne" : "commentsCountOther"}`,
+                    { count: post.data.comments.length }
+                  )}
+                </h2>
+                <div class="single-post-comments__body">
+                  {post.data.comments?.map((comment) => (
+                    <div class="single-post-comments__comment">
+                      <div class="single-post-comments__wrapper">
+                        <header class="single-post-comments__header">
+                          <div class="single-post-comments__details">
+                            {comment.url ? (
+                              <a
+                                href={comment.url}
+                                class="single-post-comments__autor"
+                              >
+                                {comment.autor}
+                              </a>
+                            ) : (
+                              <div class="single-post-comments__autor">
+                                {comment.autor}
+                              </div>
+                            )}
+                            <Date date={comment.date} />
+                          </div>
+                          <a
+                            href="#commentForm"
+                            class="single-post-comments__reply-button"
+                          >
+                            <i class="dfd-socicon-icon-reply-all single-post-comments__reply-icon" />
+                            <span>{t("singlePost", "comments.replyButton")}</span>
+                          </a>
+                        </header>
+                        <div class="single-post-comments__content">
+                          {comment.text}
+                        </div>
+                      </div>
+                      {comment.replies && comment.replies.length > 0 && (
+                        <div class="single-post-comments__replies">
+                          {comment.replies?.map((reply) => (
+                            <div class="single-post-comments__comment">
+                              <div class="single-post-comments__wrapper">
+                                <header class="single-post-comments__header">
+                                  <div class="single-post-comments__details">
+                                    {reply.url ? (
+                                      <a
+                                        href={reply.url}
+                                        class="single-post-comments__autor"
+                                      >
+                                        {reply.autor}
+                                      </a>
+                                    ) : (
+                                      <div class="single-post-comments__autor">
+                                        {reply.autor}
+                                      </div>
+                                    )}
+                                    <Date date={reply.date} />
+                                  </div>
+                                  <a
+                                    href="#commentForm"
+                                    class="single-post-comments__reply-button"
+                                  >
+                                    <i class="dfd-socicon-icon-reply-all single-post-comments__reply-icon" />
+                                    <span>
+                                      {t("singlePost", "comments.replyButton")}
+                                    </span>
+                                  </a>
+                                </header>
+                                <div class="single-post-comments__content">
+                                  {reply.text}
+                                </div>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </section>
+            )
+          }
+          <section
+            class="comments-single-post"
+            aria-labelledby="comments-single-post-title"
+            id="commentForm"
+          >
+            <div class="comments-single-post__body">
+              <header class="comments-single-post__header">
+                <h2
+                  class="comments-single-post__title"
+                  id="comments-single-post-title"
+                >
+                  {t("singlePost", "commentForm.title")}
+                </h2>
+                <div class="comments-single-post__subtitle">
+                  {t("singlePost", "commentForm.subtitle")}
+                </div>
+              </header>
+              <BlogCommentForm
+                commentFormData={t("singlePost", "commentForm.fields")}
+              />
+            </div>
+          </section>
+        </div>
+      
+      </div>
+      <BlogArticlesWidget  isAlt inputPlaceholder={t("blog", "blog.asideWidget.inputPlaceholder")}/>
+    </div>
+  </div>
 </Layout>

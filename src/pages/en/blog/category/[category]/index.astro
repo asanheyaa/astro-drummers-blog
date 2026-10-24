@@ -1,8 +1,5 @@
 ---
 import { getCollection } from "astro:content";
-import { getRelativeLocaleUrl } from "astro:i18n";
-import BlogCard from "../../../../../components/BlogCard.astro";
-import BlogPagination from "../../../../../components/BlogPagination.astro";
 import HeroSection from "../../../../../components/HeroSection.astro";
 import Layout from "../../../../../layouts/Layout.astro";
 
@@ -10,10 +7,7 @@ import { useTranslations } from "../../../../../scripts/i18n.js";
 import {
   getCategoriesWithPosts,
   getCategoryLink,
-  getCommentsLink,
-  getFormattedDate,
   getPostLink,
-  paginateItems,
 } from "../../../../../scripts/utils.js";
 import BlogArticlesWidget from "../../../../../components/BlogArticlesWidget.astro";
 import BlogCardAlt from "../../../../../components/BlogCardAlt.astro";
@@ -24,39 +18,36 @@ const t = useTranslations(lang);
 export async function getStaticPaths() {
   const posts = await getCollection("posts");
   const categories = getCategoriesWithPosts(posts, "en");
+ 
   return categories.map((cat) => ({
     params: { category: cat.slug },
-    props: {
-      categorySlug: cat.slug,
-      category: cat.title,
-      categoryId: cat.id,
-      categoryPosts: cat.posts,
-      allCategories: categories,
-    },
+    props: { category:cat, allCategories: categories },
   }));
 }
 
-const { categoryPosts, category, categoryId, categorySlug, allCategories } =
+const { category, allCategories } =
   Astro.props;
+
+  
 ---
 
 <Layout
-  title={`${category} ${t("categories", "pageTitlePrefix")}`}
-  metaDescription={t("blog", "meta.metaDescription")}
-  ogLocale={t("blog", "meta.og.locale")}
-  ogUrl={t("blog", "meta.og.url")}
-  ogImageUrl={t("blog", "meta.og.image")}
-  ogImageSecureUrl={t("blog", "meta.og.imageSecureUrl")}
-  ogImageAlt={t("blog", "meta.og.imageAlt")}
-  twitterImageUrl={t("blog", "meta.twitter.image")}
+  title={`${category.title} ${t("categories", "pageTitlePrefix")}`}
+  metaDescription={t("categories", "meta.metaDescription")}
+  ogLocale={t("categories", "meta.og.locale")}
+  ogUrl={t("categories", "meta.og.url")}
+  ogImageUrl={t("categories", "meta.og.image")}
+  ogImageSecureUrl={t("categories", "meta.og.imageSecureUrl")}
+  ogImageAlt={t("categories", "meta.og.imageAlt")}
+  twitterImageUrl={t("categories", "meta.twitter.image")}
   twitterLabel1={t("categories", "meta.twitter.label1")}
-  twitterData1={t("categories", `${categoryPosts.length || 0}`)}
-  categoryId={categoryId}
+  twitterData1={t("categories", `${category.posts.length || 0}`)}
+  categoryId={category.id}
 >
   <HeroSection
-    title={`${t("categories", "hero.title")} ${category}`}
+    title={`${t("categories", "hero.title")} ${category.title}`}
     categories={allCategories}
-    categoryName={category}
+    categoryName={category.title}
     searchTitle={t("blog", "blog.hero.searchTitle")}
     searchPlaceholder={t("blog", "blog.hero.searchPlaceholder")}
     filterTitle={t("blog", "blog.hero.filterTitle")}
@@ -65,15 +56,10 @@ const { categoryPosts, category, categoryId, categorySlug, allCategories } =
     <div class="blog-articles__container">
       <div class="blog-articles__body">
         {
-          categoryPosts.map((article) => {
+          category.posts.map((article) => {
             const postUrl = getPostLink(article.data.slug, lang);
-            const commentsUrl = getCommentsLink(
-              article.data.slug,
-              lang,
-              article.data.comments.length
-            );
             const categoryUrl = getCategoryLink(
-              article.data.mainCategory,
+            article.data.category.title,
               lang
             );
             return (
@@ -85,7 +71,7 @@ const { categoryPosts, category, categoryId, categorySlug, allCategories } =
                 title={article.data.title}
                 description={article.data.description}
                 date={article.data.date}
-                category={article.data.mainCategory}
+                category={article.data.category.title}
                 categoryUrl={categoryUrl}
                 postUrl={postUrl}
                 autor={article.data.autor}
@@ -95,7 +81,7 @@ const { categoryPosts, category, categoryId, categorySlug, allCategories } =
           })
         }
       </div>
-      <BlogArticlesWidget />
+      <BlogArticlesWidget inputPlaceholder={t("blog", "blog.asideWidget.inputPlaceholder")} />
     </div>
   </section>
 </Layout>

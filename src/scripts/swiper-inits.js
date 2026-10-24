@@ -63,24 +63,22 @@ if (postSwiper) {
 const relatedPostsSwiper = document.querySelector('.single-post-related__swiper');
 if (relatedPostsSwiper){
 	const heroSwiper = new Swiper(relatedPostsSwiper, {
-		modules: [ Autoplay, Navigation],
 		slidesPerView: 1,
-		spaceBetween: 40,
+		
 		speed:1000,
 		
-		navigation:{
-			nextEl:'.single-post-related__button-next',
-			prevEl:'.single-post-related__button-prev'
-		},
+		spaceBetween: 20,
 		breakpoints: {
 			400: {
 				slidesPerView: 1.3,
 			},
 			530: {
 				slidesPerView: 2,
+
 			},
 			768: {
-				slidesPerView: 3,
+				slidesPerView: 2,
+				spaceBetween: 40,
 			},
 			
 		}

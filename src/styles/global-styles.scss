@@ -1262,7 +1262,7 @@ body {
 	position: relative;
 	overflow: hidden;
 	display: inline-block;
-	font-weight: 400;
+	font-weight: 700;
 
 	&::after {
 		content: "";
@@ -1320,7 +1320,7 @@ body {
 	display: inline-flex;
 	align-items: center;
 	gap: 0.1875rem;
-	font-weight: 400;
+	font-weight: 700;
 	&__body {
 	}
 
@@ -1495,6 +1495,7 @@ body {
 	}
 
 	&__container {
+		max-width: 1210px;
 	}
 	&:has(.footer-hero) {
 		@media (prefers-reduced-motion: no-preference) {
@@ -1566,7 +1567,7 @@ body {
 		align-items: center;
 		justify-content: center;
 		gap: 0.3125rem;
-		font-weight: 400;
+		font-weight: 700;
 		padding: 0 0.9375rem;
 		color: rgb(255, 255, 255, 0.7);
 		&:not(:last-child) {
@@ -1601,6 +1602,9 @@ body {
 		}
 		.date {
 			color: rgb(255, 255, 255, 0.7);
+		}
+		&.like-button {
+			padding-right: 0;
 		}
 	}
 
@@ -1720,10 +1724,44 @@ body {
 //==========================================================================================================================================================
 
 .aside-widget {
-	border-radius: 25px;
-	box-shadow: rgba(0, 0, 0, 0.117647) 0 15px 42px -5px;
-	background: #ffffff;
-	padding: 40px 20px 20px;
+	padding: 0 10px 10px;
+	&:not(.aside-widget-alt) {
+		padding: 40px 20px 20px;
+		border-radius: 25px;
+		box-shadow: rgba(0, 0, 0, 0.117647) 0 15px 42px -5px;
+		background: #ffffff;
+		.aside-widget__button {
+			gap: 0.3125rem;
+			background: transparent;
+			color: #c3c3c3;
+			padding: 0.9375rem 1.25rem;
+			line-height: 1; /* 37/11 */
+			white-space: nowrap;
+			border-radius: 1.25rem;
+			font-size: 0.6875rem;
+			font-weight: 700;
+			text-transform: uppercase;
+			letter-spacing: 0.05rem;
+			transition:
+				background 0.4s ease,
+				box-shadow 0.4s ease,
+				color 0.4s ease;
+			&:hover {
+				background: #fff;
+				color: #28262b;
+				-webkit-box-shadow: 0 0.9375rem 3.125rem 0 rgba(0, 0, 0, 0.25);
+				box-shadow: 0 0.9375rem 3.125rem rgba(0, 0, 0, 0.25);
+				.aside-widget__icon {
+					transform: rotate(90deg);
+				}
+			}
+		}
+		.aside-widget__items {
+		}
+		.form-aside-widget__input {
+			background: #f0f0f0;
+		}
+	}
 	&__body {
 		text-align: center;
 	}
@@ -1780,12 +1818,13 @@ body {
 		}
 	}
 	&__icon {
+		font-size: 11px;
 		transition: all 0.3s ease 0s;
 	}
 	&__button {
 		display: inline-flex;
-		align-items: center;
 		gap: 0.3125rem;
+		background: transparent;
 		color: #c3c3c3;
 		padding: 0.9375rem 1.25rem;
 		line-height: 1; /* 37/11 */
@@ -1795,6 +1834,7 @@ body {
 		font-weight: 700;
 		text-transform: uppercase;
 		letter-spacing: 0.05rem;
+		font-size: 11px;
 		transition:
 			background 0.4s ease,
 			box-shadow 0.4s ease,
@@ -1813,23 +1853,13 @@ body {
 .form-aside-widget {
 	position: relative;
 	@include adaptiveValue(margin-bottom, 50, 30);
+	border-radius: 1.5625rem;
+	overflow: hidden;
+	display: flex;
 	&__input {
-		display: block;
-		width: 100%;
-		height: 2.5rem;
-		line-height: 2.5rem;
-		margin: 0;
-		padding: 0;
-		padding-left: 2.5rem;
-		border: 0.0625rem solid #e7e7e7;
-		background: rgba(0, 0, 0, 1%);
-		border-radius: 0.25rem;
-		border: 0.0625rem solid #e7e7e7;
-		background: rgba(0, 0, 0, 1%);
-		transition:
-			background 0.4s ease,
-			border-color 0.4s ease,
-			box-shadow 0.4s ease;
+		flex: 1 1 auto;
+		font-size: 0.875rem;
+		padding: 13.5px 1.25rem;
 		&:hover,
 		&:focus {
 			border-color: transparent;
@@ -1840,17 +1870,59 @@ body {
 	}
 
 	&__button {
-		display: block;
-		position: absolute;
-		width: 2.5rem;
-		height: 2.5rem;
-		top: 50%;
-		left: 0;
-		transform: translate(0, -50%);
-		font-size: 0.875rem;
-		color: #7b7b7b;
+		background: #3498db;
+		padding: 15px;
+		color: #fff;
+		font-size: 14px;
+		transition: all 0.3s ease 0s;
+		&:hover {
+			background: #2c73a1;
+		}
 	}
 }
+// .form-aside-widget {
+// 	position: relative;
+// 	@include adaptiveValue(margin-bottom, 50, 30);
+// 	border-radius: 1.5625rem;
+// 	overflow: hidden;
+// 	&__input {
+// 		display: block;
+// 		width: 100%;
+// 		height: 2.5rem;
+// 		line-height: 2.5rem;
+// 		margin: 0;
+// 		padding: 0;
+// 		padding-left: 2.5rem;
+// 		border: 0.0625rem solid #e7e7e7;
+// 		background: rgba(0, 0, 0, 1%);
+// 		border-radius: 0.25rem;
+// 		border: 0.0625rem solid #e7e7e7;
+// 		background: rgba(0, 0, 0, 1%);
+// 		transition:
+// 			background 0.4s ease,
+// 			border-color 0.4s ease,
+// 			box-shadow 0.4s ease;
+// 		&:hover,
+// 		&:focus {
+// 			border-color: transparent;
+// 			background: #fff;
+// 			-webkit-box-shadow: 0 0.625rem 2.8125rem -0.625rem rgba(0, 0, 0, 0.25);
+// 			box-shadow: 0 0.625rem 2.8125rem -0.625rem rgba(0, 0, 0, 0.25);
+// 		}
+// 	}
+
+// 	&__button {
+// 		display: block;
+// 		position: absolute;
+// 		width: 2.5rem;
+// 		height: 2.5rem;
+// 		top: 50%;
+// 		left: 0;
+// 		transform: translate(0, -50%);
+// 		font-size: 0.875rem;
+// 		color: #7b7b7b;
+// 	}
+// }
 
 //==========================================================================================================================================================
 .quantity {
@@ -2051,6 +2123,8 @@ body {
 		&:hover {
 			background: #2c73a1;
 		}
+		min-width: 255px;
+		text-align: center;
 		@media (max-width: 47.9988rem) {
 			width: 100%;
 		}
@@ -2072,11 +2146,7 @@ body {
 		font-size: 0.875rem;
 		text-transform: uppercase;
 		font-weight: 600;
-		@media (max-width: 47.9988rem) {
-			flex: 1 1 auto;
-
-			text-align: center;
-		}
+		flex: 1 1 auto;
 	}
 
 	&__body {
@@ -2128,9 +2198,9 @@ body {
 		height: 100%;
 		top: 0;
 		left: -100%;
-		padding: 120px 15px 30px;
+		padding: 7.5rem 0.9375rem 1.875rem;
 		transition: all 0.3s ease 0s;
-		@media (min-width: 767.98px) {
+		@media (min-width: 47.9988rem) {
 			display: contents;
 			height: 100%;
 		}
@@ -2153,6 +2223,11 @@ body {
 	}
 
 	&__list {
+		overflow: auto;
+		height: 100%;
+		@media (min-width: 767.98px) {
+			max-height: 440px;
+		}
 	}
 
 	&__item {
@@ -2232,14 +2307,14 @@ body {
 		transition: all 0.3s ease 0s;
 		height: 100%;
 		background: #3498db;
-		border-radius: 1.5625rem;
 		padding-left: 3.125rem;
 		padding-right: 2.5rem;
 
-		@media (any-hover: hover) {
-			&:hover {
-				background: #2c73a1;
-			}
+		&:hover {
+			background: #2c73a1;
+		}
+		@media (max-width: 767.98px) {
+			border-radius: 1.5625rem;
 		}
 
 		&-mobile {
@@ -2397,7 +2472,7 @@ body {
 		padding-right: 5px;
 		opacity: 0;
 		visibility: hidden;
-		transition: all 0.3s ease 0.3s;
+		transition: all 0.5s ease 0.5s;
 		&._active {
 			opacity: 1;
 			visibility: visible;

@@ -1,7 +1,11 @@
 ---
 import Image from "astro/components/Image.astro";
 import { useTranslations } from "../scripts/i18n.js";
-import { getFilteredArticles, getFormattedDate, getPostLink } from "../scripts/utils.js";
+import {
+  getFilteredArticles,
+  getFormattedDate,
+  getPostLink,
+} from "../scripts/utils.js";
 import Date from "./Date.astro";
 import LikeButton from "./LikeButton.astro";
 import { getCollection } from "astro:content";
@@ -9,17 +13,20 @@ import { getCollection } from "astro:content";
 const { lang } = Astro.locals;
 const t = useTranslations(lang);
 
+const { isAlt, inputPlaceholder } = Astro.props;
+
 const posts = await getCollection("posts");
 const articles = getFilteredArticles(posts, lang, 4);
 ---
 
-<aside class="aside-widget">
+<aside class:list={["aside-widget", { "aside-widget-alt": isAlt }]}>
   <div class="aside-widget__body">
     <form action="#" class="form-aside-widget">
       <input
         type="text"
         name="search"
         id="asideWidgetSearch"
+        placeholder={inputPlaceholder}
         class="form-aside-widget__input"
       />
       <button

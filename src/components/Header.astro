@@ -1,5 +1,5 @@
 ---
-const { isHeaderAnimated, categoryId, articleId } = Astro.props;
+const { isHeaderAnimated, categoryId, articleId, tagId } = Astro.props;
 import { Image } from "astro:assets";
 import logo from "../assets/img/main/logo.svg";
 
@@ -54,7 +54,7 @@ const t = useTranslations(lang);
             })
           }
 
-          <LanguageSwitcher articleId={articleId} categoryId={categoryId} />
+          <LanguageSwitcher articleId={articleId} categoryId={categoryId} tagId={tagId} />
         </ul>
       </nav>
       <div class="header__socials">

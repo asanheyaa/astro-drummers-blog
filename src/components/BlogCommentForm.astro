@@ -10,10 +10,23 @@ const t = useTranslations(lang);
 
 <form action="#" class="comments-post-form" {...rest}>
   <div class="comments-post-form__body">
-    
+    <div class="comments-post-form__item">
+      <label for="message" class="comments-post-form__label"
+        >{t("singlePost", "commentForm.fields.comment.label")}
+      </label>
+      <textarea
+        name="Comment"
+        id="message"
+        class="comments-post-form__input comments-post-form__input-area"
+        required={t("singlePost", "commentForm.fields.comment.required")
+          ? true
+          : undefined}></textarea>
+    </div>
     <div class="comments-post-form__items">
       <div class="comments-post-form__item">
-   
+        <label for="userName" class="comments-post-form__label">
+          {t("singlePost", "commentForm.fields.name.label")}</label
+        >
         <input
           type="text"
           name="name"
@@ -23,11 +36,12 @@ const t = useTranslations(lang);
           required={t("singlePost", "commentForm.fields.name.required")
             ? true
             : undefined}
-             placeholder={t("singlePost", "commentForm.fields.name.label")}
         />
       </div>
       <div class="comments-post-form__item">
-    
+        <label for="userEmail" class="comments-post-form__label">
+          {t("singlePost", "commentForm.fields.email.label")}</label
+        >
         <input
           type="email"
           name="email"
@@ -37,22 +51,27 @@ const t = useTranslations(lang);
           required={t("singlePost", "commentForm.fields.email.required")
             ? true
             : undefined}
-            placeholder={t("singlePost", "commentForm.fields.email.label")}
         />
       </div>
-     
+      <div class="comments-post-form__item">
+        <label for="userWebsite" class="comments-post-form__label">
+          {t("singlePost", "commentForm.fields.website.label")}</label
+        >
+        <input
+          type="url"
+          name="website"
+          id="userWebsite"
+          class="comments-post-form__input"
+          autocomplete="on"
+          required={t("singlePost", "commentForm.fields.website.required")
+            ? true
+            : undefined}
+        />
+      </div>
     </div>
-    <div class="comments-post-form__item">
-      <textarea
-        name="Comment"
-        id="message"
-        class="comments-post-form__input comments-post-form__input-area"
-        required={t("singlePost", "commentForm.fields.comment.required")
-          ? true
-          : undefined} placeholder={t("singlePost", "commentForm.fields.comment.label")}></textarea>
-    </div>
+    
   </div>
-  <Button type="button" class="comments-post-form__button">
+  <Button type="button" class="comments-post-form__button" isAlt>
     {t("singlePost", "commentForm.submitButton")}
   </Button>
 </form>

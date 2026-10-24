@@ -36,7 +36,8 @@
         "buttonLabel": "Load more"
       },
 		"asideWidget":{
-			"buttonLabel":"Load more"
+			"buttonLabel":"Load more",
+      "inputPlaceholder": "Suchen"
 		}
 		
 	}

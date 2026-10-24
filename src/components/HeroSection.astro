@@ -2,10 +2,28 @@
 import Filter from "./Filter.astro";
 import SearchHero from "./SearchHero.astro";
 import "../styles/fontawesome.scss";
+import Date from "./Date.astro";
+import CommentsButton from "./CommentsButton.astro";
+import LikeButton from "./LikeButton.astro";
 
-const { isAlt, title, categories, categoryName, noFilter,searchTitle, searchPlaceholder,filterTitle } =
-  Astro.props;
-  
+const {
+  isAlt,
+  title,
+  categories,
+  categoryName,
+  noFilter,
+  searchTitle,
+  searchPlaceholder,
+  filterTitle,
+  isArticle,
+  date,
+  commentsCounter,
+  commentsLink,
+  viewsCounter,
+  likesCounter,
+  tags
+} = Astro.props;
+
 ---
 
 <section
@@ -24,9 +42,42 @@ const { isAlt, title, categories, categoryName, noFilter,searchTitle, searchPlac
     {
       !noFilter && (
         <div class="hero-actions">
-          <Filter categories={categories} categoryName={categoryName} filterTitle={filterTitle} />
-          <SearchHero i  searchTitle={searchTitle} searchPlaceholder={searchPlaceholder}/>
+          <Filter
+            categories={categories}
+            tags={tags}
+            categoryName={categoryName}
+            filterTitle={filterTitle}
+          />
+          <SearchHero
+            i
+            searchTitle={searchTitle}
+            searchPlaceholder={searchPlaceholder}
+          />
         </div>
+      )
+    }
+
+    {
+      isArticle && (
+        <footer class="footer-hero">
+          <div class="footer-hero__autor"></div>
+          <div class="footer-hero__details">
+            <div class="footer-hero__item">
+              <Date date={date} />
+            </div>
+
+            <CommentsButton
+              commentsLink={commentsLink}
+              commentsCounter={commentsCounter}
+              class="footer-hero__item"
+            />
+            <div class="footer-hero__item">
+              <span>{viewsCounter} </span> <span>Views</span>
+            </div>
+            <LikeButton likesCounter={likesCounter} class="footer-hero__item" />
+          </div>
+         
+        </footer>
       )
     }
   </div>

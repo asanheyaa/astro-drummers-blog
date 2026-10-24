@@ -1,0 +1,86 @@
+---
+import { getCollection } from "astro:content";
+import HeroSection from "../../../../components/HeroSection.astro";
+import Layout from "../../../../layouts/Layout.astro";
+
+import { useTranslations } from "../../../../scripts/i18n.js";
+import {
+  getCategoryLink,
+  getFormattedDate,
+  getPostLink,
+  getTagsWithPosts,
+} from "../../../../scripts/utils.js";
+import BlogArticlesWidget from "../../../../components/BlogArticlesWidget.astro";
+import BlogCardAlt from "../../../../components/BlogCardAlt.astro";
+
+const { lang } = Astro.locals;
+const t = useTranslations(lang);
+
+export async function getStaticPaths() {
+  const posts = await getCollection("posts");
+  const tags = getTagsWithPosts(posts, "de");
+  return tags.map((tag) => ({
+    params: { tag: tag.slug },
+    props: { tag, allTags: tags },
+  }));
+}
+
+const { tag, allTags } = Astro.props;
+---
+
+<Layout
+  title={`${tag.title} ${t("tag", "hero.title")}`}
+  metaDescription={t("tag", "meta.metaDescription")}
+  ogLocale={t("tag", "meta.og.locale")}
+  ogUrl={t("tag", "meta.og.url")}
+  ogImageUrl={t("tag", "meta.og.image")}
+  ogImageSecureUrl={t("tag", "meta.og.imageSecureUrl")}
+  ogImageAlt={t("tag", "meta.og.imageAlt")}
+  twitterImageUrl={t("tag", "meta.twitter.image")}
+  twitterLabel1={t("tag", "meta.twitter.label1")}
+  twitterData1={t("tag", `${tag.posts.length|| 0}`)}
+  tagId={tag.id}
+>
+  <HeroSection
+    title={`${t("tag", "hero.title")} ${tag.title}`}
+    tags={allTags}
+    categoryName={tag.title}
+    searchTitle={t("blog", "blog.hero.searchTitle")}
+    searchPlaceholder={t("blog", "blog.hero.searchPlaceholder")}
+    filterTitle={t("blog", "blog.hero.filterTitle")}
+  />
+  <section class="blog-articles blog-articles-with-widget">
+    <div class="blog-articles__container">
+      <div class="blog-articles__body">
+        {
+          tag.posts.map((article) => {
+            const postUrl = getPostLink(article.data.slug, lang);
+            const categoryUrl = getCategoryLink(
+              article.data.category.title,
+              lang
+            );
+            return (
+              <BlogCardAlt
+                id={article.data.id}
+                postId={article.data.id}
+                src={article.data.cover}
+                alt={article.data.alt}
+                title={article.data.title}
+                description={article.data.description}
+                date={getFormattedDate(article.data.date)}
+                category={article.data.category.title}
+                categoryUrl={categoryUrl}
+                postUrl={postUrl}
+                autor={article.data.autor}
+                isGrid
+              />
+            );
+          })
+        }
+      </div>
+      <BlogArticlesWidget
+        inputPlaceholder={t("blog", "blog.asideWidget.inputPlaceholder")}
+      />
+    </div>
+  </section>
+</Layout>

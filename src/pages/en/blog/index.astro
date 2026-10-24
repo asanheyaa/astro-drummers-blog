@@ -59,7 +59,7 @@ const categories = getCategoriesWithPosts(allArticles, lang);
               article.data.comments.length
             );
             const categoryUrl = getCategoryLink(
-              article.data.mainCategory,
+            article.data.category.title,
               lang
             );
             return (

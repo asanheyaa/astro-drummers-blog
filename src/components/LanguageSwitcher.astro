@@ -1,9 +1,11 @@
 ---
 import { getCollection } from "astro:content";
 import { languages } from "../scripts/i18n.js";
-import { withBase, getCategoryLink } from "../scripts/utils.js";
-import { getRelativeLocaleUrl } from "astro:i18n";
-const { type, articleId, categoryId } = Astro.props;
+import { withBase, getCategoryLink, getPostLink } from "../scripts/utils.js";
+import { getCategoriesWithPosts } from "../scripts/utils.js";
+import { getTagsWithPosts } from "../scripts/utils.js";
+import { getTagLink } from "../scripts/utils.js";
+const { type, articleId, categoryId, tagId } = Astro.props;
 
 const { lang } = Astro.locals;
 const targetLang = lang === "de" ? "en" : "de";
@@ -25,53 +27,30 @@ function getLocalizedPath(lang) {
 }
 const targetPath = getLocalizedPath(targetLang);
 
+
+const posts = await getCollection("posts");
 async function getPath(lang) {
   if (articleId) {
-    //article Switch
-    const posts = await getCollection("posts");
 
     const exactArticle = posts.find(
       (post) => post.data.translationId === articleId && post.data.lang === lang
-    );
-    if (!exactArticle) {
-      return lang === "de" ? withBase("/blog") : withBase("/en/blog");
-    }
+      );
+      return exactArticle ?
+       getPostLink(exactArticle.data.slug, lang)
+       :  lang === "de" ? withBase("/blog") : withBase("/en/blog");
 
-    if (lang === "de") {
-      return withBase(`/blog/${exactArticle.data.slug}`);
-    }
-    return withBase(`/en/blog/${exactArticle.data.slug}`);
+
   } else if (categoryId) {
-    //category switch
-    const posts = await getCollection("posts");
-    const exactPost = posts.find((post) => {
-      if (post.data.lang !== lang) return false;
-
-      const isMain = post.data.translationId === categoryId;
-
-      const isAdditional = post.data.additionalsCategories?.some(
-        (cat) => cat.id === categoryId
-      );
-      return isMain || isAdditional;
-    });
-
-    if (!exactPost) {
-      return lang === "de" ? withBase("/blog") : withBase("/en/blog");
-    }
-
-    let categoryTitle = "";
-
-    if (exactPost.data.translationId === categoryId) {
-      categoryTitle = exactPost.data.mainCategory;
-    } else {
-      const foundCat = exactPost.data.additionalsCategories?.find(
-        (cat) => cat.id === categoryId
-      );
-      categoryTitle = foundCat ? foundCat.title : "";
-    }
-    return getCategoryLink(categoryTitle, lang);
+    const cat = getCategoriesWithPosts(posts, lang).find((c) => c.id === categoryId);
+    return cat
+      ? getCategoryLink(cat.title, lang)
+      : lang === "de" ? withBase("/blog") : withBase("/en/blog");
+  } else if (tagId) {
+    const tag = getTagsWithPosts(posts, lang).find((t) => t.id === tagId);
+    return tag
+      ? getTagLink(tag.title, lang)
+      : lang === "de" ? withBase("/blog") : withBase("/en/blog");
   } else {
-    console.log(targetPath);
     return targetPath;
   }
 }
@@ -89,7 +68,7 @@ const path = await getPath(targetLang);
   ) : (
     Object.entries(languages)
       .sort(([codeA], [codeB]) => {
-        if (codeA === lang) return 1; 
+        if (codeA === lang) return 1;
         if (codeB === lang) return -1;
         return 0;
       })
