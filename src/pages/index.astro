@@ -32,7 +32,6 @@ const allArticles = await getCollection("posts");
 const articles = getFilteredArticles(allArticles, lang, 5);
 ---
 
-
 <Layout
   isHeaderAnimated
   title={t("homePage", "meta.title")}
@@ -49,16 +48,17 @@ const articles = getFilteredArticles(allArticles, lang, 5);
   twitterLabel2={t("homePage", "meta.twitter.label2")}
   twitterData2={t("homePage", "meta.twitter.data2")}
 >
-<style>
-  @font-face {
-  font-family: 'Playfair Display';
-  src: url('../assets/fonts/PlayfairDisplay/PlayfairDisplay-BoldItalic.woff2') format('woff2');
-  font-weight: 700;
-  font-style: italic;
-  font-display: swap;
-  font-stretch: normal;
-}
-</style>
+  <style>
+    @font-face {
+      font-family: "Playfair Display";
+      src: url("../assets/fonts/PlayfairDisplay/PlayfairDisplay-BoldItalic.woff2")
+        format("woff2");
+      font-weight: 700;
+      font-style: italic;
+      font-display: swap;
+      font-stretch: normal;
+    }
+  </style>
   <SwiperIniter>
     <section class="home-hero" id="welcome">
       <div class="home-hero__container">
@@ -221,12 +221,8 @@ const articles = getFilteredArticles(allArticles, lang, 5);
       aria-labelledby="home-products-title"
     >
       <div class="home-products__back">
-        <div class="home-products__item ibg">
-      
-        </div>
-        <div class="home-products__item ibg">
-        
-        </div>
+        <div class="home-products__item ibg"></div>
+        <div class="home-products__item ibg"></div>
       </div>
       <div class="home-products__container">
         <div class="home-products__body" data-animation-on-scroll>

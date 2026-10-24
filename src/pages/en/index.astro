@@ -164,7 +164,7 @@ const articles = getFilteredArticles(allArticles, lang, 5);
                   {articles.map((article) => {
                     const postUrl = getPostLink(article.data.slug, lang);
                     const categoryUrl = getCategoryLink(
-                      article.data.mainCategory,
+                    article.data.category.title,
                       lang
                     );
                     return (
@@ -177,7 +177,7 @@ const articles = getFilteredArticles(allArticles, lang, 5);
                           title={article.data.title}
                           description={article.data.description}
                           date={article.data.date}
-                          category={article.data.mainCategory}
+                          category={article.data.category.title}
                           categoryUrl={categoryUrl}
                           postUrl={postUrl}
                         />
