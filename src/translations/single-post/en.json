@@ -1,6 +1,7 @@
 {
 	
 		"autor": "by",
+     "views":"Views",
 		"likes": "likes",
 		"commentForm": {
     "title": "Leave a Reply",
@@ -9,15 +10,19 @@
     "fields": {
       "comment": {
         "label": "Comment *",
-        "required": true
+        "required": true,
+        "errorMessage":"enter your comment"
       },
       "name": {
         "label": "Name *",
-        "required": true
+        "required": true,
+        "errorMessage":"enter your name"
+        
       },
       "email": {
         "label": "Email *",
-        "required": true
+        "required": true,
+        "errorMessage":"enter your email"
       },
       "website": {
         "label": "Website",

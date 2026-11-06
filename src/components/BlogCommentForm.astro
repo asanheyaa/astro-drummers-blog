@@ -8,70 +8,98 @@ const { lang } = Astro.locals;
 const t = useTranslations(lang);
 ---
 
-<form action="#" class="comments-post-form" {...rest}>
+<form
+  action="#"
+  class="comments-post-form"
+  novalidate
+  data-validate-form
+  {...rest}
+>
   <div class="comments-post-form__body">
     <div class="comments-post-form__item">
-      <label for="message" class="comments-post-form__label"
-        >{t("singlePost", "commentForm.fields.comment.label")}
-      </label>
+      <div class="comments-post-form__header">
+        <label for="message" class="comments-post-form__label">
+          {t("singlePost", "commentForm.fields.comment.label")}
+        </label>
+        <div class="comments-post-form__error" id="message-error">
+          {t("singlePost", "commentForm.fields.comment.errorMessage")}
+        </div>
+      </div>
       <textarea
         name="Comment"
         id="message"
         class="comments-post-form__input comments-post-form__input-area"
-        required={t("singlePost", "commentForm.fields.comment.required")
-          ? true
-          : undefined}></textarea>
+        data-required={t("singlePost", "commentForm.fields.comment.required") ? "" : undefined}
+        aria-required={t("singlePost", "commentForm.fields.comment.required") ? "true" : undefined}
+        aria-describedby="message-error"
+      ></textarea>
     </div>
+
     <div class="comments-post-form__items">
       <div class="comments-post-form__item">
-        <label for="userName" class="comments-post-form__label">
-          {t("singlePost", "commentForm.fields.name.label")}</label
-        >
+        <div class="comments-post-form__header">
+          <label for="userName" class="comments-post-form__label">
+            {t("singlePost", "commentForm.fields.name.label")}
+          </label>
+          <div class="comments-post-form__error" id="userName-error">
+            {t("singlePost", "commentForm.fields.name.errorMessage")}
+          </div>
+        </div>
         <input
           type="text"
           name="name"
           id="userName"
           class="comments-post-form__input"
           autocomplete="name"
-          required={t("singlePost", "commentForm.fields.name.required")
-            ? true
-            : undefined}
+          data-required={t("singlePost", "commentForm.fields.name.required") ? "" : undefined}
+          aria-required={t("singlePost", "commentForm.fields.name.required") ? "true" : undefined}
+          aria-describedby="userName-error"
         />
       </div>
+
       <div class="comments-post-form__item">
-        <label for="userEmail" class="comments-post-form__label">
-          {t("singlePost", "commentForm.fields.email.label")}</label
-        >
+        <div class="comments-post-form__header">
+          <label for="userEmail" class="comments-post-form__label">
+            {t("singlePost", "commentForm.fields.email.label")}
+          </label>
+          <div class="comments-post-form__error" id="userEmail-error">
+            {t("singlePost", "commentForm.fields.email.errorMessage")}
+          </div>
+        </div>
         <input
           type="email"
           name="email"
           id="userEmail"
           class="comments-post-form__input"
           autocomplete="email"
-          required={t("singlePost", "commentForm.fields.email.required")
-            ? true
-            : undefined}
+          data-required={t("singlePost", "commentForm.fields.email.required") ? "" : undefined}
+          aria-required={t("singlePost", "commentForm.fields.email.required") ? "true" : undefined}
+          aria-describedby="userEmail-error"
         />
       </div>
+
       <div class="comments-post-form__item">
-        <label for="userWebsite" class="comments-post-form__label">
-          {t("singlePost", "commentForm.fields.website.label")}</label
-        >
+        <div class="comments-post-form__header">
+          <label for="userWebsite" class="comments-post-form__label">
+            {t("singlePost", "commentForm.fields.website.label")}
+          </label>
+        
+        </div>
         <input
           type="url"
           name="website"
           id="userWebsite"
           class="comments-post-form__input"
-          autocomplete="on"
-          required={t("singlePost", "commentForm.fields.website.required")
-            ? true
-            : undefined}
+          autocomplete="url"
+          data-required={t("singlePost", "commentForm.fields.website.required") ? "" : undefined}
+          aria-required={t("singlePost", "commentForm.fields.website.required") ? "true" : undefined}
+          aria-describedby="userWebsite-error"
         />
       </div>
     </div>
-    
   </div>
-  <Button type="button" class="comments-post-form__button" isAlt>
+
+  <Button type="submit" class="comments-post-form__button" isAlt>
     {t("singlePost", "commentForm.submitButton")}
   </Button>
 </form>

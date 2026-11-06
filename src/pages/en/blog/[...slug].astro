@@ -90,51 +90,46 @@ const t = useTranslations(lang);
                 src={post.data.cover}
               />
             </div>
-            <h3 class="single-post-body__title">
-              {post.data.title}
-            </h3>
             <div
               class="single-post-body__content"
               set:html={post.data.content.rendered}
             />
           </article>
           <footer class="footer-single-post">
-            <div class="footer-single-post__container">
-              <div class="footer-single-post__categories">
-                <ul class="footer-single-post__list">
-                  {
-                    post.data.tags?.map((item) => (
-                      <li class="footer-single-post__item">
-                        <Category
-                          label={item.title}
-                          url={getTagLink(item.title, lang)}
-                          class="footer-single-post__category"
-                        />
-                      </li>
-                    ))
-                  }
-                </ul>
-              </div>
-              <div class="footer-single-post__actions">
-                <button type="button" class="footer-single-post__button">
-                  <i
-                    class="footer-single-post__like-icon dfd-socicon-icon-ios7-heart"
-                  >
-                  </i>
-                  <span class="footer-single-post__like-counter">
-                    {post.data.counters?.likes || 0}
-                  </span>
-                  {" "}
-                  <span>
-                    {t("singlePost", "likes")}
-                  </span>
-                </button>
-                <div class="footer-single-post__socials">
-                  <ShareButtons
-                    slug={post.data.slug}
-                    facebookCounter={post.data.counters?.facebookCounter || 0}
-                  />
-                </div>
+            <div class="footer-single-post__categories">
+              <ul class="footer-single-post__list">
+                {
+                  post.data.tags?.map((item) => (
+                    <li class="footer-single-post__item">
+                      <Category
+                        label={item.title}
+                        url={getTagLink(item.title, lang)}
+                        class="footer-single-post__category"
+                      />
+                    </li>
+                  ))
+                }
+              </ul>
+            </div>
+            <div class="footer-single-post__actions">
+              <button type="button" class="footer-single-post__button">
+                <i
+                  class="footer-single-post__like-icon dfd-socicon-icon-ios7-heart"
+                >
+                </i>
+                <span class="footer-single-post__like-counter">
+                  {post.data.counters?.likes || 0}
+                </span>
+                {" "}
+                <span>
+                  {t("singlePost", "likes")}
+                </span>
+              </button>
+              <div class="footer-single-post__socials">
+                <ShareButtons
+                  slug={post.data.slug}
+                  facebookCounter={post.data.counters?.facebookCounter || 0}
+                />
               </div>
             </div>
           </footer>
@@ -187,7 +182,6 @@ const t = useTranslations(lang);
                           </div>
                         );
                       })}
-                      
                     </div>
                   </div>
                 </div>
@@ -311,9 +305,12 @@ const t = useTranslations(lang);
             />
           </div>
         </section>
-      
       </div>
-      <BlogArticlesWidget  isAlt inputPlaceholder={t("blog", "blog.asideWidget.inputPlaceholder")}/>
+      <BlogArticlesWidget
+        isAlt
+        inputPlaceholder={t("blog", "blog.asideWidget.inputPlaceholder")}
+        currentPost={post}
+      />
     </div>
   </div>
 </Layout>

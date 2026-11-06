@@ -29,7 +29,7 @@ const { tag, allTags } = Astro.props;
 ---
 
 <Layout
-  title={`${tag.title} ${t("tag", "hero.title")}`}
+  title={`${t("tag", "hero.title")} ${tag.title}`}
   metaDescription={t("tag", "meta.metaDescription")}
   ogLocale={t("tag", "meta.og.locale")}
   ogUrl={t("tag", "meta.og.url")}

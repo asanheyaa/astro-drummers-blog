@@ -158,11 +158,10 @@ body:has(.single-post-body) {
 }
 
 .single-post-body {
-	@include adaptiveValue(margin-bottom, 90, 50);
+	@include adaptiveValue(margin-bottom, 70, 50);
 	position: relative;
 	z-index: 2;
 
-	padding-top: 2.5rem;
 	&__container {
 	}
 	&__buttons {
@@ -200,15 +199,7 @@ body:has(.single-post-body) {
 	}
 
 	&__title {
-		@include adaptiveValue(font-size, 36, 24);
-		font-style: normal;
-		font-weight: 700;
-		line-height: 1.238;
-		letter-spacing: -0.075rem;
-		color: #313131;
-		&:not(:last-child) {
-			margin-bottom: 1.25rem;
-		}
+		
 	}
 
 	&__content {
@@ -222,6 +213,17 @@ body:has(.single-post-body) {
 		color: #7b7b7b;
 		p:not(:last-child) {
 			margin-bottom: 0.9375rem;
+		}
+		h2:first-child{
+			@include adaptiveValue(font-size, 36, 24);
+			font-style: normal;
+			font-weight: 700;
+			line-height: 1.238;
+			letter-spacing: -0.075rem;
+			color: #313131;
+			&:not(:last-child) {
+				margin-bottom: 1.25rem;
+			}
 		}
 
 		h1,
@@ -239,6 +241,7 @@ body:has(.single-post-body) {
 			letter-spacing: -0.0625rem;
 			color: #2b2b2b;
 			margin-bottom: 0.9375rem;
+			
 		}
 
 		ul {
@@ -313,13 +316,11 @@ body:has(.single-post-body) {
 	position: relative;
 	z-index: 2;
 
-	&__container {
-		display: flex;
-		@include adaptiveValue(gap, 70, 40);
-		align-items: flex-start;
-		@media (max-width: 47.9988rem) {
-			flex-direction: column;
-		}
+	display: flex;
+	@include adaptiveValue(gap, 70, 40);
+	align-items: flex-start;
+	@media (max-width: 47.9988rem) {
+		flex-direction: column;
 	}
 
 	&__categories {
@@ -434,9 +435,25 @@ body:has(.single-post-body) {
 	&__item {
 		display: flex;
 		flex-direction: column;
+		&.--error{
+			.comments-post-form__error{
+				display: block;
+			}
+			.comments-post-form__input{
+				border-color: #D32F2F;
+			}
+		}
+		&:not(:has(.comments-post-form__error)){
+			align-self: flex-end;
+		}
 	}
 
-	&__label {
+	&__header{
+		display: flex;
+		gap: 10px;
+		flex: 1 1 auto;
+		flex-direction: column;
+		align-items: flex-start;
 		font-size: 0.625rem;
 		font-style: normal;
 		font-weight: 700;
@@ -446,6 +463,14 @@ body:has(.single-post-body) {
 		margin-bottom: 0.625rem;
 		color: #5c5c5c;
 		padding: 0 0.9375rem;
+	}
+
+	&__label {
+		text-wrap: nowrap;
+	}
+	&__error{
+		color: #D32F2F;
+		display: none;
 	}
 
 	&__input {
@@ -669,13 +694,15 @@ body:has(.single-post-body) {
 
 .content-wrapper {
 	@include adaptiveValue(padding-bottom, 40, 70);
+	padding-top: 2.5rem;
+
 	&__container {
 		max-width: 1210px;
 
 		@media (min-width: 991.98px) {
 			display: flex;
 			align-items: flex-start;
-			gap: 15px;
+			gap: 3rem;
 		}
 	}
 	&__main {

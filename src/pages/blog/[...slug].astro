@@ -91,16 +91,12 @@ const t = useTranslations(lang);
                 src={post.data.cover}
               />
             </div>
-            <h3 class="single-post-body__title">
-              {post.data.title}
-            </h3>
             <div
               class="single-post-body__content"
               set:html={post.data.content.rendered}
             />
           </article>
           <footer class="footer-single-post">
-            <div class="footer-single-post__container">
               <div class="footer-single-post__categories">
                 <ul class="footer-single-post__list">
                   {
@@ -137,7 +133,6 @@ const t = useTranslations(lang);
                   />
                 </div>
               </div>
-            </div>
           </footer>
         </section>
         {
@@ -316,7 +311,7 @@ const t = useTranslations(lang);
         </div>
       
       </div>
-      <BlogArticlesWidget  isAlt inputPlaceholder={t("blog", "blog.asideWidget.inputPlaceholder")}/>
+      <BlogArticlesWidget  isAlt inputPlaceholder={t("blog", "blog.asideWidget.inputPlaceholder")} currentPost={post}/>
     </div>
   </div>
 </Layout>

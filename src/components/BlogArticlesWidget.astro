@@ -13,10 +13,11 @@ import { getCollection } from "astro:content";
 const { lang } = Astro.locals;
 const t = useTranslations(lang);
 
-const { isAlt, inputPlaceholder } = Astro.props;
+const { isAlt, inputPlaceholder, currentPost = null } = Astro.props;
 
 const posts = await getCollection("posts");
 const articles = getFilteredArticles(posts, lang, 4);
+
 ---
 
 <aside class:list={["aside-widget", { "aside-widget-alt": isAlt }]}>
@@ -41,39 +42,40 @@ const articles = getFilteredArticles(posts, lang, 4);
       {
         articles.map((article) => {
           const postUrl = getPostLink(article.data.slug, lang);
-
-          return (
-            <article class="aside-widget__item">
-              <div class="aside-widget__image">
-                <Image
-                  src={article.data.cover}
-                  alt={article.data.title}
-                  width={80}
-                  height={80}
-                />
-              </div>
-              <div class="aside-widget__details">
-                <h2 class="aside-widget__title">
-                  <a href={postUrl} class="aside-widget__link">
-                    {article.data.title}
-                  </a>
-                </h2>
-                <footer class="aside-widget__footer">
-                  <Date
-                    date={
-                      lang === "de"
-                        ? getFormattedDate(article.data.date)
-                        : article.data.date
-                    }
+          if (article.data.id !== currentPost?.data.id) {
+            return (
+              <article class="aside-widget__item">
+                <div class="aside-widget__image">
+                  <Image
+                    src={article.data.cover}
+                    alt={article.data.title}
+                    width={80}
+                    height={80}
                   />
-                  {/* <LikeButton
+                </div>
+                <div class="aside-widget__details">
+                  <h2 class="aside-widget__title">
+                    <a href={postUrl} class="aside-widget__link">
+                      {article.data.title}
+                    </a>
+                  </h2>
+                  <footer class="aside-widget__footer">
+                    <Date
+                      date={
+                        lang === "de"
+                          ? getFormattedDate(article.data.date)
+                          : article.data.date
+                      }
+                    />
+                    {/* <LikeButton
                     likesCounter={article.data.counters.likes}
                     postId={article.data.id}
                   /> */}
-                </footer>
-              </div>
-            </article>
-          );
+                  </footer>
+                </div>
+              </article>
+            );
+          }
         })
       }
     </div>

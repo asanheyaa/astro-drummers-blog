@@ -5,6 +5,7 @@ import { initHeaderFunctions } from './header.js';
 import { initPopUpFunctions, initDropdowns } from './popUps.js';
 import { initPreloader } from './preloader.js';
 import { initCookiesPopup } from './cookies.js';
+import {commetnsFormValidation} from './commentsForm.js';
 
 initPreloader()
 document.addEventListener("DOMContentLoaded", () => {
@@ -15,6 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initParallax()
   initCookiesPopup()
   initDropdowns()
+  commetnsFormValidation() 
 })
 
 

@@ -1,23 +1,26 @@
 {
-		
-		"autor": "von",
-		"likes": "likes",
-		"commentForm": {
+  "autor": "von",
+  "likes": "likes",
+  "views": "Ansichten",
+  "commentForm": {
     "title": "Schreibe einen Kommentar",
-	"subtitle": "Deine E-Mail-Adresse wird nicht veröffentlicht. Erforderliche Felder sind mit * markiert",
+    "subtitle": "Deine E-Mail-Adresse wird nicht veröffentlicht. Erforderliche Felder sind mit * markiert",
     "cancelReply": "Click here to cancel reply.",
     "fields": {
       "comment": {
         "label": "Kommentar *",
-        "required": true
+        "required": true,
+        "errorMessage": "Gib deine E-Mail-Adresse ein"
       },
       "name": {
         "label": "Name *",
-        "required": true
+        "required": true,
+        "errorMessage": "Gib deinen Namen ein"
       },
       "email": {
         "label": "E-Mail-Adresse *",
-        "required": true
+        "required": true,
+        "errorMessage": "Gib deine E-Mail-Adresse ein"
       },
       "website": {
         "label": "Website",
@@ -29,13 +32,13 @@
     },
     "submitButton": "Kommentar hinterlassen"
   },
-  "comments" : {
-	"replyButton":"Kommentar hinterlassen",
-  "commentsTitle":"Comments",
-	 "commentsCountOne": "There is {count} comment",
-    "commentsCountOther": "There are {count} comments"
+  "comments": {
+    "replyButton": "Kommentar hinterlassen",
+    "commentsTitle": "Comments",
+    "commentsCountOne": "Es gibt {count} Kommentar",
+    "commentsCountOther": "Es gibt {count} Kommentare"
   },
-  "relatedPosts":{
-    "title":"Ähnliche Beiträge"
+  "relatedPosts": {
+    "title": "Ähnliche Beiträge"
   }
 }
