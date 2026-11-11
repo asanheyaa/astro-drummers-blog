@@ -30,13 +30,13 @@
 			"title": "Ich kann dir am besten helfen, indem ich mein Wissen und meine Erfahrungen mit dir teile. Darum geht es mir in diesem Blog.",
       "filterTitle":"SORTIEREN",
       "searchTitle":"Suchen",
-      "searchPlaceholder":"Finde alles, was du wissen möchtest mit der Suche"
+      "searchPlaceholder":"Finde alles, was du wissen möchtest mit der Suche."
 		},
       "articles": {
-        "buttonLabel": "Load more"
+        "buttonLabel": "Mehr anzeigen"
       },
 		"asideWidget":{
-			"buttonLabel":"Load more",
+			"buttonLabel":"Mehr anzeigen",
       "inputPlaceholder": "Suchen"
 		}
 		

@@ -33,6 +33,7 @@ const { post } = Astro.props;
 const { lang } = Astro.locals;
 
 const t = useTranslations(lang);
+
 ---
 
 <Layout
@@ -74,21 +75,13 @@ const t = useTranslations(lang);
     <div class="content-wrapper__container">
       <div class="content-wrapper__main">
         <section class="single-post-body">
-          <!-- <div class="single-post-body__buttons">
-            <ShareButtons
-              isVertical
-              facebookCounter={post.data.counters?.facebookCounter || 0}
-              class="single-post-body__share"
-              slug={post.data.slug}
-            />
-          </div> -->
           <article class="single-post-body__article">
             <div class="single-post-body__cover ibg">
               <Image
-                width={985}
-                height={660}
+                width={772}
+                height={434}
                 alt={post.data.title}
-                src={post.data.cover}
+                src={post.data.covers.large}
               />
             </div>
             <div
