@@ -55,6 +55,20 @@ export function getPostShareLink(slug,lang,siteUrl) {
   return 'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(fullUrl);
 }
 
+
+export function getProductLink(slug,lang) {
+  if(!lang) {
+    throw new Error('getPostLink: lang is required');
+  }
+  return lang==='de'? withBase(`/products/${slugify(slug.toLowerCase())}`):withBase(`/en/products/${slugify(slug.toLowerCase())}`)
+}
+export function getProductCategoryLink(slug,lang) {
+  if(!lang) {
+    throw new Error('getPostLink: lang is required');
+  }
+  return lang==='de'? withBase(`/products/category/${slugify(slug.toLowerCase())}`):withBase(`/en/products/category/${slugify(slug.toLowerCase())}`)
+}
+
 export function getFormattedDate(dateStr) {
   const parts=dateStr.split('.');
   if(parts[2]&&parts[2].length===2) {
@@ -87,7 +101,7 @@ function groupPostsById(posts,lang,getItems) {
   for(const post of posts) {
     if(post.data.lang!==lang) continue;
 
-    const seen = new Set(); 
+    const seen=new Set();
     for(const item of getItems(post)) {
       if(!item?.id||!item?.title||seen.has(item.id)) continue;
       seen.add(item.id);
@@ -119,6 +133,25 @@ export function getTagsWithPosts(posts,lang) {
   return groupPostsById(posts,lang,(post) => post.data.tags??[]);
 }
 
+export function getFilteredProducts(products, lang, category = null) {
+  if (!Array.isArray(products)) return [];
+
+  let filtered = products.filter((product) => product.data.lang === lang);
+
+  if (category) {
+    filtered = filtered.filter(
+      (product) => product.data.category === category
+    );
+  }
+
+  return filtered;
+}
+export function getProductsCategories(products, lang) {
+  const filteredProducts = products.filter(
+    (product) => product.data.lang === lang
+  );
+  return [...new Set(filteredProducts.map((product) => product.data.category))];
+}
 
 export function parseDate(dateStr) {
   if(/^\d{4}-\d{2}-\d{2}/.test(dateStr)) {
@@ -127,4 +160,20 @@ export function parseDate(dateStr) {
   const [day,month,year]=dateStr.split(".").map(Number);
   const fullYear=year<100? 2000+year:year;
   return new Date(fullYear,month-1,day).getTime();
+}
+
+export function stripHtml(html = "") {
+  return html
+    .replace(/<[^>]*>/g, " ")  
+    .replace(/&nbsp;/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+export function buildSearchText(data) {
+  return stripHtml(
+    [data.title, data.category, data.shortDescription, data.description]
+      .filter(Boolean)
+      .join(" ")
+  );
 }

@@ -10,6 +10,7 @@ export default defineConfig({
   remotePatterns: [
      { protocol: 'https', hostname: '**.picsum.photos' },
   { protocol: 'https', hostname: 'picsum.photos' },
+  { protocol: 'https', hostname: 'drummersblog.de' },
   ],
 },
   i18n: {

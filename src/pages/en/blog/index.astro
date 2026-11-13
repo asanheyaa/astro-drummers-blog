@@ -3,7 +3,7 @@ import { getCollection } from "astro:content";
 
 import Layout from "../../../layouts/Layout.astro";
 
-import BlogCardAlt from "../../../components/BlogCardAlt.astro";
+import BlogCard from "../../../components/Card.astro";
 import HeroSection from "../../../components/HeroSection.astro";
 
 import { useTranslations } from "../../../scripts/i18n.js";
@@ -63,7 +63,7 @@ const categories = getCategoriesWithPosts(allArticles, lang);
               lang
             );
             return (
-              <BlogCardAlt
+              <BlogCard
                 id={article.data.id}
                 postId={article.data.id}
                 src={article.data.covers.medium}
@@ -73,6 +73,7 @@ const categories = getCategoriesWithPosts(allArticles, lang);
                 date={article.data.date}
                 postUrl={postUrl}
                 autor={article.data.autor}
+                isArticle
               />
             );
           })

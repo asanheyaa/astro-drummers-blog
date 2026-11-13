@@ -1,0 +1,84 @@
+---
+import { Image } from "astro:assets";
+import ShareButtons from "./ShareButtons.astro";
+import { useTranslations } from "../scripts/i18n";
+
+const { lang } = Astro.locals;
+const t = useTranslations(lang);
+
+const {
+  id,
+  src,
+  date,
+  category = null,
+  title,
+  description,
+  alt,
+  slug,
+  postUrl,
+  isGrid,
+  isAlt,
+  width = 296,
+  height = 173,
+  likesCounter = 0,
+  commentsCounter = 0,
+  commentsLink,
+  searchText = "",
+  postId,
+  autor,
+  isProductCard = false,
+  isArticle,
+  price,
+  ...rest
+} = Astro.props;
+
+const CardTag = isArticle ? "article" : "div";
+---
+
+<CardTag
+  class:list={["card", { "product-card": isProductCard }]}
+  id={id}
+  data-search={isProductCard ? searchText : undefined}
+>
+  <div class="card__visual">
+    <a href={postUrl} class="card__image ibg">
+      <Image width={width} height={height} src={src} alt={alt} />
+    </a>
+    <div class="card__share">
+      <ShareButtons />
+    </div>
+  </div>
+  <div class="card__body">
+    <a href={postUrl} class="card__link">
+      <h2 class="card__title">
+        {category && <span>{category}: </span>}
+        {title}
+      </h2>
+    </a>
+    <div class="card__description">{description}</div>
+    {
+      isArticle && (
+        <footer class="card__footer">
+          <span class="card__date">{date} </span>
+          <span class="card__autor"> {autor}</span>
+        </footer>
+      )
+    }
+
+    {
+      isProductCard && (
+        <footer class="card__product-footer">
+          <a href={postUrl} class="card__details">
+            {t("products", "translations.detailsButton")}
+          </a>
+          <button type="button" class="card__add-to-cart">
+            <span class="card__price" set:html={price} />
+            <span class="card__icon">
+              <i class="fa fa-shopping-cart" aria-hidden="true" />
+            </span>
+          </button>
+        </footer>
+      )
+    }
+  </div>
+</CardTag>

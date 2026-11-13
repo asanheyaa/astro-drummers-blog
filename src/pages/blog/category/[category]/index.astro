@@ -11,7 +11,7 @@ import {
   getPostLink,
 } from "../../../../scripts/utils.js";
 import BlogArticlesWidget from "../../../../components/BlogArticlesWidget.astro";
-import BlogCardAlt from "../../../../components/BlogCardAlt.astro";
+import BlogCard from "../../../../components/Card.astro";
 
 const { lang } = Astro.locals;
 const t = useTranslations(lang);
@@ -28,8 +28,6 @@ export async function getStaticPaths() {
 
 const { category, allCategories } =
   Astro.props;
-
-  
 ---
 
 <Layout
@@ -64,7 +62,7 @@ const { category, allCategories } =
               lang
             );
             return (
-              <BlogCardAlt
+              <BlogCard
                 id={article.data.id}
                 postId={article.data.id}
                 src={article.data.covers.medium}
@@ -77,6 +75,7 @@ const { category, allCategories } =
                 postUrl={postUrl}
                 autor={article.data.autor}
                 isGrid
+                isArticle
               />
             );
           })

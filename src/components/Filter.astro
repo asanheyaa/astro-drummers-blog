@@ -1,15 +1,14 @@
 ---
-const { items, categories, categoryName = null,filterTitle, tags } = Astro.props;
+const { categories, categoryName = null, filterTitle, tags, isProductPage } = Astro.props;
 import {
   getCategoryLink,
-  getFilteredArticles,
-  getPostLink,
+  getProductCategoryLink,
   getTagLink,
-  withBase,
 
 } from "../scripts/utils";
 
 const { lang } = Astro.locals;
+
 ---
 
 <div class="filter" data-dropdown="vertical">
@@ -33,12 +32,14 @@ const { lang } = Astro.locals;
         {
           categories &&
             categories.map((item) => {
-              const categoryUrl = getCategoryLink(item.slug, lang);
-              if (categoryName !== item.title) {
+              const category = item.slug ? item.slug : item
+              const title  = item.title ? item.title : item
+              const categoryUrl = isProductPage ? getProductCategoryLink(category, lang) : getCategoryLink(category, lang);
+              if (categoryName !== title) {
                 return (
                   <li class="filter__item">
                     <a href={categoryUrl} class="filter__link">
-                      {item.title}
+                      {title}
                     </a>
                   </li>
                 );

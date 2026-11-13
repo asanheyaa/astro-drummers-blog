@@ -1,0 +1,33 @@
+{
+	"products": [
+		{
+			"id": "rudiments-the-complete-collection-de",
+			"productId":"rudiments-the-complete-collection",
+			"lang":"de",
+			"title": "Rudiments - The Complete Collection",
+			"shortDescription": "Übe deine Rudiments mit mehr Struktur. Jede Woche, jeden Tag. Mein E-Paper gibt dir einen umfassenden Einblick in die 40 International Drum Rudiments.",
+			"image": "https://drummersblog.de/wp-content/uploads/2021/01/Rudiments-Cover-1-scaled.jpg",
+			"price": "<span>14</span>.99 €",
+			"category":"lesson",
+			"description": "<p>Übe deine Rudiments mit mehr Struktur. Jede Woche, jeden Tag. Ich erlebe oft, dass mich Schüler fragen: „Was für Rudiments soll ich üben?“ Meine Antwort ist immer dieselbe: „Alle.“ Und trotzdem tun es die wenigsten. Warum? Weil viele einfach nicht wissen wo und wie sie anfangen sollen.</p><p>Deshalb gibt dir mein neues E-Paper einen umfassenden Einblick in die <i>40 International Drum Rudiments</i>. Diese Figuren sind die Basis, um dein Vokabular als Schlagzeuger zu erweitern. Du kannst sofort anfangen zu üben, denn ich zeige dir alles was du wissen musst.</p><p><strong>Auf über 100 Seiten findest du:</strong></p><ol type='a'> <li>Grundlagen für eine korrekte technische Ausführung der Figuren</li> <li>Bezug der Rudiments zur US-amerikanischen Militärmusik</li> <li>Unterschiede des Rudimental-Drumming zur orchestralen Spielweise der kleinen Trommel</li> <li>Korrekte Wahl des Tempos</li> <li>Roll Rudiments, Diddle Rudiments, Flam Rudiments und Drag Rudiments, sowie</li> <li>ein kurzes Literaturverzeichnis und Glossar.</li> </ol><p>Lade das E-Paper jetzt herunter und ich gebe dir die Midi-Files für die <i>40 International Drum Rudiments</i> kostenlos dazu. Wenn du also mehr über Rudiments wissen möchtest und du gleichzeitig deine Handtechnik verbessern willst, dann ist dieses E-Paper genau das Richtige für dich.</p><p><strong>Achtung: Nur in englischer Sprache verfügbar.</strong></p>"
+		},
+		{
+			"id": "find-your-way-through-the-music-de",
+			"productId":"find-your-way-through-the-music",
+			"lang":"de",
+			"title": "Find Your Way Through the Music",
+			"shortDescription": "Wenn du neue Stücke einübst, musst du Struktur und Ablauf verstehen. Dieses E-Book erklärt alle Wiederholungszeichen und hilft dir, Stücke schneller zu lernen.",
+			"image": "https://drummersblog.de/wp-content/uploads/2021/01/FYWTTM-Cover-scaled.jpg",
+			"price": "<span>14</span>.99 €",
+			"category":"e-book",
+			"description": "<p>Wenn du neue Stücke einübst, musst du die Struktur und den Ablauf des Songs verstehen. Welche Takte soll ich wiederholen und wie oft? Bis an welche Stelle muss ich spielen, bevor ich wieder zum Anfang zurückkehre? Diese Anweisungen findest du auf dem Notenblatt. Schließlich sind Wiederholungen ein wesentlicher Bestandteil von Musik. Sie strukturieren einen Song und sorgen dafür, dass er bei den Hörern in Erinnerung bleibt.</p> <p> Wenn du dich zum ersten Mal beim Notenlesen versuchst, wirst du dich über Begriffe, wie <i>D.C. al Coda</i> oder andere rätselhafte Zeichen wundern. Doch auch als erfahrener Schlagzeuger bist du vielleicht schon einmal über Spielanweisungen gestolpert, die du dir nicht gleich erklären konntest.</p> <p> Mit diesem E-Book bekommst du deinen persönliches Handbuch, um dich bei den Wiederholungszeichen zurechtzufinden. Ich zeige dir viele detaillierte Beispiele für die Begriffe und Anweisungen, die dir bei Musiknoten im Profibereich immer wieder begegnen werden.</p> <p> Lade dir daher jetzt das E-Book herunter. Denn wenn du mit den musikalischen Wiederholungen vertraut bist, wirst du Stücke schneller verstehen und einüben können – und als Schlagzeuger einen wichtigen Schritt vorwärts gehen. Teste dich am Ende des E-Books mit einem Quiz gleich selbst. So weißt du sofort, ob du fit bist bei den Wiederholungszeichen oder ob du das eine oder andere, nun ja, noch mal wiederholen solltest.</p> <p> <strong>Achtung: Nur in englischer Sprache verfügbar.</strong></p>"
+		}
+		
+	],
+	"translations":{
+		"serchInputPlaceholder":"Stöbern Sie in meinem Shop",
+		"detailsButton":"Details",
+		"noResults": "Keine Produkte gefunden"
+		
+	}
+}

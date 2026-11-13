@@ -10,7 +10,7 @@ import {
   getTagsWithPosts,
 } from "../../../../../scripts/utils.js";
 import BlogArticlesWidget from "../../../../../components/BlogArticlesWidget.astro";
-import BlogCardAlt from "../../../../../components/BlogCardAlt.astro";
+import BlogCard from "../../../../../components/Card.astro";
 
 const { lang } = Astro.locals;
 const t = useTranslations(lang);
@@ -59,7 +59,7 @@ const { tag, allTags } = Astro.props;
               lang
             );
             return (
-              <BlogCardAlt
+              <BlogCard
                 id={article.data.id}
                 postId={article.data.id}
                 src={article.data.covers.medium}
@@ -72,6 +72,7 @@ const { tag, allTags } = Astro.props;
                 postUrl={postUrl}
                 autor={article.data.autor}
                 isGrid
+                isArticle
               />
             );
           })

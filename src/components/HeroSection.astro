@@ -5,13 +5,16 @@ import "../styles/fontawesome.scss";
 import Date from "./Date.astro";
 import CommentsButton from "./CommentsButton.astro";
 import LikeButton from "./LikeButton.astro";
+import ButtonCheckout from "./ButtonCheckout.astro";
 import { useTranslations } from "../scripts/i18n";
 
 const { lang } = Astro.locals;
 const t = useTranslations(lang);
 
+
 const {
   isAlt,
+  isProductPage = false,
   title,
   categories,
   categoryName,
@@ -27,6 +30,8 @@ const {
   likesCounter,
   tags
 } = Astro.props;
+
+
 
 ---
 
@@ -45,18 +50,25 @@ const {
     </h1>
     {
       !noFilter && (
-        <div class="hero-actions">
+        <div  class:list={['hero-actions', {'hero-actions-product': isProductPage}]}>
           <Filter
             categories={categories}
             tags={tags}
             categoryName={categoryName}
             filterTitle={filterTitle}
+            isProductPage= {isProductPage}
           />
-          <SearchHero
-            i
+          {
+            isProductPage && (
+            <ButtonCheckout/>
+            )
+          }
+           <SearchHero
+           isProductPage={isProductPage}
             searchTitle={searchTitle}
             searchPlaceholder={searchPlaceholder}
           />
+         
         </div>
       )
     }
@@ -84,5 +96,6 @@ const {
         </footer>
       )
     }
+   
   </div>
 </section>

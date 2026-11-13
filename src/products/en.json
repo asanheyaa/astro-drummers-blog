@@ -1,0 +1,31 @@
+{
+	"products": [
+		{
+			"id": "rudiments-the-complete-collection-en",
+			"productId":"rudiments-the-complete-collection",
+			"lang":"en",
+			"title": "Rudiments - The Complete Collection",
+			"shortDescription": "Many of my students ask which rudiments to practise. My e-paper gives you a comprehensive insight into the 40 international drum rudiments.",
+			"image": "https://drummersblog.de/wp-content/uploads/2021/01/Rudiments-Cover-1-scaled.jpg",
+			"price": "<span>14</span>.99 €",
+			"category":"lesson",
+			"description": "<p>Many of my students ask me which rudiments to practise. My answer is always the same: “All of them!” But how and where best to begin? To prevent these questions putting you off your practice, my new e-paper gives you a comprehensive insight into the 40 international drum rudiments.</p><p>These patterns provide the foundation you need to dramatically expand your playing ability as a drummer, improve your technical skills and increase your musical creativity. If you want to learn more about rudiments while also improving your hand technique, this e-paper is right for you. Discover all you need to know and start practicing today!</p><p>Over 100 pages, you’ll find:</p><ol type='a'><li>Basic knowledge for the correct technical execution of the patterns</li><li>Significance of the rudiments for US military music</li><li>The difference between rudimental drumming and the orchestral playing style of the snare</li><li>Information on choosing the correct tempo</li><li>Roll rudiments, diddle rudiments, flam rudiments and drag rudiments</li><li>A short list of references and glossary.</li></ol><p>Download the e-paper and get midi files for the <i>40 international drum rudiments</i> free of charge!</p>"
+		},
+		{
+			"id": "find-your-way-through-the-music-en",
+			"productId":"find-your-way-through-the-music",
+			"lang":"en",
+			"title": "Find Your Way Through the Music",
+			"shortDescription": "When practising new pieces, you need to understand structure and flow. This e-book explains all repeat signs and helps you learn pieces faster.",
+			"image": "https://drummersblog.de/wp-content/uploads/2021/01/FYWTTM-Cover-scaled.jpg",
+			"price": "<span>14</span>.99 €",
+			"category":"e-book",
+			"description": "<p>When you practise new pieces, you need to understand the structure and flow of the song. Which bars are to be repeated, and how often? To where should you play before returning to the beginning? These instructions can always be found on the sheet music. After all, repetitions are an essential part of any piece: they create structure and ensure that it sticks in the listener’s mind.</p><p>If you’re attempting to read music for the first time, you might well be wondering about terms <i>like D.C. al coda</i> and other unfamiliar expressions. Even as an experienced drummer, you may have stumbled across playing instructions that you couldn’t explain off the top off your head.</p><p>As such, it’s essential to know the symbols and expressions that appear on sheet music – both for your everyday practice and the long-term development of your skills as a drummer. After all, there’s a big difference between playing a portion of a song three times and repeating it times three – isn’t there?!</p><p>This e-book is your personal guide to mastering repeat signs with confidence. It provides numerous detailed examples of the expressions and instructions you’ll encounter again and again in professional sheet music.</p><p>So – what are you waiting for? Download the e-book now! Once you’re familiar with the function of repeat signs, you’ll be equipped to understand and practise pieces faster – and will have taken an important step forward in your drumming career. A quiz at the end of the book shows you whether you’ve got to grips with things or whether you need repeat things – well, one more time.</p> "
+		}
+	],
+	"translations":{
+		"serchInputPlaceholder":"Browse through my shop",
+		"detailsButton":"Details",
+		"noResults": "Nothing found"
+	}
+}

@@ -1,0 +1,83 @@
+---
+import Layout from "../../../../layouts/Layout.astro";
+import HeroSection from "../../../../components/HeroSection.astro";
+
+import { useTranslations } from "../../../../scripts/i18n.js";
+import { getProductLink, getProductsCategories, getFilteredProducts, buildSearchText } from "../../../../scripts/utils.js";
+import ProductCard from "../../../../components/Card.astro";
+import { getCollection } from "astro:content";
+const { lang } = Astro.locals;
+const t = useTranslations(lang);
+
+
+
+export async function getStaticPaths() {
+  const allProducts = await getCollection("products");
+  const productCategories = getProductsCategories (allProducts, 'de');
+  const products = getFilteredProducts(allProducts, 'de');
+
+ 
+  return productCategories.map((productCategory) => ({
+    params: { category: productCategory },
+    props: { category:productCategory, allCategories: productCategories, products: getFilteredProducts(allProducts, "de", productCategory), },
+  }));
+}
+
+const {category, allCategories, products} = Astro.props
+
+
+---
+
+<Layout
+  title={t("productsPage", "meta.title")}
+  metaDescription={t("productsPage", "meta.metaDescription")}
+  ogLocale={t("productsPage", "meta.og.locale")}
+  ogUrl={t("productsPage", "meta.og.url")}
+  ogImageUrl={t("productsPage", "meta.og.image")}
+  ogImageSecureUrl={t("productsPage", "meta.og.imageSecureUrl")}
+  ogImageAlt={t("productsPage", "meta.og.imageAlt")}
+  twitterImageUrl={t("productsPage", "meta.twitter.image")}
+  twitterLabel1={t("productsPage", "meta.twitter.label1")}
+  twitterData1={t("productsPage", "meta.twitter.data1")}
+>
+  <HeroSection
+    title={t("productsPage", "hero.title")}
+    searchTitle={t("blog", "blog.hero.searchTitle")}
+    searchPlaceholder={t("blog", "blog.hero.searchPlaceholder")}
+    filterTitle={t("blog", "blog.hero.filterTitle")}
+    isProductPage
+    categories = {allCategories}
+    categoryName = {category}
+  />
+  <section class="products">
+    <div class="products__container">
+      <div class="products__body">
+        <div class="products__items">
+          {
+            products.length > 0 &&
+            products.map((product) => {
+                const productLink = getProductLink (product.data.productId, lang)
+                return (
+                <ProductCard
+                 id={product.data.productId}
+                  src={product.data.image}
+                  alt={product.data.title}
+                  title={product.data.title}
+                  description={product.data.shortDescription}
+                  postUrl={productLink}
+                  price={product.data.price}
+                  isProductCard
+                  category={product.data.category}
+                  searchText={buildSearchText(product.data)}
+                />
+                )
+              })
+          }
+        </div>
+        <div id="no-results" class="products__no-results" hidden>
+          {t("products", "translations.noResults")}
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
