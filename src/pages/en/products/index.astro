@@ -1,31 +1,72 @@
 ---
 import Layout from "../../../layouts/Layout.astro";
 import HeroSection from "../../../components/HeroSection.astro";
-import ProductSection from "../../../components/ProductSection.astro";
 
 import { useTranslations } from "../../../scripts/i18n.js";
+import { getProductLink, getProductsCategories, buildSearchText } from "../../../scripts/utils.js";
+import ProductCard from "../../../components/Card.astro";
+import { getCollection } from "astro:content";
 const { lang } = Astro.locals;
 const t = useTranslations(lang);
 
+
+const allProducts = await getCollection("products");
+const products = allProducts.filter((product) => product.data.lang === lang);
+const productCategories = getProductsCategories (allProducts, lang);
 
 
 
 ---
 
 <Layout
-  isHeaderAnimated
-  title={t("products", "meta.title")}
-  metaDescription={t("products", "meta.metaDescription")}
-  ogLocale={t("products", "meta.og.locale")}
-  ogUrl={t("products", "meta.og.url")}
-  ogImageUrl={t("products", "meta.og.image")}
-  ogImageSecureUrl={t("products", "meta.og.imageSecureUrl")}
-  ogImageAlt={t("products", "meta.og.imageAlt")}
-  twitterImageUrl={t("products", "meta.twitter.image")}
-  twitterLabel1={t("products", "meta.twitter.label1")}
-  twitterData1={t("products", "meta.twitter.data1")}
+  title={t("productsPage", "meta.title")}
+  metaDescription={t("productsPage", "meta.metaDescription")}
+  ogLocale={t("productsPage", "meta.og.locale")}
+  ogUrl={t("productsPage", "meta.og.url")}
+  ogImageUrl={t("productsPage", "meta.og.image")}
+  ogImageSecureUrl={t("productsPage", "meta.og.imageSecureUrl")}
+  ogImageAlt={t("productsPage", "meta.og.imageAlt")}
+  twitterImageUrl={t("productsPage", "meta.twitter.image")}
+  twitterLabel1={t("productsPage", "meta.twitter.label1")}
+  twitterData1={t("productsPage", "meta.twitter.data1")}
 >
-  <HeroSection title={t("products", "hero.title")} />
-  <ProductSection/>
+  <HeroSection
+    title={t("productsPage", "hero.title")}
+    searchTitle={t("blog", "blog.hero.searchTitle")}
+    searchPlaceholder={t("products", "translations.serchInputPlaceholder")}
+    filterTitle={t("blog", "blog.hero.filterTitle")}
+    isProductPage
+    categories = {productCategories}
+  />
+  <section class="products">
+    <div class="products__container">
+      <div class="products__body">
+        <div class="products__items">
+          {
+            products.length > 0 &&
+            products.map((product) => {
+                const productLink = getProductLink (product.data.productId, lang)
+                return (
+                <ProductCard
+                 id={product.data.productId}
+                  src={product.data.image}
+                  alt={product.data.title}
+                  title={product.data.title}
+                  description={product.data.shortDescription}
+                  postUrl={productLink}
+                  price={product.data.price}
+                  isProductCard
+                  category={product.data.category}
+                  searchText={buildSearchText(product.data)}
+                />
+                )
+              })
+          }
+        </div>
+        <div id="no-results" class="products__no-results" hidden>
+          {t("products", "translations.noResults")}
+        </div>
+      </div>
+    </div>
+  </section>
 </Layout>
-
