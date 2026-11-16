@@ -1,22 +1,35 @@
 ---
-const { categories, categoryName = null, filterTitle, tags, isProductPage } = Astro.props;
+const {
+  categories,
+  categoryName = null,
+  filterTitle,
+  tags,
+  isProductPage,
+} = Astro.props;
+import { useTranslations } from "../scripts/i18n";
 import {
   getCategoryLink,
-  getProductCategoryLink,
   getTagLink,
-
+  slugify,
 } from "../scripts/utils";
 
 const { lang } = Astro.locals;
+const t = useTranslations(lang);
 
+
+const CategoryTag = isProductPage ? "button" : "a";
 ---
 
-<div class="filter" data-dropdown="vertical">
+<div
+  class="filter"
+  data-dropdown="vertical"
+  {...isProductPage ? { "data-filter": true } : {}}
+>
   <button class="filter__button" data-dropdown-trigger>
     <span class="filter__icon"> <i class="fa fa-tags"></i> </span>
     <span class="filter__value"> {categoryName || filterTitle}</span>
   </button>
-  <div class="filter__body" data-dropdown-body >
+  <div class="filter__body" data-dropdown-body>
     <div class="filter__wrapper">
       <button
         type="button"
@@ -24,31 +37,50 @@ const { lang } = Astro.locals;
         aria-label="close Filter"
         data-dropdown-close
       >
-        <i class="dfd-socicon-icon-close-round">
-      
-        </i>
+        <i class="dfd-socicon-icon-close-round"> </i>
       </button>
       <ul class="filter__list" data-lenis-prevent>
         {
-          categories &&
-            categories.map((item) => {
-              const category = item.slug ? item.slug : item
-              const title  = item.title ? item.title : item
-              const categoryUrl = isProductPage ? getProductCategoryLink(category, lang) : getCategoryLink(category, lang);
-              if (categoryName !== title) {
-                return (
-                  <li class="filter__item">
-                    <a href={categoryUrl} class="filter__link">
-                      {title}
-                    </a>
-                  </li>
-                );
-              }
-            })
+          categories.length > 0 && (
+            <>
+              {isProductPage && (
+                <li class="filter__item">
+                  <button type="button" class="filter__link" data-filter-category="all" data-dropdown-close>
+                    {t("products", "translations.allCategories")}
+                  </button>
+                </li>
+              )}
+
+              {categories.map((item) => {
+                const category = item.slug ? item.slug : item;
+                const title = item.title ? item.title : item;
+                const categoryUrl = getCategoryLink(category, lang);
+
+                if (categoryName !== title) {
+                  return (
+                    <li class="filter__item">
+                      <CategoryTag
+                        class="filter__link"
+                        {...(isProductPage
+                          ? {
+                              "data-filter-category": slugify(category),
+                              type: "button",
+                              "data-dropdown-close": true,
+                            }
+                          : { href: categoryUrl })}
+                      >
+                        {title}
+                      </CategoryTag>
+                    </li>
+                  );
+                }
+              })}
+            </>
+          )
         }
 
         {
-           tags &&
+          tags &&
             tags.map((item) => {
               const categoryUrl = getTagLink(item.slug, lang);
               if (categoryName !== item.title) {

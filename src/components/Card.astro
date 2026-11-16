@@ -36,9 +36,10 @@ const CardTag = isArticle ? "article" : "div";
 ---
 
 <CardTag
-  class:list={["card", { "product-card": isProductCard }]}
+  class:list={["card", { "product-card": isProductCard, "--show": isProductCard}]}
   id={id}
   data-search={isProductCard ? searchText : undefined}
+  {...rest}
 >
   <div class="card__visual">
     <a href={postUrl} class="card__image ibg">

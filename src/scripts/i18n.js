@@ -14,8 +14,6 @@ import blogDe from '../translations/blog/de.json';
 import blogEn from '../translations/blog/en.json';
 import singlePostDe from '../translations/single-post/de.json';
 import singlePostEn from '../translations/single-post/en.json';
-import productsPageDe from '../translations/products/de.json';
-import productsPageEn from '../translations/products/en.json';
 import productsDe from '../products/de.json';
 import productsEn from '../products/en.json';
 import cartDe from '../translations/cart/de.json';
@@ -43,7 +41,6 @@ const translations = {
     blog: blogDe,
     singlePost: singlePostDe,
     categories: categoriesDe,
-    productsPage: productsPageDe,
     products: productsDe,
     cart:cartDe,
     findYourWay:findYourWayDe,
@@ -59,7 +56,6 @@ const translations = {
     blog: blogEn,
     singlePost: singlePostEn,
     categories: categoriesEn,
-    productsPage: productsPageEn,
     products: productsEn,
     cart:cartEn,
     findYourWay:findYourWayEn,

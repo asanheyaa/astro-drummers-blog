@@ -3,7 +3,7 @@ import Layout from "../../layouts/Layout.astro";
 import HeroSection from "../../components/HeroSection.astro";
 
 import { useTranslations } from "../../scripts/i18n.js";
-import { getProductLink, getProductsCategories, buildSearchText } from "../../scripts/utils.js";
+import { getProductLink, getProductsCategories, buildSearchText, slugify } from "../../scripts/utils.js";
 import ProductCard from "../../components/Card.astro";
 import { getCollection } from "astro:content";
 const { lang } = Astro.locals;
@@ -19,19 +19,19 @@ const productCategories = getProductsCategories (allProducts, lang);
 ---
 
 <Layout
-  title={t("productsPage", "meta.title")}
-  metaDescription={t("productsPage", "meta.metaDescription")}
-  ogLocale={t("productsPage", "meta.og.locale")}
-  ogUrl={t("productsPage", "meta.og.url")}
-  ogImageUrl={t("productsPage", "meta.og.image")}
-  ogImageSecureUrl={t("productsPage", "meta.og.imageSecureUrl")}
-  ogImageAlt={t("productsPage", "meta.og.imageAlt")}
-  twitterImageUrl={t("productsPage", "meta.twitter.image")}
-  twitterLabel1={t("productsPage", "meta.twitter.label1")}
-  twitterData1={t("productsPage", "meta.twitter.data1")}
+  title={t("products", "translations.meta.title")}
+  metaDescription={t("products", "translations.meta.metaDescription")}
+  ogLocale={t("products", "translations.meta.og.locale")}
+  ogUrl={t("products", "translations.meta.og.url")}
+  ogImageUrl={t("products", "translations.meta.og.image")}
+  ogImageSecureUrl={t("products", "translations.meta.og.imageSecureUrl")}
+  ogImageAlt={t("products", "translations.meta.og.imageAlt")}
+  twitterImageUrl={t("products", "translations.meta.twitter.image")}
+  twitterLabel1={t("products", "translations.meta.twitter.label1")}
+  twitterData1={t("products", "translations.meta.twitter.data1")}
 >
   <HeroSection
-    title={t("productsPage", "hero.title")}
+    title={t("products", "translations.heroTitle")}
     searchTitle={t("blog", "blog.hero.searchTitle")}
     searchPlaceholder={t("products", "translations.serchInputPlaceholder")}
     filterTitle={t("blog", "blog.hero.filterTitle")}
@@ -58,6 +58,7 @@ const productCategories = getProductsCategories (allProducts, lang);
                   isProductCard
                   category={product.data.category}
                   searchText={buildSearchText(product.data)}
+                  data-filter-id={slugify(product.data.category)}
                 />
                 )
               })

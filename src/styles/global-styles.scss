@@ -2242,7 +2242,7 @@ body {
 		font-weight: 600;
 		line-height: 157.142857%;
 		transition: all 0.3s ease 0s;
-		
+		width: 100%;
 		white-space: nowrap;
 		overflow: hidden;
 		text-overflow: ellipsis;
@@ -2374,14 +2374,19 @@ body {
 		}
 	}
 	&.product-card {
-		&[hidden]{
-			display: none;
-		}
+	
 		.card__description {
 			margin-bottom: 0.875rem;
 			line-height: 1.5;
 		}
-		
+		display: none;
+		&.--show{
+			display: flex;
+		}
+		&[hidden]{
+			display: none;
+		}
+	
 	}
 	&__visual {
 		position: relative;
