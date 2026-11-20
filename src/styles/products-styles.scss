@@ -12,21 +12,7 @@
 		max-width: 62.5rem;
 	}
 
-	&__title {
-		font-family: Montserrat;
-		color: #333333;
-		line-height: 114.285714%; /* 48/42 */
-		text-transform: uppercase;
-		font-weight: 700;
-		letter-spacing: -0.125rem;
-		@include adaptiveValue(font-size, 42, 35);
-		@include adaptiveValue(margin-bottom, 40, 30);
-		text-align: center;
-		text-transform: uppercase;
-		&-empty {
-			display: none;
-		}
-	}
+
 
 	&__body {
 	}
@@ -36,6 +22,7 @@
 		grid-template-columns: repeat(1, 1fr);
 		align-items: stretch;
 		gap: 40px;
+		justify-content: center;
 		@media (min-width: 43.75rem) {
 			grid-template-columns: repeat(2, minmax(250px, 320px));
 		}

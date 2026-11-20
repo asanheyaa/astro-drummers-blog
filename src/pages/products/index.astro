@@ -3,19 +3,20 @@ import Layout from "../../layouts/Layout.astro";
 import HeroSection from "../../components/HeroSection.astro";
 
 import { useTranslations } from "../../scripts/i18n.js";
-import { getProductLink, getProductsCategories, buildSearchText, slugify } from "../../scripts/utils.js";
+import {
+  getProductLink,
+  getProductsCategories,
+  buildSearchText,
+  slugify,
+} from "../../scripts/utils.js";
 import ProductCard from "../../components/Card.astro";
 import { getCollection } from "astro:content";
 const { lang } = Astro.locals;
 const t = useTranslations(lang);
 
-
 const allProducts = await getCollection("products");
 const products = allProducts.filter((product) => product.data.lang === lang);
-const productCategories = getProductsCategories (allProducts, lang);
-
-
-
+const productCategories = getProductsCategories(allProducts, lang);
 ---
 
 <Layout
@@ -36,7 +37,7 @@ const productCategories = getProductsCategories (allProducts, lang);
     searchPlaceholder={t("products", "translations.serchInputPlaceholder")}
     filterTitle={t("blog", "blog.hero.filterTitle")}
     isProductPage
-    categories = {productCategories}
+    categories={productCategories}
   />
   <section class="products">
     <div class="products__container">
@@ -44,23 +45,27 @@ const productCategories = getProductsCategories (allProducts, lang);
         <div class="products__items">
           {
             products.length > 0 &&
-            products.map((product) => {
-                const productLink = getProductLink (product.data.productId, lang)
+              products.map((product) => {
+                const productLink = getProductLink(
+                  product.data.productId,
+                  lang
+                );
                 return (
-                <ProductCard
-                 id={product.data.productId}
-                  src={product.data.image}
-                  alt={product.data.title}
-                  title={product.data.title}
-                  description={product.data.shortDescription}
-                  postUrl={productLink}
-                  price={product.data.price}
-                  isProductCard
-                  category={product.data.category}
-                  searchText={buildSearchText(product.data)}
-                  data-filter-id={slugify(product.data.category)}
-                />
-                )
+                  <ProductCard
+                    id={product.data.productId}
+                    src={product.data.image}
+                    alt={product.data.title}
+                    title={product.data.title}
+                    description={product.data.shortDescription}
+                    postUrl={productLink}
+                    price={product.data.prices.currentPrice}
+                    isProductCard
+                    category={product.data.category}
+                    searchText={buildSearchText(product.data)}
+                    data-filter-id={slugify(product.data.category)}
+                    currency= {product.data.prices.currency}
+                  />
+                );
               })
           }
         </div>

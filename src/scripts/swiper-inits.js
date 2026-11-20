@@ -1,13 +1,13 @@
 // home page
 import Swiper from 'swiper';
-import { Pagination,Autoplay, Thumbs, Navigation } from 'swiper/modules';
+import {Pagination,Autoplay,Thumbs,Navigation} from 'swiper/modules';
 
 
-	const homeHeroSwiper = document.querySelector('.content-home-hero__swiper');
+const homeHeroSwiper=document.querySelector('.content-home-hero__swiper');
 
-if (homeHeroSwiper) {
-	const heroSwiper = new Swiper(homeHeroSwiper, {
-		modules: [ Autoplay, Pagination],
+if(homeHeroSwiper) {
+	const heroSwiper=new Swiper(homeHeroSwiper,{
+		modules: [Autoplay,Pagination],
 		slidesPerView: 1,
 		spaceBetween: 15,
 		loop: true,
@@ -25,11 +25,11 @@ if (homeHeroSwiper) {
 	});
 }
 
-const postSwiper = document.querySelector('.home-articles__swiper');
+const postSwiper=document.querySelector('.home-articles__swiper');
 
-if (postSwiper) {
-	const articlesSwiper = new Swiper(postSwiper, {
-		modules: [Pagination, Autoplay],
+if(postSwiper) {
+	const articlesSwiper=new Swiper(postSwiper,{
+		modules: [Pagination,Autoplay],
 		slidesPerView: 1,
 		spaceBetween: 15,
 		loop: true,
@@ -56,17 +56,17 @@ if (postSwiper) {
 			}
 		}
 	});
-	
+
 }
 
 
-const relatedPostsSwiper = document.querySelector('.single-post-related__swiper');
-if (relatedPostsSwiper){
-	const heroSwiper = new Swiper(relatedPostsSwiper, {
+const relatedPostsSwiper=document.querySelector('.single-post-related__swiper');
+if(relatedPostsSwiper) {
+	const relatedProductsSwiperInit=new Swiper(relatedPostsSwiper,{
 		slidesPerView: 1,
-		
-		speed:1000,
-		
+
+		speed: 1000,
+
 		spaceBetween: 20,
 		breakpoints: {
 			400: {
@@ -80,47 +80,25 @@ if (relatedPostsSwiper){
 				slidesPerView: 2,
 				spaceBetween: 40,
 			},
-			
+
 		}
 	});
 }
 
-const productGalleryFirstSwiperEl = document.querySelector('.gallery-product-first-swiper');
-const productGallerySecondarySwiperEl = document.querySelector('.gallery-product-secondary-swiper');
 
-if (productGalleryFirstSwiperEl && productGallerySecondarySwiperEl){
-	const productGalleryFirstSwiper = new Swiper(productGalleryFirstSwiperEl, {
-        spaceBetween: 15,
-        slidesPerView: 3,
-        freeMode: true,
-        watchSlidesProgress: true,
-		 slideToClickedSlide: true, 
-		 speed: 1000,
+const relatedProductsSwiper=document.querySelector('.related-products__swiper');
 
-		  observer: true,
-  observeParents: true,
-  resizeObserver: true,
-		 breakpoints: {
-			380: {
-				slidesPerView: 4,
-				 spaceBetween: 15,
-			},
-			550: {
-				slidesPerView: 5,
-				spaceBetween: 20,
-			},
-			
-			
-		}
-      });
+if(relatedProductsSwiper) {
+	const relatedProductsSwiperInit=new Swiper(relatedProductsSwiper,{
+		modules: [Navigation],
+		slidesPerView: 'auto',
 
-	   const productGallerySecondarySwiper = new Swiper(productGallerySecondarySwiperEl, {
-        spaceBetween: 20,
-         modules: [Thumbs], 
-		 speed: 1000,
-        thumbs: {
-          swiper: productGalleryFirstSwiper,
-        },
-		
-      });
+		speed: 1000,
+
+		spaceBetween: 22.5,
+		navigation: {
+			nextEl: '.related-products__nav-button-next',
+			prevEl: '.related-products__nav-button-prev',
+		  },
+	});
 }

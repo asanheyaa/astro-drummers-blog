@@ -1,7 +1,8 @@
 ---
 import { Image } from "astro:assets";
 import ShareButtons from "./ShareButtons.astro";
-import { useTranslations } from "../scripts/i18n";
+import { useTranslations } from "../scripts/i18n.js";
+import { getCurrencySymbol } from "../scripts/utils.js";
 
 const { lang } = Astro.locals;
 const t = useTranslations(lang);
@@ -33,17 +34,22 @@ const {
 } = Astro.props;
 
 const CardTag = isArticle ? "article" : "div";
+
+let splitCurrentPrice =  price ? String(price).split(".") : []
 ---
 
 <CardTag
-  class:list={["card", { "product-card": isProductCard, "--show": isProductCard}]}
+  class:list={[
+    "card",
+    { "product-card": isProductCard, "--show": isProductCard },
+  ]}
   id={id}
   data-search={isProductCard ? searchText : undefined}
   {...rest}
 >
   <div class="card__visual">
     <a href={postUrl} class="card__image ibg">
-      <Image width={width} height={height} src={src} alt={alt} />
+      <Image width={width} height={height} src={src} alt={alt} densities={[1, 2]} />
     </a>
     <div class="card__share">
       <ShareButtons />
@@ -72,8 +78,11 @@ const CardTag = isArticle ? "article" : "div";
           <a href={postUrl} class="card__details">
             {t("products", "translations.detailsButton")}
           </a>
-          <button type="button" class="card__add-to-cart">
-            <span class="card__price" set:html={price} />
+          <button type="button" class="card__add-to-cart" aria-label="add product to the cart" data-add-to-cart={id}>
+            <span class="card__price">
+              <span>{splitCurrentPrice[0]}.</span>
+              {splitCurrentPrice[1]} {getCurrencySymbol(t("products", "translations.currency")) }
+            </span>
             <span class="card__icon">
               <i class="fa fa-shopping-cart" aria-hidden="true" />
             </span>

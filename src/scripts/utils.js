@@ -1,3 +1,5 @@
+import {CURRENCY_SYMBOLS} from "./consts";
+
 export function withBase(path) {
   const base=import.meta.env.BASE_URL;
 
@@ -6,7 +8,7 @@ export function withBase(path) {
   return base.endsWith('/')? `${base}${cleanPath}`:`${base}/${cleanPath}`;
 }
 
-export function getFilteredArticles(articles,lang,limit=null) {
+export function getFilteredArticles(articles,lang,limit = null) {
   const filteredArticles=articles
     .filter((a) => a.data.lang===lang)
     .sort((a,b) => parseDate(b.data.date)-parseDate(a.data.date))
@@ -95,19 +97,19 @@ export const slugify=(text) => {
 
 
 
-function groupPostsById(posts,lang,getItems) {
-  const byId=new Map();
+function groupPostsById(posts, lang, getItems, limit = null) {
+  const byId = new Map();
 
-  for(const post of posts) {
-    if(post.data.lang!==lang) continue;
+  for (const post of posts) {
+    if (post.data.lang !== lang) continue;
 
-    const seen=new Set();
-    for(const item of getItems(post)) {
-      if(!item?.id||!item?.title||seen.has(item.id)) continue;
+    const seen = new Set();
+    for (const item of getItems(post)) {
+      if (!item?.id || !item?.title || seen.has(item.id)) continue;
       seen.add(item.id);
 
-      if(!byId.has(item.id)) {
-        byId.set(item.id,{
+      if (!byId.has(item.id)) {
+        byId.set(item.id, {
           id: item.id,
           title: item.title,
           slug: slugify(item.title),
@@ -118,21 +120,24 @@ function groupPostsById(posts,lang,getItems) {
     }
   }
 
-  for(const entry of byId.values()) {
-    entry.posts.sort((a,b) => parseDate(b.data.date)-parseDate(a.data.date));
+  for (const entry of byId.values()) {
+    entry.posts.sort((a, b) => parseDate(b.data.date) - parseDate(a.data.date));
+
+    entry.total = entry.posts.length;
+
+    if (limit) entry.posts = entry.posts.slice(0, limit);
   }
 
   return [...byId.values()];
 }
 
-export function getCategoriesWithPosts(posts,lang) {
-  return groupPostsById(posts,lang,(post) => [post.data.category]);
+export function getCategoriesWithPosts(posts, lang, limit = null) {
+  return groupPostsById(posts, lang, (post) => [post.data.category], limit);
 }
 
-export function getTagsWithPosts(posts,lang) {
-  return groupPostsById(posts,lang,(post) => post.data.tags??[]);
+export function getTagsWithPosts(posts, lang, limit = null) {
+  return groupPostsById(posts, lang, (post) => post.data.tags ?? [], limit);
 }
-
 export function getFilteredProducts(products, lang, category = null) {
   if (!Array.isArray(products)) return [];
 
@@ -176,4 +181,10 @@ export function buildSearchText(data) {
       .filter(Boolean)
       .join(" ")
   );
+}
+
+export function getCurrencySymbol(code) {
+	if (!code) return '';
+	const upper = String(code).trim().toUpperCase();
+	return CURRENCY_SYMBOLS[upper] ?? upper;
 }

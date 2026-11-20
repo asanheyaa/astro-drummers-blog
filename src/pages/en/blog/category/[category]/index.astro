@@ -7,10 +7,12 @@ import { useTranslations } from "../../../../../scripts/i18n.js";
 import {
   getCategoriesWithPosts,
   getCategoryLink,
+  getFormattedDate,
   getPostLink,
 } from "../../../../../scripts/utils.js";
 import BlogArticlesWidget from "../../../../../components/BlogArticlesWidget.astro";
 import BlogCard from "../../../../../components/Card.astro";
+import { LIMIT_ARTICLES_CATEGORY_PAGE } from "../../../../../scripts/consts";
 
 const { lang } = Astro.locals;
 const t = useTranslations(lang);
@@ -21,14 +23,12 @@ export async function getStaticPaths() {
  
   return categories.map((cat) => ({
     params: { category: cat.slug },
-    props: { category:cat, allCategories: categories },
+    props: { category:cat, allCategories: categories, isLoadMoreButton: cat.posts.length > LIMIT_ARTICLES_CATEGORY_PAGE },
   }));
 }
 
-const { category, allCategories } =
+const { category, allCategories, isLoadMoreButton } =
   Astro.props;
-
-  
 ---
 
 <Layout
@@ -54,32 +54,41 @@ const { category, allCategories } =
   />
   <section class="blog-articles blog-articles-with-widget">
     <div class="blog-articles__container">
-      <div class="blog-articles__body">
+      <div class="blog-articles__wrapper">
+        <div class="blog-articles__body">
+          {
+            category.posts.slice(0,LIMIT_ARTICLES_CATEGORY_PAGE).map((article) => {
+              const postUrl = getPostLink(article.data.slug, lang);
+              const categoryUrl = getCategoryLink(
+              article.data.category.title,
+                lang
+              );
+              return (
+                <BlogCard
+                  id={article.data.id}
+                  postId={article.data.id}
+                  src={article.data.cover}
+                  alt={article.data.alt}
+                  title={article.data.title}
+                  description={article.data.description}
+                  date={getFormattedDate(article.data.date)}
+                  category={article.data.category.title}
+                  categoryUrl={categoryUrl}
+                  postUrl={postUrl}
+                  autor={article.data.autor}
+                  isGrid
+                  isArticle
+                />
+              );
+            })
+          }
+        </div>
         {
-          category.posts.map((article) => {
-            const postUrl = getPostLink(article.data.slug, lang);
-            const categoryUrl = getCategoryLink(
-            article.data.category.title,
-              lang
-            );
-            return (
-              <BlogCard
-                id={article.data.id}
-                postId={article.data.id}
-                src={article.data.covers.medium}
-                alt={article.data.alt}
-                title={article.data.title}
-                description={article.data.description}
-                date={article.data.date}
-                category={article.data.category.title}
-                categoryUrl={categoryUrl}
-                postUrl={postUrl}
-                autor={article.data.autor}
-                isGrid
-                isArticle
-              />
-            );
-          })
+          isLoadMoreButton && (
+            <button type="button" class="blog-articles__button button">
+              {t("blog", "blog.articles.buttonLabel")}
+            </button>
+          )
         }
       </div>
       <BlogArticlesWidget inputPlaceholder={t("blog", "blog.asideWidget.inputPlaceholder")} />

@@ -1,11 +1,13 @@
 
 import { initAnimation, initParallax } from './animations.js';
 import { initSmoothScroll } from './lenis-init.js';
-import { initHeaderFunctions } from './header.js';
+import { initHeaderFunctions, initMenus } from './header.js';
 import { initPopUpFunctions, initDropdowns } from './popUps.js';
 import { initPreloader } from './preloader.js';
 import { initCookiesPopup } from './cookies.js';
 import {commetnsFormValidation} from './commentsForm.js';
+import { initCart } from './cart.js';
+
 
 initPreloader()
 document.addEventListener("DOMContentLoaded", () => {
@@ -17,6 +19,8 @@ document.addEventListener("DOMContentLoaded", () => {
   initCookiesPopup()
   initDropdowns()
   commetnsFormValidation() 
+  initMenus()
+  initCart();
 })
 
 

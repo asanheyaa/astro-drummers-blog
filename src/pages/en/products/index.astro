@@ -50,6 +50,7 @@ const productCategories = getProductsCategories(allProducts, lang);
                   product.data.productId,
                   lang
                 );
+            
                 return (
                   <ProductCard
                     id={product.data.productId}
@@ -58,11 +59,12 @@ const productCategories = getProductsCategories(allProducts, lang);
                     title={product.data.title}
                     description={product.data.shortDescription}
                     postUrl={productLink}
-                    price={product.data.price}
+                    price={product.data.prices.currentPrice}
                     isProductCard
                     category={product.data.category}
                     searchText={buildSearchText(product.data)}
                     data-filter-id={slugify(product.data.category)}
+                    currency= {product.data.prices.currency}
                   />
                 );
               })

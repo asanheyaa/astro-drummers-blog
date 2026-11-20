@@ -25,12 +25,13 @@ const t = useTranslations(lang);
   >
     <Image src={logo} alt={t("header", "header.logo.mainAlt")} />
   </a>
-  <div class="header__wrapper">
-    <div class="header__body" data-lenis-prevent>
+  <div class="header__wrapper" data-menu-wrapper="mobile-menu">
+    <div class="header__body" data-lenis-prevent  data-menu-body="mobile-menu">
       <button
         type="button"
         class="header__close-button"
         aria-label="close menu"
+        data-menu-collapse='mobile-menu'
       >
         <i class="dfd-socicon-icon-close-round"> </i>
       </button>
@@ -82,15 +83,15 @@ const t = useTranslations(lang);
       <div class="header-actions">
         <ul class="header-actions__list">
           <li class="header-actions__item">
-            <a
-              href={withBase(`${targetLang}/cart/`)}
+            <button type="button" data-menu-trigger="cart"
               class="header-actions__link"
+              aria-label="open cart"
             >
               <span class="header-actions__icon">
                 <i class="dfd-socicon-icon-ios7-cart"> </i>
               </span>
               <span class="header-actions__counter" data-cart-counter> 0 </span>
-            </a>
+            </button>
           </li>
           <li class="header-actions__item">
             <button
@@ -112,15 +113,13 @@ const t = useTranslations(lang);
   <div class="header-actions">
     <ul class="header-actions__list">
       <li class="header-actions__item header-actions__item-cart">
-        <a href={withBase(`${targetLang}/cart/`)} class="header-actions__link">
+        <button type="button" aria-label="open cart"  class="header-actions__link" data-menu-trigger="cart">
           <span class="header-actions__icon">
             <i class="dfd-socicon-icon-ios7-cart"> </i>
           </span>
           <span class="header-actions__counter" data-cart-counter> 0 </span>
-        </a>
-        <div class="header-actions__cart-message">
-          {t("cart", "cart.emptyMessage")}
-        </div>
+        </button>
+       
       </li>
       <li class="header-actions__item">
         <button
@@ -148,7 +147,7 @@ const t = useTranslations(lang);
       <span class="header__point header__point-3"></span>
     </button>
   </div>
-  <button class="burger-menu">
+  <button class="burger-menu" data-menu-trigger="mobile-menu">
     <span class="burger-menu__line burger-menu__line_1"></span>
     <span class="burger-menu__line burger-menu__line_2"></span>
     <span class="burger-menu__line burger-menu__line_3"></span>

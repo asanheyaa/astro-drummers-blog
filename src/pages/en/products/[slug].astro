@@ -1,0 +1,160 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import HeroSection from "../../../components/HeroSection.astro";
+import { Image } from "astro:assets";
+
+import { useTranslations } from "../../../scripts/i18n.js";
+import { getFilteredProducts, getProductLink } from "../../../scripts/utils.js";
+import { getCollection } from "astro:content";
+import ShareButtons from "../../../components/ShareButtons.astro";
+import ProductCard from "../../../components/Card.astro";
+import SwiperIniter from "../../../components/SwiperIniter.astro";
+const { lang } = Astro.locals;
+const t = useTranslations(lang);
+
+export async function getStaticPaths() {
+  const allProducts = await getCollection("products");
+  const products = getFilteredProducts(allProducts, "en");
+
+  return products.map((product) => ({
+    params: { slug: product.data.productId },
+    props: { product, products },
+  }));
+}
+
+const { product, products } = Astro.props;
+
+const relatedProducts = products.filter(
+  (p) =>
+    p.data.id !== product.data.id && p.data.category === product.data.category
+);
+
+const splitPreviousPrice = product.data.prices.previousPrice.split(".");
+const splitCurrentPrice = product.data.prices.currentPrice.split(".");
+---
+
+<Layout
+title={product.data.title}
+metaDescription={product.data.shortDescription}
+ogLocale={t("products", "translations.meta.og.locale")}
+ogUrl={getProductLink( product.data.productId, lang)}
+ogImageUrl={product.data.image}
+ogImageSecureUrl={t("products", "translations.meta.og.imageSecureUrl")}
+ogImageAlt={t("products", "translations.meta.og.imageAlt")}
+twitterImageUrl={product.data.image}
+twitterLabel1={t("products", "translations.meta.twitter.label1")}
+twitterData1={t("products", "translations.meta.twitter.data1")}
+>
+  <HeroSection title={product.data.title} noFilter />
+  <section class="single-product">
+    <div class="single-product__container">
+      <div class="single-product__body">
+        <div class="single-product__image ibg">
+          <Image
+            src={product.data.image}
+            alt={product.data.title}
+            width={312}
+            height={408}
+            densities={[1, 2]}
+          />
+        </div>
+        <div class="single-product__info">
+          <h2 class="single-product__title">
+            <span class="single-product__category">
+              {product.data.category}:{" "}
+            </span>
+            “{product.data.title}”
+          </h2>
+          <div
+            class="single-product__description"
+            set:html={product.data.description}
+          />
+          <footer class="footer-single-product">
+            <ShareButtons />
+            <div class="footer-single-product__prices">
+              <div class="footer-single-product__previous-price">
+                <span>
+                  {splitPreviousPrice[0]}.
+                </span>
+                {splitPreviousPrice[1]}
+                {" "}
+                {product.data.prices.currency}
+              </div>
+
+              <div class="footer-single-product__current-price">
+                <span>
+                  {splitCurrentPrice[0]}.
+                </span>
+                {splitCurrentPrice[1]}
+                {" "}
+                {product.data.prices.currency}
+              </div>
+            </div>
+            <button
+              class="footer-single-product__button button button-alt"
+              aria-label="add product to the cart"
+              data-add-to-cart={product.data.productId}
+              >{t("products", "translations.buyButton")}</button
+            >
+          </footer>
+        </div>
+      </div>
+    </div>
+  </section>
+  {
+    relatedProducts.length > 0 && (
+      <SwiperIniter>
+        <section class="related-products">
+          <div class="related-products__container">
+            <header class="related-products__header">
+              <button
+                type="button"
+                class="related-products__nav-button related-products__nav-button-prev"
+                aria-label="previous product"
+              >
+                <i class="fa fa-caret-left fa-lg" aria-hidden="true" />
+              </button>
+              <h2 class="related-products__title">
+                {t("products", "translations.relatedProductsTitle")}
+              </h2>
+              <button
+                type="button"
+                class="related-products__nav-button related-products__nav-button-next"
+                aria-label="next product"
+              >
+                <i class="fa fa-caret-right fa-lg" aria-hidden="true" />
+              </button>
+            </header>
+            <div class="related-products__body">
+              <div class="related-products__swiper swiper">
+                <div class="related-products__wrapper swiper-wrapper">
+                  {relatedProducts.map((product) => {
+                    const productLink = getProductLink(
+                      product.data.productId,
+                      lang
+                    );
+                    return (
+                      <div class="related-products__slide swiper-slide">
+                        <ProductCard
+                          id={product.data.productId}
+                          src={product.data.image}
+                          alt={product.data.title}
+                          title={product.data.title}
+                          description={product.data.shortDescription}
+                          postUrl={productLink}
+                          price={product.data.prices.currentPrice}
+                          isProductCard
+                          category={product.data.category}
+                        />
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </SwiperIniter>
+    )
+  }
+</Layout>

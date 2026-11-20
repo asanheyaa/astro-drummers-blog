@@ -1,0 +1,72 @@
+---
+import { getCollection } from "astro:content";
+import ProductQuantity from "./ProductQuantity.astro";
+import { useTranslations } from "../scripts/i18n.js";
+import { getProductLink, withBase } from "../scripts/utils.js";
+
+const { lang } = Astro.locals;
+const t = useTranslations(lang);
+const targetLang = lang === "de" ? "" : "en";
+
+const allProducts = await getCollection("products");
+const products = {};
+for (const p of allProducts) {
+  if (p.data.lang !== lang) continue;
+  products[p.data.productId] = {
+    title: p.data.title,
+    image: p.data.image,
+    price: p.data.prices.currentPrice,
+    url: getProductLink(p.data.productId, lang),
+  };
+}
+
+const cartData = JSON.stringify({
+  products,
+  currency: t("products", "translations.currency"),
+}).replace(/</g, "\\u003c");
+---
+
+<div class="cart --empty" data-menu-wrapper="cart">
+	<div class="cart__wrapper" data-lenis-prevent data-menu-body="cart">
+		<header class="header-cart">
+			<h2 class="header-cart__title">{t("products", "translations.cart.title")}</h2>
+			<button type="button" class="header-cart__close-button" aria-label="close cart" data-menu-collapse="cart">
+				<i class="product-remove"></i>
+			</button>
+		</header>
+		<div class="cart__empty">
+			{t("products", "translations.cart.empryCartMessage")}
+		</div>
+		<div class="body-cart" data-cart-list></div>
+		<footer class="footer-cart">
+			<div class="footer-cart__info">
+				<h3 class="footer-cart__label">{t("products", "translations.cart.total")}</h3>
+				<div class="footer-cart__total-amount" data-cart-total></div>
+			</div>
+			<a href={withBase(`${targetLang}/checkout/`)} class="footer-cart__button button button-alt">
+				{t("products", "translations.cart.checkout")}
+			</a>
+		</footer>
+	</div>
+
+	<template data-cart-item-template>
+		<div class="body-cart__item" data-cart-item>
+			<a href="#" class="body-cart__image ibg">
+				<img src="" alt="" data-cart-image />
+			</a>
+			<div class="body-cart__info">
+				<a class="body-cart__name" href="#" data-cart-link>
+				</a>
+				<div class="body-cart__price" data-cart-price></div>
+			</div>
+			<div class="body-cart__actions">
+				<button type="button" class="body-cart__delete" aria-label="delete product" data-cart-delete>
+					<i class="fa fa-trash"></i>
+				</button>
+				<ProductQuantity quantity={1} />
+			</div>
+		</div>
+	</template>
+
+	<script type="application/json" id="cart-data" is:inline set:html={cartData} />
+</div>

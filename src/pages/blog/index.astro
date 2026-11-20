@@ -12,13 +12,12 @@ const { lang } = Astro.locals;
 
 import {
   getCategoriesWithPosts,
-  getCategoryLink,
-  getCommentsLink,
   getFormattedDate,
   getPostLink,
 } from "../../scripts/utils.js";
 
 import { getFilteredArticles } from "../../scripts/utils.js";
+import { LIMIT_ARTICLES_BLOG_PAGE } from "../../scripts/consts";
 
 const t = useTranslations(lang);
 
@@ -52,22 +51,13 @@ const categories = getCategoriesWithPosts(allArticles, lang);
     <div class="blog-articles__container">
       <div class="blog-articles__body">
         {
-          langArticles.map((article) => {
+          langArticles.slice(0, LIMIT_ARTICLES_BLOG_PAGE).map((article) => {
             const postUrl = getPostLink(article.data.slug, lang);
-            const commentsUrl = getCommentsLink(
-              article.data.slug,
-              lang,
-              article.data.comments.length
-            );
-            const categoryUrl = getCategoryLink(
-            article.data.category.title,
-              lang
-            );
             return (
               <BlogCard
                 id={article.data.id}
                 postId={article.data.id}
-                src={article.data.covers.medium}
+                src={article.data.cover}
                 alt={article.data.alt}
                 title={article.data.title}
                 description={article.data.description}
@@ -80,9 +70,13 @@ const categories = getCategoriesWithPosts(allArticles, lang);
           })
         }
       </div>
-      <button type="button" class="blog-articles__button button"
-        >{t("blog", "blog.articles.buttonLabel")}</button
-      >
+      {
+        langArticles.length > LIMIT_ARTICLES_BLOG_PAGE && (
+          <button type="button" class="blog-articles__button button">
+            {t("blog", "blog.articles.buttonLabel")}
+          </button>
+        )
+      }
     </div>
   </section>
 </Layout>

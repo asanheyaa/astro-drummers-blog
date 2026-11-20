@@ -1,6 +1,13 @@
+---
+import { useTranslations } from "../scripts/i18n";
+
+const { lang } = Astro.locals;
+const t = useTranslations(lang);
+---
+
 <button type="button" class="checkout-button" aria-hidden="true">
   <span class="checkout-button__icon">
     <i class="fa fa-shopping-cart"> </i>
   </span>
-  <span class="checkout-button__text"> CHECKOUT </span>
+  <span class="checkout-button__text"> {t("products", "translations.cart.checkout")} </span>
 </button>

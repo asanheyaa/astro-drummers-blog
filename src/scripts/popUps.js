@@ -115,15 +115,57 @@ export function initPopUpFunctions() {
 
 }
 
-function applyFilter(category) {
-	document.querySelectorAll('[data-filter-id]').forEach(el => {
-		if(category==='all') {
-			el.classList.add('--show');
-		} else {
-			el.classList.toggle('--show',el.dataset.filterId===category);
+const LEAVE_MS=200;
+const ENTER_MS=300;
+const STAGGER_MS=40;
 
-		}
+let currentCategory=null;
+let leaveTimer=null;
+let cleanupTimer=null;
+
+function applyFilter(category) {
+	if(category===currentCategory) return;
+	currentCategory=category;
+
+	clearTimeout(leaveTimer);
+	clearTimeout(cleanupTimer);
+
+	const all=[...document.querySelectorAll('[data-filter-id]')];
+
+	all.forEach((el) => {
+		el.classList.remove('--leaving','--enter','--entering');
+		el.style.transitionDelay='';
 	});
+
+	const shouldShow=(el) => category==='all'||el.dataset.filterId===category;
+
+	const leaving=all.filter((el) => el.classList.contains('--show'));
+	const entering=all.filter(shouldShow);
+
+	leaving.forEach((el) => el.classList.add('--leaving'));
+
+	leaveTimer=setTimeout(() => {
+		leaving.forEach((el) => el.classList.remove('--show','--leaving'));
+
+		entering.forEach((el) => el.classList.add('--show','--enter'));
+
+		void document.body.offsetHeight;
+
+		requestAnimationFrame(() => {
+			entering.forEach((el,i) => {
+				el.style.transitionDelay=`${i*STAGGER_MS}ms`;
+				el.classList.remove('--enter');
+				el.classList.add('--entering');
+			});
+		});
+
+		cleanupTimer=setTimeout(() => {
+			entering.forEach((el) => {
+				el.classList.remove('--entering');
+				el.style.transitionDelay='';
+			});
+		},ENTER_MS+entering.length*STAGGER_MS+50);
+	},leaving.length? LEAVE_MS:0);
 }
 
 export function initDropdowns() {
@@ -206,64 +248,3 @@ export function initDropdowns() {
 	}
 }
 
-// function filterFunction() {
-// 	const filters = document.querySelectorAll('[data-filter]');
-
-// 	if (filters) {
-// 		filters.forEach(filter => {
-// 			const filterButtons = filter.querySelectorAll('[data-filter-category]');
-
-// 			filterButtons.forEach(filterButton => {
-
-// 				filterButton.addEventListener('click', (e) => {
-// 					let filterSections = filter.querySelectorAll('[data-filter-content]')
-// 					filterSections.forEach(filterSection => {
-// 						if (filterSection.classList.contains('_show')) {
-// 							filterSection.classList.remove('_show')
-// 						}
-// 						if (filterSection.classList.contains('_last-child')) {
-// 							filterSection.classList.remove('_last-child')
-// 						}
-
-// 					});
-
-// 					filterButtons.forEach(filterButton => {
-// 						if (filterButton.classList.contains('_active')) {
-// 							filterButton.classList.remove('_active')
-// 						}
-// 					});
-
-// 					let seflButton = e.target,
-// 						buttonId = seflButton.dataset.filterCategory
-
-// 					if (buttonId === 'all') {
-// 						filterSections.forEach((filterSection, index) => {
-// 							filterSection.classList.add('_show')
-// 							if (index === filterSections.length - 1) {
-// 								filterSection.classList.add('_last-child')
-// 							}
-// 						});
-
-// 					} else {
-// 						const sectionsWithRightCategory = document.querySelectorAll(`[data-filter-content="${buttonId}"]`)
-
-// 						sectionsWithRightCategory.forEach((sectionWithRightCategory, index) => {
-// 							sectionWithRightCategory.classList.add('_show')
-// 							if (index === sectionsWithRightCategory.length - 1) {
-// 								sectionWithRightCategory.classList.add('_last-child')
-// 							}
-// 						});
-// 					}
-
-// 					seflButton.classList.add('_active')
-
-// 				})
-// 			});
-
-
-// 		});
-// 	}
-
-// }
-
-// filterFunction()

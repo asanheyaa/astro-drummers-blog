@@ -6,6 +6,7 @@ import TopScrollButton from "../components/TopScrollButton.astro";
 import SearchPopup from "../components/SearchPopup.astro";
 import AlternativeMenu from "../components/AlternativeMenu.astro";
 import Newsletter from "../components/Newsletter.astro";
+import Cart from "../components/Cart.astro";
 
 import "../styles/main-styles.scss";
 
@@ -91,6 +92,7 @@ const t = useTranslations(lang);
 
     <AlternativeMenu />
     <TopScrollButton />
+    <Cart/>
     <div class="wrapper">
       <Header
         articleId={articleId}

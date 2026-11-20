@@ -7,8 +7,8 @@ import {
   getPostLink,
 } from "../scripts/utils.js";
 import Date from "./Date.astro";
-import LikeButton from "./LikeButton.astro";
 import { getCollection } from "astro:content";
+import { LIMIT_ARTICLES_BLOG_WIDGET } from "../scripts/consts";
 
 const { lang } = Astro.locals;
 const t = useTranslations(lang);
@@ -16,7 +16,7 @@ const t = useTranslations(lang);
 const { isAlt, inputPlaceholder, currentPost = null } = Astro.props;
 
 const posts = await getCollection("posts");
-const articles = getFilteredArticles(posts, lang, 4);
+const articles = getFilteredArticles(posts, lang, LIMIT_ARTICLES_BLOG_WIDGET);
 
 ---
 
@@ -47,10 +47,11 @@ const articles = getFilteredArticles(posts, lang, 4);
               <article class="aside-widget__item">
                 <div class="aside-widget__image">
                   <Image
-                    src={article.data.covers.small}
+                    src={article.data.cover}
                     alt={article.data.title}
                     width={80}
                     height={80}
+                    densities={[1, 2]}
                   />
                 </div>
                 <div class="aside-widget__details">

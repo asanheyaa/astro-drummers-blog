@@ -1,9 +1,8 @@
 ---
-// const { slug, title, facebookCounter, isAlt } = Astro.props;
-// import SocialsButtons from "./SocialsButtons.astro";
+const {isReverse} = Astro.props
 ---
 
-<div class="share-dropdown" data-dropdown="horizontal">
+<div  class:list={["share-dropdown",{'--is-reverse': isReverse}]} data-dropdown="horizontal">
   <button type="button" class="share-dropdown__button" data-dropdown-trigger>
     <i class="fa fa-share-alt"> </i>
   </button>

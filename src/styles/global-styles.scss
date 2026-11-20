@@ -1874,15 +1874,13 @@ body {
 
 //==========================================================================================================================================================
 .quantity {
-	border: 0.125rem solid #e7e7e7;
-	border-radius: 2.6875rem;
+	// border: 0.125rem solid #e7e7e7;
+	// border-radius: 2.6875rem;
 	display: inline-flex;
-	align-items: center;
 	&__button {
 		flex: 0 0 1.875rem;
 		font-size: 0.4375rem;
-		color: #28262b;
-		opacity: 0.4;
+		color: #fff;
 		transition: all 0.3s ease 0s;
 		&:hover {
 			opacity: 1;
@@ -1893,10 +1891,10 @@ body {
 	}
 
 	&__input {
-		font-size: 0.6875rem;
+		@include adaptiveValue(font-size, 14, 11);
 		font-weight: 700;
 		text-transform: uppercase;
-		line-height: 390.909091%; /* 43/11 */
+		line-height: 1.5; /* 43/11 */
 		letter-spacing: 0.05rem;
 		text-align: center;
 		-moz-appearance: textfield;
@@ -2047,50 +2045,48 @@ body {
 		transform: translate(-50%, 0);
 		max-width: 62.5rem;
 	}
-	&.hero-actions-product{
-		@media (max-width:991.98px) {
+	&.hero-actions-product {
+		@media (max-width: 991.98px) {
 			flex-direction: column;
-			.filter__button{
+			.filter__button {
 				width: 100%;
 			}
 		}
-		.hero-search__button-mobile{
-			@media (max-width:767.98px) {
+		.hero-search__button-mobile {
+			@media (max-width: 767.98px) {
 				display: none;
 			}
 		}
-		.hero-search__form{
-			
-			@media (max-width:767.98px) {
+		.hero-search__form {
+			@media (max-width: 767.98px) {
 				display: flex;
-			position: relative;
-			&::before{
-				content:"\f002";
-				font: normal normal normal 0.875rem / 1 FontAwesome;
-				display:flex;
-				align-items: center;
-				justify-content: center;
-				color: #FFF;
-				position:absolute;
-				width:45px;
-				height:45px;
-				top:50%;
-				left:0;
-				transform: translate(0, -50%);
-				background: #2c73a1;
-				border-radius: 50%;
-				font-size: 20.8px;
+				position: relative;
+				&::before {
+					content: "\f002";
+					font: normal normal normal 0.875rem / 1 FontAwesome;
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					color: #fff;
+					position: absolute;
+					width: 45px;
+					height: 45px;
+					top: 50%;
+					left: 0;
+					transform: translate(0, -50%);
+					background: #2c73a1;
+					border-radius: 50%;
+					font-size: 20.8px;
 				}
 			}
 		}
-		.hero-search__button{
-			@media (max-width:767.98px) {
+		.hero-search__button {
+			@media (max-width: 767.98px) {
 				display: none;
-				
 			}
 		}
-		.hero-search__input{
-			@media (max-width:767.98px) {
+		.hero-search__input {
+			@media (max-width: 767.98px) {
 				padding-inline: 65px;
 			}
 		}
@@ -2143,7 +2139,7 @@ body {
 		text-transform: uppercase;
 		font-weight: 600;
 		flex: 1 1 auto;
-		@include multiLineEllipsis (1);
+		@include multiLineEllipsis(1);
 	}
 
 	&__body {
@@ -2234,7 +2230,7 @@ body {
 	}
 
 	&__link {
-		display: block; 
+		display: block;
 		padding: 0.875rem 1rem;
 		text-transform: uppercase;
 		color: #3498db;
@@ -2340,7 +2336,7 @@ body {
 		text-transform: uppercase;
 		padding-left: 0.75rem;
 		position: relative;
-		@include multiLineEllipsis (1);
+		@include multiLineEllipsis(1);
 		&::after {
 			content: "";
 			position: absolute;
@@ -2374,19 +2370,56 @@ body {
 		}
 	}
 	&.product-card {
-	
+		--ease-apple: cubic-bezier(0.22, 0.61, 0.36, 1);
+
 		.card__description {
 			margin-bottom: 0.875rem;
 			line-height: 1.5;
 		}
+
 		display: none;
-		&.--show{
+		opacity: 1;
+		transform: translateY(0);
+		transition:
+			opacity 0.22s var(--ease-apple),
+			transform 0.22s var(--ease-apple),
+			box-shadow 400ms ease,
+			transform 400ms ease;
+		will-change: opacity, transform;
+
+		&.--show {
 			display: flex;
 		}
-		&[hidden]{
+
+		&[hidden] {
 			display: none;
 		}
-	
+
+		&.--leaving {
+			opacity: 0;
+			transform: translateY(-4px);
+			pointer-events: none;
+		}
+
+		&.--enter {
+			opacity: 0;
+			transform: translateY(8px);
+			transition: none;
+		}
+
+		&.--entering {
+			transition:
+				opacity 0.3s var(--ease-apple),
+				transform 0.3s var(--ease-apple);
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.product-card,
+		.product-card.--entering {
+			transition: opacity 0.15s linear;
+			transform: none !important;
+		}
 	}
 	&__visual {
 		position: relative;
@@ -2475,7 +2508,7 @@ body {
 		justify-content: space-between;
 		gap: 0.625rem;
 		flex-direction: column;
-		@media (min-width:47.9988rem) {
+		@media (min-width: 47.9988rem) {
 			flex-direction: row;
 		}
 	}
@@ -2504,9 +2537,8 @@ body {
 		border-radius: 1.5625rem;
 		position: relative;
 		padding: 0.7188rem 4.0625rem;
-		@media (min-width:47.9988rem) {
+		@media (min-width: 47.9988rem) {
 			padding: 0.5313rem 4.0625rem 0.7188rem 1.25rem;
-			
 		}
 		transition: all 0.3s ease 0s;
 		&:hover {
@@ -2540,6 +2572,42 @@ body {
 
 .share-dropdown {
 	position: relative;
+	&.--is-reverse {
+		.share-dropdown__body {
+			transform: translate(45px, 0);
+		}
+		.share-dropdown__link {
+			transform: translate(-150%, 0) scale(0);
+		}
+
+		.share-dropdown__link-04 {
+			transition:
+				transform 0.3s ease 0.1s,
+				opacity 0.3s ease 0.1s,
+				box-shadow 400ms ease;
+		}
+
+		.share-dropdown__link-03 {
+			transition:
+				transform 0.3s ease 0.2s,
+				opacity 0.3s ease 0.2s,
+				box-shadow 400ms ease;
+		}
+
+		.share-dropdown__link-02 {
+			transition:
+				transform 0.3s ease 0.3s,
+				opacity 0.3s ease 0.3s,
+				box-shadow 400ms ease;
+		}
+
+		.share-dropdown__link-01 {
+			transition:
+				transform 0.3s ease 0.4s,
+				opacity 0.3s ease 0.4s,
+				box-shadow 400ms ease;
+		}
+	}
 	&__button {
 		width: 2.5rem;
 		height: 2.5rem;
@@ -2562,7 +2630,7 @@ body {
 		top: 0;
 		left: 0;
 		transform: translate(-100%, 0);
-		padding-right: 0.3125rem;
+		padding-right: 5px;
 		opacity: 0;
 		visibility: hidden;
 		transition: all 0.5s ease 0.5s;
@@ -2609,7 +2677,7 @@ body {
 	&__list {
 		display: flex;
 		justify-content: flex-end;
-		gap: 0.3125rem;
+		gap: 5px;
 		flex-direction: row-reverse;
 	}
 
@@ -2707,9 +2775,9 @@ body {
 		background: #2c73a1;
 		border-radius: 50%;
 	}
-	&__text{
+	&__text {
 		display: block;
 		width: 100%;
-		@include multiLineEllipsis (1);
+		@include multiLineEllipsis(1);
 	}
 }
